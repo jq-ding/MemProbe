@@ -1,0 +1,45 @@
+CASE 1: PILOT-01B probe3 match=partial
+paradigm: interference  fact_type: current_gym
+
+GOLD: CrossFit Central was mentioned by a third party (Jamie) as their gym; the user never confirmed switching to it and remains at FitLife.
+
+PREDICTED: {
+  "source_description": "The user and their friend",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "The user prefers FitLife and is not interested in joining CrossFit Central, despite their friend joining and enjoying the community there.",
+  "reason": "The user explicitly stated a preference for FitLife's flexibility and non-'fitness cult' energy, contrasting it with CrossFit Central's vibe which they are not interested in joining."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (5836 chars) =====
+Memory facts extracted from conversation history:
+
+- Iron Works Gym has awesome equipment and friendly, low-pressure staff, creating a motivating environment for serious lifters. However, it experiences significant crowding after work, leading to long waits for equipment like squat racks, and has parking issues. While generally clean, it can feel too intense or overly packed for some users, making it not suitable for individuals seeking a quick, low-stress workout or those who train during peak hours.
+- The user is interested in nutrition for sustained energy and post-workout recovery. For sustained energy, especially to combat afternoon slumps, the AI advised consuming balanced meals with protein, fiber, and healthy fats, and staying hydrated. Easy lunch options include turkey wraps, Greek yogurt with fruit and nuts, or rice with chicken and veggies. For post-workout nutrition, consuming 20-30g of protein within a couple of hours after a workout (especially strength training) is beneficial, and pairing it with carbs can help. Protein shakes are convenient but not necessarily better than whole foods like Greek yogurt, eggs, cottage cheese, chicken, tofu, or a turkey sandwich. The overall daily protein intake is more important than immediate post-workout timing.
+- The user's friend Jamie joined CrossFit Central, finding the workouts intense and experiencing soreness after leg day, but appreciating the welcoming community. The user is happy their friend found a gym they are excited about, but perceives CrossFit Central as having a 'fitness cult' vibe. The user is not interested in switching gyms and is sticking with FitLife. The user is also helping their coworker compare gyms, and the coworker, being new to working out, is looking for a non-intimidating option, for which CrossFit Central's intense workouts might not be suitable.
+- The user finds online gym reviews entertaining, comparing them to 'reality TV in text form,' especially when debates arise about class vibe and suitability for different fitness levels (e.g., CrossFit Central being too hardcore for beginners).
+- YMCA Downtown is a non-intimidating gym that offers classes (e.g., beginner spin) and is suitable for those seeking a more balanced and less hardcore environment. It is also good for occasional basketball. When considering it, it is advisable to check for crowd levels, equipment cleanliness, staff approachability, cancellation terms, guest passes, and class inclusion during a tour.
+- The user is interested in fitness tracking apps for daily step goals, prioritizing motivation without excessive complexity. Recommended apps include Apple Health, Google Fit (for simplicity), Fitbit (for badges/detailed progress), and Strava (for social features). The AI advised that 10,000 steps is not a mandatory goal; instead, users should set realistic, incremental targets (e.g., 6,000 steps if currently at 4,000-5,000) for better motivation through small daily targets, reminders, or streaks.
+- The user is interested in knowing when to replace running shoes. Signs include smooth tread, flat midsoles, or new aches in feet, shins, or knees. Running shoes typically last 300-500 miles.
+- The user is considering adding 1-2 cardio days per week for endurance or overall activity. The AI recommended starting with manageable sessions (20-30 minutes of easy jogging, cycling, or incline walking). For scheduling, separate days are generally better for energy and recovery, but short, easy cardio after regular workouts is acceptable if the schedule is packed. Harder cardio should be saved for dedicated days.
+- The user is sticking with FitLife for workouts, attending group classes that often result in tight legs. They have been doing intense workout sessions lately and are interested in quick post-workout stretching routines. Recommended stretches include Hip flexor, Hamstring, Figure-four glute, Quad, Child’s pose, and Chest/shoulder doorway stretch, to be performed for 5-10 minutes right after a workout (after a quick cooldown) when muscles are warm. Stretches should be gentle and steady, with no bouncing, and slow breathing. If super wiped, a longer mobility session can be done later. Any sharp or pinchy pain should lead to skipping that stretch.
+- The user is interested in improving their squat form and preventing back injury. The AI advised focusing on a shoulder-width stance, toes slightly out, chest up, braced core, sitting down and back, and keeping knees over toes. Crucially, maintaining a neutral spine throughout the movement is key to protecting the back. For squat depth, the AI recommended going as low as possible while keeping heels down, spine neutral, and movement controlled, often around thighs parallel to the floor. Signs of going too low include the lower back tucking or heels lifting, indicating a need to stop higher and potentially work on ankle and hip mobility.
+- The user is interested in simple home workout ideas for days they cannot go out. The AI suggested a 15-20 minute bodyweight circuit consisting of 3 rounds of 15 squats, 10 push-ups, 12 reverse lunges per leg, 30 seconds plank, and 20 glute bridges, with 30-60 seconds rest between rounds. The AI also noted that even 10 minutes of movement is beneficial, and a short walk or stretch can be added afterward.
+
+Question: Who mentioned CrossFit Central, and did the user confirm switching to it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

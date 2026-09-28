@@ -1,0 +1,4746 @@
+{
+  "description": "User-authored suite (40 episodes, domain=mixed_personal_work_agentic)",
+  "backend": "user_authored",
+  "model": null,
+  "specs": [
+    {
+      "episode_id": "G40-INT-01",
+      "group_id": "G40-INT-01",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "authoritative_update",
+      "domain": "personal",
+      "fact_type": "primary_streaming_service",
+      "length_tier": "core",
+      "initial_value": "Netflix",
+      "new_value": "HBO Max",
+      "canonical_initial": "Netflix",
+      "canonical_new": "HBO Max",
+      "distractor_values": [
+        "Hulu",
+        "Disney+",
+        "Paramount+"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks for show recommendations that fit what's on their current streaming service",
+          "user mentions logging in with their family plan on the service",
+          "user asks about billing or cancelling the subscription"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User clearly states they switched from Netflix to HBO Max, giving a brief reason."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current primary streaming service?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's primary streaming service before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's primary streaming service changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change primary streaming service?"
+        }
+      ],
+      "gold": {
+        "current_value": "HBO Max",
+        "original_value": "Netflix",
+        "previous_value": "Netflix",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "primary_streaming_service",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "authoritative",
+        "interference_test_type": "strong_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-02",
+      "group_id": "G40-INT-02",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "authoritative_update",
+      "domain": "agentic",
+      "fact_type": "active_kubernetes_context",
+      "length_tier": "core",
+      "initial_value": "staging-a",
+      "new_value": "prod-east-1",
+      "canonical_initial": "staging-a",
+      "canonical_new": "prod-east-1",
+      "distractor_values": [
+        "prod-west-2",
+        "staging-b",
+        "dev-shared"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user runs kubectl commands and mentions their current context",
+          "user asks about debugging pods in the cluster they're pointed at",
+          "user references their kubeconfig with this context set"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User clearly states they switched from staging-a to prod-east-1, giving a brief reason."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active kubernetes context?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's active kubernetes context before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's active kubernetes context changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change active kubernetes context?"
+        }
+      ],
+      "gold": {
+        "current_value": "prod-east-1",
+        "original_value": "staging-a",
+        "previous_value": "staging-a",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "active_kubernetes_context",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "authoritative",
+        "interference_test_type": "strong_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-03",
+      "group_id": "G40-INT-03",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "authoritative_update",
+      "domain": "work",
+      "fact_type": "current_sprint_focus",
+      "length_tier": "core",
+      "initial_value": "payment retries reliability",
+      "new_value": "search latency optimization",
+      "canonical_initial": "payment retries",
+      "canonical_new": "search latency",
+      "distractor_values": [
+        "onboarding docs cleanup",
+        "database index rebuild",
+        "notification service refactor"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user drafts a standup update about what they're working on this sprint",
+          "user asks for help unblocking their current sprint task",
+          "user asks to schedule meetings around the sprint priority"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User clearly states they switched from payment retries reliability to search latency optimization, giving a brief reason."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current current sprint focus?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's current sprint focus before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's current sprint focus changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change current sprint focus?"
+        }
+      ],
+      "gold": {
+        "current_value": "search latency optimization",
+        "original_value": "payment retries reliability",
+        "previous_value": "payment retries reliability",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "current_sprint_focus",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "authoritative",
+        "interference_test_type": "strong_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-04",
+      "group_id": "G40-INT-04",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "authoritative_update",
+      "domain": "personal",
+      "fact_type": "go_to_delivery_app",
+      "length_tier": "core",
+      "initial_value": "DoorDash",
+      "new_value": "Uber Eats",
+      "canonical_initial": "DoorDash",
+      "canonical_new": "Uber Eats",
+      "distractor_values": [
+        "Postmates",
+        "Grubhub",
+        "Seamless"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks about restaurants nearby that deliver via their app",
+          "user references saved payment info in their delivery app",
+          "user complains about the delivery fees on the app"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User clearly states they switched from DoorDash to Uber Eats, giving a brief reason."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current go to delivery app?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's go to delivery app before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's go to delivery app changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change go to delivery app?"
+        }
+      ],
+      "gold": {
+        "current_value": "Uber Eats",
+        "original_value": "DoorDash",
+        "previous_value": "DoorDash",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "go_to_delivery_app",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "authoritative",
+        "interference_test_type": "strong_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-05",
+      "group_id": "G40-INT-05",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "authoritative_update",
+      "domain": "agentic",
+      "fact_type": "rate_limit_threshold",
+      "length_tier": "core",
+      "initial_value": "100 req/min",
+      "new_value": "250 req/min",
+      "canonical_initial": "100",
+      "canonical_new": "250",
+      "distractor_values": [
+        "500 req/min",
+        "1000 req/min",
+        "2000 req/min"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user checks whether an upcoming load test will hit the rate limit",
+          "user asks about 429 error handling around the threshold",
+          "user asks about per-tenant rate limit overrides"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User clearly states they switched from 100 req/min to 250 req/min, giving a brief reason."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current rate limit threshold?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's rate limit threshold before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's rate limit threshold changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change rate limit threshold?"
+        }
+      ],
+      "gold": {
+        "current_value": "250 req/min",
+        "original_value": "100 req/min",
+        "previous_value": "100 req/min",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "rate_limit_threshold",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "authoritative",
+        "interference_test_type": "strong_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-06",
+      "group_id": "G40-INT-06",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "authoritative_update",
+      "domain": "work",
+      "fact_type": "active_feature_branch",
+      "length_tier": "core",
+      "initial_value": "feature/payment-retries",
+      "new_value": "feature/search-latency",
+      "canonical_initial": "feature/payment-retries",
+      "canonical_new": "feature/search-latency",
+      "distractor_values": [
+        "feature/search-v2",
+        "feature/cart-redesign",
+        "feature/checkout-v3"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user references specific commits going into this branch",
+          "user asks how to rebase this branch onto main",
+          "user asks who else is committing to the same branch"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User clearly states they switched from feature/payment-retries to feature/search-latency, giving a brief reason."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active feature branch?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's active feature branch before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's active feature branch changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change active feature branch?"
+        }
+      ],
+      "gold": {
+        "current_value": "feature/search-latency",
+        "original_value": "feature/payment-retries",
+        "previous_value": "feature/payment-retries",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "active_feature_branch",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "authoritative",
+        "interference_test_type": "strong_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-07",
+      "group_id": "G40-INT-07",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "decoy_no_update",
+      "domain": "personal",
+      "fact_type": "favorite_podcast",
+      "length_tier": "core",
+      "initial_value": "The Daily",
+      "new_value": "Freakonomics Radio",
+      "canonical_initial": "The Daily",
+      "canonical_new": "Freakonomics Radio",
+      "distractor_values": [
+        "Serial",
+        "This American Life",
+        "Radiolab"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user quotes something a host of the podcast said recently",
+          "user asks about upcoming episode release timing",
+          "user recommends the podcast to a friend in conversation"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "User's friend mentions that THEY just started using Freakonomics Radio. User does NOT switch \u2014 they keep The Daily."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_decoy_no_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current favorite podcast?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different favorite podcast mentioned, and if so by whom and does it apply?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's own favorite podcast changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who mentioned the alternative favorite podcast?"
+        }
+      ],
+      "gold": {
+        "current_value": "The Daily",
+        "original_value": "The Daily",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_Freakonomics_Radio"
+        ],
+        "conflict_gold": {
+          "conflict_value": "Freakonomics Radio",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_Freakonomics_Radio",
+          "status": "different_entity",
+          "applies_to_target": false,
+          "target_remains": "The Daily"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "favorite_podcast",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "decoy",
+        "interference_test_type": "decoy_resistance"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-08",
+      "group_id": "G40-INT-08",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "decoy_no_update",
+      "domain": "agentic",
+      "fact_type": "log_shipping_destination",
+      "length_tier": "core",
+      "initial_value": "Datadog",
+      "new_value": "Splunk",
+      "canonical_initial": "Datadog",
+      "canonical_new": "Splunk",
+      "distractor_values": [
+        "Elastic Cloud",
+        "Sumo Logic",
+        "Grafana Loki"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks how to grep for errors in the log destination",
+          "user asks about log retention set by the destination",
+          "user asks about switching over the log forwarder config"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "User's friend mentions that THEY just started using Splunk. User does NOT switch \u2014 they keep Datadog."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_decoy_no_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current log shipping destination?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different log shipping destination mentioned, and if so by whom and does it apply?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's own log shipping destination changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who mentioned the alternative log shipping destination?"
+        }
+      ],
+      "gold": {
+        "current_value": "Datadog",
+        "original_value": "Datadog",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_Splunk"
+        ],
+        "conflict_gold": {
+          "conflict_value": "Splunk",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_Splunk",
+          "status": "different_entity",
+          "applies_to_target": false,
+          "target_remains": "Datadog"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "log_shipping_destination",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "decoy",
+        "interference_test_type": "decoy_resistance"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-09",
+      "group_id": "G40-INT-09",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "decoy_no_update",
+      "domain": "work",
+      "fact_type": "oncall_rotation_role",
+      "length_tier": "core",
+      "initial_value": "primary on-call",
+      "new_value": "secondary on-call",
+      "canonical_initial": "primary",
+      "canonical_new": "secondary",
+      "distractor_values": [
+        "off-call",
+        "escalation manager",
+        "incident commander"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks about pager coverage for this week",
+          "user asks about incident escalation while they're covering",
+          "user asks to swap shifts with someone"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "User's friend mentions that THEY just started using secondary on-call. User does NOT switch \u2014 they keep primary on-call."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_decoy_no_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current oncall rotation role?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different oncall rotation role mentioned, and if so by whom and does it apply?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's own oncall rotation role changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who mentioned the alternative oncall rotation role?"
+        }
+      ],
+      "gold": {
+        "current_value": "primary on-call",
+        "original_value": "primary on-call",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_secondary_on-call"
+        ],
+        "conflict_gold": {
+          "conflict_value": "secondary on-call",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_secondary_on-call",
+          "status": "different_entity",
+          "applies_to_target": false,
+          "target_remains": "primary on-call"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "oncall_rotation_role",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "decoy",
+        "interference_test_type": "decoy_resistance"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-INT-10",
+      "group_id": "G40-INT-10",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "interference",
+      "condition": "decoy_no_update",
+      "domain": "agentic",
+      "fact_type": "active_kubernetes_context",
+      "length_tier": "core",
+      "initial_value": "staging-b",
+      "new_value": "prod-west-2",
+      "canonical_initial": "staging-b",
+      "canonical_new": "prod-west-2",
+      "distractor_values": [
+        "prod-east-1",
+        "staging-a",
+        "dev-shared"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user runs kubectl commands and mentions their current context",
+          "user asks about debugging pods in the cluster they're pointed at",
+          "user references their kubeconfig with this context set"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "User's friend mentions that THEY just started using prod-west-2. User does NOT switch \u2014 they keep staging-b."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_decoy_no_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active kubernetes context?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different active kubernetes context mentioned, and if so by whom and does it apply?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's own active kubernetes context changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who mentioned the alternative active kubernetes context?"
+        }
+      ],
+      "gold": {
+        "current_value": "staging-b",
+        "original_value": "staging-b",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_prod-west-2"
+        ],
+        "conflict_gold": {
+          "conflict_value": "prod-west-2",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_prod-west-2",
+          "status": "different_entity",
+          "applies_to_target": false,
+          "target_remains": "staging-b"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "active_kubernetes_context",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "update_type": "decoy",
+        "interference_test_type": "decoy_resistance"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-01",
+      "group_id": "G40-MIS-01",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "user_explicit",
+      "domain": "work",
+      "fact_type": "release_train_target",
+      "length_tier": "core",
+      "initial_value": "v2.5.0 shipping March 15",
+      "new_value": "v2.6.0 shipping April 10",
+      "canonical_initial": "v2.5.0",
+      "canonical_new": "v2.6.0",
+      "distractor_values": [
+        "v2.4 hotfix",
+        "v3.0 major",
+        "v3.1 minor"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks which features must land before the release cutoff",
+          "user references the branch cut date for the release",
+          "user asks about the testing gates before it ships"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User explicitly tells assistant the release train target changed from v2.5.0 shipping March 15 to v2.6.0 shipping April 10."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current release train target?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's release train target before the change?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new release train target value?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's release train target changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "v2.6.0 shipping April 10",
+        "original_value": "v2.5.0 shipping March 15",
+        "previous_value": "v2.5.0 shipping March 15",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "release_train_target",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "plasticity",
+        "source_type": "user_explicit"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-02",
+      "group_id": "G40-MIS-02",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "user_explicit",
+      "domain": "personal",
+      "fact_type": "primary_commute_route",
+      "length_tier": "core",
+      "initial_value": "101 North via SFO",
+      "new_value": "280 through Daly City",
+      "canonical_initial": "101 North",
+      "canonical_new": "280",
+      "distractor_values": [
+        "I-880 via Oakland",
+        "Route 24 through the tunnel",
+        "the Bay Bridge"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks about traffic on their usual commute",
+          "user asks for coffee shops along the route they take",
+          "user complains about a specific bottleneck on their route"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User explicitly tells assistant the primary commute route changed from 101 North via SFO to 280 through Daly City."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current primary commute route?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's primary commute route before the change?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new primary commute route value?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's primary commute route changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "280 through Daly City",
+        "original_value": "101 North via SFO",
+        "previous_value": "101 North via SFO",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "primary_commute_route",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "plasticity",
+        "source_type": "user_explicit"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-03",
+      "group_id": "G40-MIS-03",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "user_explicit",
+      "domain": "agentic",
+      "fact_type": "cache_ttl_seconds",
+      "length_tier": "core",
+      "initial_value": "900",
+      "new_value": "300",
+      "canonical_initial": "900",
+      "canonical_new": "300",
+      "distractor_values": [
+        "60",
+        "600",
+        "1800"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks about a cache miss debugging thread tied to the TTL",
+          "user checks the cache config in staging",
+          "user asks about tradeoffs of tuning the TTL up or down"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User explicitly tells assistant the cache ttl seconds changed from 900 to 300."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current cache ttl seconds?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's cache ttl seconds before the change?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new cache ttl seconds value?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's cache ttl seconds changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "300",
+        "original_value": "900",
+        "previous_value": "900",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "cache_ttl_seconds",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "plasticity",
+        "source_type": "user_explicit"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-04",
+      "group_id": "G40-MIS-04",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "assistant_noise",
+      "domain": "work",
+      "fact_type": "current_sprint_focus",
+      "length_tier": "core",
+      "initial_value": "onboarding funnel A/B test",
+      "new_value": "sign-up form redesign",
+      "canonical_initial": "onboarding funnel",
+      "canonical_new": "sign-up form redesign",
+      "distractor_values": [
+        "onboarding docs cleanup",
+        "database index rebuild",
+        "notification service refactor"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user drafts a standup update about what they're working on this sprint",
+          "user asks for help unblocking their current sprint task",
+          "user asks to schedule meetings around the sprint priority"
+        ]
+      },
+      "perturbation": {
+        "source_type": "assistant_hallucination",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "Assistant mistakenly says 'sign-up form redesign' as the current sprint focus. User corrects: the current sprint focus is still onboarding funnel A/B test."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_assistant_noise",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current current sprint focus?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different current sprint focus mentioned in error, and was it accepted?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who introduced the incorrect current sprint focus?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's current sprint focus changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "onboarding funnel A/B test",
+        "original_value": "onboarding funnel A/B test",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "assistant_hallucination_mention_of_sign-up_form_redesign"
+        ],
+        "conflict_gold": {
+          "conflict_value": "sign-up form redesign",
+          "mentioned": true,
+          "source": "assistant_hallucination",
+          "source_label": "assistant_hallucination_mention_of_sign-up_form_redesign",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "onboarding funnel A/B test"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "current_sprint_focus",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "noise_resistance",
+        "source_type": "assistant_hallucination"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-05",
+      "group_id": "G40-MIS-05",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "assistant_noise",
+      "domain": "agentic",
+      "fact_type": "log_shipping_destination",
+      "length_tier": "core",
+      "initial_value": "Elastic Cloud",
+      "new_value": "Datadog",
+      "canonical_initial": "Elastic Cloud",
+      "canonical_new": "Datadog",
+      "distractor_values": [
+        "Splunk",
+        "Sumo Logic",
+        "Grafana Loki"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks how to grep for errors in the log destination",
+          "user asks about log retention set by the destination",
+          "user asks about switching over the log forwarder config"
+        ]
+      },
+      "perturbation": {
+        "source_type": "assistant_hallucination",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "Assistant mistakenly says 'Datadog' as the log shipping destination. User corrects: the log shipping destination is still Elastic Cloud."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_assistant_noise",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current log shipping destination?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different log shipping destination mentioned in error, and was it accepted?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who introduced the incorrect log shipping destination?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's log shipping destination changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "Elastic Cloud",
+        "original_value": "Elastic Cloud",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "assistant_hallucination_mention_of_Datadog"
+        ],
+        "conflict_gold": {
+          "conflict_value": "Datadog",
+          "mentioned": true,
+          "source": "assistant_hallucination",
+          "source_label": "assistant_hallucination_mention_of_Datadog",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "Elastic Cloud"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "log_shipping_destination",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "noise_resistance",
+        "source_type": "assistant_hallucination"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-06",
+      "group_id": "G40-MIS-06",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "assistant_noise",
+      "domain": "personal",
+      "fact_type": "favorite_podcast",
+      "length_tier": "core",
+      "initial_value": "Serial",
+      "new_value": "Reply All",
+      "canonical_initial": "Serial",
+      "canonical_new": "Reply All",
+      "distractor_values": [
+        "The Daily",
+        "This American Life",
+        "Radiolab"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user quotes something a host of the podcast said recently",
+          "user asks about upcoming episode release timing",
+          "user recommends the podcast to a friend in conversation"
+        ]
+      },
+      "perturbation": {
+        "source_type": "assistant_hallucination",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "Assistant mistakenly says 'Reply All' as the favorite podcast. User corrects: the favorite podcast is still Serial."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_assistant_noise",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current favorite podcast?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different favorite podcast mentioned in error, and was it accepted?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who introduced the incorrect favorite podcast?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's favorite podcast changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "Serial",
+        "original_value": "Serial",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "assistant_hallucination_mention_of_Reply_All"
+        ],
+        "conflict_gold": {
+          "conflict_value": "Reply All",
+          "mentioned": true,
+          "source": "assistant_hallucination",
+          "source_label": "assistant_hallucination_mention_of_Reply_All",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "Serial"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "favorite_podcast",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "noise_resistance",
+        "source_type": "assistant_hallucination"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-07",
+      "group_id": "G40-MIS-07",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "third_party_noise",
+      "domain": "personal",
+      "fact_type": "primary_streaming_service",
+      "length_tier": "core",
+      "initial_value": "Disney+",
+      "new_value": "Max",
+      "canonical_initial": "Disney+",
+      "canonical_new": "Max",
+      "distractor_values": [
+        "Hulu",
+        "Paramount+",
+        "Peacock"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks for show recommendations that fit what's on their current streaming service",
+          "user mentions logging in with their family plan on the service",
+          "user asks about billing or cancelling the subscription"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A third party mentions Max in a different context. User's own primary streaming service remains Disney+."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_third_party_noise",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current primary streaming service?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different primary streaming service mentioned, and did it apply to the user?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who mentioned the alternative primary streaming service?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's own primary streaming service changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "Disney+",
+        "original_value": "Disney+",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_Max"
+        ],
+        "conflict_gold": {
+          "conflict_value": "Max",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_Max",
+          "status": "different_entity",
+          "applies_to_target": false,
+          "target_remains": "Disney+"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "primary_streaming_service",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "noise_resistance",
+        "source_type": "third_party_noise"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-08",
+      "group_id": "G40-MIS-08",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "third_party_noise",
+      "domain": "agentic",
+      "fact_type": "active_kubernetes_context",
+      "length_tier": "core",
+      "initial_value": "dev-shared",
+      "new_value": "staging-a",
+      "canonical_initial": "dev-shared",
+      "canonical_new": "staging-a",
+      "distractor_values": [
+        "prod-east-1",
+        "prod-west-2",
+        "staging-b"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user runs kubectl commands and mentions their current context",
+          "user asks about debugging pods in the cluster they're pointed at",
+          "user references their kubeconfig with this context set"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A third party mentions staging-a in a different context. User's own active kubernetes context remains dev-shared."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_third_party_noise",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active kubernetes context?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different active kubernetes context mentioned, and did it apply to the user?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who mentioned the alternative active kubernetes context?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's own active kubernetes context changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "dev-shared",
+        "original_value": "dev-shared",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_staging-a"
+        ],
+        "conflict_gold": {
+          "conflict_value": "staging-a",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_staging-a",
+          "status": "different_entity",
+          "applies_to_target": false,
+          "target_remains": "dev-shared"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "active_kubernetes_context",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "noise_resistance",
+        "source_type": "third_party_noise"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-09",
+      "group_id": "G40-MIS-09",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "third_party_noise",
+      "domain": "work",
+      "fact_type": "active_feature_branch",
+      "length_tier": "core",
+      "initial_value": "hotfix/deploy-timeout",
+      "new_value": "feature/checkout-refactor",
+      "canonical_initial": "hotfix/deploy-timeout",
+      "canonical_new": "feature/checkout-refactor",
+      "distractor_values": [
+        "feature/search-v2",
+        "feature/cart-redesign",
+        "feature/checkout-v3"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user references specific commits going into this branch",
+          "user asks how to rebase this branch onto main",
+          "user asks who else is committing to the same branch"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A third party mentions feature/checkout-refactor in a different context. User's own active feature branch remains hotfix/deploy-timeout."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_third_party_noise",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active feature branch?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a different active feature branch mentioned, and did it apply to the user?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who mentioned the alternative active feature branch?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's own active feature branch changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "hotfix/deploy-timeout",
+        "original_value": "hotfix/deploy-timeout",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_feature/checkout-refactor"
+        ],
+        "conflict_gold": {
+          "conflict_value": "feature/checkout-refactor",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_feature/checkout-refactor",
+          "status": "different_entity",
+          "applies_to_target": false,
+          "target_remains": "hotfix/deploy-timeout"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "active_feature_branch",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "noise_resistance",
+        "source_type": "third_party_noise"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-MIS-10",
+      "group_id": "G40-MIS-10",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "misinformation",
+      "condition": "stale_tool",
+      "domain": "agentic",
+      "fact_type": "rate_limit_threshold",
+      "length_tier": "core",
+      "initial_value": "500 req/min",
+      "new_value": "1000 req/min",
+      "canonical_initial": "500",
+      "canonical_new": "1000",
+      "distractor_values": [
+        "100 req/min",
+        "250 req/min",
+        "50 req/min"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user checks whether an upcoming load test will hit the rate limit",
+          "user asks about 429 error handling around the threshold",
+          "user asks about per-tenant rate limit overrides"
+        ]
+      },
+      "perturbation": {
+        "source_type": "stale_tool",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A stale tool output shows 1000 req/min, but the live state is still 500 req/min; user notices and dismisses it."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_stale_tool",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current rate limit threshold?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Did a stale tool output suggest a different rate limit threshold, and did the user accept it?"
+        },
+        {
+          "type": "source",
+          "question_hint": "What was the source of the alternative rate limit threshold?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's rate limit threshold changed?"
+        }
+      ],
+      "gold": {
+        "current_value": "500 req/min",
+        "original_value": "500 req/min",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "stale_tool_mention_of_1000_req/min"
+        ],
+        "conflict_gold": {
+          "conflict_value": "1000 req/min",
+          "mentioned": true,
+          "source": "stale_tool",
+          "source_label": "stale_tool_mention_of_1000_req/min",
+          "status": "stale",
+          "applies_to_target": false,
+          "target_remains": "500 req/min"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "source",
+        "change_detection"
+      ],
+      "base_fact_type": "rate_limit_threshold",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "test_type": "noise_resistance",
+        "source_type": "stale_tool"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-01",
+      "group_id": "G40-CON-01",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "high",
+      "domain": "personal",
+      "fact_type": "favorite_podcast",
+      "length_tier": "core",
+      "initial_value": "Hard Fork",
+      "new_value": "Lex Fridman Podcast",
+      "canonical_initial": "Hard Fork",
+      "canonical_new": "Lex Fridman",
+      "distractor_values": [
+        "The Daily",
+        "Serial",
+        "This American Life"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 4,
+        "mention_contexts": [
+          "user quotes something a host of the podcast said recently",
+          "user asks about upcoming episode release timing",
+          "user recommends the podcast to a friend in conversation",
+          "user asks assistant to summarize a topic tied to the podcast's theme"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "After repeatedly reinforcing Hard Fork, user explicitly switches to Lex Fridman Podcast."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 4,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current favorite podcast?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's favorite podcast before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's favorite podcast changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change favorite podcast?"
+        }
+      ],
+      "gold": {
+        "current_value": "Lex Fridman Podcast",
+        "original_value": "Hard Fork",
+        "previous_value": "Hard Fork",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "favorite_podcast",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "high",
+        "consolidation_test_type": "strong_update",
+        "num_encoding_mentions": 4
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-02",
+      "group_id": "G40-CON-02",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "high",
+      "domain": "work",
+      "fact_type": "current_sprint_focus",
+      "length_tier": "core",
+      "initial_value": "checkout flow refactor",
+      "new_value": "cart-abandonment email campaign",
+      "canonical_initial": "checkout flow refactor",
+      "canonical_new": "cart-abandonment email campaign",
+      "distractor_values": [
+        "onboarding docs cleanup",
+        "database index rebuild",
+        "notification service refactor"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 4,
+        "mention_contexts": [
+          "user drafts a standup update about what they're working on this sprint",
+          "user asks for help unblocking their current sprint task",
+          "user asks to schedule meetings around the sprint priority",
+          "user references a Jira ticket tied to their sprint focus"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "After repeatedly reinforcing checkout flow refactor, user explicitly switches to cart-abandonment email campaign."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 4,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current current sprint focus?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's current sprint focus before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's current sprint focus changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change current sprint focus?"
+        }
+      ],
+      "gold": {
+        "current_value": "cart-abandonment email campaign",
+        "original_value": "checkout flow refactor",
+        "previous_value": "checkout flow refactor",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "current_sprint_focus",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "high",
+        "consolidation_test_type": "strong_update",
+        "num_encoding_mentions": 4
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-03",
+      "group_id": "G40-CON-03",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "high",
+      "domain": "agentic",
+      "fact_type": "log_shipping_destination",
+      "length_tier": "core",
+      "initial_value": "Splunk",
+      "new_value": "Grafana Loki",
+      "canonical_initial": "Splunk",
+      "canonical_new": "Grafana Loki",
+      "distractor_values": [
+        "Datadog",
+        "Elastic Cloud",
+        "Sumo Logic"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 4,
+        "mention_contexts": [
+          "user asks how to grep for errors in the log destination",
+          "user asks about log retention set by the destination",
+          "user asks about switching over the log forwarder config",
+          "user asks about billing on the destination"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "After repeatedly reinforcing Splunk, user explicitly switches to Grafana Loki."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 4,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current log shipping destination?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's log shipping destination before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's log shipping destination changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change log shipping destination?"
+        }
+      ],
+      "gold": {
+        "current_value": "Grafana Loki",
+        "original_value": "Splunk",
+        "previous_value": "Splunk",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "log_shipping_destination",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "high",
+        "consolidation_test_type": "strong_update",
+        "num_encoding_mentions": 4
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-04",
+      "group_id": "G40-CON-04",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "low",
+      "domain": "personal",
+      "fact_type": "go_to_delivery_app",
+      "length_tier": "core",
+      "initial_value": "Grubhub",
+      "new_value": "Uber Eats",
+      "canonical_initial": "Grubhub",
+      "canonical_new": "Uber Eats",
+      "distractor_values": [
+        "Postmates",
+        "Seamless",
+        "Caviar"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 2,
+        "mention_contexts": [
+          "user asks about restaurants nearby that deliver via their app",
+          "user references saved payment info in their delivery app"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "Even though Grubhub was only mentioned in passing, user explicitly switches to Uber Eats."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 2,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current go to delivery app?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's go to delivery app before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's go to delivery app changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change go to delivery app?"
+        }
+      ],
+      "gold": {
+        "current_value": "Uber Eats",
+        "original_value": "Grubhub",
+        "previous_value": "Grubhub",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "go_to_delivery_app",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "low",
+        "consolidation_test_type": "strong_update",
+        "num_encoding_mentions": 2
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-05",
+      "group_id": "G40-CON-05",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "low",
+      "domain": "work",
+      "fact_type": "oncall_rotation_role",
+      "length_tier": "core",
+      "initial_value": "secondary on-call",
+      "new_value": "primary on-call",
+      "canonical_initial": "secondary",
+      "canonical_new": "primary",
+      "distractor_values": [
+        "off-call",
+        "escalation manager",
+        "incident commander"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 2,
+        "mention_contexts": [
+          "user asks about pager coverage for this week",
+          "user asks about incident escalation while they're covering"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "Even though secondary on-call was only mentioned in passing, user explicitly switches to primary on-call."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 2,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current oncall rotation role?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's oncall rotation role before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's oncall rotation role changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change oncall rotation role?"
+        }
+      ],
+      "gold": {
+        "current_value": "primary on-call",
+        "original_value": "secondary on-call",
+        "previous_value": "secondary on-call",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "oncall_rotation_role",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "low",
+        "consolidation_test_type": "strong_update",
+        "num_encoding_mentions": 2
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-06",
+      "group_id": "G40-CON-06",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "low",
+      "domain": "agentic",
+      "fact_type": "log_shipping_destination",
+      "length_tier": "core",
+      "initial_value": "Elastic Cloud",
+      "new_value": "Papertrail",
+      "canonical_initial": "Elastic Cloud",
+      "canonical_new": "Papertrail",
+      "distractor_values": [
+        "Datadog",
+        "Splunk",
+        "Sumo Logic"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 2,
+        "mention_contexts": [
+          "user asks how to grep for errors in the log destination",
+          "user asks about log retention set by the destination"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "Even though Elastic Cloud was only mentioned in passing, user explicitly switches to Papertrail."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 2,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current log shipping destination?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's log shipping destination before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's log shipping destination changed?"
+        },
+        {
+          "type": "temporal",
+          "question_hint": "When or why did the user change log shipping destination?"
+        }
+      ],
+      "gold": {
+        "current_value": "Papertrail",
+        "original_value": "Elastic Cloud",
+        "previous_value": "Elastic Cloud",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "temporal"
+      ],
+      "base_fact_type": "log_shipping_destination",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "low",
+        "consolidation_test_type": "strong_update",
+        "num_encoding_mentions": 2
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-07",
+      "group_id": "G40-CON-07",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "high_weak_challenge",
+      "domain": "personal",
+      "fact_type": "primary_commute_route",
+      "length_tier": "core",
+      "initial_value": "Golden Gate Bridge",
+      "new_value": "San Mateo Bridge",
+      "canonical_initial": "Golden Gate Bridge",
+      "canonical_new": "San Mateo Bridge",
+      "distractor_values": [
+        "I-880 via Oakland",
+        "Route 24 through the tunnel",
+        "the Bay Bridge"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 4,
+        "mention_contexts": [
+          "user asks about traffic on their usual commute",
+          "user asks for coffee shops along the route they take",
+          "user complains about a specific bottleneck on their route",
+          "user asks about parking near the destination end of the route"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "Despite many mentions of Golden Gate Bridge, a weak third-party suggestion of San Mateo Bridge appears; user does not adopt it."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 4,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_high_weak_challenge",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current primary commute route?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak challenge to primary commute route mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's primary commute route changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative primary commute route?"
+        }
+      ],
+      "gold": {
+        "current_value": "Golden Gate Bridge",
+        "original_value": "Golden Gate Bridge",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_San_Mateo_Bridge"
+        ],
+        "conflict_gold": {
+          "conflict_value": "San Mateo Bridge",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_San_Mateo_Bridge",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "Golden Gate Bridge"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "primary_commute_route",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "high",
+        "consolidation_test_type": "weak_challenge",
+        "num_encoding_mentions": 4
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-08",
+      "group_id": "G40-CON-08",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "high_weak_challenge",
+      "domain": "agentic",
+      "fact_type": "active_kubernetes_context",
+      "length_tier": "core",
+      "initial_value": "prod-east-1",
+      "new_value": "prod-west-2",
+      "canonical_initial": "prod-east-1",
+      "canonical_new": "prod-west-2",
+      "distractor_values": [
+        "staging-a",
+        "staging-b",
+        "dev-shared"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 4,
+        "mention_contexts": [
+          "user runs kubectl commands and mentions their current context",
+          "user asks about debugging pods in the cluster they're pointed at",
+          "user references their kubeconfig with this context set",
+          "user asks about namespace defaults tied to their context"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "Despite many mentions of prod-east-1, a weak third-party suggestion of prod-west-2 appears; user does not adopt it."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 4,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_high_weak_challenge",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active kubernetes context?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak challenge to active kubernetes context mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's active kubernetes context changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative active kubernetes context?"
+        }
+      ],
+      "gold": {
+        "current_value": "prod-east-1",
+        "original_value": "prod-east-1",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_prod-west-2"
+        ],
+        "conflict_gold": {
+          "conflict_value": "prod-west-2",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_prod-west-2",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "prod-east-1"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "active_kubernetes_context",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "high",
+        "consolidation_test_type": "weak_challenge",
+        "num_encoding_mentions": 4
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-09",
+      "group_id": "G40-CON-09",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "low_weak_challenge",
+      "domain": "work",
+      "fact_type": "release_train_target",
+      "length_tier": "core",
+      "initial_value": "v2.4.3 patch",
+      "new_value": "v2.5.0 minor",
+      "canonical_initial": "v2.4.3",
+      "canonical_new": "v2.5.0",
+      "distractor_values": [
+        "v2.4 hotfix",
+        "v3.0 major",
+        "v3.1 minor"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 2,
+        "mention_contexts": [
+          "user asks which features must land before the release cutoff",
+          "user references the branch cut date for the release"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A weak third-party mention of v2.5.0 minor appears; the lightly-reinforced v2.4.3 patch still wins because nothing replaces it."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 2,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_low_weak_challenge",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current release train target?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak challenge to release train target mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's release train target changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative release train target?"
+        }
+      ],
+      "gold": {
+        "current_value": "v2.4.3 patch",
+        "original_value": "v2.4.3 patch",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_v2.5.0_minor"
+        ],
+        "conflict_gold": {
+          "conflict_value": "v2.5.0 minor",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_v2.5.0_minor",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "v2.4.3 patch"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "release_train_target",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "low",
+        "consolidation_test_type": "weak_challenge",
+        "num_encoding_mentions": 2
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-CON-10",
+      "group_id": "G40-CON-10",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "consolidation",
+      "condition": "low_weak_challenge",
+      "domain": "personal",
+      "fact_type": "primary_streaming_service",
+      "length_tier": "core",
+      "initial_value": "YouTube Premium",
+      "new_value": "Spotify Premium",
+      "canonical_initial": "YouTube Premium",
+      "canonical_new": "Spotify Premium",
+      "distractor_values": [
+        "Hulu",
+        "Disney+",
+        "Paramount+"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 2,
+        "mention_contexts": [
+          "user asks for show recommendations that fit what's on their current streaming service",
+          "user mentions logging in with their family plan on the service"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A weak third-party mention of Spotify Premium appears; the lightly-reinforced YouTube Premium still wins because nothing replaces it."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 2,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_low_weak_challenge",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current primary streaming service?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak challenge to primary streaming service mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's primary streaming service changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative primary streaming service?"
+        }
+      ],
+      "gold": {
+        "current_value": "YouTube Premium",
+        "original_value": "YouTube Premium",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_Spotify_Premium"
+        ],
+        "conflict_gold": {
+          "conflict_value": "Spotify Premium",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_Spotify_Premium",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "YouTube Premium"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "primary_streaming_service",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "consolidation_level": "low",
+        "consolidation_test_type": "weak_challenge",
+        "num_encoding_mentions": 2
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-01",
+      "group_id": "G40-REC-01",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "reactivated",
+      "domain": "work",
+      "fact_type": "active_feature_branch",
+      "length_tier": "core",
+      "initial_value": "feature/onboarding-refactor",
+      "new_value": "feature/signup-form-v2",
+      "canonical_initial": "feature/onboarding-refactor",
+      "canonical_new": "feature/signup-form-v2",
+      "distractor_values": [
+        "feature/search-v2",
+        "feature/cart-redesign",
+        "feature/checkout-v3"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user references specific commits going into this branch",
+          "user asks how to rebase this branch onto main",
+          "user asks who else is committing to the same branch"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": true,
+        "wording_hint": "User first revisits/reminds the assistant about feature/onboarding-refactor (reactivation), then in the same session updates it to feature/signup-form-v2."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active feature branch?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's active feature branch before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's active feature branch changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new active feature branch value?"
+        }
+      ],
+      "gold": {
+        "current_value": "feature/signup-form-v2",
+        "original_value": "feature/onboarding-refactor",
+        "previous_value": "feature/onboarding-refactor",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "active_feature_branch",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": true,
+        "reconsolidation_test_type": "reactivated_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-02",
+      "group_id": "G40-REC-02",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "reactivated",
+      "domain": "personal",
+      "fact_type": "primary_commute_route",
+      "length_tier": "core",
+      "initial_value": "I-880 via Oakland",
+      "new_value": "I-580 via Livermore",
+      "canonical_initial": "I-880",
+      "canonical_new": "I-580",
+      "distractor_values": [
+        "Route 24 through the tunnel",
+        "the Bay Bridge",
+        "Sunol Grade on 680"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks about traffic on their usual commute",
+          "user asks for coffee shops along the route they take",
+          "user complains about a specific bottleneck on their route"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": true,
+        "wording_hint": "User first revisits/reminds the assistant about I-880 via Oakland (reactivation), then in the same session updates it to I-580 via Livermore."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current primary commute route?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's primary commute route before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's primary commute route changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new primary commute route value?"
+        }
+      ],
+      "gold": {
+        "current_value": "I-580 via Livermore",
+        "original_value": "I-880 via Oakland",
+        "previous_value": "I-880 via Oakland",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "primary_commute_route",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": true,
+        "reconsolidation_test_type": "reactivated_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-03",
+      "group_id": "G40-REC-03",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "reactivated",
+      "domain": "agentic",
+      "fact_type": "rate_limit_threshold",
+      "length_tier": "core",
+      "initial_value": "250 req/min",
+      "new_value": "500 req/min",
+      "canonical_initial": "250",
+      "canonical_new": "500",
+      "distractor_values": [
+        "100 req/min",
+        "1000 req/min",
+        "2000 req/min"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user checks whether an upcoming load test will hit the rate limit",
+          "user asks about 429 error handling around the threshold",
+          "user asks about per-tenant rate limit overrides"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": true,
+        "wording_hint": "User first revisits/reminds the assistant about 250 req/min (reactivation), then in the same session updates it to 500 req/min."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current rate limit threshold?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's rate limit threshold before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's rate limit threshold changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new rate limit threshold value?"
+        }
+      ],
+      "gold": {
+        "current_value": "500 req/min",
+        "original_value": "250 req/min",
+        "previous_value": "250 req/min",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "rate_limit_threshold",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": true,
+        "reconsolidation_test_type": "reactivated_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-04",
+      "group_id": "G40-REC-04",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "direct",
+      "domain": "work",
+      "fact_type": "current_sprint_focus",
+      "length_tier": "core",
+      "initial_value": "internal admin tools cleanup",
+      "new_value": "third-party API migration",
+      "canonical_initial": "internal admin tools cleanup",
+      "canonical_new": "third-party API migration",
+      "distractor_values": [
+        "onboarding docs cleanup",
+        "database index rebuild",
+        "notification service refactor"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user drafts a standup update about what they're working on this sprint",
+          "user asks for help unblocking their current sprint task",
+          "user asks to schedule meetings around the sprint priority"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User updates internal admin tools cleanup \u2192 third-party API migration directly, without first revisiting the old value."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current current sprint focus?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's current sprint focus before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's current sprint focus changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new current sprint focus value?"
+        }
+      ],
+      "gold": {
+        "current_value": "third-party API migration",
+        "original_value": "internal admin tools cleanup",
+        "previous_value": "internal admin tools cleanup",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "current_sprint_focus",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": false,
+        "reconsolidation_test_type": "direct_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-05",
+      "group_id": "G40-REC-05",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "direct",
+      "domain": "personal",
+      "fact_type": "primary_streaming_service",
+      "length_tier": "core",
+      "initial_value": "Spotify Premium",
+      "new_value": "Apple Music",
+      "canonical_initial": "Spotify Premium",
+      "canonical_new": "Apple Music",
+      "distractor_values": [
+        "Hulu",
+        "Disney+",
+        "Paramount+"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks for show recommendations that fit what's on their current streaming service",
+          "user mentions logging in with their family plan on the service",
+          "user asks about billing or cancelling the subscription"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User updates Spotify Premium \u2192 Apple Music directly, without first revisiting the old value."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current primary streaming service?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's primary streaming service before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's primary streaming service changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new primary streaming service value?"
+        }
+      ],
+      "gold": {
+        "current_value": "Apple Music",
+        "original_value": "Spotify Premium",
+        "previous_value": "Spotify Premium",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "primary_streaming_service",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": false,
+        "reconsolidation_test_type": "direct_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-06",
+      "group_id": "G40-REC-06",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "direct",
+      "domain": "agentic",
+      "fact_type": "log_shipping_destination",
+      "length_tier": "core",
+      "initial_value": "Sumo Logic",
+      "new_value": "New Relic",
+      "canonical_initial": "Sumo Logic",
+      "canonical_new": "New Relic",
+      "distractor_values": [
+        "Datadog",
+        "Splunk",
+        "Elastic Cloud"
+      ],
+      "expected_behavior": "should_update",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks how to grep for errors in the log destination",
+          "user asks about log retention set by the destination",
+          "user asks about switching over the log forwarder config"
+        ]
+      },
+      "perturbation": {
+        "source_type": "user_explicit",
+        "evidence_strength": "strong",
+        "authoritative": true,
+        "reactivation": false,
+        "wording_hint": "User updates Sumo Logic \u2192 New Relic directly, without first revisiting the old value."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "direct_update",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current log shipping destination?"
+        },
+        {
+          "type": "previous_value",
+          "question_hint": "What was the user's log shipping destination before the change?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's log shipping destination changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who provided the new log shipping destination value?"
+        }
+      ],
+      "gold": {
+        "current_value": "New Relic",
+        "original_value": "Sumo Logic",
+        "previous_value": "Sumo Logic",
+        "has_changed": true,
+        "source_of_change": "user explicitly stated the change",
+        "invalid_sources": []
+      },
+      "probe_types": [
+        "current_value",
+        "previous_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "log_shipping_destination",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": false,
+        "reconsolidation_test_type": "direct_update"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-07",
+      "group_id": "G40-REC-07",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "reactivated_weak",
+      "domain": "personal",
+      "fact_type": "favorite_podcast",
+      "length_tier": "core",
+      "initial_value": "Planet Money",
+      "new_value": "Radiolab",
+      "canonical_initial": "Planet Money",
+      "canonical_new": "Radiolab",
+      "distractor_values": [
+        "The Daily",
+        "Serial",
+        "This American Life"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user quotes something a host of the podcast said recently",
+          "user asks about upcoming episode release timing",
+          "user recommends the podcast to a friend in conversation"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": true,
+        "wording_hint": "After user reactivates Planet Money, a third party ambiguously suggests Radiolab; user does not accept."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_reactivated_weak",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current favorite podcast?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak alternative to favorite podcast mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's favorite podcast changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative favorite podcast?"
+        }
+      ],
+      "gold": {
+        "current_value": "Planet Money",
+        "original_value": "Planet Money",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_Radiolab"
+        ],
+        "conflict_gold": {
+          "conflict_value": "Radiolab",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_Radiolab",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "Planet Money"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "favorite_podcast",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": true,
+        "reconsolidation_test_type": "reactivated_weak_challenge"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-08",
+      "group_id": "G40-REC-08",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "reactivated_weak",
+      "domain": "agentic",
+      "fact_type": "active_kubernetes_context",
+      "length_tier": "core",
+      "initial_value": "sandbox",
+      "new_value": "dev-shared",
+      "canonical_initial": "sandbox",
+      "canonical_new": "dev-shared",
+      "distractor_values": [
+        "prod-east-1",
+        "prod-west-2",
+        "staging-a"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user runs kubectl commands and mentions their current context",
+          "user asks about debugging pods in the cluster they're pointed at",
+          "user references their kubeconfig with this context set"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": true,
+        "wording_hint": "After user reactivates sandbox, a third party ambiguously suggests dev-shared; user does not accept."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_reactivated_weak",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active kubernetes context?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak alternative to active kubernetes context mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's active kubernetes context changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative active kubernetes context?"
+        }
+      ],
+      "gold": {
+        "current_value": "sandbox",
+        "original_value": "sandbox",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_dev-shared"
+        ],
+        "conflict_gold": {
+          "conflict_value": "dev-shared",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_dev-shared",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "sandbox"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "active_kubernetes_context",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": true,
+        "reconsolidation_test_type": "reactivated_weak_challenge"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-09",
+      "group_id": "G40-REC-09",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "direct_weak",
+      "domain": "work",
+      "fact_type": "oncall_rotation_role",
+      "length_tier": "core",
+      "initial_value": "off-call",
+      "new_value": "escalation manager",
+      "canonical_initial": "off-call",
+      "canonical_new": "escalation manager",
+      "distractor_values": [
+        "primary on-call",
+        "secondary on-call",
+        "incident commander"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user asks about pager coverage for this week",
+          "user asks about incident escalation while they're covering",
+          "user asks to swap shifts with someone"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A third party ambiguously suggests escalation manager without any reactivation of off-call; user does not accept."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_direct_weak",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current oncall rotation role?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak alternative to oncall rotation role mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's oncall rotation role changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative oncall rotation role?"
+        }
+      ],
+      "gold": {
+        "current_value": "off-call",
+        "original_value": "off-call",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_escalation_manager"
+        ],
+        "conflict_gold": {
+          "conflict_value": "escalation manager",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_escalation_manager",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "off-call"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "oncall_rotation_role",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": false,
+        "reconsolidation_test_type": "direct_weak_challenge"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    },
+    {
+      "episode_id": "G40-REC-10",
+      "group_id": "G40-REC-10",
+      "group_role": "primary",
+      "matched_variables": [
+        "fact_type",
+        "encoding",
+        "distractor_values",
+        "filler_plan",
+        "length_tier"
+      ],
+      "variant_variables": [
+        "perturbation",
+        "gold",
+        "expected_behavior"
+      ],
+      "paradigm": "reconsolidation",
+      "condition": "direct_weak",
+      "domain": "agentic",
+      "fact_type": "active_kubernetes_context",
+      "length_tier": "core",
+      "initial_value": "minikube-local",
+      "new_value": "sandbox",
+      "canonical_initial": "minikube-local",
+      "canonical_new": "sandbox",
+      "distractor_values": [
+        "prod-east-1",
+        "prod-west-2",
+        "staging-a"
+      ],
+      "expected_behavior": "should_preserve",
+      "encoding": {
+        "support_count": 3,
+        "mention_contexts": [
+          "user runs kubectl commands and mentions their current context",
+          "user asks about debugging pods in the cluster they're pointed at",
+          "user references their kubeconfig with this context set"
+        ]
+      },
+      "perturbation": {
+        "source_type": "third_party",
+        "evidence_strength": "weak",
+        "authoritative": false,
+        "reactivation": false,
+        "wording_hint": "A third party ambiguously suggests sandbox without any reactivation of minikube-local; user does not accept."
+      },
+      "filler_plan": {
+        "pre_perturbation": {
+          "total": 15,
+          "weakly_related_background": 6,
+          "near_miss": 4,
+          "confusable": 3,
+          "decoy_nonupdate": 2
+        },
+        "post_perturbation": {
+          "total": 2,
+          "types": [
+            "weakly_related_background",
+            "near_miss"
+          ]
+        }
+      },
+      "num_encoding_sessions": 3,
+      "num_pre_perturbation_fillers": 15,
+      "num_perturbation_sessions": 1,
+      "num_post_perturbation_fillers": 2,
+      "perturbation_type": "weak_challenge_direct_weak",
+      "probes": [
+        {
+          "type": "current_value",
+          "question_hint": "What is the user's current active kubernetes context?"
+        },
+        {
+          "type": "conflict_value",
+          "question_hint": "Was a weak alternative to active kubernetes context mentioned, and was it accepted?"
+        },
+        {
+          "type": "change_detection",
+          "question_hint": "Has the user's active kubernetes context changed?"
+        },
+        {
+          "type": "source",
+          "question_hint": "Who suggested the alternative active kubernetes context?"
+        }
+      ],
+      "gold": {
+        "current_value": "minikube-local",
+        "original_value": "minikube-local",
+        "previous_value": null,
+        "has_changed": false,
+        "source_of_change": null,
+        "invalid_sources": [
+          "third_party_mention_of_sandbox"
+        ],
+        "conflict_gold": {
+          "conflict_value": "sandbox",
+          "mentioned": true,
+          "source": "third_party",
+          "source_label": "third_party_mention_of_sandbox",
+          "status": "not_accepted",
+          "applies_to_target": false,
+          "target_remains": "minikube-local"
+        }
+      },
+      "probe_types": [
+        "current_value",
+        "conflict_value",
+        "change_detection",
+        "source"
+      ],
+      "base_fact_type": "active_kubernetes_context",
+      "difficulty_target": "core",
+      "group_design": "singleton",
+      "generation_batch": "user_authored",
+      "paradigm_metadata": {
+        "reactivation": false,
+        "reconsolidation_test_type": "direct_weak_challenge"
+      },
+      "num_perturbation_events": 1,
+      "perturbation_parts": [
+        "perturbation"
+      ],
+      "split_perturbation": false
+    }
+  ]
+}

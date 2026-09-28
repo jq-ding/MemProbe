@@ -1,0 +1,70 @@
+CASE 12: PILOT-15B probe3 match=incorrect
+paradigm: misinformation  fact_type: project_owner_v2
+
+GOLD: Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "Marcus Lee is a reviewer for the billing module and presented billing metrics, though the Q1 planning document proposes him as the module owner.",
+  "reason": "The user mentioned Marcus Lee's review feedback on billing changes, his presentation of billing metrics, and his proposed role in the Q1 planning document, while maintaining that Priya Nair is the current owner."
+}
+
+REASON: source_class mismatch: pred=user vs gold=assistant
+
+===== RETRIEVED MEMORY (9289 chars) =====
+Memory facts extracted from conversation history:
+
+- The Q1 planning document for platform work lists the following proposed module owners: Auth: Elena Park, Billing: Marcus Lee, Notifications: Samir Patel, Reporting: Dana Xu.
+- The user prefers lists of related information, such as module assignments and owners, to be presented in a concise summary table format.
+- The user prefers sprint check-in agendas to include: sprint progress by workstream, blockers and dependencies, review of open code reviews, priority adjustments for the next two days, and action items and owners.
+- Sarah Kim is responsible for the authentication module, specifically for changes related to login flow, token refresh, or session management.
+- For changes affecting shared middleware, Sarah Kim is the initial point of contact, especially for auth-specific impacts. She can involve infrastructure reviewers for broader middleware changes.
+- The user prefers team updates and summary notes (e.g., sprint summaries, code review feedback) to be concise, Slack-friendly, and include key information such as who presented what, relevant feedback, and any pending tasks or next steps.
+- The AI should prioritize accurate identification of module owners, especially confirming Priya Nair as the owner of the billing module, and should self-correct promptly when user feedback indicates an error in assignment.
+- The user wants a reminder to check in with Priya Nair on the billing module triage status tomorrow morning if no update is posted.
+- The user wants to be reminded to mention Marcus Lee's help with a billing issue in the next team sync.
+- For billing module performance monitoring dashboards, include technical metrics like request volume, latency (p50/p95/p99), error rate, retry rate, and queue/job processing time (if async). Break down metrics by endpoint or job type. Also include dependency health metrics such as database latency and payment gateway response times. For business-facing metrics, include successful invoice runs, failed payment attempts, refund processing counts, and backlog size. A preferred dashboard layout is: service health at the top, dependencies in the middle, and operational outcomes at the bottom.
+- The reporting module has many incoming requests from operations, a backlog of SQL cleanup, flaky scheduled jobs, and a backlog of dashboard bugs.
+- The handoff checklist for the analytics service needs to be updated before the next sprint.
+- The AI can draft and refine meeting recaps and minutes, including summarizing discussions and outlining next steps.
+- The user prefers meeting recaps to be formatted like meeting minutes and to explicitly include next steps.
+- Priya Nair owns the billing module (invoices, payment retries, ledger flows). Although Marcus Lee was considered for the role during a reorg discussion, Priya Nair remains the owner. Marcus Lee provides feedback on billing code reviews. The user is currently discussing API versioning strategies for the billing module and is concerned about avoiding churn for existing clients while introducing breaking changes. The user wants to ensure Priya Nair is included in all relevant communications and discussions (e.g., architecture reviews, deployment notes, API versioning strategy) for these topics, and that questions are not misrouted to the broader platform group. The AI can assist in drafting and refining such communications.
+- The AI advises managing inter-team dependencies by making them visible early, adding them as explicit backlog items with target dates, risk levels, and named points of contact. It also suggests reviewing dependency status in sprint planning and mid-sprint, and defining interface contracts early to allow parallel work with mocks or stubs.
+- When another team has different priorities and slips dates on inter-team dependencies, the AI recommends reconfirming the dependency in writing with expected impact, identifying fallback options (workaround, narrowed scope, sequence changes), and escalating through leads only when committed milestones are affected. The goal is to avoid personalizing issues and focus on delivery risk, options, and timing, using a simple dependency tracker for visibility.
+- The user is interested in strategies for managing inter-team dependencies, particularly when facing delays due to external API changes and when other teams have differing priorities or consistently miss deadlines.
+- The abbreviation "WZ" in the engineering tracker refers to Wei Zhang.
+- Sarah Kim is the primary point of contact for the notifications module, handling operational aspects like delivery reliability, template changes, and retry behavior. Wei Zhang may own specific technical tasks or services within the notifications domain, such as rollout checklists.
+- json_doc_id='21fbf0e9-4cab-4447-a954-712bf3c191b4'
+- The user prefers assigning the reporting module to Sarah Kim for strong coordination across operations requests, prioritization, and clear stakeholder communication, even when technical risks are present.
+- For module ownership, Sarah Kim is suitable for roles requiring cross-functional coordination, frequent business-facing updates, and organizing requests. Wei Zhang is suitable for roles requiring technical depth, infrastructure-oriented ownership, backend-heavy work, query optimization, data pipeline reliability, performance tuning, and addressing instability from flaky jobs or messy queries.
+- A practical compromise for module ownership is to assign one person as the primary owner and name another as a temporary technical backup for the initial sprint(s) to ensure accountability while covering both operational and technical aspects.
+- The AI can draft recommendations for module assignments, including acknowledging technical risks and suggesting practical compromises like temporary technical backups.
+- For sprint planning for the billing module, work can be broken down into task buckets: API updates (invoice endpoints, validation, error handling), UI work (billing settings page, payment status states, form cleanup), data work (schema adjustments, migration scripts, audit fields), and QA/support (test cases, regression coverage, staging verification).
+- A lightweight assignment plan for sprint planning can involve: Engineer A for backend API changes and unit tests, Engineer B for frontend billing screens and state handling, Engineer C for database updates, migrations, and rollback checks, and a shared responsibility for QA pass, integration testing, and bug triage near the end of the sprint. This can be presented in phases: backend/data first, frontend once contracts are stable, then a final testing block.
+- The user prefers lightweight assignment plans for sprint planning.
+- For code reviews, best practices include keeping pull requests small, providing clear summaries of changes and reasons, and adding test notes or screenshots. Reviewers should prioritize correctness, risk, and maintainability over style, leave actionable comments, and avoid blocking on minor preferences that can be handled by linting or follow-up cleanup.
+- Code review turnaround time should aim for initial review within one business day, with faster responses for small or urgent changes. Expectations can be differentiated by PR size: small PRs within a few hours, medium PRs by next business day, and large/cross-team changes requiring more time and earlier coordination. Consistent delays may indicate PRs are too large or reviewer load is uneven.
+- SRE should be involved in discussions or reviews if changes to the notifications module affect queue backoff logic.
+- The AI can draft sprint planning agendas, typically including backlog priorities, carryover items, capacity checks, and risk reviews.
+- When onboarding a new engineer to a codebase, a structured approach over 1-2 weeks is effective. This includes an initial architecture overview, a guided walkthrough of main flows and key services, assigning a small, low-risk task for practical experience, and pairing them with a colleague for code reviews and questions.
+- A codebase walkthrough for new engineers should cover essential elements such as service boundaries, location of business rules (e.g., billing rules), system flow (e.g., how invoices/charges move), main data models, test setup, local development procedures, debugging tools (dashboards/logs), and common 'gotchas' (e.g., scheduled jobs, retry behavior, external API dependencies). Supplementing this with a concise onboarding document and a recorded walkthrough can enhance the process.
+- The AI can assist the user in drafting and refining communications, such as deployment notes, ensuring clarity and proper stakeholder inclusion.
+- json_doc_id='439b3058-c9c6-487f-9229-58b91f60d283'
+
+Question: Who or what mentioned Marcus Lee, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

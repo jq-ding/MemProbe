@@ -1,0 +1,349 @@
+{
+  "description": "MemProbe 56-episode suite — fact-type registry: (initial, new) value pairs + distractors for all 21 fact types (8 from the 24-episode pilot stage, 13 added in the +32 expansion)",
+  "fact_types": [
+    {
+      "fact_type": "current_gym",
+      "domain": "personal",
+      "paradigm_target": "interference",
+      "readable": "the user's current gym membership",
+      "value_pair": {
+        "canonical_initial": "FitLife",
+        "canonical_new": "CrossFit Central",
+        "surface_initial": "user goes to FitLife for workouts",
+        "surface_new": "switched to CrossFit Central"
+      },
+      "distractor_values": [
+        "Iron Works Gym",
+        "Planet Fitness",
+        "YMCA Downtown"
+      ]
+    },
+    {
+      "fact_type": "submission_deadline",
+      "domain": "work",
+      "paradigm_target": "misinformation",
+      "readable": "the user's paper submission deadline",
+      "value_pair": {
+        "canonical_initial": "March 28",
+        "canonical_new": "April 15",
+        "surface_initial": "paper submission deadline is March 28",
+        "surface_new": "deadline extended to April 15"
+      },
+      "distractor_values": [
+        "April 10",
+        "March 25",
+        "May 1"
+      ]
+    },
+    {
+      "fact_type": "diet_preference",
+      "domain": "personal",
+      "paradigm_target": "consolidation",
+      "readable": "the user's dietary preference",
+      "value_pair": {
+        "canonical_initial": "vegetarian",
+        "canonical_new": "Mediterranean diet",
+        "surface_initial": "user follows a vegetarian diet",
+        "surface_new": "switched to a Mediterranean diet"
+      },
+      "distractor_values": [
+        "keto",
+        "paleo",
+        "pescatarian"
+      ]
+    },
+    {
+      "fact_type": "project_owner",
+      "domain": "work",
+      "paradigm_target": "reconsolidation",
+      "readable": "who owns the authentication module",
+      "value_pair": {
+        "canonical_initial": "Sarah Kim",
+        "canonical_new": "David Chen",
+        "surface_initial": "Sarah Kim owns the authentication module",
+        "surface_new": "ownership transferred to David Chen"
+      },
+      "distractor_values": [
+        "Marcus Lee",
+        "Priya Nair",
+        "Alex Rivera"
+      ]
+    },
+    {
+      "fact_type": "config_value",
+      "domain": "agentic",
+      "paradigm_target": "interference",
+      "readable": "the API request timeout setting",
+      "value_pair": {
+        "canonical_initial": "30 seconds",
+        "canonical_new": "60 seconds",
+        "surface_initial": "API request timeout is set to 30 seconds",
+        "surface_new": "timeout increased to 60 seconds"
+      },
+      "distractor_values": [
+        "15 seconds",
+        "45 seconds",
+        "90 seconds"
+      ]
+    },
+    {
+      "fact_type": "reported_port",
+      "domain": "agentic",
+      "paradigm_target": "misinformation",
+      "readable": "the port the user's API service runs on",
+      "value_pair": {
+        "canonical_initial": "8080",
+        "canonical_new": "3000",
+        "surface_initial": "user's API service runs on port 8080",
+        "surface_new": "service moved to port 3000"
+      },
+      "distractor_values": [
+        "5432",
+        "6379",
+        "9090"
+      ]
+    },
+    {
+      "fact_type": "active_branch",
+      "domain": "agentic",
+      "paradigm_target": "consolidation",
+      "readable": "the user's active git branch",
+      "value_pair": {
+        "canonical_initial": "feature/auth-redesign",
+        "canonical_new": "feature/payment-v2",
+        "surface_initial": "user is working on the feature/auth-redesign branch",
+        "surface_new": "switched to the feature/payment-v2 branch"
+      },
+      "distractor_values": [
+        "fix/login-bug",
+        "release/2.1",
+        "hotfix/db-timeout"
+      ]
+    },
+    {
+      "fact_type": "selected_database",
+      "domain": "agentic",
+      "paradigm_target": "reconsolidation",
+      "readable": "the database engine for the user's project",
+      "value_pair": {
+        "canonical_initial": "PostgreSQL",
+        "canonical_new": "MongoDB",
+        "surface_initial": "project uses PostgreSQL as the primary database",
+        "surface_new": "migrated to MongoDB"
+      },
+      "distractor_values": [
+        "MySQL",
+        "Redis",
+        "DynamoDB"
+      ]
+    },
+    {
+      "fact_type": "current_gym_v2",
+      "domain": "personal",
+      "readable": "the user's current gym membership (v2)",
+      "value_pair": {
+        "canonical_initial": "YMCA Downtown",
+        "canonical_new": "Summit Climbing Gym",
+        "surface_initial": "user goes to YMCA Downtown for workouts",
+        "surface_new": "switched to Summit Climbing Gym"
+      },
+      "distractor_values": [
+        "Equinox",
+        "Gold's Gym",
+        "Anytime Fitness"
+      ]
+    },
+    {
+      "fact_type": "favorite_coffee",
+      "domain": "personal",
+      "readable": "the user's go-to coffee shop",
+      "value_pair": {
+        "canonical_initial": "Blue Bottle Coffee",
+        "canonical_new": "Stumptown Coffee",
+        "surface_initial": "user's go-to coffee shop is Blue Bottle Coffee",
+        "surface_new": "switched to Stumptown Coffee"
+      },
+      "distractor_values": [
+        "Intelligentsia",
+        "Counter Culture",
+        "Philz Coffee"
+      ]
+    },
+    {
+      "fact_type": "commute_method",
+      "domain": "personal",
+      "readable": "how the user commutes to work",
+      "value_pair": {
+        "canonical_initial": "cycling",
+        "canonical_new": "the subway",
+        "surface_initial": "user commutes to work by cycling",
+        "surface_new": "switched to taking the subway"
+      },
+      "distractor_values": [
+        "driving",
+        "the bus",
+        "walking"
+      ]
+    },
+    {
+      "fact_type": "diet_preference_v2",
+      "domain": "personal",
+      "readable": "the user's dietary preference (v2)",
+      "value_pair": {
+        "canonical_initial": "paleo",
+        "canonical_new": "whole-food plant-based",
+        "surface_initial": "user follows a paleo diet",
+        "surface_new": "switched to a whole-food plant-based diet"
+      },
+      "distractor_values": [
+        "keto",
+        "carnivore",
+        "Whole30"
+      ]
+    },
+    {
+      "fact_type": "sleep_schedule",
+      "domain": "personal",
+      "readable": "the user's regular bedtime",
+      "value_pair": {
+        "canonical_initial": "11 PM",
+        "canonical_new": "10 PM",
+        "surface_initial": "user's regular bedtime is 11 PM",
+        "surface_new": "moved bedtime to 10 PM"
+      },
+      "distractor_values": [
+        "9:30 PM",
+        "midnight",
+        "10:30 PM"
+      ]
+    },
+    {
+      "fact_type": "team_standup",
+      "domain": "work",
+      "readable": "the team's daily standup time",
+      "value_pair": {
+        "canonical_initial": "9:30 AM",
+        "canonical_new": "10:00 AM",
+        "surface_initial": "daily standup is at 9:30 AM",
+        "surface_new": "standup moved to 10:00 AM"
+      },
+      "distractor_values": [
+        "9:00 AM",
+        "10:30 AM",
+        "11:00 AM"
+      ]
+    },
+    {
+      "fact_type": "deploy_cadence",
+      "domain": "work",
+      "readable": "the team's deployment frequency",
+      "value_pair": {
+        "canonical_initial": "weekly",
+        "canonical_new": "bi-weekly",
+        "surface_initial": "team follows a weekly deployment cadence",
+        "surface_new": "switched to bi-weekly deployments"
+      },
+      "distractor_values": [
+        "daily",
+        "monthly",
+        "every sprint"
+      ]
+    },
+    {
+      "fact_type": "submission_deadline_v2",
+      "domain": "work",
+      "readable": "the report submission deadline (v2)",
+      "value_pair": {
+        "canonical_initial": "Friday 5 PM",
+        "canonical_new": "Monday noon",
+        "surface_initial": "report submission deadline is Friday 5 PM",
+        "surface_new": "deadline moved to Monday noon"
+      },
+      "distractor_values": [
+        "Thursday 3 PM",
+        "Wednesday EOD",
+        "Friday noon"
+      ]
+    },
+    {
+      "fact_type": "project_owner_v2",
+      "domain": "work",
+      "readable": "who owns the billing module (v2)",
+      "value_pair": {
+        "canonical_initial": "Priya Nair",
+        "canonical_new": "Marcus Lee",
+        "surface_initial": "Priya Nair owns the billing module",
+        "surface_new": "ownership transferred to Marcus Lee"
+      },
+      "distractor_values": [
+        "Jake Thompson",
+        "Sarah Kim",
+        "Wei Zhang"
+      ]
+    },
+    {
+      "fact_type": "ci_provider",
+      "domain": "work",
+      "readable": "the team's CI/CD platform",
+      "value_pair": {
+        "canonical_initial": "Jenkins",
+        "canonical_new": "GitHub Actions",
+        "surface_initial": "team uses Jenkins for CI/CD pipelines",
+        "surface_new": "migrated CI/CD to GitHub Actions"
+      },
+      "distractor_values": [
+        "CircleCI",
+        "GitLab CI",
+        "Travis CI"
+      ]
+    },
+    {
+      "fact_type": "log_level",
+      "domain": "agentic",
+      "readable": "the application log level setting",
+      "value_pair": {
+        "canonical_initial": "INFO",
+        "canonical_new": "DEBUG",
+        "surface_initial": "application log level is set to INFO",
+        "surface_new": "log level changed to DEBUG"
+      },
+      "distractor_values": [
+        "WARN",
+        "ERROR",
+        "TRACE"
+      ]
+    },
+    {
+      "fact_type": "config_value_v2",
+      "domain": "agentic",
+      "readable": "the API retry count setting (v2)",
+      "value_pair": {
+        "canonical_initial": "3 retries",
+        "canonical_new": "5 retries",
+        "surface_initial": "API retry count is configured at 3 retries",
+        "surface_new": "retry count increased to 5 retries"
+      },
+      "distractor_values": [
+        "2 retries",
+        "4 retries",
+        "10 retries"
+      ]
+    },
+    {
+      "fact_type": "reported_port_v2",
+      "domain": "agentic",
+      "readable": "the port the database service runs on (v2)",
+      "value_pair": {
+        "canonical_initial": "5432",
+        "canonical_new": "8443",
+        "surface_initial": "database service runs on port 5432",
+        "surface_new": "service moved to port 8443"
+      },
+      "distractor_values": [
+        "3306",
+        "27017",
+        "6379"
+      ]
+    }
+  ]
+}

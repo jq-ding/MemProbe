@@ -1,0 +1,74 @@
+CASE 15: PILOT-15C probe3 match=incorrect
+paradigm: misinformation  fact_type: project_owner_v2
+
+GOLD: Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "Marcus Lee is the new owner of the billing module and a code reviewer.",
+  "reason": "The user discussed transferring billing module ownership to Marcus Lee and requested a summary of his feedback on the billing code review, which the assistant then processed."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (3996 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User discussed transferring billing module to Marcus Lee.
+- [user-knowledge] - User considers Marcus Lee a contributor reviewing billing PRs.
+- [user-knowledge] - User received feedback from Marcus Lee on billing code review
+- [user-knowledge] - User wants to add a note to the sprint summary that Marcus Lee presented billing metrics.
+- [user-knowledge] - User wants a quick note for the incident recap
+- [user-knowledge] - User is putting together a handoff note for the analytics team
+- [user-knowledge] - User's team uses sprint items
+- [user-knowledge] - User triaging a bug
+- [user-knowledge] - User has a friend on the platform team
+- [user-knowledge] - User wants a Slack-ready note for the team
+- [user-knowledge] - User works with billing code review
+- [user-knowledge] - User is looking at the engineering ownership tracker
+- [user-knowledge] - User works with notifications module
+- [user-knowledge] - User's team performs code reviews
+- [user-knowledge] - User works with authentication service cleanup
+- [user-knowledge] - User is helping a friend figure out who to loop in for changes to the notifications module
+- [user-knowledge] - User sending out a deployment note for tonight's release
+- [user-knowledge] - User is planning a sprint for a billing module.
+- [user-knowledge] - User's team struggles with reviews getting stuck when people are busy
+- [user-knowledge] - User works with QA
+- [assistant-knowledge] - Assistant noted that Marcus Lee presented billing metrics in today’s team meeting at 2026-07-12 05:54:43
+- [assistant-knowledge] - Assistant offered to summarize feedback from Marcus Lee on billing code review at 2026-07-12 05:55:00
+- [assistant-knowledge] - Assistant summarized feedback from Marcus Lee on billing code review at 2026-07-12 05:55:05
+- [assistant-knowledge] - Assistant confirmed Priya Nair as billing owner and Marcus Lee as a reviewer at 2026-07-12 05:56:20.
+- [assistant-knowledge] - Assistant drafted a note for an invite at 2026-07-12 05:54:43
+- [assistant-knowledge] - Assistant drafted a CC line at 2026-07-12 05:54:43
+- [assistant-knowledge] - Assistant drafted an assignment note at 2026-07-12 05:54:43
+- [assistant-knowledge] - Assistant suggested a reply to the user's friend at 2026-07-12 05:55:37
+- [assistant-knowledge] - Assistant provided an appreciative phrasing at 2026-07-12 05:55:11
+- [assistant-knowledge] - Assistant stated ownership from a tracker at 2026-07-12 05:55:18
+- [assistant-knowledge] - Assistant added API review to sprint board at 2026-07-12 05:54:46
+- [assistant-knowledge] - Assistant rephrased a note at 2026-07-12 05:55:09
+- [assistant-knowledge] - Assistant reworded a reply at 2026-07-12 05:55:47
+- [assistant-knowledge] - Assistant suggested a one-line note at 2026-07-12 05:54:55
+- [assistant-knowledge] - Assistant offered to rewrite recap in a more polished Slack tone at 2026-07-12 05:54:57
+- [assistant-knowledge] - Assistant confirmed a contact setup at 2026-07-12 05:54:54
+- [assistant-knowledge] - Assistant rewrote recap in a more polished and action-oriented tone at 2026-07-12 05:54:59
+- [assistant-knowledge] - Assistant explained ownership of notifications service at 2026-07-12 05:55:20
+- [assistant-knowledge] - Assistant provided a Slack-ready summary at 2026-07-12 05:55:07
+- [assistant-knowledge] - Assistant updated sprint board notes and pulled open code reviews at 2026-07-12 05:56:10.
+
+Question: Who or what mentioned Marcus Lee, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,54 @@
+CASE 9: PILOT-06C probe2 match=partial
+paradigm: misinformation  fact_type: reported_port
+
+GOLD: Port 3000 was mentioned as a colleague's service port; the user did not confirm it applied to their own API service.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "considered",
+  "accepted": false,
+  "current_value": "8080",
+  "reason": "The user considered moving the API service to port 3000 for consistency but decided to keep it running on port 8080 after benchmarking."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3642 chars) =====
+Memory facts extracted from conversation history:
+
+- User brought their API up locally, confirmed the dev server came up clean, and it is listening on port 8080. User wants a quick sanity check before pointing the frontend at it.
+- User was advised to verify four things first for a typical API health/readiness pass: process binding, health endpoint response, expected config, and any obvious runtime errors, given the API service runs on port 8080.
+- User was provided a minimal checklist for wiring the frontend to the API, which includes setting the API base URL to http://localhost:8080, confirming CORS, verifying auth headers/cookies, testing read/write endpoints, watching the network tab for errors, and monitoring API logs.
+- User is wiring up Nginx for a staging box, where the frontend is already serving, but needs to forward `/api/` requests to a backend process.
+- User's app container exposes port 8080 internally in their compose file, and they want to ensure Nginx points to the correct upstream and headers before reloading.
+- User's backend service name is `app-api`.
+- User terminates TLS at Nginx.
+- User was provided an Nginx location block configuration to proxy `/api/` to `http://app-api:8080/`, including `proxy_set_header X-Forwarded-Proto $scheme` to correctly reflect TLS termination at Nginx.
+- User is updating deploy notes for the backend and wants to confirm that `curl http://localhost:8080/healthz` is the correct verification step after port-forwarding the pod.
+- The assistant confirmed that the health-check URL `http://localhost:8080/healthz` matches the backend app's exposed port.
+- User was provided a teammate-friendly blurb for locally sanity-checking the backend, which includes the command `kubectl port-forward pod/<api-pod-name> 8080:8080 -n dev` and `curl http://localhost:8080/healthz`.
+- User is experiencing a TLS certificate mismatch when accessing their staging API through the ingress.
+- User asked for help to narrow down the cause of a TLS certificate mismatch, specifically whether it's the cert secret, ingress host rules, or DNS.
+- User was advised to check the hostname the client requests, the certificate the ingress serves, and whether the ingress is wired to the expected secret, in that order, to diagnose a TLS certificate mismatch.
+- User wants to verify if the cert secret contains the correct Subject Alternative Names (SANs).
+- User wants to check if the Nginx ingress is reporting any complaints about the certificate.
+- User wants to review the load balancer health check settings for their staging ingress to ensure the probes are not too aggressive during deploys.
+- User was advised to check the ingress annotations and deployment readiness settings to prevent them from conflicting regarding load balancer health checks.
+- The assistant identified a slight mismatch where the ingress upstream settings and pod readiness probes both react quickly to failures, which can make deploys appear harsher than necessary.
+- The assistant suggested implementing a more forgiving staging setup to address the aggressive health check behavior during deploys.
+
+Question: Who mentioned port 3000 and did the user confirm it for their own service?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

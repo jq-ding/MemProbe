@@ -1,0 +1,64 @@
+CASE 5: PILOT-04D probe3 match=partial
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Sarah Kim remains the owner of the authentication module.",
+  "reason": "The user mentioned a proposal during a reorg to move the module to David Chen, but confirmed that Sarah Kim remains the owner and the existing project notes should remain unchanged."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (7576 chars) =====
+Memory facts extracted from conversation history:
+
+- The user prefers a single owner model for services, but with a backup structure (e.g., an explicit deputy, documented decision logs, clear backup reviewers, and a secondary contact for incidents) to mitigate bottlenecks and single points of failure.
+- For service ownership, a single owner is good for speed and accountability, especially for high-request services. Shared ownership works for services spanning distinct areas or for resilience/coverage, but can slow decisions if responsibilities are unclear. To prevent single-owner bottlenecks, implement documented decision logs, clear backup reviewers, and a secondary incident contact. A practical middle ground is one accountable owner with an explicit deputy.
+- The user prefers meeting recaps and follow-up messages to be action-oriented, concise, and suitable for platforms like Slack. Action-oriented messages should include clear calls to action, requests for status updates, and instructions to flag risks or clarifications promptly.
+- The agent should only update ownership information based on authoritative sources like team rosters, sprint documents, or direct handoff notes, not informal conversations or unconfirmed reports.
+- When summarizing items that need review before a deadline, group them into: open PRs awaiting approval, QA follow-ups from the current sprint, and any blockers tied to deployment readiness.
+- A new engineer onboarding plan for the first week includes: Day 1: team intro, laptop/accounts setup, product/sprint overview. Day 2: dev environment setup, repo structure walkthrough, engineering docs review. Day 3: shadow standup/code review, pick a small starter task. Day 4: pair programming on starter task, review testing/PR conventions. Day 5: submit first PR, 1:1 check-in, address blockers/access. Assign a buddy for quick questions.
+- A welcome message for a new engineer before they start should be short and practical, including: start time and Day 1 expectations, who they will meet first, equipment/account setup notes, links to key docs (team handbook, onboarding checklist), and reassurance that the first week is for ramp-up, not immediate output.
+- David Chen's tech talk on scaling service observability included a section on tracing bottlenecks that was particularly useful for the platform group.
+- The user confirmed that Sarah Kim is still the owner of the authentication module, despite a proposal to move it to David Chen.
+- The user prefers clear communication regarding temporary assistance or one-time favors, ensuring roles are not misunderstood.
+- Code review turnaround time expectations: within one business day for normal PRs, same-day for small fixes or blocking PRs. For larger changes, acknowledge quickly and provide an estimate. Teams should set explicit expectations by PR size and priority.
+- Code review expectations should be documented in the team's engineering guidelines. The documentation should be simple: target review within 24 hours, flag urgent PRs clearly, and keep PRs small enough to review in one sitting when possible. This establishes a shared norm without making the process too rigid.
+- To fix a flaky CI/CD pipeline, first separate true code issues from environment-related failures. Categorize failures (e.g., test timeouts, dependency install failures, shared resource conflicts, infrastructure hiccups), prioritize the top 1-2 categories, quarantine worst offenders, and add better logging around failing steps.
+- When addressing test timeouts and intermittent failures in a CI/CD pipeline, first stabilize the pipeline by pinning dependency versions, reducing parallelism where tests share state, and making retries visible instead of silently masking issues.
+- After stabilizing the CI/CD pipeline, clean up flaky tests by removing hidden ordering dependencies, isolating external service calls with mocks, and tracking flaky test rates in a dashboard to monitor improvement.
+- Technical debt should be prioritized by impact and urgency, scoring items against risk to reliability, developer time lost, customer impact, and how often the issue slows delivery. Separate quick wins from larger structural work.
+- Technical debt should generally be tracked in the same backlog as product work, clearly labeled and with sufficient context to make tradeoffs visible during sprint planning. A separate view or tag can aid engineering review, but complete isolation can lead to deprioritization. Regular review with a lightweight rubric in backlog grooming helps ensure progress.
+- To consistently address technical debt without stalling roadmap progress, reserve a fixed percentage of sprint capacity for it.
+- Priya Nair is leading the billing API workstream and will coordinate next steps.
+- Priya Nair is an excellent choice for a reporting dashboard workstream owner. She excels at cross-functional coordination, keeping design and engineering aligned, providing clear weekly communication to stakeholders, and resolving conflicting feedback from analytics and product by synthesizing input, setting decision checkpoints, and clarifying changes.
+- Standard API documentation should include sections for purpose, endpoint/interface summary, authentication requirements, request/response examples (happy-path and validation-error), error codes, rate limits, versioning, and known caveats. OpenAPI can help with schema consistency, but human-readable context like usage scenarios and common failure cases is also valuable.
+- Internal API documentation can be lighter than external API documentation, but it must be sufficient for a new engineer to integrate without reading code. Key additions for internal API docs include ownership, change process, backward-compatibility expectations, and locations for sandbox/test data.
+- After lunch, the user has a sprint planning sync at 1:30 PM and a code review block at 3:00 PM.
+- When planning a sprint, group work by priority, effort, and dependencies. List all candidate tasks, mark them as must-have vs. nice-to-have, estimate each, and assign owners based on current bandwidth and relevant experience.
+- Include a small buffer for support requests and review time in sprint planning to avoid overpacking the sprint.
+- A hybrid approach to task assignment during sprint planning is effective: assign high-priority and dependency-heavy tasks upfront, and leave lower-priority items unassigned or loosely assigned for flexibility.
+- Leaving some tasks unassigned or loosely assigned during sprint planning provides flexibility for the team to adapt to shifting estimates, blockers, or early completions.
+- Priya Nair leads the reporting pipeline workstream, which is on track for Friday's internal demo.
+- The user prefers concise status updates and wants to include a sentence asking people to flag any dependencies early.
+- Sarah Kim owns the authentication module. The user re-routes auth-related tickets to her during Jira board cleanup before sprint planning, and she should be included in auth deployment updates.
+
+Question: Who suggested David Chen might take over auth, and was it confirmed?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

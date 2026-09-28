@@ -1,0 +1,54 @@
+CASE 14: PILOT-11B probe3 match=incorrect
+paradigm: interference  fact_type: team_standup
+
+GOLD: 10:00 AM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "10:00 AM",
+  "reason": "The user confirmed their client check-in starts at 10:00 AM, while clarifying that a 10:00 AM standup on their calendar was a temporary display issue."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (3634 chars) =====
+Memory facts extracted from conversation history:
+
+- User's daily standup is at 9:30 AM.
+- User completed the API pagination fix on July 11, 2026.
+- User is starting work on the retry logic for failed webhooks on July 12, 2026.
+- User's current risk or blocker is needing confirmation from Ops regarding timeout settings.
+- User is drafting a Slack note to Priya, who is currently focused on the API migration and may not volunteer updates unless prompted.
+- User wants to ask Priya to cover any blockers she is encountering on the API migration during their meeting.
+- User wants to add a recurring team sync to their calendar for every weekday, specifically for the daily standup at 9:30 AM with a 15-minute duration, to ensure it is not missed.
+- User's friend on the mobile team has a morning check-in that keeps drifting.
+- User's friend's mobile team is considering moving their morning check-in to 10:30 AM to accommodate people in different time zones.
+- User's friend's mobile team is concerned that a 10:30 AM check-in might make updates feel too late for engineers who want to get unblocked early.
+- User's friend's mobile team was recommended to keep their live check-in at 10:30 AM but ask people to post blockers asynchronously first thing in the morning.
+- User plans to suggest to their friend's mobile team that they try posting blockers asynchronously first thing in the morning for a sprint to see if attendance and blocker resolution improve.
+- User's standups have started to drag, with people often going into too much detail, and User is seeking suggestions for making them more efficient without losing useful context.
+- User was recommended to make standups more efficient by tightening the format, separating status from problem-solving, asking everyone to cover what they finished, what they're doing next, and any blockers, and moving deeper discussions to follow-up meetings with relevant people.
+- User was recommended to encourage concise standup updates by framing it as protecting everyone's focus time, providing an example of a strong update (1-2 sentences on progress, 1 sentence on next steps, clear callout for help), and rotating facilitation for shared ownership of the format and norms.
+- User's team has engineers spread across North America, Europe, and Asia, which is making scheduling collaboration messy.
+- User was recommended several approaches for handling time zone challenges for a distributed team: define a small window of overlapping hours for live collaboration, make everything else asynchronous by default, rotate meeting times, and document decisions clearly in tickets or notes.
+- User was recommended to keep handoffs smooth for a distributed team by using a consistent handoff template in the project tracker (current status, blockers, next steps, links to code reviews/relevant docs) and keeping PR descriptions and issue comments detailed.
+- User's calendar briefly displayed their standup at 10:00 AM on July 12, 2026, which was a temporary sync glitch and not an actual meeting change.
+- User's product review is scheduled for later in the morning on July 12, 2026.
+
+Question: Who or what mentioned 10:00 AM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

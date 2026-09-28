@@ -1,0 +1,54 @@
+CASE 15: PILOT-14B probe3 match=incorrect
+paradigm: misinformation  fact_type: commute_method
+
+GOLD: the subway was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "unknown",
+  "source_class": "unknown",
+  "action": "hallucinated",
+  "accepted": false,
+  "current_value": "none",
+  "reason": "The subway was never mentioned in the provided conversation history; only cycling, driving, the bus, and walking were discussed."
+}
+
+REASON: source_class mismatch: pred=unknown vs gold=assistant
+
+===== RETRIEVED MEMORY (3623 chars) =====
+Memory facts extracted from conversation history:
+
+- User commutes to work by cycling and is trying to make their mornings less stressful by finding a route with less traffic.
+- User was recommended to find a calmer cycling route by choosing quieter residential streets, greenways, or roads with protected bike lanes, using bike-friendly map apps, and doing a test ride on a weekend.
+- User got soaked during their cycling commute on July 12, 2026, and realized their old rain jacket is useless, prompting a need for new rainy-day cycling gear that prevents overheating
+- User was recommended several items for a rainy-day bike commute to balance waterproofing and ventilation: a lightweight rain jacket with pit zips or back vents, rain pants or packable over-shorts, waterproof shoe covers, full fenders, a cap or helmet cover, and a waterproof backpack cover or dry bag
+- User was advised to prioritize breathable layers and fenders over heavy waterproof clothing if overheating is their biggest issue during a rainy bike commute
+- User forgot their cable lock at home on July 12, 2026, and had to use a backup lock on the office bike rack, which made them paranoid about their bike being stolen.
+- User was recommended to set a reminder to bring their better bike lock, and to check if the office bike rack is covered by a security camera or near a busier entrance to alleviate paranoia about bike theft.
+- User's sister recently started a new job across town and is trying to determine the easiest daily commute option.
+- User's sister is considering driving for her commute but dislikes sitting in traffic and paying for downtown parking.
+- User's sister was recommended to compare commute options based on time, cost, and predictability.
+- User's sister was recommended to try the bus for a week, especially if it drops her close to the office, and to consider walking as a backup on nice days if she lives nearby.
+- User advised their sister to try each commute option a couple of times before making a decision.
+- User read an article about commuting trends in their city, which stated that more people are taking the subway again.
+- According to an article User read, weekday subway ridership in their city is almost back to pre-pandemic levels.
+- An article User read mentioned that their city might add a couple of new subway lines in the next few years.
+- User is looking for health or lifestyle podcast recommendations for their commute to make the time feel more useful.
+- User was recommended the following podcasts for health/lifestyle: 'The Model Health Show', 'Feel Better, Live More', 'Ten Percent Happier', 'Nutrition Facts with Dr. Greger', and 'The Rich Roll Podcast'.
+- User prefers podcast recommendations that are relaxed, not super technical, and have short episodes.
+- User was recommended 'Ten Percent Happier', 'Nutrition Facts with Dr. Greger', 'Feel Better, Live More', and 'The Daily Stoic Podcast' for relaxed, short, and practical listening during their commute.
+- User read a review of a new coffee shop downtown where the writer emphasized the ease of getting there without a car.
+
+Question: Who or what mentioned the subway, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

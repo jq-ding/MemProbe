@@ -1,0 +1,74 @@
+CASE 16: PILOT-16A probe3 match=partial
+paradigm: misinformation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user found the port in an old configuration file, and a teammate suggested it for a migration.",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "8443",
+  "reason": "The user found 8443 in a legacy config and a teammate suggested moving the database to it, but the user wanted to ensure it was not still in use and the assistant confirmed it was historical."
+}
+
+REASON: source_class mismatch (pred=user vs gold=stale_tool) but accepted correct
+
+===== RETRIEVED MEMORY (4509 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User considers `8443` historical at 2026-07-12 05:58:54
+- [user-knowledge] - User wants to know if `8443` is still in use at 2026-07-12 05:58:42
+- [user-knowledge] - User found `8443` in `services/legacy-gateway/values.yaml` at 2026-07-12 05:58:42
+- [user-knowledge] - User's teammate floated moving database service to 8443 at 2026-07-12 05:59:01
+- [user-knowledge] - User considered 8443 for migration at 2026-07-12 05:58:59
+- [user-knowledge] - User is looking at an infra tracker at 2026-07-12 05:57:24
+- [user-knowledge] - User has a teammate on the analytics side at 2026-07-12 05:57:35
+- [user-knowledge] - User is reviewing security hardening guide at 2026-07-12 05:57:10
+- [user-knowledge] - User wants to label tracker correctly at 2026-07-12 05:57:27
+- [user-knowledge] - User asks what `events-mongo` service is exposing at 2026-07-12 05:57:24
+- [user-knowledge] - User wants to know if anything references legacy gateway branch/deployment at 2026-07-12 05:58:44
+- [user-knowledge] - User asks to verify `redis-events` at 2026-07-12 05:57:27
+- [user-knowledge] - User read an internal postmortem (2026-07-12 05:57:08)
+- [user-knowledge] - User is tightening database backup automation at 2026-07-12 05:57:20
+- [user-knowledge] - User is reviewing config before release at 2026-07-12 05:58:57
+- [user-knowledge] - User is cleaning onboarding docs (2026-07-12 05:57:08)
+- [user-knowledge] - User reviewed database service port at 2026-07-12 05:59:12
+- [user-knowledge] - User's API env was pointing at DB_PORT=5433 at 2026-07-12 05:57:08
+- [user-knowledge] - User is sketching a multi-region database replication setup for a new service at 2026-07-12 05:57:39
+- [user-knowledge] - User asks if infra tracker is wrong about `events-mongo` under “sql backends” at 2026-07-12 05:57:34
+- [assistant-knowledge] - Assistant confirmed `8443` is historical at 2026-07-12 05:58:54
+- [assistant-knowledge] - Assistant checked deprecated service config and cluster refs for `8443` at 2026-07-12 05:58:42
+- [assistant-knowledge] - Assistant provided useful evidence to log at 2026-07-12 05:57:22
+- [assistant-knowledge] - Assistant confirmed `redis-events` exposes `6379` at 2026-07-12 05:57:27
+- [assistant-knowledge] - Assistant understood to keep 5432 and noted deploy checks look clear at 2026-07-12 05:59:12
+- [assistant-knowledge] - Assistant ran execution plan and inspected indexes at 2026-07-12 05:58:40
+- [assistant-knowledge] - Assistant explained verification path at 2026-07-12 05:57:08
+- [assistant-knowledge] - Assistant looked for active references to legacy gateway at 2026-07-12 05:58:44
+- [assistant-knowledge] - Assistant explained analytics datastore issue at 2026-07-12 05:57:08
+- [assistant-knowledge] - Assistant demonstrated example checks from a pod at 2026-07-12 05:57:22
+- [assistant-knowledge] - Assistant inspected ingress and service configs at 2026-07-12 05:57:10
+- [assistant-knowledge] - Assistant reported current branch and cluster config show database service on 5432 at 2026-07-12 05:58:57
+- [assistant-knowledge] - Assistant inspected current firewall rules at 2026-07-12 05:58:04
+- [assistant-knowledge] - Assistant executed a SQL query to check total connections at 2026-07-12 05:57:08
+- [assistant-knowledge] - Assistant confirmed `events-mongo` is a MongoDB service exposing TCP `27017` at 2026-07-12 05:57:24
+- [assistant-knowledge] - Assistant provided sanity-check for connection pooling and limits at 2026-07-12 05:58:21
+- [assistant-knowledge] - Assistant showed how to verify missing index at 2026-07-12 05:58:40
+- [assistant-knowledge] - Assistant verified `DATABASE_URL` usage in codebase at 2026-07-12 05:57:08
+- [assistant-knowledge] - Assistant reported DB port is 5432 and migration job completed successfully at 2026-07-12 05:59:01
+- [assistant-knowledge] - Assistant stated it would leave DB port unchanged and proceed with release checks at 2026-07-12 05:58:59
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

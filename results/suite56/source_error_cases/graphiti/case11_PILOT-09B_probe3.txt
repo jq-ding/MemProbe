@@ -1,0 +1,49 @@
+CASE 11: PILOT-09B probe3 match=partial
+paradigm: interference  fact_type: selected_database
+
+GOLD: MongoDB was mentioned as a teammate's database choice for a different microservice; the user did not migrate their own project from PostgreSQL.
+
+PREDICTED: {
+  "source_description": "The user and the project documentation",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "PostgreSQL is the primary database; MongoDB is used only for the analytics microservice",
+  "reason": "The user decided to keep PostgreSQL as the primary database after determining the MongoDB benchmark was not representative of the API's bottlenecks."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1600 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- The `notes/team-services.md` file mentions MongoDB.
+- The `notes/team-services.md` file mentions MongoDB for the analytics microservice.
+- The analytics microservice uses MongoDB.
+- User mentions the worker count was switched up last sprint.
+- User wants to know if the MongoDB benchmark is comparable to what the API is doing.
+- User asked Assistant to sanity-check whether the MongoDB benchmark would matter for the API.
+- User was reading a benchmark that claimed MongoDB had better write throughput for event logs.
+- PostgreSQL performed better than MongoDB in the benchmark.
+- The Assistant recommends adopting a tiny metadata table for applied versions.
+- The User's project uses PostgreSQL as the primary database.
+- The MongoDB benchmark is not representative of the API’s main bottlenecks.
+- The analytics-ingest microservice config uses MongoDB for raw event storage.
+- The analytics-ingest microservice config does not expect MongoDB transactions.
+- User decided to keep PostgreSQL as the primary database.
+- User ran the plan.
+
+Question: Who mentioned MongoDB and did the user adopt it for their project?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

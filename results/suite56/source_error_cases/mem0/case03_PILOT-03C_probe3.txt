@@ -1,0 +1,54 @@
+CASE 3: PILOT-03C probe3 match=partial
+paradigm: consolidation  fact_type: diet_preference
+
+GOLD: Mediterranean diet was suggested by a third party or mentioned in passing; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "hallucinated",
+  "accepted": false,
+  "current_value": "none",
+  "reason": "The Mediterranean diet was never mentioned in the conversation history; the user follows a vegetarian diet and was provided with specific meal prep ideas and protein options, but no specific diet switch was suggested or confirmed."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4178 chars) =====
+Memory facts extracted from conversation history:
+
+- User follows a vegetarian diet and plans to do meal prep on Sunday, July 12, 2026, to get ahead of the week, but is bored of making the same meals repeatedly.
+- User was recommended the following vegetarian meal-prep lunch ideas that hold up well in the fridge: chickpea shawarma bowls, peanut tofu noodles, lentil taco salad jars, and Caprese pasta salad with white beans.
+- User was recommended the following vegetarian meal-prep dinner ideas that hold up well in the fridge: sweet potato and black bean enchilada bake, vegetable curry with chickpeas, stuffed bell peppers, and sheet-pan gnocchi with vegetables.
+- User was offered a full 5-day vegetarian meal prep plan with a grocery list.
+- User received a dinner invitation from a coworker for the weekend of July 12, 2026, and is seeking help to casually communicate that they have been vegetarian for three years without sounding picky.
+- User was recommended a casual wording to inform a coworker about their vegetarian diet when replying to a dinner invitation: "Thanks so much for inviting me — I’d love to come! Just a quick heads-up that I’m vegetarian, so anything meat-free works great for me."
+- User lifts weights after work and is seeking easy-to-keep-around, plant-based protein options for post-workout recovery, as they follow a vegetarian diet.
+- User was recommended the following vegetarian-friendly protein options for post-workout recovery: Greek yogurt, cottage cheese, edamame, roasted chickpeas, tofu, tempeh, lentils, protein smoothies with soy milk or pea protein, shelf-stable protein shakes, dry-roasted soybeans, string cheese, hard-boiled eggs, and trail mix with pumpkin seeds.
+- User was advised to pair protein with carbohydrates after lifting, such as a smoothie with fruit or rice and tofu, to aid in recovery.
+- User plans to book a table at Trattoria Luna for Saturday, July 12, 2026, and wants to check the menu for suitable vegetarian options beforehand to ensure there are substantial choices beyond a side salad.
+- User was offered assistance to scan a restaurant menu for vegetarian options, identify hidden meat ingredients like broth, pancetta, or anchovy, and formulate a question to ask the restaurant before booking.
+- User purchased strawberries, asparagus, radishes, and various herbs from the farmers market on July 12, 2026.
+- User was recommended to use strawberries in yogurt or smoothies, roast asparagus with olive oil and salt, slice radishes into salads or on toast with cream cheese, and incorporate fresh herbs into eggs, grain bowls, or sauces.
+- User was advised to use herbs and strawberries first, then asparagus, and radishes last to prevent spoilage.
+- User was offered assistance to create a simple 3-day meal prep plan using the recently purchased produce.
+- User is picking a restaurant for a group dinner this weekend, July 12-13, 2026, and wants a place that feels fun but not super heavy food-wise, where everyone has options and won't feel unwell the next morning.
+- User was recommended restaurants with shareable plates for group dinners, such as tapas, sushi, or casual modern American spots with smaller dishes, to keep it social without a food coma.
+- User was advised to look for menus with variety in portion sizes, several veggie sides, grilled or roasted mains, and at least one easy-to-split dessert for a group dinner.
+- User was advised to choose a restaurant that is not too loud for a group dinner to ensure a relaxed experience.
+- User often forgets to drink water during the day and sought advice on recommended daily intake and ways to remember to hydrate.
+
+Question: Who or what suggested the Mediterranean diet, and did the user confirm switching?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

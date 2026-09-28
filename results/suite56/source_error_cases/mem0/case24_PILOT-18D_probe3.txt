@@ -1,0 +1,54 @@
+CASE 24: PILOT-18D probe3 match=partial
+paradigm: consolidation  fact_type: config_value_v2
+
+GOLD: 5 retries was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "hallucinated",
+  "source_class": "hypothetical",
+  "action": "hallucinated",
+  "accepted": false,
+  "current_value": "none",
+  "reason": "The conversation history mentions retry counts of 3 (for agent-runtime) and 4 (for image-processing webhook), but never mentions 5 retries."
+}
+
+REASON: source_class mismatch (pred=hypothetical vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3913 chars) =====
+Memory facts extracted from conversation history:
+
+- User is wiring up an API client in a service branch and has configured its retry behavior to be conservative with 3 retries in `config/client.yaml`.
+- User wants to verify the API client's configuration is being picked up and needs a simple way to test its error handling path against a flaky endpoint.
+- User has an existing Jest suite and wants to confirm the API client stops after the expected number of attempts and cleanly bubbles up the last 503 error.
+- User was recommended to test the API client's retry behavior by mocking the transport layer and asserting the call count and thrown error, expecting 4 total calls for 3 retries.
+- Assistant provided a Jest code example to test API client retry behavior, specifically for 3 retries on a 503 error, asserting 4 total calls to the transport.
+- User read an internal postmortem about the 'billing-exporter' service, which mentioned its outbound webhook client was too aggressive on retries after a partner API started rate-limiting.
+- User wants to know if the changes to the 'billing-exporter' service's retry policy, as described in the postmortem, were actually rolled into the cluster or are still in a branch.
+- User read that the 'billing-exporter' service also paired a lower request timeout with its retry policy to avoid stacking queued attempts and wants this verified.
+- Assistant will inspect the 'billing-exporter' repo, its deployment config, live deployment in Kubernetes, and client config to confirm the current webhook retry setting and timeout values.
+- User is planning a load test for their staging cluster around the week of July 15, 2026, and wants to sanity-check capacity beforehand.
+- User was recommended to check current resource requests/limits, autoscaling settings, and recent database saturation signals as a starting point for capacity checks before generating traffic.
+- User has observed their staging cluster getting slow, particularly on the database side, when concurrent jobs spike.
+- User was recommended to focus on database connection pressure, slow queries, and whether worker concurrency is outpacing the database during capacity checks.
+- User is experiencing issues with a flaky downstream service causing timeouts across their worker pods and is seeking help with circuit breaker patterns and failure isolation.
+- User was recommended to implement circuit breakers per downstream service to open the circuit when error rate or latency crosses a threshold, fail fast, and use a half-open state to probe recovery.
+- User was recommended to use bulkheads or pool isolation by separating connection pools or worker pools per dependency and capping concurrency for specific downstreams.
+- User was recommended to use timeouts and bounded queues by keeping downstream timeouts shorter than the overall request budget and avoiding unbounded queues.
+- User was recommended to implement fallback behavior by returning cached or partial responses and degrading gracefully for non-critical paths.
+- User has a shared Postgres connection pool in the same service and is concerned about circuit breaker behavior interacting negatively with the database.
+- User was informed that if downstream calls block request handlers, it can lead to secondary database pressure, even if Postgres is healthy, due to transactions staying open and exhausting the shared DB pool.
+
+Question: Who or what mentioned 5 retries, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

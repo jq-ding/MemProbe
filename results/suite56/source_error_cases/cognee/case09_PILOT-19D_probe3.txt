@@ -1,0 +1,162 @@
+CASE 9: PILOT-19D probe3 match=incorrect
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "User",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "8443",
+  "reason": "The user repeatedly mentioned port 8443 across multiple contexts (security guide, old configs, staging sidecar, and a PagerDuty alert) and confirmed its origin in various stale or specific configurations."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (9095 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: I'm going through a security hardening... [8443, user, applies]
+__node_content_start__
+User: I'm going through a security hardening guide and it says to expose 8443. I'm trying to figure out whether that applies to our stack or if it's for something else.
+Assistant: In most guides, `8443` is used for an HTTPS admin/API endpoint or an ingress/controller management port, not the database listener. I can quickly check the repo manifests for where `8443` shows up.
+User: Got it. Can you show me the ingress bit so I can compare it to the guide?
+Assistant: Sure — here's the relevant section.
+User: That makes sense. So I should treat that recommendation as specific to the ingress/admin side of things?
+Assistant: Yes — as written, it applies to the component exposing HTTPS/admin traffic on `8443`. You'd want to map the guide's recommendation to the specific service or controller it describes, rather than assuming it applies across the stack.
+__node_content_end__
+
+Node: 8443
+__node_content_start__
+A network port number reported by the stale health check.
+__node_content_end__
+
+Node: User: I found `8443` in an old... [user, assistant, i]
+__node_content_start__
+User: I found `8443` in an old config file while cleaning up the repo. Can you check what service that belonged to?
+Assistant: Sure — I’ll grep the deprecated configs and trace the reference.
+User: Can you confirm whether anything still points to it in Kubernetes?
+Assistant: Yep, checking manifests and live resources for references.
+__node_content_end__
+
+Node: recommendation to expose port 8443
+__node_content_start__
+A recommendation from a security hardening guide suggesting the exposure of port 8443.
+__node_content_end__
+
+Node: User: I'm cleaning up some infra docs... [user, up, some]
+__node_content_start__
+User: I'm cleaning up some infra docs on the `ops/doc-audit` branch. I found an old rollout note under `docs/proposals/db-service-hardening.md` that says the database service port was planned as `8443`. Can you check whether that value shows up anywhere else in the repo or cluster metadata?
+Assistant: Sure — I'll grep the repo for the proposal reference and also inspect the deployed service metadata.
+User: That's enough for now. Leave the docs as-is; I just wanted to confirm that `8443` was coming from an old proposal/tracker entry and not some active config.
+Assistant: Got it — it appears to be stale planning data from retained documentation, not an active setting in the checked locations.
+__node_content_end__
+
+Node: 8443
+__node_content_start__
+A port number specified in an old proposal for the database service.
+__node_content_end__
+
+Node: User: A teammate suggested moving the database... [port, user, database]
+__node_content_start__
+User: A teammate suggested moving the database service port to 8443; can you check the current config in the feature branch and then help me verify the staging deploy status?
+Assistant: I'll check the branch config first, then staging.
+User: We benchmarked it but database service runs on port 5432 performed better — keeping it.
+Assistant: Noted — I’ll leave the port as-is.
+__node_content_end__
+
+Node: User: I'm wiring up a sidecar for... [user, staging, service]
+__node_content_start__
+User: I'm wiring up a sidecar for analytics in the staging cluster. Can you check why the `metrics-db-proxy` service isn't reachable? I think that one is supposed to be exposed on `8443`.
+Assistant: Sure — I'll inspect the service and endpoints in staging.
+User: Can you also verify the Helm values? I want to make sure `8443` is coming from the chart and not patched manually after deploy.
+Assistant: Yep — checking the chart values and rendered manifest.
+__node_content_end__
+
+Node: User: I was considering moving the database... [database, port, —]
+__node_content_start__
+User: I was considering moving the database service to port 8443 for the next deploy; can you check the current config and branch status first?
+Assistant: Sure — checking git and runtime config now.
+User: We benchmarked it but database service runs on port 5432 performed better — keeping it.
+Assistant: Understood — I’ll leave the database port unchanged and we can proceed with the rest of the deploy prep.
+__node_content_end__
+
+Node: User: PagerDuty just fired for the prod... [monitor, prod, user]
+__node_content_start__
+User: PagerDuty just fired for the prod database service. The alert payload is weird though — it says the health check failed on port 8443. Can you take a quick look and see whether prod got reconfigured or if the monitor is lying?
+Assistant: I'll check the alert details, the monitor config, and the current prod service/deployment settings.
+User: Yeah, that's what seemed off. Can you figure out where 8443 came from? Maybe an old test config got copied over?
+Assistant: Digging through Git history and related monitor definitions now.
+User: Got it. So prod didn't change — just the health check is stale. Please patch the monitor to 5432 and note in the incident that 8443 was from an old test instance.
+Assistant: Done. I’d update the monitor and annotate the incident like this:
+__node_content_end__
+
+Node: https admin/api endpoint
+__node_content_start__
+An endpoint used for administrative or API traffic, typically secured by HTTPS.
+__node_content_end__
+
+Node: service
+__node_content_start__
+service
+__node_content_end__
+
+Node: specific service or controller
+__node_content_start__
+A particular service or controller within a software stack to which a general recommendation should be mapped.
+__node_content_end__
+
+Node: ingress
+__node_content_start__
+A component responsible for managing external access to services, often exposing HTTPS/admin traffic.
+__node_content_end__
+
+Node: health check
+__node_content_start__
+A diagnostic process to verify the operational status of a service.
+__node_content_end__
+
+Node: old test instance
+__node_content_start__
+A previous test environment or system.
+__node_content_end__
+
+Node: 5432
+__node_content_start__
+The correct network port number for the prod database service.
+__node_content_end__
+
+
+Connections:
+User: I'm going through a security hardening... [8443, user, applies] --[relationship_name: contains; entity_name: 8443; entity_description: A network port number mentioned in a security hardening guide.]--> 8443
+User: I found `8443` in an old... [user, assistant, i] --[relationship_name: contains; entity_name: 8443; entity_description: A specific network communication endpoint.]--> 8443
+User: I'm going through a security hardening... [8443, user, applies] --[relationship_name: contains; entity_name: recommendation to expose port 8443; entity_description: A recommendation from a security hardening guide suggesting the exposure of port 8443.]--> recommendation to expose port 8443
+User: I'm cleaning up some infra docs... [user, up, some] --[relationship_name: contains; entity_name: 8443; entity_description: A port number specified in an old proposal for the database service.]--> 8443
+User: A teammate suggested moving the database... [port, user, database] --[relationship_name: contains; entity_name: 8443; entity_description: A communication endpoint identified by the number 8443.]--> 8443
+User: I'm wiring up a sidecar for... [user, staging, service] --[relationship_name: contains; entity_name: 8443; entity_description: A specific network port number.]--> 8443
+User: I was considering moving the database... [database, port, —] --[relationship_name: contains; entity_name: 8443; entity_description: A network port number considered for the database service.]--> 8443
+User: PagerDuty just fired for the prod... [monitor, prod, user] --[relationship_name: contains; entity_name: 8443; entity_description: A network port number reported by the stale health check.]--> 8443
+User: I'm going through a security hardening... [8443, user, applies] --[relationship_name: contains; entity_name: https admin/api endpoint; entity_description: An endpoint used for administrative or API traffic, typically secured by HTTPS.]--> https admin/api endpoint
+service --[uses_port]--> 8443
+recommendation to expose port 8443 --[should_be_mapped_to]--> specific service or controller
+recommendation to expose port 8443 --[applies_specifically_to]--> ingress
+health check --[failed_on_port]--> 8443
+8443 --[originated_from]--> old test instance
+User: A teammate suggested moving the database... [port, user, database] --[relationship_name: contains; entity_name: 5432; entity_description: A communication endpoint identified by the number 5432.]--> 5432
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

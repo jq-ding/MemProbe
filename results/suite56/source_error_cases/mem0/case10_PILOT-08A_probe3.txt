@@ -1,0 +1,54 @@
+CASE 10: PILOT-08A probe3 match=incorrect
+paradigm: reconsolidation  fact_type: selected_database
+
+GOLD: user explicitly stated after reactivating the old memory
+
+PREDICTED: {
+  "source_description": "unknown",
+  "source_class": "unknown",
+  "action": "hallucinated",
+  "accepted": false,
+  "current_value": "unknown",
+  "reason": "The conversation history contains no information about a decision to change the database engine or how such a change was communicated; the user is only asking the assistant to verify the engine used based on code and manifests."
+}
+
+REASON: source_class mismatch: pred=unknown vs gold=user
+
+===== RETRIEVED MEMORY (3905 chars) =====
+Memory facts extracted from conversation history:
+
+- User is working on the `feat/billing-rollup` branch and needs to apply new SQL migrations to a PostgreSQL instance before a staging deployment.
+- User wants to ensure the SQL migration order is correct and that no obvious issues will arise before proceeding with the staging deploy.
+- User was advised to validate the migration chain, apply migrations in order, and then confirm schema state and application health before deployment, as the project uses PostgreSQL.
+- User was provided with a practical verification sequence for staging, including commands to confirm latest relations, verify index presence, check row count, inspect records, and compare backfill aggregate against source data for the `invoice_rollups` table.
+- User was informed that the backfill is safe to rerun because it uses an `ON CONFLICT (account_id, billing_period) DO UPDATE` clause, which upserts by primary key and refreshes `total_cents` without creating duplicate logical rows.
+- User was provided with a sequence of commands to confirm backfill idempotency, involving running a mismatch query, rerunning the backfill, and then running the mismatch query again.
+- User was advised that the expected outcome for the idempotency check is for the mismatch count to go to `0` and for rerunning the backfill not to increase row cardinality beyond the source aggregate set.
+- User was provided with a command to confirm there are no duplicate keys in the `invoice_rollups` table.
+- User is tuning slow list endpoints on a feature branch and needs indexing advice for a `tasks` table in their PostgreSQL project before opening a pull request.
+- The `tasks` table has filtering on `status`, `workspace_id`, and a descending sort on `created_at`, as well as JSONB predicates on `metadata`.
+- User suggested a composite btree index like `(workspace_id, status, created_at DESC)`, a partial index for active rows, and GIN indexes on the JSONB fields for the `tasks` table.
+- Assistant confirmed the user's suggested indexing direction for PostgreSQL, recommending a composite btree for common equality filters and sort key, and a separate GIN index where JSONB predicates are selective.
+- Assistant checked the user's feature branch and current migrations related to the `tasks` table.
+- The main query shape for the slow list endpoints is `WHERE workspace_id = ? AND status IN (...) ORDER BY created_at DESC LIMIT 50`, with a variant adding `metadata @> '{"source":"api"}'`.
+- User is concerned about the PostgreSQL planner preferring bitmap scans over the composite index for these queries.
+- Assistant expects the composite index to be the right default for the primary query shape in PostgreSQL and to outperform current separate single-column indexes by satisfying both the filter prefix and sort order.
+- User is tuning database pool settings for a PostgreSQL service before a production deployment.
+- User configured `maxOpenConns` to 40, `maxIdleConns` to 10, and `connMaxLifetime` to `30m` in `values-prod.yaml` for the PostgreSQL database pool.
+- Assistant confirmed that the database pool setting keys (`maxOpenConns`, `maxIdleConns`, `connMaxLifetime`) in `values-prod.yaml` match what the PostgreSQL service actually reads.
+- User's production environment for the service is running on 5 replicas and does not have PgBouncer in front of the PostgreSQL instance.
+
+Question: Who decided to change the database and how was it communicated?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

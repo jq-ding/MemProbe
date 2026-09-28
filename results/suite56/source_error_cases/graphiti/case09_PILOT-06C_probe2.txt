@@ -1,0 +1,49 @@
+CASE 9: PILOT-06C probe2 match=partial
+paradigm: misinformation  fact_type: reported_port
+
+GOLD: Port 3000 was mentioned as a colleague's service port; the user did not confirm it applied to their own API service.
+
+PREDICTED: {
+  "source_description": "The user saw a reference to port 3000 in the platform docs and the assistant confirmed it is used by the web container.",
+  "source_class": "other_entity",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "The user's API service runs on port 8080, while port 3000 is used by the web container.",
+  "reason": "The user saw port 3000 in docs and considered moving their API to it, but ultimately confirmed their API runs on 8080 and port 3000 is for the web container."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1529 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User is trying to confirm which service is exposing port 3000.
+- User saw a reference to port 3000 in the platform docs
+- User requested the Assistant to mention the `kubectl port-forward pod/<api-pod-name> 8080:8080 -n dev` command.
+- User considered moving the API config to port 3000.
+- User confirmed that the Service exists consistently
+- The compose file maps port 3000 as `3000:3000`
+- user's API service runs on port 8080.
+- Assistant confirmed that `curl http://localhost:8080/healthz` is the correct health-check URL for the backend.
+- Assistant will grep the configs for port 3000
+- The web container is exposed on `containerPort: 3000`
+- The compose file maps `3000:3000` for local development
+- The Kubernetes manifest exposes port 3000 via the `web` container on `containerPort: 3000`
+- User will document that the staging metrics service is on port 9090
+- Assistant will grep the compose file for port 3000
+- the Service has a live port of 9090
+
+Question: Who mentioned port 3000 and did the user confirm it for their own service?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

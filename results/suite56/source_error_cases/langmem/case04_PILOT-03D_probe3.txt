@@ -1,0 +1,61 @@
+CASE 4: PILOT-03D probe3 match=partial
+paradigm: consolidation  fact_type: diet_preference
+
+GOLD: Mediterranean diet was suggested by a third party or mentioned in passing; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "The user is interested in Mediterranean diet recipes but is sticking with a vegetarian diet.",
+  "reason": "The user mentioned interest in Mediterranean recipes for a friend and partner, but explicitly stated they are sticking with a vegetarian diet."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (6876 chars) =====
+Memory facts extracted from conversation history:
+
+- For a pescatarian diet, easy and fast snack options include Greek yogurt with berries, cottage cheese and pineapple, boiled eggs, hummus with carrots or crackers, cheese and apple slices, tuna with cucumber rounds, trail mix, and edamame.
+- The user is trying to improve their energy levels and combat sluggishness. Habits that can help include maintaining a consistent sleep schedule, getting early morning movement (e.g., a 10-minute walk), and eating at regular times.
+- To combat sluggishness from prolonged sitting, the user can set a timer to stand up every hour and perform 2-3 minutes of movement (e.g., stretching, walking, or bodyweight squats).
+- The user's friend follows a Mediterranean diet. The user likes mezze-style spreads and stuffed eggplant as meal options when accommodating a Mediterranean diet for guests.
+- The user is trying to improve their meal prepping habits during the week and is looking for tips on suitable containers and strategies to avoid boredom with batch-cooked meals.
+- For meal prepping, glass containers are recommended for reheating, and dividers help prevent food from getting soggy. A good starting number of containers is 6-10, including medium ones for full meals, small ones for sauces/snacks, and 1-2 larger ones for bulk items like rice or roasted vegetables. Labeling containers with the date is useful, especially when prepping twice a week.
+- To avoid boredom when batch cooking for meal prep, focus on preparing versatile basics (e.g., one protein, one grain, two vegetables) and then mix and match them throughout the week with different sauces or seasonings.
+- The user is trying to drink more water and struggles with remembering to do so. They are looking for practical tips to improve their hydration habits.
+- General water intake target for most adults is 2-3 liters/day, adjustable based on body size, activity, weather, and sweat. Pale yellow urine indicates good hydration. Tricks to remember to drink water include carrying a water bottle, drinking upon waking and with meals/snacks, setting phone reminders, using time-marked bottles, and flavoring plain water with ice, lemon, or cucumber.
+- The user's cousin is looking for an eating plan that is flexible, includes fish, allows for 'fun' foods, and is high in protein to support new weightlifting activities. A pescatarian diet was recommended, with examples of high-protein sources including fish, eggs, Greek yogurt, cottage cheese, protein shakes, tofu, and beans.
+- For group dinners, the user prefers restaurants that are fun, have a good atmosphere, solid mocktails/drinks, and a mix of comfort food and fresher options. They want to avoid places that leave people feeling sluggish or feel "too healthy" and boring. They also appreciate broad menus, lighter options, protein-forward dishes, sides that are not heavy fried, and easy shareables.
+- To prevent mushy grains and legumes, rinse them first, use the correct water ratio, and avoid overcooking. For grains like rice or quinoa, boil, then simmer covered until water is absorbed, and rest for 5-10 minutes. For legumes, lentils do not need soaking, but larger beans benefit from it for even cooking. Salting near the end helps texture, and checking doneness early prevents over-softening.
+- To easily enhance the flavor of grains and legumes, cook them in broth instead of water, add aromatics like garlic, onion, or a bay leaf during simmering, and finish with olive oil, lemon juice, or spices. Toasting grains before cooking can also add a nutty flavor.
+- When meal prepping, storing cooked grains and legumes separately helps maintain their texture throughout the week.
+- The Mediterranean diet is strongly backed by research for heart health, metabolic health, and lower inflammation, primarily due to its overall pattern of vegetables, legumes, whole grains, olive oil, nuts, and fish. It is not a "magic" solution but a well-studied eating pattern, with the strongest evidence for cardiovascular benefits when it replaces processed or saturated-fat-heavy diets.
+- The user wants to spend less on groceries while maintaining a healthy diet.
+- The user tends to waste money on groceries by buying items "just in case" and not using them.
+- Effective grocery budgeting strategies include making a short list around versatile basics, prioritizing frozen and store-brand items, avoiding shopping hungry, checking the fridge before planning meals, planning meals with overlapping ingredients, and setting a "fun extras" limit.
+- The user's brother is considering a keto or pescatarian diet, prioritizing sustainability and convenience due to long work shifts.
+- The user's brother prefers seafood significantly more than red meat.
+- For someone prioritizing sustainability and convenience, a pescatarian diet is generally easier day-to-day than a keto diet due to greater flexibility in eating out, cooking with others, and quick meal options.
+- A pescatarian diet offers simple, low-effort, and easily rotatable meal options like fish tacos, rice bowls with salmon, tuna sandwiches, yogurt, eggs, and salads, which are beneficial for individuals working long shifts.
+- A keto diet can be more restrictive and requires more planning, especially regarding snacks, sauces, carb-heavy meals, label-checking, and has fewer grab-and-go options, making it potentially less convenient for someone with long work shifts.
+- The user prefers a vegetarian diet and tried a Mediterranean diet meal plan for a week but is sticking with vegetarian. Their partner follows a Mediterranean diet. They manage dinner planning by making 'build-your-own' meals (e.g., pasta or grain bowls) with a shared base, allowing the partner to add ingredients like fish or feta, which helps avoid negotiation and accommodates both diets.
+- The user realizes that judging food subscription services from reviews is difficult because everyone's preferences are highly specific, making food reviews super personal.
+- json_doc_id='5817c081-5ee5-465b-9bf5-69db7e1313f9'
+- Peaches are best on the counter until they soften, then move to the fridge. Tomatoes usually do better at room temp, not refrigerated, unless very ripe. Zucchini can go in the fridge crisper drawer. Basil usually lasts longer if stems are kept in a glass of water on the counter.
+
+Question: Who or what suggested the Mediterranean diet, and did the user confirm switching?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

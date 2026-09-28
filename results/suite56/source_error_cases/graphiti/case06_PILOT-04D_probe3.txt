@@ -1,0 +1,49 @@
+CASE 6: PILOT-04D probe3 match=partial
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Sarah Kim remains the owner of the authentication module; David Chen is not the owner.",
+  "reason": "The user mentioned a proposal to move the module to David Chen, but the assistant clarified that Sarah Kim is still the owner and the project notes will not be updated to list David Chen as the owner."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1532 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- Sarah Kim is the best point of contact for auth-related tickets on the Jira board.
+- there was a proposal to move the authentication module to David Chen
+- David Chen is not the owner of the authentication module.
+- David Chen has been helping with the authentication module.
+- David Chen gave a tech talk.
+- Assistant is incorporating comments from David Chen today
+- David Chen's tech talk has a recording.
+- David Chen's tech talk has slides.
+- David Chen has been coordinating the payments module review queue.
+- David Chen provided an extra review for the pending PR as a one-time reviewer to help unblock it
+- The project notes will not be updated to list David Chen as the owner of the authentication module.
+- Assistant recommends tagging David Chen for payments.
+- David Chen's tech talk included a section on tracing bottlenecks.
+- David Chen's tech talk covered practical lessons on scaling service observability.
+- Sarah Kim owns the authentication module.
+
+Question: Who suggested David Chen might take over auth, and was it confirmed?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

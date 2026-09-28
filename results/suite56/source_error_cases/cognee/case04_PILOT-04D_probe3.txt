@@ -1,0 +1,131 @@
+CASE 4: PILOT-04D probe3 match=partial
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.
+
+PREDICTED: {
+  "source_description": "User",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Sarah Kim",
+  "reason": "The user mentioned a proposal during a reorg and a side conversation about David Chen taking over auth, but confirmed that Sarah Kim remains the owner."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (7887 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: I heard in a side conversation... [notes, user, auth]
+__node_content_start__
+User: I heard in a side conversation that David Chen has been helping with auth stuff lately. Do we need to update the project notes to list him as the owner of the authentication module?
+Assistant: Not based on that alone. “Helping with auth stuff” sounds pretty informal and could just mean he’s assisting with a review or a short-term task. I’d treat that as unconfirmed unless it shows up in the team roster, sprint doc, or a direct handoff note.
+User: Yeah, that was my read too — it sounded more like he was pitching in, not that ownership changed. Let’s leave the notes as-is for now.
+Assistant: Makes sense. I’ll keep the project notes unchanged and wait for a more authoritative update before making any ownership edits.
+__node_content_end__
+
+Node: david chen
+__node_content_start__
+An individual mentioned as helping with the authentication module.
+__node_content_end__
+
+Node: User: We discussed having David Chen take... [sarah, kim, authentication]
+__node_content_start__
+User: We discussed having David Chen take over auth, but Sarah Kim still owns the authentication module. Also, can you remind me what’s on my agenda after lunch?
+Assistant: Got it — Sarah Kim remains the owner of the authentication module. After lunch, you have the sprint planning sync at 1:30 PM and the code review block at 3:00 PM.
+__node_content_end__
+
+Node: User: Could you help me write a... [update, module, pr]
+__node_content_start__
+User: Could you help me write a quick update for the sprint channel about the auth module PR?
+Assistant: Sure — here’s a draft:
+
+“Auth module update: the pending PR got an extra review from David Chen as a one-time favor, and I’m incorporating his comments today. I’ll post again once the revisions are up.”
+User: Looks good. Can you make it a little clearer that he was just helping out with the review?
+Assistant: Absolutely — try this:
+
+“Auth module update: the pending PR got an extra review from David Chen, who jumped in as a one-time reviewer to help unblock us. I’m incorporating his comments today and will share another update after the revisions are pushed.”
+__node_content_end__
+
+Node: User: During the reorg there was a... [authentication, module, sarah]
+__node_content_start__
+User: During the reorg there was a proposal to move the authentication module to David Chen, but Sarah Kim is still the owner. Please update the sprint board notes and then remind me to review the API tickets this afternoon.
+Assistant: Got it — I’ll keep Sarah Kim as the owner for the authentication module, update the sprint board notes, and set an afternoon reminder for the API ticket review.
+__node_content_end__
+
+Node: david chens comments
+__node_content_start__
+Comments provided by David Chen on the Auth module PR.
+__node_content_end__
+
+Node: User: Can you help me draft a... [me, team, tech]
+__node_content_start__
+User: Can you help me draft a quick note to the team about the tech talk David Chen gave yesterday? I want to share the recording and slides.
+Assistant: Sure — here’s a concise draft:
+
+“Hi team,
+Sharing the recording and slides from David Chen’s tech talk yesterday. He covered some practical lessons on scaling service observability, and I thought the session was worth passing along for anyone who couldn’t attend. Let me know if you’d like a short summary of the main takeaways as well.”
+User: Looks good. Add one sentence saying his section on tracing bottlenecks was especially useful for the platform group.
+Assistant: Absolutely — here’s the revised version:
+
+“Hi team,
+Sharing the recording and slides from David Chen’s tech talk yesterday. He covered some practical lessons on scaling service observability, and I thought the session was worth passing along for anyone who couldn’t attend. His section on tracing bottlenecks was especially useful for the platform group. Let me know if you’d like a short summary of the main takeaways as well.”
+__node_content_end__
+
+Node: User: I'm updating the sprint board. Who... [i, review, user]
+__node_content_start__
+User: I'm updating the sprint board. Who should I tag for the payments module review?
+Assistant: Tag David Chen for payments — he’s been coordinating that module’s review queue. If you want, I can help draft a quick note for the ticket.
+User: Got it. Also, can you summarize what still needs review before Friday?
+Assistant: Sure — I’d group it into three buckets: open PRs awaiting approval, QA follow-ups from this sprint, and any blockers tied to deployment readiness. If you send the board link, I can turn that into a concise checklist.
+__node_content_end__
+
+Node: authentication module
+__node_content_start__
+A component or module within a project responsible for authentication.
+__node_content_end__
+
+Node: auth module pr
+__node_content_start__
+A pending pull request for the Auth module.
+__node_content_end__
+
+Node: david chen’s tech talk
+__node_content_start__
+A technical presentation given by David Chen.
+__node_content_end__
+
+
+Connections:
+User: I heard in a side conversation... [notes, user, auth] --[relationship_name: contains; entity_name: david chen; entity_description: An individual mentioned as helping with the authentication module.]--> david chen
+User: We discussed having David Chen take... [sarah, kim, authentication] --[relationship_name: contains; entity_name: david chen; entity_description: An individual who was discussed to take over the authentication module.]--> david chen
+User: Could you help me write a... [update, module, pr] --[relationship_name: contains; entity_name: david chen; entity_description: A person who provided an extra review for the Auth module PR.]--> david chen
+User: During the reorg there was a... [authentication, module, sarah] --[relationship_name: contains; entity_name: david chen; entity_description: A person who was proposed to become the owner of the authentication module.]--> david chen
+User: Could you help me write a... [update, module, pr] --[relationship_name: contains; entity_name: david chens comments; entity_description: Comments provided by David Chen on the Auth module PR.]--> david chens comments
+david chens comments --[originated_from]--> david chen
+User: Can you help me draft a... [me, team, tech] --[relationship_name: contains; entity_name: david chen; entity_description: An individual who gave a tech talk.]--> david chen
+User: I'm updating the sprint board. Who... [i, review, user] --[relationship_name: contains; entity_name: david chen; entity_description: A person coordinating the payments module's review queue.]--> david chen
+david chen --[discussed_to_take_over]--> authentication module
+david chen --[served_as_one_time_reviewer_for]--> auth module pr
+david chen --[gave]--> david chen’s tech talk
+User: Can you help me draft a... [me, team, tech] --[relationship_name: contains; entity_name: david chen’s tech talk; entity_description: A technical presentation given by David Chen.]--> david chen’s tech talk
+authentication module --[proposed_owner]--> david chen
+User: Could you help me write a... [update, module, pr] --[relationship_name: contains; entity_name: auth module pr; entity_description: A pending pull request for the Auth module.]--> auth module pr
+david chen --[assisted_with]--> authentication module
+
+Question: Who suggested David Chen might take over auth, and was it confirmed?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,49 @@
+CASE 10: PILOT-08B probe3 match=partial
+paradigm: reconsolidation  fact_type: selected_database
+
+GOLD: user explicitly stated the migration
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "Assistant will leave the database engine unchanged",
+  "reason": "The assistant confirmed it would proceed with the PostgreSQL migration check and leave the database engine unchanged despite the user's mention of a MongoDB proposal."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (1618 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- Assistant will leave the database engine unchanged
+- User mentioned there was a proposal to migrate to MongoDB during the refactor.
+- PostgreSQL remains the primary database for the User's project
+- The analytics sandbox service uses DynamoDB.
+- The recommended database pool size for `api` is `DB_POOL_SIZE=8`.
+- DynamoDB is confirmed as the backing store for the new event ledger.
+- The recommended database pool size for `worker` is `DB_POOL_SIZE=4`.
+- User benchmarked migrated to MongoDB
+- Assistant recommends the database pool configuration with min: 10, max: 30, idleTimeoutMs: 30000, connectionTimeoutMs: 1500, and maxLifetimeMs: 1800000.
+- The notification stack has a Mongo dependency.
+- The analytics sandbox service uses DynamoDB because its event lookups are simple key-based reads and the team wanted to avoid managing replicas.
+- User's current schema changes workflow uses handwritten SQL.
+- Assistant provides a concise note about the DB benchmark.
+- Assistant will proceed with the PostgreSQL migration check
+- The User requested that the smoke test use MongoDB.
+
+Question: How was the database change communicated?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

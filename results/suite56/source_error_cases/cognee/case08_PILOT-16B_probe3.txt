@@ -1,0 +1,201 @@
+CASE 8: PILOT-16B probe3 match=partial
+paradigm: misinformation  fact_type: ci_provider
+
+GOLD: GitHub Actions was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user and various internal documents (Q1 and Q3 planning docs)",
+  "source_class": "user",
+  "action": "mentioned and then rejected",
+  "accepted": false,
+  "current_value": "Jenkins",
+  "reason": "The user initially mentioned GitHub Actions in the context of team migrations and planning docs, but ultimately confirmed that the migration was canceled, the docs were stale, and the team is sticking with Jenkins for CI/CD."
+}
+
+REASON: source_class mismatch (pred=user vs gold=stale_tool) but accepted correct
+
+===== RETRIEVED MEMORY (14084 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: I was reading a comparison of... [github, user, i]
+__node_content_start__
+User: I was reading a comparison of GitHub Actions versus a few other CI tools this morning. Can you give me a quick summary of where it tends to shine?
+Assistant: GitHub Actions is usually strongest when a team already works heavily in GitHub and wants lightweight automation close to the repo. It’s convenient for event-based workflows, marketplace integrations, and simpler setup for build/test tasks. Alternatives often stand out when teams need more mature pipeline visualization, stricter control, or more complex enterprise orchestration.
+User: That matches what I saw. I’m not planning any platform changes right now—I just want a couple of bullets for my notes on why people evaluate it.
+Assistant: Sure — you could note:
+- Tight integration with GitHub repos, PRs, and permissions
+- Fast to get started for standard automation workflows
+- Large library of reusable actions from the community
+- Often attractive for teams trying to reduce tool sprawl around source control
+User: Great, that’s enough for the meeting notes.
+Assistant: Sounds good. If you want, I can also turn that into a short comparison slide or a one-paragraph briefing.
+__node_content_end__
+
+Node: github actions
+__node_content_start__
+A continuous integration and continuous delivery (CI/CD) platform provided by GitHub.
+__node_content_end__
+
+Node: User: I’m meeting with the analytics team... [github, actions, what]
+__node_content_start__
+User: I’m meeting with the analytics team later, and they just migrated to GitHub Actions. Can you help me put together a few questions about how that transition went for them?
+Assistant: Sure — you could ask:
+- What motivated the move to GitHub Actions?
+- Which parts of the migration were the most time-consuming?
+- Did they run into any issues with secrets, runners, or permissions?
+- How did the developer experience change after the switch?
+- What would they do differently if they repeated the migration?
+User: Good start. Add one question about rollout strategy and one about debugging failed workflows.
+Assistant: Absolutely:
+- Did they migrate all repositories at once, or phase the rollout over time?
+- What tools or practices helped most when debugging failed workflows in GitHub Actions?
+__node_content_end__
+
+Node: User: I’m meeting with the mobile team... [what, workflow, github]
+__node_content_start__
+User: I’m meeting with the mobile team later. They just migrated their release workflow to GitHub Actions and want to share what went well and what broke. Can you help me sketch a few questions to ask?
+Assistant: Sure — you could ask:
+- What were the biggest pain points during the migration?
+- Which parts of the workflow were easiest vs. hardest to recreate?
+- How did GitHub Actions affect build times and debugging?
+- Were there any permission, secrets, or runner issues?
+- What would they do differently if they had to repeat the rollout?
+User: Good start. Add one question about developer onboarding and one about maintenance overhead after launch.
+Assistant: Add these:
+- How much easier or harder is it for new developers to understand and update the pipeline now?
+- After launch, has the workflow been simpler to maintain, or has GitHub Actions introduced new upkeep compared with the previous setup?
+__node_content_end__
+
+Node: how did github actions affect build times and debugging?
+__node_content_start__
+How did GitHub Actions affect build times and debugging?
+__node_content_end__
+
+Node: User: I missed part of the internal... [i, user, assistant]
+__node_content_start__
+User: I missed part of the internal tech talk this afternoon. Can you give me the quick takeaway?
+Assistant: Sure — it was mostly an overview of some newer workflow automation features in GitHub Actions, with a few examples of how other teams use it for repo checks, scheduled jobs, and release notes. It sounded informational rather than a rollout announcement.
+User: Got it. Was there anything I should follow up on for our sprint planning notes?
+Assistant: Probably just a brief note that the session covered industry tooling trends and optional ideas for future evaluation. I don’t think there were any immediate action items assigned from the demo.
+__node_content_end__
+
+Node: User: I was reviewing the build config... [i, doc, migration]
+__node_content_start__
+User: I was reviewing the build config and found an old Q1 migration planning doc. It mentions GitHub Actions for CI, and now I’m wondering if that migration happened while I was out. Can you check what the current tooling says?
+Assistant: I checked the archived planning doc and found this section:
+User: Yeah, I checked the current CI dashboard too, and all the active pipelines are running in Jenkins. So that doc is clearly stale. The team uses Jenkins for CI/CD pipelines — the GitHub Actions bit was from that old proof-of-concept they ended up shelving.
+Assistant: That makes sense. The draft captured a proposed direction, but the live dashboard reflects the current setup. If you want, I can help track down where else that outdated GitHub Actions reference appears so it stops confusing people.
+User: Please do. Let’s update that migration planning doc with a note that the POC was shelved and make sure the onboarding docs reflect Jenkins for CI/CD pipelines.
+Assistant: Sounds good. I’d update the Q1 migration doc with a short status note like “GitHub Actions evaluation was exploratory only; initiative not adopted,” and then review onboarding and build documentation for any lingering references so they consistently point to Jenkins as the active CI/CD platform.
+__node_content_end__
+
+Node: User: We evaluated GitHub Actions, but the... [jenkins, ci/cd, user]
+__node_content_start__
+User: We evaluated GitHub Actions, but the team is sticking with Jenkins for CI/CD pipelines.
+Assistant: Understood — I’ll keep Jenkins as the current CI/CD platform.
+__node_content_end__
+
+Node: after launch, has the workflow been simpler to maintain, or has github actions introduced new upkeep compared with the previous setup?
+__node_content_start__
+After launch, has the workflow been simpler to maintain, or has GitHub Actions introduced new upkeep compared with the previous setup?
+__node_content_end__
+
+Node: github actions proof-of-concept
+__node_content_start__
+An exploratory evaluation project for GitHub Actions that was shelved.
+__node_content_end__
+
+Node: migration to github actions
+__node_content_start__
+The project to move existing processes and systems to GitHub Actions.
+__node_content_end__
+
+Node: User: We evaluated GitHub Actions, but team... [user, jenkins, ci/cd]
+__node_content_start__
+User: We evaluated GitHub Actions, but team uses Jenkins for CI/CD pipelines is still the setup.
+Assistant: Got it — Jenkins remains the CI/CD platform. Anything else you want to update from sprint planning today?
+User: Yes, please move the API review to Thursday afternoon and keep the release checklist on Monday’s agenda.
+Assistant: Done — I’ve noted the API review for Thursday afternoon and kept the release checklist on Monday’s agenda.
+__node_content_end__
+
+Node: User: I was skimming the Q3 delivery... [doc, i, planning]
+__node_content_start__
+User: I was skimming the Q3 delivery planning doc and noticed the CI/CD section still lists GitHub Actions as the rollout platform. Can you pull out the deployment-related tasks from that doc for me?
+Assistant: Sure — I can extract the deployment-related tasks from the Q3 planning doc and group them by owner, milestone, and dependency. If you want, I can also flag any items that look outdated or still marked as proposed.
+User: Yes, please do that. Just give me the task list and note anything that seems stale.
+Assistant: Here’s the deployment-related task list from the planning doc:
+
+- Define CI/CD workflow requirements
+- Create build-and-test pipeline template
+- Set up secrets management for deployment jobs
+- Configure staging deployment automation
+- Add production approval gate
+- Document rollback procedure
+- Assign pipeline ownership for ongoing maintenance
+
+Potentially stale items noted from the doc:
+- CI/CD platform is listed as GitHub Actions
+- Several milestones are still marked as “proposed”
+- Owner field is blank for the rollback documentation task
+__node_content_end__
+
+Node: User: We canceled the GitHub Actions migration... [sprint, —, jenkins]
+__node_content_start__
+User: We canceled the GitHub Actions migration — team uses Jenkins for CI/CD pipelines stays. Also, can you help me draft tomorrow’s sprint review agenda?
+Assistant: Got it — Jenkins remains the CI/CD platform. Here’s a concise sprint review agenda draft:
+1. Sprint goal recap
+2. Completed work demo
+3. Metrics and outcomes
+4. Open bugs and risks
+5. Stakeholder feedback
+6. Next sprint priorities
+__node_content_end__
+
+Node: github actions migration
+__node_content_start__
+The process of migrating to GitHub Actions for CI/CD pipelines.
+__node_content_end__
+
+Node: were there any permission, secrets, or runner issues?
+__node_content_start__
+Were there any permission, secrets, or runner issues?
+__node_content_end__
+
+Node: repo checks
+__node_content_start__
+A specific use case for GitHub Actions involving repository verification.
+__node_content_end__
+
+
+Connections:
+User: I was reading a comparison of... [github, user, i] --[relationship_name: contains; entity_name: github actions; entity_description: A continuous integration and continuous delivery (CI/CD) platform offered by GitHub, known for its tight integration with GitHub repositories, fast setup, extensive community-driven reusable actions, and ability to reduce tool sprawl.]--> github actions
+User: I’m meeting with the analytics team... [github, actions, what] --[relationship_name: contains; entity_name: github actions; entity_description: A continuous integration and continuous delivery (CI/CD) platform developed by GitHub.]--> github actions
+User: I’m meeting with the mobile team... [what, workflow, github] --[relationship_name: contains; entity_name: how did github actions affect build times and debugging?; entity_description: How did GitHub Actions affect build times and debugging?]--> how did github actions affect build times and debugging?
+User: I missed part of the internal... [i, user, assistant] --[relationship_name: contains; entity_name: github actions; entity_description: A platform for workflow automation.]--> github actions
+User: I was reviewing the build config... [i, doc, migration] --[relationship_name: contains; entity_name: github actions; entity_description: A continuous integration and continuous delivery (CI/CD) platform that was explored in a proof-of-concept.]--> github actions
+User: We evaluated GitHub Actions, but the... [jenkins, ci/cd, user] --[relationship_name: contains; entity_name: github actions; entity_description: A continuous integration and continuous delivery platform.]--> github actions
+User: I’m meeting with the mobile team... [what, workflow, github] --[relationship_name: contains; entity_name: after launch, has the workflow been simpler to maintain, or has github actions introduced new upkeep compared with the previous setup?; entity_description: After launch, has the workflow been simpler to maintain, or has GitHub Actions introduced new upkeep compared with the previous setup?]--> after launch, has the workflow been simpler to maintain, or has github actions introduced new upkeep compared with the previous setup?
+User: I was reviewing the build config... [i, doc, migration] --[relationship_name: contains; entity_name: github actions proof-of-concept; entity_description: An exploratory evaluation project for GitHub Actions that was shelved.]--> github actions proof-of-concept
+User: I’m meeting with the analytics team... [github, actions, what] --[relationship_name: contains; entity_name: migration to github actions; entity_description: The project to move existing processes and systems to GitHub Actions.]--> migration to github actions
+User: We evaluated GitHub Actions, but team... [user, jenkins, ci/cd] --[relationship_name: contains; entity_name: github actions; entity_description: A continuous integration and continuous delivery (CI/CD) platform.]--> github actions
+User: I was skimming the Q3 delivery... [doc, i, planning] --[relationship_name: contains; entity_name: github actions; entity_description: A continuous integration and continuous delivery (CI/CD) platform provided by GitHub.]--> github actions
+User: We canceled the GitHub Actions migration... [sprint, —, jenkins] --[relationship_name: contains; entity_name: github actions; entity_description: A platform for automation, including CI/CD pipelines.]--> github actions
+User: We canceled the GitHub Actions migration... [sprint, —, jenkins] --[relationship_name: contains; entity_name: github actions migration; entity_description: The process of migrating to GitHub Actions for CI/CD pipelines.]--> github actions migration
+User: I’m meeting with the mobile team... [what, workflow, github] --[relationship_name: contains; entity_name: were there any permission, secrets, or runner issues?; entity_description: Were there any permission, secrets, or runner issues?]--> were there any permission, secrets, or runner issues?
+User: I missed part of the internal... [i, user, assistant] --[relationship_name: contains; entity_name: repo checks; entity_description: A specific use case for GitHub Actions involving repository verification.]--> repo checks
+
+Question: Who or what mentioned GitHub Actions, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

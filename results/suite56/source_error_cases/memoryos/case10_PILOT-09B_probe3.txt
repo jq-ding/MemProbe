@@ -1,0 +1,74 @@
+CASE 10: PILOT-09B probe3 match=partial
+paradigm: interference  fact_type: selected_database
+
+GOLD: MongoDB was mentioned as a teammate's database choice for a different microservice; the user did not migrate their own project from PostgreSQL.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "PostgreSQL",
+  "reason": "The user compared MongoDB against their current stack but decided to keep PostgreSQL as their primary database."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4374 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User compared MongoDB against current stack at 2026-07-12 05:15:16
+- [user-knowledge] - User benchmarked MongoDB at 2026-07-12 05:15:25
+- [user-knowledge] - User's project uses PostgreSQL as the primary database
+- [user-knowledge] - User decided to keep PostgreSQL as primary database at 2026-07-12 05:15:25
+- [user-knowledge] - User was reading an internal architecture review for the analytics sandbox service
+- [user-knowledge] - User needs a recap for the team about Atlas Billing sync
+- [user-knowledge] - User has an entry for "analytics-ingest" service in an infra tracker
+- [user-knowledge] - User has ad-hoc SQL files and no clear schema versioning
+- [user-knowledge] - User ran the plan in staging at 2026-07-12 05:14:35
+- [user-knowledge] - User on `feature/feed-index-tuning` branch at 2026-07-12 05:14:15
+- [user-knowledge] - User finished benchmark branch at 2026-07-12 05:15:16
+- [user-knowledge] - User on `feature/audit-log-retention` branch at 2026-07-12 05:14:15
+- [user-knowledge] - User is tuning DB concurrency before tomorrow's deploy
+- [user-knowledge] - User thinks bottleneck is SQL queries
+- [user-knowledge] - User's API has hot paths dominated by simple inserts versus transactional reads/joins
+- [user-knowledge] - User is looking at an infra tracker
+- [user-knowledge] - User is checking read replica setup
+- [user-knowledge] - User is advising another team that runs a high-write event ingestion service at 2026-07-12 05:14:41
+- [user-knowledge] - User interested in staging deployment manifests at 2026-07-12 05:14:55
+- [user-knowledge] - User is tuning query hotspots before next deploy at 2026-07-12 05:14:15
+- [assistant-knowledge] - Assistant confirmed MongoDB configuration at 2026-07-12 05:14:48
+- [assistant-knowledge] - Assistant summarized MongoDB benchmark at 2026-07-12 05:14:31
+- [assistant-knowledge] - Assistant confirmed in-cluster MongoDB router use at 2026-07-12 05:14:55
+- [assistant-knowledge] - Assistant provided triage steps for MongoDB connection issues at 2026-07-12 05:16:04
+- [assistant-knowledge] - Assistant performed a mock diagnostic run for MongoDB connection issues at 2026-07-12 05:16:06
+- [assistant-knowledge] - Assistant provided example commands for MongoDB connection triage at 2026-07-12 05:16:04
+- [assistant-knowledge] - Assistant identified next checks for MongoDB connection issues at 2026-07-12 05:16:06
+- [assistant-knowledge] - Assistant inspected repo config, compose files, and deployment manifests for the analytics sandbox service at 2026-07-12 05:15:09
+- [assistant-knowledge] - Assistant confirmed analytics-ingest is configured against MySQL at 2026-07-12 05:15:31
+- [assistant-knowledge] - Assistant confirmed DB is storing event metadata and raw payloads are written to object storage at 2026-07-12 05:15:42
+- [assistant-knowledge] - Assistant checked for slow queries on replicas at 2026-07-12 05:14:19
+- [assistant-knowledge] - Assistant compared tradeoffs between MySQL and DynamoDB at 2026-07-12 05:14:41
+- [assistant-knowledge] - Assistant offered to sketch example schemas at 2026-07-12 05:14:46
+- [assistant-knowledge] - Assistant inspected cluster and replication metrics at 2026-07-12 05:14:17
+- [assistant-knowledge] - Assistant explained reasons to switch to MySQL at 2026-07-12 05:14:46
+- [assistant-knowledge] - Assistant summarized notes into bullets at 2026-07-12 05:15:27
+- [assistant-knowledge] - Assistant interpreted explain plan at 2026-07-12 05:14:35
+- [assistant-knowledge] - Assistant provided PostgreSQL-specific notes on indexing at 2026-07-12 05:14:15
+- [assistant-knowledge] - Assistant provided indexing strategies at 2026-07-12 05:15:46
+- [assistant-knowledge] - Assistant looked at current service config and recent write patterns at 2026-07-12 05:14:22
+
+Question: Who mentioned MongoDB and did the user adopt it for their project?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

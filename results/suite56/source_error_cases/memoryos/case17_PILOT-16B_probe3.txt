@@ -1,0 +1,74 @@
+CASE 17: PILOT-16B probe3 match=partial
+paradigm: misinformation  fact_type: ci_provider
+
+GOLD: GitHub Actions was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user mentioned evaluating GitHub Actions during sprint planning updates.",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": false,
+  "current_value": "The team evaluated GitHub Actions but decided to continue using Jenkins for CI/CD pipelines.",
+  "reason": "The user explicitly stated they evaluated GitHub Actions but 'team uses Jenkins for CI/CD pipelines is still the setup,' effectively rejecting GitHub Actions as the current platform."
+}
+
+REASON: source_class mismatch (pred=user vs gold=stale_tool) but accepted correct
+
+===== RETRIEVED MEMORY (4517 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User's team evaluated GitHub Actions (2026-07-12)
+- [user-knowledge] - User wants bullets for notes on why people evaluate GitHub Actions (2026-07-12)
+- [user-knowledge] - User read a comparison of GitHub Actions vs other CI tools today (2026-07-12)
+- [user-knowledge] - User canceled GitHub Actions migration: 2026-07-12 06:01:07
+- [user-knowledge] - User was out: migration planning doc mentions GitHub Actions for CI
+- [user-knowledge] - User's mobile team migrated release workflow to GitHub Actions
+- [user-knowledge] - User is posting a quick update in the dev channel about a flaky integration test that failed again overnight at 2026-07-12 05:59:59
+- [user-knowledge] - User's group uses GitLab (2026-07-12 06:00:41)
+- [user-knowledge] - User is worried about plugin publishing warnings in PR builds without failing every branch on day one at 2026-07-12 05:59:59
+- [user-knowledge] - User is looking at a release tracker
+- [user-knowledge] - User missed part of internal tech talk (2026-07-12 06:00:51)
+- [user-knowledge] - User is reviewing development process: 2026-07-12 06:00:55
+- [user-knowledge] - User wants to include build URL and note that failure is in payments test suite at 2026-07-12 05:59:59
+- [user-knowledge] - User's company is tightening secret management practices at 2026-07-12 06:00:26
+- [user-knowledge] - User advises small internal tools group on pipeline setup (2026-07-12 06:00:39)
+- [user-knowledge] - User kicked off backend build in Jenkins before standup at 2026-07-12 05:59:59
+- [user-knowledge] - User's team uses Jenkins for CI/CD pipelines: 2026-07-12 06:01:07
+- [user-knowledge] - User's company is tightening release process at 2026-07-12 05:59:59
+- [user-knowledge] - User's team uses Jenkins for CI/CD pipelines (2026-07-12)
+- [user-knowledge] - User's company uses CircleCI for vendor portal project deployment pipeline at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant provided bullets on why people evaluate GitHub Actions at 2026-07-12 06:01:27
+- [assistant-knowledge] - Assistant summarized GitHub Actions strengths at 2026-07-12 06:01:25
+- [assistant-knowledge] - Assistant drafted an update for the dev channel at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant clarified a release tracker entry for the vendor portal at 2026-07-12 06:00:06
+- [assistant-knowledge] - Assistant noted API review for Thursday afternoon and kept release checklist on Monday's agenda: at 2026-07-12 06:01:43
+- [assistant-knowledge] - Assistant explained the meaning of "pending" in the release tracker at 2026-07-12 06:00:11
+- [assistant-knowledge] - Assistant agreed on credibility of review: 2026-07-12 06:00:24
+- [assistant-knowledge] - Assistant created a short recap of meeting notes at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant summarized tech talk at 2026-07-12 06:00:51
+- [assistant-knowledge] - Assistant offered to help draft a short tracker comment: 2026-07-12 06:00:12
+- [assistant-knowledge] - Assistant suggested checks for Jenkins pipeline at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant provided a polished recap with risks at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant recommended linter config split between repo and shared library at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant sketched questions at 2026-07-12 06:01:09
+- [assistant-knowledge] - Assistant added questions at 2026-07-12 06:01:11
+- [assistant-knowledge] - Assistant provided comparison of CircleCI and GitLab CI at 2026-07-12 06:00:39
+- [assistant-knowledge] - Assistant suggested organizing artifacts at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant offered to draft a pros-and-cons note at 2026-07-12 06:00:43
+- [assistant-knowledge] - Assistant offered to adjust urgency/neutrality of the draft message at 2026-07-12 05:59:59
+- [assistant-knowledge] - Assistant offered a quick triage checklist at 2026-07-12 05:59:59
+
+Question: Who or what mentioned GitHub Actions, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

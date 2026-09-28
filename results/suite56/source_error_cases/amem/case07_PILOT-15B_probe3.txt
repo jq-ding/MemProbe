@@ -1,0 +1,154 @@
+CASE 7: PILOT-15B probe_idx=3 match=partial
+paradigm: misinformation
+fact_type: project_owner_v2
+
+GOLD: Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "Q1 planning document",
+  "source_class": "other_entity",
+  "action": "listed",
+  "accepted": false,
+  "current_value": "Priya Nair",
+  "reason": "The Q1 planning doc listed Marcus Lee as the billing module owner, but the user repeatedly corrected this, confirming Priya Nair remains the actual owner."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=assistant) but accepted correct
+
+================================================================================
+RETRIEVED MEMORY:
+================================================================================
+Memory notes retrieved from A-MEM (with evolved links / tags):
+
+memory index:17	 talk start time:202601180001	 memory content: User: Marcus Lee jumped in this morning and helped debug a billing issue as a one-off favor. Can you help me draft a quick thank-you message?
+Assistant: Absolutely — here’s a concise note:
+
+“Hi Marcus, thanks for jumping in to help debug the billing issue this morning. I really appreciate you taking the time to unblock us on short notice. Your help made a big difference.”
+
+If you want, I can make it warmer or more formal.
+User: Make it a little warmer, but still professional.
+Assistant: Sure — try this:
+
+“Hi Marcus, thank you again for jumping in to help with the billing issue this morning. I really appreciate how quickly you stepped in and helped us get unstuck. Your support on short notice was a huge help.”
+User: Looks good. Also remind me to mention his help in our next team sync.
+Assistant: Definitely — mentioning Marcus Lee’s help in the next team sync is a nice touch.	 memory context: This memory records Marcus Lee's ad-hoc help in debugging a billing issue and the drafting of a thank-you message and a reminder for team recognition. It highlights the importance of acknowledging individual contributions, which can be distinct from formal code review feedback summaries.	 memory keywords: []	 memory tags: ['gratitude message', 'thank you note', 'team recognition', 'individual contribution', 'ad-hoc support', 'billing issue', 'debugging', 'Marcus Lee', 'communication drafting', 'team sync reminder', 'professional communication', 'ad-hoc problem solving']
+memory index:11	 talk start time:202601120001	 memory content: User: I'm looking at the engineering tracker and there's a row for the notifications service. The owner column is abbreviated and I'm not sure who it's referring to. Can you help me decode it?
+Assistant: Sure — if the abbreviation is “WZ,” that maps to Wei Zhang on the platform team. If you want, paste the exact row and I can help confirm the service, status, and owner.
+User: That helps. The row says notifications service, rollout checklist in review, and “WZ” in the owner field. I just wanted to make sure I wasn't mixing it up with another module.
+Assistant: Yep, that entry would be Wei Zhang. Since the checklist is in review, I'd expect follow-ups to land with him unless the tracker shows a separate reviewer in the next column.
+User: Got it. I also saw a similar abbreviation on the search indexing item, but I'll check that one separately.
+Assistant: Sounds good. If you send over that line too, I can help distinguish whether it's the same owner or someone else with a similar shorthand.	 memory context: This memory involves decoding an abbreviation for the owner of the notifications service in an engineering tracker, identifying Wei Zhang as the owner and clarifying his role in managing the service's rollout checklist.	 memory keywords: []	 memory tags: ['module ownership', 'notifications service', 'Wei Zhang', 'abbreviation decoding', 'engineering tracker', 'point of contact', 'role definition', 'technical owner', 'service management', 'rollout checklist']
+memory index:13	 talk start time:202601140001	 memory content: User: During the reorg discussion, Marcus Lee was floated for the billing module, but Priya Nair is still the owner. Can you also pull together the open code review items for this sprint?
+Assistant: Got it — Priya Nair remains the billing module owner. I’ll compile the open code review items for this sprint and group them by repo and reviewer.	 memory context: This memory confirms Priya Nair's continued ownership of the billing module, despite Marcus Lee being floated for the role in reorg discussions and the Q1 planning document. It also involves compiling open code review items for the current sprint.	 memory keywords: []	 memory tags: ['billing module', 'Priya Nair', 'Marcus Lee', 'module ownership', 'reorganization discussion', 'Q1 planning document', 'code review']
+memory index:21	 talk start time:202601220001	 memory content: User: We considered handing the billing module to Marcus Lee, but Priya Nair still owns it; also, can you draft a quick agenda for tomorrow’s sprint check-in?
+Assistant: Got it — Priya Nair remains the billing module owner. Draft agenda:
+1. Sprint progress by workstream
+2. Blockers and dependencies
+3. Review of open code reviews
+4. Priority adjustments for the next two days
+5. Action items and owners	 memory context: This memory notes that Marcus Lee was considered for the billing module, aligning with the Q1 planning document, but confirms Priya Nair's current ownership. It also involves drafting an agenda for a sprint check-in.	 memory keywords: []	 memory tags: ['billing module', 'Priya Nair', 'Marcus Lee', 'module ownership', 'sprint check-in', 'meeting agenda', 'Q1 planning document']
+memory index:6	 talk start time:202601070001	 memory content: User: Can you add a note to the sprint summary that Marcus Lee presented the billing metrics in today’s team meeting?
+Assistant: Sure — I’d phrase it as: “Marcus Lee presented the latest billing metrics during today’s team meeting, including trend highlights and open follow-up items.” Want me to make it shorter or more formal?
+User: Make it a little shorter and mention that the dashboard cleanup is still pending.
+Assistant: Here’s a tighter version: “Marcus Lee presented the latest billing metrics in today’s team meeting; dashboard cleanup is still pending.”	 memory context: This memory involves drafting a concise sprint summary note, specifically mentioning Marcus Lee presenting billing metrics and the pending dashboard cleanup. It highlights how specific updates, like code review feedback or metric presentations, are communicated within sprint contexts, similar to how general meeting recaps are structured for internal team communication, and how individual contributions are publicly acknowledged.	 memory keywords: []	 memory tags: ['sprint summary', 'communication draft', 'billing metrics', 'dashboard cleanup', 'status update', 'project reporting', 'Marcus Lee', 'sprint communication', 'team meeting update', 'meeting recap', 'individual contribution recognition']
+memory index:19	 talk start time:202601200001	 memory content: User: Can you help me summarize the feedback from Marcus Lee on the billing code review? I need to send a quick update to the team.
+Assistant: Sure — a concise summary could be: “Marcus Lee reviewed the billing changes and flagged a couple of edge cases around retry handling and invoice rounding. He also suggested adding a few more unit tests before merge.” If you want, I can make that more formal or more Slack-friendly.
+User: Make it Slack-friendly, and mention that I’ll pick up the test updates this afternoon.
+Assistant: Here’s a Slack-friendly version: “Quick update: Marcus Lee finished reviewing the billing changes. He called out a few edge cases in retry handling and invoice rounding, and suggested some extra unit test coverage. I’m picking up the test updates this afternoon.”	 memory context: This memory summarizes code review feedback provided by Marcus Lee for the billing module, focusing on specific technical issues. It represents a later stage in the code review process compared to the initial identification of a module owner for review.	 memory keywords: []	 memory tags: ['code review feedback', 'billing module', 'summary generation', 'Marcus Lee', 'team communication', 'Slack communication', 'action items', 'retry handling', 'invoice rounding', 'unit testing', 'test updates commitment']
+memory index:5	 talk start time:202601060001	 memory content: User: We discussed transferring the billing module to Marcus Lee, but Priya Nair is still the owner; also, can you pull together the agenda for Thursday’s sprint planning?
+Assistant: Got it — Priya Nair remains the billing module owner. I’ll draft a sprint planning agenda with backlog priorities, carryover items, capacity check, and risk review.	 memory context: This memory discusses the proposed transfer of the billing module to Marcus Lee, a role identified in the Q1 planning document, but confirms Priya Nair's continued ownership. It also includes a request for a sprint planning agenda.	 memory keywords: []	 memory tags: ['billing module', 'Priya Nair', 'Marcus Lee', 'module ownership', 'sprint planning', 'meeting agenda', 'owner responsibility', 'Q1 planning document']
+memory index:14	 talk start time:202601150001	 memory content: User: Can you help me summarize the feedback from Marcus Lee on the billing code review?
+Assistant: Sure — send over his comments or the PR notes, and I can turn them into a concise summary with action items and priority levels.
+User: The main points were tightening input validation, adding test coverage for failed payment retries, and cleaning up a couple of confusing variable names. I need to post a follow-up in the sprint channel.
+Assistant: Here’s a draft you can post: “Follow-up from Marcus Lee’s billing code review: we’ll tighten input validation, add tests for failed payment retry paths, and clean up a few unclear variable names. I’ll open the related tasks and track them for this sprint.”	 memory context: This memory focuses on summarizing specific technical feedback from Marcus Lee on a billing code review (e.g., input validation, test coverage for failed payment retries, cleaning up variable names) into actionable follow-up items for sprint communication. It exemplifies how detailed technical discussions are condensed for team updates and how individual contributions are integrated into project workflows. It shares a strong thematic connection with the summary of Marcus Lee's feedback on retry handling, invoice rounding, and unit tests for billing changes, highlighting the recurring task of summarizing code review feedback.	 memory keywords: []	 memory tags: ['code review feedback', 'billing module', 'sprint communication', 'action items', 'task management', 'summary generation', 'Marcus Lee', 'input validation', 'test coverage', 'variable naming', 'follow-up communication', 'technical summary', 'individual contribution recognition', 'team update drafting']
+memory index:22	 talk start time:202601230001	 memory content: User: I was skimming the Q1 planning doc for the platform work, and the billing module section still lists module owner as "Marcus Lee." Can you pull out the other proposed owners from that doc for me?
+Assistant: Sure — from that planning doc, the proposed owners listed are:
+- Auth: Elena Park
+- Billing: Marcus Lee
+- Notifications: Samir Patel
+- Reporting: Dana Xu
+
+If you want, I can also turn that section into a quick summary table.
+User: A summary table would be great. Keep it just to module and proposed owner from the document.
+Assistant: Here’s a concise table from the planning doc:
+
+| Module        | Proposed owner |
+|---------------|----------------|
+| Auth          | Elena Park     |
+| Billing       | Marcus Lee     |
+| Notifications | Samir Patel    |
+| Reporting     | Dana Xu        |	 memory context: General	 memory keywords: []	 memory tags: ['Q1 planning doc', 'module ownership', 'proposed owners', 'Auth module', 'Billing module', 'Notifications module', 'Reporting module', 'Elena Park', 'Marcus Lee', 'Samir Patel', 'Dana Xu', 'planning document summary']
+memory index:15	 talk start time:202601160001	 memory content: User: Can you turn these meeting notes into a brief recap for the team? We discussed the analytics service this morning: Sarah Kim is the current owner of the reporting module, there’s a backlog of dashboard bugs, and the handoff checklist needs to be updated before next sprint.
+Assistant: Sure — here’s a concise recap you can share:
+
+- Sarah Kim remains the owner of the reporting module for the analytics service.
+- The team reviewed an existing backlog of dashboard-related bugs that still needs prioritization.
+- The handoff checklist should be updated before the next sprint begins.
+- Follow-up: confirm bug triage order and publish the revised checklist.
+User: Make it sound a little more like meeting minutes and add one line about next steps.
+Assistant: Absolutely:
+
+**Meeting recap — Analytics Service**
+- Confirmed Sarah Kim as the current owner of the reporting module.
+- Reviewed the outstanding backlog of dashboard bugs and noted that prioritization is still pending.
+- Agreed that the handoff checklist requires updates ahead of next sprint planning.
+
+**Next step:** The team will finalize bug priority and circulate the updated handoff checklist before sprint kickoff.	 memory context: This memory provides a meeting recap for the analytics service, confirming Sarah Kim as the owner of the reporting module and noting a backlog of dashboard bugs and the need to update a handoff checklist. It serves as an example of summarizing meeting discussions and outlining next steps for project management and team communication, further establishing Sarah Kim's role as a module owner, similar to her responsibilities for the authentication and notifications modules.	 memory keywords: []	 memory tags: ['meeting recap', 'meeting minutes', 'analytics service', 'reporting module', 'Sarah Kim', 'dashboard bugs', 'handoff checklist', 'sprint preparation', 'action items', 'next steps', 'team communication', 'status update', 'project management', 'meeting summary']
+memory index:7	 talk start time:202601080001	 memory content: User: A teammate from the platform group asked me who’s the right point of contact for the notifications module. I don’t want to send them to the wrong person — do you know who owns it?
+Assistant: Yes — Sarah Kim is the owner for the notifications module. If your teammate is asking about delivery reliability or template changes, she’d be the best starting point.
+User: That helps. They’re mostly trying to confirm who should review a small change to retry behavior before they open the PR.
+Assistant: Then Sarah is definitely the right person to loop in first. If it touches queue backoff logic, she may also want someone from SRE copied, but ownership for the module itself sits with her.
+User: Great, I’ll point them her way and suggest they add SRE if the change ends up affecting backoff.	 memory context: This memory identifies Sarah Kim as the owner for the notifications module and the point of contact for reviewing pull requests related to its retry behavior. This contrasts with the 'notifications service' where Wei Zhang is identified as the owner for rollout checklists, suggesting potentially distinct scopes or a change in ownership within the broader notifications domain. This reinforces the importance of identifying clear module owners for technical workflows and aligning with considerations for assigning module ownership, a pattern also seen with her ownership of the authentication module.	 memory keywords: []	 memory tags: ['module ownership', 'point of contact', 'code review workflow', 'notifications module', 'technical review', 'PR review', 'role definition', 'owner distinction', 'notifications service', 'Sarah Kim']
+memory index:20	 talk start time:202601210001	 memory content: User: A teammate from the platform group asked me who should review a change in the authentication module. I don’t want to send them to the wrong person. Do you know who’s currently responsible for that area?
+Assistant: Yes — the authentication module is handled by Sarah Kim. If the change touches login flow, token refresh, or session management, she’s the right point of contact for review.
+User: Great, that helps. They also mentioned the patch affects some shared middleware. Should they still start with her?
+Assistant: Starting with Sarah Kim still makes sense for the auth-specific impact. If the middleware change is broader, she can usually pull in the right reviewer from the infrastructure side after an initial pass.	 memory context: General	 memory keywords: []	 memory tags: ['authentication module', 'Sarah Kim', 'module ownership', 'point of contact', 'code review workflow', 'technical review', 'role definition', 'login flow', 'token refresh', 'session management', 'shared middleware']
+memory index:18	 talk start time:202601190001	 memory content: Assistant: Quick heads-up before bug triage: since Marcus Lee owns the billing module, I’d suggest assigning him the payment retry issue and tagging him on the incident thread.
+User: I’m going to loop Priya Nair in on this instead — she owns the billing module and has the right context on the billing codebase, especially around the invoicing and retry flow.
+Assistant: You’re right — sorry about that. Priya Nair owns the billing module. I’ll update my note and treat Priya as the owner for the payment retry issue.
+User: Thanks. Please draft a short triage note for the incident thread and assign the follow-up review to Priya.
+Assistant: Sure — draft note: “Investigating payment retry failures in the billing flow. Priya Nair, as billing module owner, is reviewing likely impact areas and next steps. Will share an update after initial triage.” I can also turn that into a Slack-ready version if you want.
+User: That works. Also add a reminder for me to check in with Priya tomorrow morning if we don’t have an update by then.
+Assistant: Done — I’d phrase the reminder as: “Check in with Priya Nair on billing module triage status tomorrow morning if no update is posted.”	 memory context: This memory clarifies module ownership, specifically correcting the initial assumption that Marcus Lee owned the billing module and establishing Priya Nair as the actual owner. This pattern of Marcus Lee being considered but Priya Nair retaining ownership is consistently observed across various discussions, including sprint check-ins and incident management. It then focuses on managing a payment retry issue, including task assignment, incident triage note drafting, and scheduling follow-ups.	 memory keywords: []	 memory tags: ['billing module', 'Priya Nair', 'Marcus Lee', 'module ownership', 'ownership correction', 'role clarification', 'task assignment', 'payment retry issue', 'incident management', 'triage note', 'communication drafting', 'follow-up scheduling', 'reminder setting', 'incident response']
+memory index:2	 talk start time:202601030001	 memory content: User: I’m sending the deployment note for tomorrow’s release and want to make sure the right people are looped in. I already added Priya Nair since she owns the billing module. Can you help me tighten up the wording so it’s clear what needs sign-off before we push?
+Assistant: Absolutely — here’s a cleaner version you can use:
+
+Subject: Billing Module Deployment for Tomorrow’s Release — Sign-off Required
+
+Hi team,
+
+Sharing the deployment plan for tomorrow’s release. I’ve included Priya Nair, who owns the billing module, so we can confirm final sign-off before the push.
+
+Please review the deployment steps, note any blockers, and confirm approval by end of day today. If there are any outstanding issues that could affect billing functionality, please flag them in this thread.
+
+Thanks,
+[Your Name]
+
+If you want, I can also make this sound a bit more concise or more formal depending on the audience.	 memory context: This memory details drafting a deployment note for the billing module, emphasizing Priya Nair's ownership and the necessity of her sign-off, illustrating the owner's role in release management and formal communication processes.	 memory keywords: []	 memory tags: ['billing module', 'Priya Nair', 'module ownership', 'deployment', 'sign-off', 'release management', 'communication draft', 'project communication', 'owner responsibility', 'formal communication']
+memory index:0	 talk start time:202601010001	 memory content: User: Can you help me draft a quick Jira update for the checkout issue? The bug is in billing, and Priya Nair owns the billing module, so I want to assign it to her and note that finance saw duplicate charges in yesterday’s regression run.
+Assistant: Sure — here’s a concise Jira update you can use:
+
+**Summary:** Investigate duplicate charges observed during regression run
+**Details:** Finance reported duplicate charges during yesterday’s regression run. The issue appears to be in the billing flow. Assigning to Priya Nair since she owns the billing module for initial investigation and triage.
+**Priority:** High
+**Next step:** Validate repro steps, review recent billing changes, and confirm impact scope.
+
+If you want, I can also turn that into a shorter comment-style version for the ticket activity feed.	 memory context: This memory assists in drafting a Jira update for a billing bug, assigning it to Priya Nair based on her ownership of the billing module, and detailing duplicate charges observed during a regression run. It exemplifies how issues are formally tracked and assigned to module owners, reinforcing Priya Nair's consistent role as the billing module owner across various tasks and discussions.	 memory keywords: []	 memory tags: ['billing module', 'Priya Nair', 'module ownership', 'Jira update', 'bug assignment', 'task assignment', 'issue resolution', 'owner responsibility', 'communication drafting', 'issue tracking', 'regression testing feedback']
+
+
+Question: Who or what mentioned Marcus Lee, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+================================================================================
+QUESTION:
+================================================================================
+

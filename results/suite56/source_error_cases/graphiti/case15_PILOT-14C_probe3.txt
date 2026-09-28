@@ -1,0 +1,49 @@
+CASE 15: PILOT-14C probe3 match=incorrect
+paradigm: misinformation  fact_type: commute_method
+
+GOLD: the subway was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user and assistant discussed the subway in various contexts, including the user's trial run and ridership trends.",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "The user tried the subway for a week but is sticking with cycling to work.",
+  "reason": "The user mentioned trying the subway for a week and discussed ridership levels, but ultimately confirmed they are sticking with cycling."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (1496 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User tried the subway for a week.
+- User is considering taking the subway.
+- the subway is faster for User's roommate
+- User's roommate switched to the subway this week
+- User read an article stating more people are taking the subway again
+- The subway is the least annoying option for the User's quick errand.
+- Assistant confirms that more people are taking the subway again
+- User stated that subway weekday ridership is almost back to pre-pandemic levels
+- Assistant commented on subway weekday ridership being almost back to pre-pandemic levels
+- User told User's friend to do a trial run before her first full week.
+- User states that parking downtown is a pain for User's brother.
+- User states that User's brother is worried the bus might be less reliable.
+- User states that User's brother hates being late.
+- User informed Assistant that User read a review of a new coffee shop downtown.
+- User is sticking with cycling to work.
+
+Question: Who or what mentioned the subway, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

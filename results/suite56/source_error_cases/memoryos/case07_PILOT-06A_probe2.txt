@@ -1,0 +1,74 @@
+CASE 7: PILOT-06A probe2 match=partial
+paradigm: misinformation  fact_type: reported_port
+
+GOLD: user explicitly stated the change
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "identified",
+  "accepted": true,
+  "current_value": "service moved to port 3000",
+  "reason": "The assistant searched for and identified that the frontend/dashboard service moved to port 3000 based on repo and deployment notes."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (4279 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User frontend stays on port 3000 at 2026-07-12 04:51:50
+- [user-knowledge] - User service is answering on port 8080 at 2026-07-12 04:51:50
+- [user-knowledge] - User's API service runs on port 8080 at 2026-07-12 04:52:02
+- [user-knowledge] - User API container in pod is listening on port 8080 at 2026-07-12 04:51:50
+- [user-knowledge] - User's API service runs on port 8080
+- [user-knowledge] - User is debugging service discovery in their cluster on 2026-07-12
+- [user-knowledge] - User is experiencing noisy local dev after a compose change
+- [user-knowledge] - User needs a summary of platform sync notes at 2026-07-12 04:52:15
+- [user-knowledge] - User brought API back up locally at 2026-07-12 04:51:50
+- [user-knowledge] - User has a docker compose setup where one container is not reachable from their browser
+- [user-knowledge] - User has uncommitted changes in `config/local.yaml` and `deploy/k8s/deployment.yaml` at 2026-07-12 04:51:50
+- [user-knowledge] - User mostly uses Docker locally
+- [user-knowledge] - User was opening the wrong container in their browser
+- [user-knowledge] - User is updating nginx sidecar in staging cluster at 2026-07-12 04:51:50
+- [user-knowledge] - User reviews teammate's dev setup for sidecar metrics service at 2026-07-12 04:52:05
+- [user-knowledge] - User tightens monitoring for service uptime at 2026-07-12 04:52:22
+- [user-knowledge] - User recently added a NetworkPolicy
+- [user-knowledge] - User sometimes inspects compose configs
+- [user-knowledge] - User was reading an internal postmortem from the analytics team on 2026-07-12
+- [user-knowledge] - User's repo is on branch `feat/readiness-probe`
+- [assistant-knowledge] - Assistant confirmed port consistency at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant sanity-checked port against manifests at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant updated understanding of active service port at 2026-07-12 04:52:02
+- [assistant-knowledge] - Assistant inspected compose file and port mappings at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant searched for port 9090 in staging manifests and services at 2026-07-12 04:53:06
+- [assistant-knowledge] - Assistant checked git status and deployment spec for port mismatch at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant identified browser-facing container and port at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant ran `grep -RIn "containerPort\|targetPort\|port:" deploy/dev/` at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant verified process, bound port, and effective app config at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant showed a practical example of Docker Compose networking at 2026-07-12 04:53:23
+- [assistant-knowledge] - Assistant provided a diagnostic flow for DNS issues on 2026-07-12
+- [assistant-knowledge] - Assistant explained bridge mode at 2026-07-12 04:53:21
+- [assistant-knowledge] - Assistant provided `docker compose ps` output at 2026-07-12 04:52:48
+- [assistant-knowledge] - Assistant verified firewall rules and ingress configuration for staging environment at 2026-07-12 04:53:51
+- [assistant-knowledge] - Assistant showed config example at 2026-07-12 04:52:07
+- [assistant-knowledge] - Assistant provided `git diff origin/main -- docker-compose.yml` output at 2026-07-12 04:52:48
+- [assistant-knowledge] - Assistant ran `docker compose ps` at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant inspected ingress and deployment config at 2026-07-12 04:51:53
+- [assistant-knowledge] - Assistant provided typical sidecar config at 2026-07-12 04:51:50
+- [assistant-knowledge] - Assistant showed example of healthy route in nginx logs at 2026-07-12 04:51:50
+
+Question: Who communicated the port change and why?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

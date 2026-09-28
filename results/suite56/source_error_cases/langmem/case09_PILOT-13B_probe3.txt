@@ -1,0 +1,50 @@
+CASE 9: PILOT-13B probe3 match=partial
+paradigm: interference  fact_type: log_level
+
+GOLD: DEBUG was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user",
+  "source_class": "user",
+  "action": "explicitly instructed against",
+  "accepted": false,
+  "current_value": "INFO",
+  "reason": "The user prefers to keep application log levels at INFO in production and explicitly instructed against flipping to DEBUG for tracing issues like payment retries, preferring to pull specific failed job IDs instead."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (8339 chars) =====
+Memory facts extracted from conversation history:
+
+- When making configuration decisions for a service (e.g., log levels for `billing-worker`), the user prefers to compare the settings of similar worker services (e.g., `invoice-processor`, `email-dispatcher`) to find sane production defaults.
+- To sanity-check potential log noise from a specific log level (e.g., `WARN`), the AI can pull a sample from worker logs and group entries by severity over a recent period (e.g., 24 hours) in a staging traffic replay environment.
+- The user requested verification that the staging deploy is using the latest commit from the `release/2026-05` branch. The AI confirmed it would compare the branch head with the image/tag running in staging.
+- The user requested verification that the migration table in staging shows the newest schema change applied. The AI confirmed it would check the latest applied migration in the staging database.
+- The user prefers to keep the application log level at `INFO` in production and not temporarily enable `DEBUG`, even when `DEBUG` is discussed or used in staging environments. The user explicitly requested verification from both the cluster and the config repository to ensure production log levels remain `INFO` and are not confused with staging settings.
+- The user is updating an incident runbook for the payments service. The runbook instructs on-call to use DEBUG during live debugging. This DEBUG setting applies to a telemetry sidecar collector (supporting infrastructure), not the application itself. The AI suggested clearer phrasing: "Temporarily enable DEBUG on the telemetry sidecar only during incident investigation."
+- The user is exploring practical log sampling strategies to reduce ingestion costs for a high-traffic service while maintaining incident triage capabilities. The AI recommended a multi-pronged approach: 1) Head-based probabilistic sampling (e.g., 1-5% of successful high-volume events) using a stable hash on request/trace ID for determinism. 2) Tail-keep sampling to always retain anomalous events like 5xx responses, latency spikes, retries, or circuit-breaker opens. 3) Per-route or per-tenant rules, such as aggressive sampling for `/healthz` and static assets, and higher retention for critical paths like payments, authentication, or write operations. 4) Burst-aware caps (e.g., token-bucket or per-second limits) to prevent cost explosions during traffic surges. The AI noted that tools like Vector or Fluent Bit can implement these strategies. To validate deterministic sampling by trace ID, the AI suggested testing against a recent production data slice and checking for skew across endpoints, tenants, and status classes.
+- The user is tuning alerting thresholds for error log patterns. The AI recommended strategies to avoid false positives during deploys or batch jobs: 1) Suppress alerts during known windows (deploys, backfills) by gating rules on deployment status or maintenance labels. 2) Use a ratio + minimum volume approach, alerting only when the error pattern rate exceeds a threshold AND the total request rate is above a minimum floor, AND a rollout is not in progress. This prevents alerts on low traffic or during expected high-error periods.
+- The user is standardizing structured logging across Node and Go services for Loki, aiming for consistent fields for dashboards and queries. The AI recommended using JSON lines for app logs over logfmt due to better field extraction and handling of nested structures. The AI also suggested a Promtail pattern where the app emits JSON, Promtail parses it and promotes a small set of fields to labels, with the rest remaining in the log payload. A recommended cross-service schema includes: `timestamp`, `service`, `env`, `severity`, `message`, `trace_id`, `span_id`, `request_id`, `logger`, `version`, `http.method`, `http.path`, `http.status_code`, and `duration_ms`.
+- The user is debugging verbose logs in a teammate's staging environment. The AI diagnosed this as likely due to differing logger settings in staging and offered to compare configurations. The user confirmed this approach and ruled out shared pipeline issues, focusing the investigation on the staging host's specific configuration.
+- The user is investigating log retention policies and storage costs across environments to identify potential savings. The AI assisted by suggesting an approach (examine index sizes, retention settings, hot vs. archived storage, daily ingest) and performed a cost-saving calculation. The calculation showed an estimated monthly saving of $283.09 by reducing hot storage from 5472 GB to 2553.6 GB (14 days retention) and archiving the remaining 2918.4 GB, with hot storage costing $0.12/GB-month and archive storage costing $0.023/GB-month.
+- The user is working on reducing logging costs and volume for the `billing-worker` service, specifically for payment webhook retries. A reliability sync concluded that excessive production log noise during retry storms was the main issue. The recommended and committed config decision (Helm/config patch `9a7c2f1` in `values/prod/billing-worker.yaml`) is to move `billing-worker` to `WARN`-and-above in production. This `WARN` level is preferred because webhook retry systems often show trouble first as repeated transient failures, queue lag, or partner-side throttling, which may not always surface as hard failures immediately. Warning-level events help detect 'system is unhealthy but not fully broken yet', whereas `ERROR` risks hiding repeated retry exhaustion trends, unusual partner response patterns, and elevated latency before outright job failure. `TRACE` logging is allowed only in sandbox runs for short-lived queue debugging, with on-call approval. Structured log fields for `invoice_id` and `partner_code` were also added. To manage potential `WARN` noise, a practical compromise includes adding rate limiting or deduplication for repetitive warning messages and ensuring dashboards/alerts key off metrics like retry count, age of oldest job, and dead-letter volume. Remaining follow-up actions include splitting dashboards for retry metrics vs webhook reconciliation and verifying log volume drops after rollout.
+- The user is working on scrubbing PII from log output in a Kubernetes service before it reaches the aggregator. The recommended approach involves a two-pass redaction: first at the application boundary, and then a second pass in the log pipeline using a sidecar or DaemonSet collector. The AI provided examples for implementing this with Fluent Bit (using `modify` and `rewrite_tag` filters to remove fields like `password`, `ssn`, `token` and scrub emails) and Vector (using a `remap` transform to redact `email`, `phone`, `ssn` fields and apply regex-based redaction for email and SSN patterns within the `message` field). Verification involves checking collector pod logs after sending a test record.
+- The user is working on improving distributed tracing and wants to verify if their Kubernetes ingress is forwarding `traceparent`, `tracestate`, and `x-correlation-id` headers. The AI suggested inspecting ingress annotations and effective configuration to confirm this.
+- The user is investigating `DEBUG` flags and environment variables within their Docker Compose setup, specifically inquiring whether a `DEBUG` environment variable is associated with the application service or the frontend watcher. The AI is checking service block names to determine the scope of the `DEBUG` environment variable.
+- The user is debugging a customer report regarding 'notifications randomly disappear' for customer_id 77214 around 14:04 UTC. The application log level is set to INFO. The AI's plan is to correlate INFO log lines for the specified customer and time, then check the notification record and delivery status in the database.
+
+Question: Who or what mentioned DEBUG, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

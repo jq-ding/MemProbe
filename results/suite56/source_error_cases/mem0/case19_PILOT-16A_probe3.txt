@@ -1,0 +1,54 @@
+CASE 19: PILOT-16A probe3 match=partial
+paradigm: misinformation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "8443",
+  "reason": "The user asked if port 8443 applies to their stack while reviewing a security hardening guide, but has not yet confirmed its relevance or application."
+}
+
+REASON: source_class mismatch (pred=user vs gold=stale_tool) but accepted correct
+
+===== RETRIEVED MEMORY (3461 chars) =====
+Memory facts extracted from conversation history:
+
+- User is wiring up a local development stack where their API container is unable to reach the Postgres database service.
+- User's local development stack uses a Postgres database service that is configured to listen on port 5432.
+- User discovered that the API container's environment variable `DB_PORT` was incorrectly set to `5433` instead of `5432`.
+- User was provided a corrected `docker-compose.yaml` snippet where the API container's `DB_PORT` environment variable is set to `5432`.
+- User was provided the command `docker compose exec api sh -lc 'nc -zv db 5432'` to test connectivity from inside the `api` container to the `db` service on port `5432`.
+- User is experiencing intermittent timeouts on the staging API pod after the last deployment.
+- User requested a sanity check on the connection pool of the staging API pod.
+- User wants to confirm the staging API app is correctly pointing at the database and that the database service is still listening on port 5432.
+- User asked to compare the configured max connection pool size with active/idle connections to determine if the intermittent timeouts are due to pool exhaustion or slow queries.
+- Assistant confirmed that the staging API app is configured with a max connection pool size of 30.
+- Assistant confirmed that the current connection pool usage for the staging API app is well below the configured max size of 30.
+- User is cleaning up onboarding documentation and wants to mirror information from the team wiki for the staging database into `docs/setup.md`.
+- User is using the connection string format `postgres://app_user:***@staging-db.internal:5432/app_core` for the staging database in the onboarding documentation and noted it can be exported as `DATABASE_URL`.
+- Assistant confirmed that the provided Postgres connection string format `postgres://app_user:***@staging-db.internal:5432/app_core` is correct and that the wiki example indicates the database service runs on port 5432.
+- Assistant offered to verify whether the app already expects `DATABASE_URL` in the repository configuration.
+- User read an internal postmortem from another team about a metrics dashboard outage, which was caused by their analytics datastore being accidentally pointed at the wrong socket after a Helm change.
+- The postmortem indicated that during a chart upgrade, the `ANALYTICS_DB_PORT` was overridden by a shared values file, which prevented API pods from reaching the reporting database.
+- Reviewers missed the `ANALYTICS_DB_PORT` override because the rest of the diff in the Helm change was primarily image tags.
+- The team confirmed the metrics dashboard outage issue by checking connection failures in the pod logs and comparing them with the Service manifest for the reporting store.
+- Assistant confirmed that comparing what an app is trying to dial with what Kubernetes exposes is a standard verification path for connection issues.
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.log
+*.bak*
+.claude/
+/tmp/
+# large regenerable artifact (LongMemEval + LoCoMo filler pool, ~90 MB) — rebuild with build_filler_pool.py
+filler_pool.json

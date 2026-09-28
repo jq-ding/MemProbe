@@ -1,0 +1,152 @@
+CASE 2: PILOT-02A probe_idx=2 match=partial
+paradigm: misinformation
+fact_type: submission_deadline
+
+GOLD: user explicitly stated the extension from conference organizers
+
+PREDICTED: {
+  "source_description": "the conference organizers",
+  "source_class": "third_party",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "April 15",
+  "reason": "The user reported in memory index 18 that the conference organizers extended the paper submission deadline to April 15 instead of March 28."
+}
+
+REASON: source_class mismatch (pred=third_party vs gold=user) but accepted correct
+
+================================================================================
+RETRIEVED MEMORY:
+================================================================================
+Memory notes retrieved from A-MEM (with evolved links / tags):
+
+memory index:17	 talk start time:202601180001	 memory content: User: I heard a rumor the deadline extended to April 15, but I'm sticking with paper submission deadline is March 28. Can you help me outline the last review steps?
+Assistant: Absolutely — I’d suggest a final pass on figures and citations, a formatting check against the submission guidelines, and one last proofread for clarity and typos. If you want, I can turn that into a quick checklist.	 memory context: User's decision to adhere to an earlier paper submission deadline (March 28) despite rumors of an extension (April 15), requesting final review steps focused on figures, citations, formatting, and proofreading.	 memory keywords: []	 memory tags: ['academic writing', 'paper submission', 'final review', 'checklist', 'deadline management', 'deadline adherence', 'AI assistant', 'proofreading', 'formatting check', 'citation check', 'submission guidelines', 'internal deadline', 'deadline rumor']
+memory index:16	 talk start time:202601170001	 memory content: User: I'm helping Priya plan her conference submission timeline. Can you help me draft a quick note summarizing the updated date for the Data Systems Symposium?
+Assistant: Sure — here's a concise version: "For the Data Systems Symposium, the deadline extended to April 15, so you have a bit more time to finalize the submission materials."
+User: Good. Can you make it a little more action-oriented, like suggesting she use the extra time for revisions and coauthor feedback?
+Assistant: Absolutely: "For the Data Systems Symposium, the deadline extended to April 15. I'd suggest using the extra time to tighten the revisions, confirm coauthor feedback, and do one final formatting pass before submission."
+User: Nice — now turn that into a short Slack message I can send her.
+Assistant: Here you go: "Heads-up: for the Data Systems Symposium, the deadline extended to April 15. Might be a good chance to use the extra time for revisions, coauthor sign-off, and a final formatting check."	 memory context: Drafting a communication about an extended deadline (April 15) for a conference submission, encouraging the use of the additional time for revisions, coauthor feedback, and final formatting.	 memory keywords: []	 memory tags: ['deadline management', 'paper submission', 'academic writing', 'conference submission', 'deadline extension', 'revision planning', 'coauthor collaboration', 'communication drafting', 'Slack message', 'AI assistant', 'time management']
+memory index:18	 talk start time:202601190001	 memory content: User: The conference organizers extended the paper submission deadline — it’s now April 15 instead of March 28. Can you adjust the writing schedule to match?
+Assistant: Got it — I’ll update the submission deadline to April 15 and rework the writing plan around that. I’d suggest using the extra time to spread out revisions a bit: keep the full draft target for next week, reserve the following week for co-author feedback, and use the final stretch for polishing figures, references, and the submission checklist. If you want, I can lay out a revised week-by-week schedule.	 memory context: General	 memory keywords: []	 memory tags: ['academic writing', 'paper submission', 'deadline extension', 'writing schedule adjustment', 'revision planning', 'coauthor feedback', 'time management', 'AI assistant', 'submission checklist', 'figure polishing', 'reference checking']
+memory index:5	 talk start time:202601060001	 memory content: User: I noticed a stale tracker saying the deadline extended to April 15. I’m sticking with March 28. Can you help me outline the last review steps for the paper?
+Assistant: Got it — March 28 it is. For the final review, I’d suggest: confirm the abstract and conclusion align, do a citation pass, verify figures and captions, run a formatting check, and do one last proofread for clarity and typos.
+User: Great, also give me a quick checklist I can share with the team.
+Assistant: Sure — team checklist: finalize content edits, verify references, confirm author details, check formatting against submission guidelines, review figures/tables, and submit before March 28.	 memory context: Outlining final review steps and creating a team checklist for an academic paper submission, where the user adheres to a chosen internal deadline (March 28) despite a rumored extension (April 15), providing detailed guidance on formatting, content checks, and distinguishing between internal review and final submission.	 memory keywords: []	 memory tags: ['academic writing', 'paper submission', 'final review', 'checklist', 'deadline management', 'team coordination', 'AI assistant', 'proofreading', 'formatting check', 'citation check', 'submission guidelines', 'internal review', 'submission deadline distinction', 'rumored deadline', 'deadline adherence']
+memory index:13	 talk start time:202601140001	 memory content: User: I’m updating the project tracker. Can you help me word the note about the internal review milestone? Leadership said the deadline extended to April 15 after the design team asked for more time.
+Assistant: Sure — you could write: “The internal review milestone deadline extended to April 15 to accommodate additional design feedback and cross-team revisions.”
+User: Good. Also add a short line saying that doesn’t affect the rest of the publication workflow, just the internal review checkpoint.
+Assistant: You can add: “This change applies only to the internal review checkpoint and does not alter other publication workflow dates.”
+User: Great, that works.
+Assistant: Glad to help.	 memory context: Updating a project tracker with a note about an internal review milestone deadline extension (April 15) to accommodate feedback, and clarifying that this extension applies only to the internal review checkpoint and does not affect other publication workflow dates.	 memory keywords: []	 memory tags: ['project management', 'deadline management', 'internal review', 'milestone tracking', 'communication drafting', 'project tracker update', 'workflow adjustment', 'scope clarification', 'AI assistant', 'review checkpoint', 'publication workflow']
+memory index:15	 talk start time:202601160001	 memory content: User: I’m looking at the release tracker and there’s an entry for the API migration checklist with a date next to it. Is that still the due date for that item, or was it just the review milestone?
+Assistant: For the API migration checklist, the date on the tracker is the due date for the completed handoff package, not just the review milestone. The review itself is scheduled a few days earlier so the team has time to incorporate feedback.
+User: Got it. Which date should I use when I’m updating the weekly status note for that checklist?
+Assistant: Use May 1 as the delivery date in the weekly note. If you want, I can also help you phrase the status so it distinguishes between the review checkpoint and the final submission.
+User: Yes — give me a one-line status update that makes that clear.
+Assistant: API migration checklist is on track for final delivery by May 1, with the internal review checkpoint scheduled earlier to allow for feedback and revisions.	 memory context: Clarifying the distinction between a final due date (handoff package) and an earlier review milestone for a project item (API migration checklist), and drafting status updates to clearly communicate these different deadlines.	 memory keywords: []	 memory tags: ['project management', 'deadline clarification', 'milestone tracking', 'status update', 'communication drafting', 'API migration', 'AI assistant', 'review checkpoint', 'final delivery']
+memory index:6	 talk start time:202601070001	 memory content: User: I’m trying to compare the timelines for two internal deliverables: the analytics dashboard handoff and the vendor security questionnaire. Which one lands first if the dashboard package is due April 10 and the questionnaire is due March 25?
+Assistant: The vendor security questionnaire lands first. March 25 comes before April 10, so that one should be prioritized if both are competing for the same review time.
+User: Makes sense. If the dashboard handoff slipped to May 1 instead, would that give us enough room to schedule legal review after the questionnaire without overlap?
+Assistant: Yes, that would create a much larger buffer. With the questionnaire due on March 25 and the dashboard handoff moved to May 1, you’d have over a month between them, which should make it much easier to fit in legal review and any follow-up edits without the two timelines colliding.	 memory context: Comparing and scheduling timelines for two internal project deliverables: an analytics dashboard handoff and a vendor security questionnaire, to manage competing deadlines, prioritize tasks, and create sufficient buffer for crucial legal review without overlap.	 memory keywords: []	 memory tags: ['project management', 'deadline management', 'timeline comparison', 'scheduling', 'prioritization', 'buffer creation', 'deliverable tracking', 'internal deliverables', 'legal review', 'project planning', 'competing deadlines']
+memory index:20	 talk start time:202601210001	 memory content: User: I’m looking at the release tracker and there are two entries under external deliverables. For the API migration notes, what date is listed? I want to make sure I’m not mixing it up with the other item.
+Assistant: The API migration notes entry shows a submission date of April 10. If you want, I can also help distinguish it from the other deliverable on that tracker.
+User: Yes, that would help. Which team owns that one, and is it still marked as on track?
+Assistant: It’s owned by the Platform Enablement team, and the tracker still shows it as on track. The status note says draft content is complete and they’re just waiting on final screenshots.
+User: Got it — so the API migration notes are due April 10, owned by Platform Enablement, and currently on track.
+Assistant: Correct. That’s the entry with the April 10 date and the on-track status.	 memory context: General	 memory keywords: []	 memory tags: ['release tracker', 'deliverables', 'API migration notes', 'due date', 'project status', 'team ownership', 'on-track status', 'milestone tracking', 'communication clarification', 'AI assistant']
+memory index:9	 talk start time:202601100001	 memory content: User: I was skimming another call-for-papers this morning, and that venue says the deadline extended to April 15. Can you help me compare it with the one we’re already targeting?
+Assistant: Sure — I can help compare scope, formatting requirements, review timeline, and likely fit for our current draft. If you send the link or paste the CFP, I’ll summarize the main differences.
+User: Mostly I want to know whether it’s worth keeping as a backup option in case this draft doesn’t fit the original venue.
+Assistant: That makes sense. As a backup, I’d look at topic alignment, page limits, required sections, and whether their audience overlaps with the work you already have. Send me the CFP and I’ll turn it into a quick side-by-side decision note.
+User: Great, I’ll forward it along with the abstract later today.
+Assistant: Perfect — once I have it, I’ll pull out the key dates and submission constraints so you can decide quickly.	 memory context: Comparing different academic publication venues (call-for-papers) to assess their suitability as a primary or backup option for a research paper, considering factors like topic alignment, page limits, and audience overlap.	 memory keywords: []	 memory tags: ['academic writing', 'paper submission', 'call-for-papers', 'venue selection', 'backup submission', 'deadline comparison', 'submission criteria', 'AI assistant', 'research planning', 'decision support', 'publication strategy']
+memory index:2	 talk start time:202601030001	 memory content: User: I'm putting together the timeline for the final paper push and want to avoid a last-minute scramble. Can you help me draft a quick note to my coauthor asking whether they can review the draft by March 25? The paper submission deadline is March 28, so I want to leave a few days for edits and formatting.
+Assistant: Sure — here’s a concise draft you can send:
+
+Hi [Coauthor Name],
+I’m aiming to have the full draft ready shortly and wanted to check whether you’d be able to review it by March 25. Since the paper submission deadline is March 28, I’m hoping to leave a little buffer for revisions, formatting, and final checks. Please let me know if that timing works for you.
+
+Thanks,
+[Your Name]
+
+If you want, I can also make it sound a bit warmer or more direct depending on your usual style with them.	 memory context: Drafting an email to a co-author to request a paper review by a specific internal deadline (March 25), explicitly differentiating it from the final paper submission deadline (March 28) to allow for buffer time, revisions, and formatting in a collaborative academic writing process.	 memory keywords: []	 memory tags: ['academic writing', 'paper submission', 'coauthor collaboration', 'review request', 'deadline management', 'email drafting', 'AI assistant', 'buffer time management', 'communication strategy', 'project management', 'internal deadline', 'final submission deadline']
+memory index:19	 talk start time:202601200001	 memory content: User: Can you help me draft a general follow-up message for the team after today’s project sync?
+Assistant: Sure — here’s a concise version:
+
+Hi team, thanks for the discussion today. As a quick follow-up, we aligned on the current priorities, identified a few open questions, and confirmed the next set of action items. Please review your assigned items and flag any blockers early so we can keep things moving. I’ll share a brief summary in the project channel as well.
+User: Can you make it a little warmer and more collaborative?
+Assistant: Absolutely:
+
+Hi team, thanks again for the productive conversation today. It was helpful to get alignment on priorities and talk through the open items together. As a follow-up, please take a look at your action items and reach out if anything needs clarification or if you run into blockers. Appreciate everyone’s input and collaboration — I’ll post a short recap in the project channel.	 memory context: General	 memory keywords: []	 memory tags: ['project management', 'team communication', 'follow-up message', 'meeting summary', 'communication drafting', 'tone adjustment', 'action items', 'collaboration', 'AI assistant']
+memory index:0	 talk start time:202601010001	 memory content: User: I'm pulling together the draft for our workshop paper and could use help shaping the outline so it matches what reviewers expect. The paper submission deadline is March 28, so I want a structure we can start filling in this week.
+Assistant: Absolutely — with the paper submission deadline is March 28, it makes sense to lock the structure first and use the remaining time for writing and revisions. A solid workshop paper outline would be:
+
+1. **Title and Authors**
+2. **Abstract** — problem, approach, key result, why it matters
+3. **Introduction** — context, motivation, and the gap you're addressing
+4. **Problem Statement / Objective**
+5. **Approach / Method** — system design, workflow, or experimental setup
+6. **Results / Early Findings** — quantitative or qualitative outcomes
+7. **Discussion** — implications, limitations, and lessons learned
+8. **Related Work** — brief positioning against prior approaches
+9. **Conclusion and Next Steps**
+
+If you want, I can also turn this into a writing plan for the weeks leading up to March 28.	 memory context: Developing a standard outline for a workshop paper to meet reviewer expectations and facilitate efficient writing and revisions, including common sections like abstract, introduction, methodology, and results, in preparation for a submission deadline.	 memory keywords: []	 memory tags: ['workshop paper', 'paper outline', 'academic writing', 'submission deadline', 'research paper structure', 'writing plan', 'AI assistant', 'paper submission workflow', 'pre-submission planning', 'content structuring', 'section organization']
+memory index:8	 talk start time:202601090001	 memory content: User: Can you turn these notes into a short recap for the mobile app launch meeting?
+
+- QA said the release candidate is stable enough for final regression
+- Design owes the app store screenshots by Friday
+- Marketing wants the press kit locked before the launch checklist review
+- The app launch submission cutoff is April 10
+- Legal still needs to approve the updated privacy wording
+Assistant: Sure — here’s a brief recap:
+
+**Mobile App Launch Meeting Recap**
+- QA confirmed the current release candidate is ready for final regression testing.
+- Design will deliver the app store screenshots by Friday.
+- Marketing asked to finalize the press kit ahead of the launch checklist review.
+- The app launch submission cutoff is **April 10**.
+- Legal still needs to sign off on the revised privacy wording.
+User: Make it a little more polished and action-oriented.
+Assistant: Absolutely:
+
+**Mobile App Launch Meeting Recap**
+- QA confirmed the release candidate is stable and can move into final regression testing.
+- Design will provide the app store screenshots by Friday to keep launch prep on schedule.
+- Marketing needs the press kit finalized before the launch checklist review.
+- The submission cutoff for the app launch is **April 10**, so remaining deliverables should be completed ahead of that date.
+- Legal approval is still pending for the updated privacy language.
+
+**Immediate focus:** close out design assets, finalize the press kit, and get legal sign-off so the team stays on track for submission.	 memory context: Recapping key updates and action items for a mobile app launch meeting, including QA status, design deliverables, marketing requirements, the app launch submission cutoff (April 10), and pending legal approvals.	 memory keywords: []	 memory tags: ['mobile app launch', 'meeting recap', 'project status update', 'communication drafting', 'deadline management', 'deliverable tracking', 'action items', 'legal approval', 'release management', 'app store submission', 'AI assistant']
+memory index:3	 talk start time:202601040001	 memory content: User: I need a quick status update for the analytics dashboard rollout. I want to mention that the client feedback window closes on April 10 and that design sign-off is still pending. Can you draft something concise for the project channel?
+Assistant: Sure — here’s a concise draft:
+
+“Quick update on the analytics dashboard rollout: we’re in the final feedback cycle, and the client feedback window closes on April 10. Design sign-off is still pending, so we’re tracking that closely before moving into the next implementation step. I’ll share another update once sign-off is confirmed.”
+
+If you want, I can also make it sound a bit more executive-friendly or more team-casual.
+User: Make it a little more polished and add a note that engineering is ready once design confirms.
+Assistant: Absolutely — here’s a more polished version:
+
+“Quick update on the analytics dashboard rollout: we’re currently in the final client feedback cycle, with feedback due by April 10. Design sign-off is still outstanding, and we’re actively following up to keep things on schedule. Engineering is ready to proceed as soon as design confirmation comes through. I’ll post a further update once sign-off is finalized.”	 memory context: Drafting a concise and polished status update for the analytics dashboard rollout, clearly communicating the client feedback window closing date (April 10) and the pending design sign-off, while highlighting engineering's readiness for the next implementation step.	 memory keywords: []	 memory tags: ['project management', 'status update', 'communication drafting', 'deadline management', 'client feedback', 'design sign-off', 'team coordination', 'AI assistant', 'project deliverables', 'polished communication', 'action-oriented language', 'project rollout']
+memory index:1	 talk start time:202601020001	 memory content: User: I'm trying to block out focused writing time for the methods and results sections next week, but my calendar is already packed with sprint planning and two code reviews. Can you help me sketch a schedule that still gets the draft done before the paper submission deadline is March 28?
+Assistant: Absolutely. Since the paper submission deadline is March 28, I'd suggest protecting 3–4 writing blocks next week and treating them like fixed meetings. For example: two 90-minute sessions early in the week for methods, one 2-hour block midweek for results, and a final 60-minute pass later in the week to clean up figures and transitions. If your sprint planning is immovable, we can bias the writing sessions toward mornings or quieter afternoons. If you want, I can turn that into a day-by-day plan around your existing meetings.	 memory context: Strategies for scheduling and protecting focused writing blocks for specific academic paper sections (e.g., methods, results) within a busy calendar, aiming to complete the draft before a submission deadline and optimize individual productivity.	 memory keywords: []	 memory tags: ['academic writing', 'writing schedule', 'time management', 'paper submission', 'methods section', 'results section', 'AI assistant', 'writing blocks', 'paper submission workflow', 'pre-submission planning', 'productivity', 'personal organization']
+
+
+Question: Who communicated the deadline change and how?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+================================================================================
+QUESTION:
+================================================================================
+

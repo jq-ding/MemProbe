@@ -1,0 +1,54 @@
+CASE 4: PILOT-03D probe3 match=incorrect
+paradigm: consolidation  fact_type: diet_preference
+
+GOLD: Mediterranean diet was suggested by a third party or mentioned in passing; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "The user's partner recently started following the Mediterranean diet.",
+  "reason": "The user stated that their partner recently started following the Mediterranean diet, which has influenced their dinner planning system."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (3439 chars) =====
+Memory facts extracted from conversation history:
+
+- User follows a vegetarian diet and was deciding between a veggie burrito bowl and a pesto sandwich for lunch, prioritizing a meal that would keep them full through the afternoon.
+- User was recommended the veggie burrito bowl over the pesto sandwich for lunch, as it is likely to be more filling due to protein and fiber from ingredients like beans, rice, and fajita veggies.
+- User's cousin is trying the keto plan.
+- User is picking a brunch spot for their cousin for Sunday, July 19, 2026.
+- User was advised that bagel shops are generally tricky for keto diets due to their bread-heavy menus, though some might offer egg bowls, bacon, sausage, avocado, or salads.
+- User was recommended a diner or café with omelets and breakfast plates as a safer option for a keto-friendly brunch.
+- User's brunch on Sunday, July 19, 2026, is planned for around 11:30 AM, followed by a movie at 1:15 PM.
+- User was advised that a sit-down brunch at 11:30 AM, followed by a 1:15 PM movie, should be workable if the diner is nearby and not super busy, allowing a 45-60 minute brunch.
+- User plans to look for a diner close to the theater for Sunday brunch.
+- User went to the farmers market on July 12, 2026, and bought peaches, tomatoes, zucchini, and a large bunch of basil.
+- User was given easy ideas to use their produce, including a tomato-basil salad, grilled or roasted zucchini, peaches for yogurt bowls or snacks, or tossing tomatoes and zucchini into a pasta or grain bowl with basil.
+- User was advised to store peaches on the counter until soft then in the fridge, tomatoes at room temperature, zucchini in the fridge crisper drawer, and basil with stems in water on the counter to keep them fresh.
+- User's partner has recently started following the Mediterranean diet, which has made dinner planning a bit challenging for the user.
+- User and their partner manage dinner planning by making shared bases like pasta or grain bowls, with the partner adding Mediterranean-friendly items such as fish or feta.
+- User has found a system for dinner planning that avoids negotiation and cooking two completely separate meals every night.
+- User read a review of a keto meal delivery service and observed that the comments were varied and polarizing.
+- User noted that reviews for the keto meal delivery service showed split reactions, with some loving the convenience and high-protein meals, and others complaining about repetitive menus.
+- User observed that reviewers for the keto meal delivery service argued about the fillingness of snacks, with some finding breakfast options great and others finding everything too heavy.
+- User realized that it is difficult to judge food subscription services from reviews because everyone's preferences are very specific.
+- User tried a Mediterranean diet meal plan for a week but decided to stick with their vegetarian diet.
+
+Question: Who or what suggested the Mediterranean diet, and did the user confirm switching?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

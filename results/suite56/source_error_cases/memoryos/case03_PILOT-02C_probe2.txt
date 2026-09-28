@@ -1,0 +1,74 @@
+CASE 3: PILOT-02C probe2 match=partial
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: April 15 was mentioned as a colleague's deadline for a different project; the user did not confirm it applied to their own paper.
+
+PREDICTED: {
+  "source_description": "The user mentioned a rumor about the deadline moving to April 15, and also noted the Applied Systems Workshop abstract deadline is April 15.",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "March 28",
+  "reason": "The user mentioned a rumor about April 15, but the current confirmed deadline for their paper remains March 28, while April 15 is specifically noted as the workshop abstract deadline and a team review date."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4572 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User has a paper submission deadline of March 28
+- [user-knowledge] - User is sticking with March 28 for the paper submission deadline: 2026-07-12 04:26:44
+- [user-knowledge] - User has a paper submission deadline of March 28: 2026-07-12 04:25:43
+- [user-knowledge] - User wants a quick reminder drafted for the team about the paper submission deadline: 2026-07-12 04:26:44
+- [user-knowledge] - User has a co-author: 2026-07-12 04:25:33
+- [user-knowledge] - User needs a reminder to check in with Priya a week before April 15
+- [user-knowledge] - User wants to slot in an internal review milestone for April 15
+- [user-knowledge] - User is comparing venues for their paper: 2026-07-12 04:26:19
+- [user-knowledge] - User is writing a workshop paper
+- [user-knowledge] - Analytics dashboard refresh has a handoff on March 25.
+- [user-knowledge] - User is cleaning up the references section in their paper
+- [user-knowledge] - User wants meeting notes turned into a quick recap for the design systems team: 2026-07-12 04:26:32
+- [user-knowledge] - User wants to protect writing blocks this week for engineering docs and design notes
+- [user-knowledge] - User noted the Applied Systems Workshop abstract deadline is April 15: 2026-07-12 04:26:29
+- [user-knowledge] - User is lining up the last pass on their draft
+- [user-knowledge] - User is considering the Applied Systems Workshop: 2026-07-12 04:26:19
+- [user-knowledge] - User is working on a draft for an internal engineering write-up
+- [user-knowledge] - User is setting up a submission portal account for their team: 2026-07-12 04:26:15
+- [user-knowledge] - User needs to prepare a team for an April 15 review
+- [user-knowledge] - Vendor security questionnaire is due by April 10.
+- [assistant-knowledge] - Assistant drafted a reminder for the team about the paper submission deadline: 2026-07-12 04:26:44
+- [assistant-knowledge] - Assistant offered to help make citations consistent at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant confirmed the April 10 deadline is for the vendor compliance packet at 2026-07-12 04:25:22
+- [assistant-knowledge] - Assistant described common issues in mixed draft entries at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant drafted a status update at 2026-07-12 04:25:58.
+- [assistant-knowledge] - Assistant set a reminder for the user to check in with Priya on April 8 at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant confirmed a review timeline as reasonable at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant suggested a schedule for focused writing time at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant provided a brief recap of meeting notes: 2026-07-12 04:26:32
+- [assistant-knowledge] - Assistant suggested prep tasks for an internal review milestone on April 15 at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant outlined review milestones for next week: 2026-07-12 04:25:43
+- [assistant-knowledge] - Assistant helped sketch a workable plan around meetings for writing blocks at 2026-07-12 04:26:03
+- [assistant-knowledge] - Assistant suggested how to divide writing work at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant drafted a timeline for Priya for the Data Systems Summit at 2026-07-12 04:25:07
+- [assistant-knowledge] - Assistant made a message more collaborative and added a line about office hours at 2026-07-12 04:25:59
+- [assistant-knowledge] - Assistant identified the tighter deadline at 2026-07-12 04:25:45.
+- [assistant-knowledge] - Assistant provided guidance on page limits and figures for internal write-ups at 2026-07-12 04:25:30
+- [assistant-knowledge] - Assistant provided a one-line summary at 2026-07-12 04:25:49.
+- [assistant-knowledge] - Assistant identified "Security + procurement docs" as the vendor compliance packet row at 2026-07-12 04:25:20
+- [assistant-knowledge] - Assistant stated Procurement and Legal own the vendor compliance packet item at 2026-07-12 04:25:24
+
+Question: Who mentioned April 15 and did the user confirm it applied to their own paper?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

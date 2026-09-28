@@ -1,0 +1,49 @@
+CASE 4: PILOT-04B probe3 match=incorrect
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: user stated directly without reactivation
+
+PREDICTED: {
+  "source_description": "David Chen",
+  "source_class": "third_party",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Sarah Kim (Authentication), Marcus Lee (Reporting Dashboard)",
+  "reason": "The transfer to David Chen was a hypothetical scenario in a tech talk and not a real staffing change; the user did not recall a previous owner before the assistant noted Sarah Kim."
+}
+
+REASON: source_class mismatch: pred=third_party vs gold=user
+
+===== RETRIEVED MEMORY (1760 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- The line "ownership transferred to David Chen" was mentioned in David Chen's tech talk.
+- ownership transferred to David Chen for the payments module
+- The infrastructure ticket is marked with 'ownership transferred to David Chen'.
+- A draft note mentioning "ownership transferred to David Chen" referred to the service-handoff scenario.
+- The line "ownership transferred to David Chen" was not an actual team change.
+- ownership transfer for the payments module was part of the team reorg
+- A draft note mentioning "ownership transferred to David Chen" was not a real staffing change.
+- Assistant will note Sarah Kim as the owner for the authentication module.
+- There was a proposal during the reorg that ownership of the authentication module transferred to David Chen.
+- User has finished the auth changes.
+- Frequent stakeholder requests point toward Marcus Lee for reporting dashboard ownership.
+- Ownership is being split between infrastructure fixes and test cleanup.
+- David Chen used a hypothetical service-handoff scenario to explain incident ownership during outages.
+- User opened the PR.
+- User asked for help with a general follow-up note.
+
+Question: How was the ownership transfer communicated? Did the user recall the previous owner before stating the change?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

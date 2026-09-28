@@ -1,0 +1,52 @@
+CASE 19: PILOT-20C probe3 match=partial
+paradigm: reconsolidation  fact_type: sleep_schedule
+
+GOLD: 10 PM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user and their friend",
+  "source_class": "user",
+  "action": "mentioned and tried",
+  "accepted": false,
+  "current_value": "11 PM",
+  "reason": "The user tried a 10 PM bedtime for a few days but decided to stick with 11 PM because it fits their schedule better; their friend also has a strict 10 PM bedtime."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4515 chars) =====
+Memory facts extracted from conversation history:
+
+- User prefers and actively maintains an 11 PM bedtime, finding it more sustainable and better fitting their schedule than earlier times. They tried a 10 PM bedtime for a few days but decided to stick with 11 PM, prioritizing good, sustainable sleep habits over strict adherence to a specific time.
+- User's roommate is trying to fix her sleep schedule before starting a new job, currently struggling with doomscrolling that leads to midnight bedtimes and brutal mornings. She is considering a 9:30 PM or 10:30 PM weeknight bedtime. The user is helping her establish a consistent bedtime, with the advice that a sustainable 10:30 PM is preferable to an inconsistent 9:30 PM. Recommended strategies include a 30-minute screen cutoff before bed, placing her phone across the room, and establishing a consistent wind-down routine (e.g., tea, brushing teeth, reading). Drinking tea late was previously identified as a contributing factor to her sleep issues.
+- User is aware of the benefits of a consistent sleep schedule, such as improved energy, mood, and focus, as demonstrated by their friend's positive experience with a 10 PM bedtime.
+- User has been staring at screens too much lately and gets wired after scrolling at night.
+- Natural sleep aid options include magnesium glycinate, chamomile tea, tart cherry juice, and reducing light/screen exposure before bed. To effectively reduce screen overload and prevent feeling wired at night, specific strategies include turning on night mode, dimming screens in the evening, and establishing a 20-30 minute no-phone window before relaxing. During this window, low-stimulation alternatives like stretching, reading a paper book, or a quick skincare routine can help the brain wind down.
+- Blue-light blocking glasses offer minor help with eye comfort and reducing glare, but are less effective for overall eye strain than lowering screen brightness, taking regular breaks, and maintaining distance from the screen.
+- User experiences morning sluggishness and is looking for ways to optimize their morning routine for more energy.
+- Recommended morning routine for energy: drink water upon waking, get light exposure, 5-10 minutes of movement (stretching, short walk), and a protein-rich breakfast.
+- Recommended morning movements for energy (not a full workout): quick mobility flow including neck rolls, shoulder circles, cat-cow, hip openers, and bodyweight squats, or a 10-minute walk.
+- User's Dad has a target lights-out time of 9:30 PM in their sleep app.
+- User learned about a sleep coach who maintains a strict 9:30 PM bedtime almost every night, treating it as a non-negotiable appointment. The user finds this routine "a little intense, but also kind of admirable."
+- A consistent wind-down routine is often more impactful than supplements for sleep. Other important sleep basics include managing caffeine timing, stress levels, ensuring adequate daylight exposure and physical activity during the day, and maintaining an optimal bedroom temperature of 60-67°F (16-19°C). A cooler room aids the body's natural temperature drop for sleep. If feeling too hot, consider using cotton or linen sheets, lighter blankets, a fan for air circulation, or taking a warm shower earlier in the evening. Avoid heavy comforters, memory foam mattresses that trap heat, or large spicy meals close to bedtime.
+- User is considering trying melatonin for sleep.
+- Melatonin can help with sleep, particularly for irregular schedules or jet lag. Low doses are generally more effective. It is best used occasionally or short-term, as nightly use can lead to grogginess or unpredictable sleep, unless a doctor advises otherwise.
+- User experiences inconsistent sleep schedules on weekends, which contributes to their afternoon fatigue and sluggishness.
+- User experiences afternoon fatigue, feeling sluggish and unable to focus by mid-afternoon.
+- User's lunch is typically carb-heavy.
+- User likely does not drink enough water.
+
+Question: Who or what mentioned 10 PM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

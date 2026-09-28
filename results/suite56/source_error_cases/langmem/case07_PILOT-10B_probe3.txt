@@ -1,0 +1,97 @@
+CASE 7: PILOT-10B probe3 match=incorrect
+paradigm: interference  fact_type: current_gym_v2
+
+GOLD: Summit Climbing Gym was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "The user previously considered Summit Climbing Gym and visited it with a guest pass, but decided to stick with YMCA Downtown.",
+  "reason": "The user's own workout planning documents and habit trackers showed they considered Summit Climbing Gym, and they personally observed it being busy during a visit."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (10237 chars) =====
+Memory facts extracted from conversation history:
+
+- The user had a past interest in Summit Climbing Gym, as evidenced by its inclusion in old workout planning documents and habit trackers.
+- The user is currently purging old documents.
+- The user used a guest pass at Summit Climbing Gym but confirmed their preference for YMCA Downtown for workouts.
+- The user found an unrecognized 'Gold's Gym' entry in their fitness app and plans to delete it if it's a suggestion, as they prefer to keep their app list clean.
+- The AI advised the user to check for a timestamp, workout log, or visit history within a fitness app entry to determine if it's a past check-in or a suggestion. The AI also suggested checking if the entry was imported from phone location history or another workout app.
+- The AI offered to help the user identify the source app of an unrecognized fitness entry to prevent it from reappearing.
+- The user's friend is obsessed with Summit Climbing Gym, praising its routes, vibe, and surprisingly good classes, specifically highlighting the fun intro bouldering class, chill instructors, and focus on safe falling techniques. The friend is actively trying to convince the user to try it out for a weekend.
+- Summit Climbing Gym is a niche facility known for bouldering and climbing walls, offering a wide range of bouldering difficulties from beginner to advanced. It also provides various classes like technique, belay instruction, strength/mobility, yoga, and conditioning, distinguishing it from standard gyms.
+- Climbing gyms like Summit Climbing Gym typically offer a variety of classes, including beginner technique, belay instruction, strength/mobility sessions, yoga, and conditioning, in addition to open climbing.
+- Climbing gyms usually set a wide range of bouldering problems, from easy introductory routes for beginners to progressively tougher ones for experienced climbers, aiming for both accessibility and challenge.
+- Monthly memberships for climbing gyms often range from $70-$120+, with prices varying by city and potentially including add-ons or discounts for gear rental, classes, or annual plans.
+- Equinox is perceived by some reviewers as having a "luxury vibe" with polished facilities and nice locker rooms, but can also be seen as intimidating for those seeking a normal workout.
+- Gym reviews are highly subjective, with different individuals having opposite perceptions of the same gym based on their preferences for environment and workout style.
+- The user is trying a group fitness class for the first time this week and is concerned about basic etiquette and not being able to keep up with the pace.
+- For group fitness class etiquette, the AI advises showing up 10-15 minutes early, informing the instructor you're new, picking a discreet spot, bringing water, wiping equipment, and silencing your phone.
+- The AI advises that it is not rude to modify or take a break during a group fitness class, or if you can't keep up with the pace. Instructors expect varying fitness levels and design classes with options. The AI emphasizes moving safely, respecting others' space, and following cues, noting that effort and awareness are more important than perfect execution.
+- The user has been using their smartwatch more lately and is unsure what stats matter for tracking fitness progress.
+- The user mostly glances at calories and steps on their smartwatch but feels these do not tell the whole story about fitness progress.
+- The AI recommends tracking resting heart rate, workout frequency, daily step count, sleep, trends in active minutes, and heart rate zones for fitness progress. The AI emphasizes observing patterns over weeks rather than daily fluctuations.
+- The AI notes that calorie tracking can be noisy, while steps are good for general activity. For a comprehensive view of fitness progress, the AI advises combining steps with resting heart rate, sleep quality, and heart rate recovery time after workouts, as improvements in these indicate positive fitness trends.
+- The user is planning a weekend hike.
+- The user needs advice on hiking gear, specifically what to pack and appropriate footwear.
+- For a basic day hike, essential gear includes comfortable shoes or trail runners, a small backpack, water, snacks, a light rain layer, sunscreen, a hat, and potentially an extra layer for changing weather. Good socks for blister prevention are also recommended.
+- For hiking footwear: regular sneakers are suitable for easy, dry trails; trail shoes provide better grip and comfort; hiking boots are recommended for rough terrain, mud, or extra ankle support. The AI advises starting with existing comfortable athletic shoes with decent traction before purchasing new gear.
+- The user needs simple stretching routines for office workers because they have been sitting at their desk a lot lately.
+- The AI provided a 5-minute desk stretch routine: Neck rolls (20-30s each direction), Shoulder rolls (10 forward, 10 backward), Chest opener (clasp hands behind back, lift slightly for 20s), Seated spinal twist (20s per side), Wrist and forearm stretch (20s each side), Standing hamstring stretch (20-30s per side), Calf stretch against a wall (20s per side).
+- The AI recommended doing a mini round of desk stretches every 1-2 hours instead of waiting until feeling super stiff.
+- The AI advised that stretching during the workday is usually best for desk-related stiffness to break up sitting time. Morning stretching is good for light mobility, and evening stretches are beneficial for tight hips or back. Even 2-3 minutes of stretching between meetings can make a noticeable difference.
+- The AI offered to turn the suggested stretching routine into a super short routine the user can save on their phone.
+- The user observed Summit Climbing Gym was unusually busy with a large group in harnesses, which the AI suggested was likely a class or intro session.
+- The AI advised that while immediate protein intake after a workout is overrated, consuming a protein-rich meal or shake within 1-2 hours post-workout is beneficial for recovery.
+- The AI recommended aiming for 20-40g of protein after training for better recovery, adjusting based on individual size and workout intensity.
+- The AI suggested pairing protein with carbohydrates after a workout, especially after intense training or if further activity is planned.
+- The AI provided examples of post-workout protein options: Greek yogurt and fruit, eggs with toast, a protein shake with a banana, or chicken and rice.
+- The user started a new workout routine this week, consisting of goblet squats, push-ups, and dumbbell rows.
+- The user is rushing goblet squats and folding forward at the bottom.
+- For goblet squats, the AI advised the user to keep the weight close to their chest, brace their core, think 'sit down between your heels,' keep their chest up, and ensure knees track over toes.
+- The AI suggested that folding forward in goblet squats could be due to core bracing, ankle mobility, or going too deep, and recommended slowing down reps, pausing at the bottom, taking a wider stance with toes turned out, using the cue 'ribs down, core tight,' or temporarily elevating heels for ankle mobility.
+- For push-ups, the AI advised the user to keep their body in one straight line, hands just outside shoulder width, avoid hip sagging, and lower with control.
+- For dumbbell rows, the AI advised the user to hinge at the hips with a flat back, keep their neck neutral, and pull their elbow toward their hip.
+- The AI advised the user to back off and adjust if anything feels sharp or weird in their joints during workouts.
+- The AI suggested recording one set from the side to help identify form issues like folding forward in squats.
+- The user's friend joined Equinox.
+- The user's friend is super into spin classes.
+- The user's friend prefers less crowded gyms, a characteristic they appreciate about Equinox.
+- Equinox is considered worth the price for individuals who consistently utilize its classes and amenities and value a less crowded environment.
+- For inconsistent gym-goers, cheaper alternatives like Anytime Fitness or Gold's Gym are more financially sensible than Equinox.
+- The user had an Equinox trial pass and liked the facility, but found the guest fee potentially too expensive.
+- The user's roommate is trying to decide between Equinox and Anytime Fitness for a gym membership.
+- The user's roommate prioritizes a clean gym with decent group fitness classes and is not interested in hardcore lifting.
+- The user's roommate works irregular hours, making 24/7 gym access appealing.
+- Good group fitness classes are crucial for the user's roommate to maintain motivation and prevent boredom at the gym.
+- The user's roommate is willing to pay more for a gym if the group fitness classes are high quality.
+- The AI advised the user's roommate to tour both Equinox and Anytime Fitness and review their specific class schedules before deciding.
+- The AI needs to remind the user to pack their water bottle tomorrow morning.
+- The user's commute to YMCA Downtown for workouts is unpredictable, taking 20-40 minutes.
+- The user is trying to decide between going to the gym directly after work or going home first due to commute unpredictability.
+- The AI can help the user build an after-work routine to manage their commute to the gym.
+- The user currently does self-directed workouts at YMCA Downtown.
+- The user is interested in group fitness classes at YMCA Downtown.
+- The AI can provide information about YMCA Downtown group fitness classes.
+- The AI can help the user choose a group fitness class that fits their style.
+- The user has 45 minutes for a workout before dinner.
+
+Question: Who or what mentioned Summit Climbing Gym, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,54 @@
+CASE 8: PILOT-06A probe2 match=partial
+paradigm: misinformation  fact_type: reported_port
+
+GOLD: user explicitly stated the change
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "identified and corrected",
+  "accepted": true,
+  "current_value": "127.0.0.1:8080",
+  "reason": "The assistant identified that the user's Nginx snippet incorrectly targeted port 8000 and corrected it to 8080 to match the API's actual listening port."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (3456 chars) =====
+Memory facts extracted from conversation history:
+
+- User brought the API back up locally around July 12, 2026, and wants to sanity-check its startup before cutting a branch for deployment.
+- User wants to verify the API's listener and check for any configuration issues, noting that the service is currently answering on port 8080.
+- User wants to check for anything that would break when pushing the API, specifically the branch state and whether the deployment manifest's targetPort still matches.
+- The assistant will verify the API's process, the bound port, and the effective application configuration.
+- The assistant will check the git status and the deployment specification for any port mismatch related to the API.
+- User is updating the Nginx sidecar in their staging cluster and wants to ensure the upstream block is correctly configured.
+- The frontend for the Nginx sidecar is configured to port 3000, and the API container in the pod is listening on port 8080.
+- The assistant recommended an Nginx configuration where the `/api` location proxies to the API container listening on port 8080.
+- User provided an Nginx snippet for the sidecar where the `app_api` upstream was incorrectly configured to target `127.0.0.1:8000`.
+- The assistant identified that the `app_api` upstream in the user's Nginx snippet needed to be changed from `127.0.0.1:8000` to `127.0.0.1:8080` to match the API container's listening port.
+- User is writing a Slack reply to a teammate about how to verify their service after deployment, specifically asking to sanity-check the wording and endpoint against the container configuration.
+- The service's health check endpoint is `http://api-dev.internal:8080/health`, and a healthy response is an HTTP 200 status.
+- The service's repository is on the `feat/readiness-probe` branch, and its Kubernetes manifests are located under `deploy/dev/`.
+- The assistant offered to sanity-check the health check endpoint's port against the Kubernetes manifests for the dev environment.
+- The assistant provided a teammate-friendly Slack reply for verifying the service deploy: "Hey — once the deploy is up, you can verify it by hitting `http://api-dev.internal:8080/health`. If everything’s healthy, it should return HTTP 200."
+- User is experiencing an issue where one of their Docker Compose containers is not reachable from their browser and requested assistance to check the setup.
+- The assistant offered to inspect the Docker Compose file and active port mappings to help resolve the user's container reachability issue.
+- User realized they were opening the wrong container and asked the assistant to confirm if there was anything unusual in the logs for the 'ui-preview' container.
+- The assistant confirmed it is checking the logs for the 'ui-preview' container as requested by the user.
+- User wants to review the load balancer health check settings for their staging application to ensure that probes do not flap during deployments.
+
+Question: Who communicated the port change and why?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

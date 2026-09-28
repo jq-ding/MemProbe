@@ -1,0 +1,54 @@
+CASE 18: PILOT-15C probe3 match=incorrect
+paradigm: misinformation  fact_type: project_owner_v2
+
+GOLD: Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "Marcus Lee presented the billing metrics in the team meeting on May 14, 2026, and was discussed as a potential owner for the billing module.",
+  "reason": "The user requested to add a note to the sprint summary about Marcus Lee presenting billing metrics and mentioned a team discussion about transferring the billing module to him."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (3780 chars) =====
+Memory facts extracted from conversation history:
+
+- User is triaging a new bug where invoices are getting double-charged after a retry, which affects billing flow reliability.
+- User plans to draft a short assignment note for the bug ticket and route it to Priya Nair, who owns the billing module and will take point on the issue.
+- User is preparing the agenda for a backend design review scheduled for July 13, 2026.
+- User wants to ensure that architecture tradeoff questions regarding the billing module during the backend design review are directed to Priya Nair, who owns the module, to avoid guessing in the room.
+- The assistant drafted a note for the backend design review invite, instructing attendees to direct billing-related architecture decisions and final guidance to Priya Nair, as she owns the billing module.
+- User is preparing a deployment note for a release scheduled for the night of July 12, 2026, and has already included ops and QA on it.
+- User is adding Priya Nair to the deployment note for tonight's release because she owns the billing module and requested a short CC line to clarify her inclusion.
+- The assistant drafted a CC line for the deployment note for Priya Nair: "CC’ing Priya Nair, who owns the billing module, for visibility on the deployment and any follow-up questions."
+- User is revisiting the billing module's API versioning strategy this sprint, considering whether to keep adding fields to the current version or start planning a v2.
+- The assistant advised that extending the current API version is least disruptive for backward-compatible changes, while a v2 is suitable for breaking changes like altered response shapes, field removal, or behavior changes.
+- The assistant suggested a practical API versioning approach: additive changes remain in v1, breaking changes trigger v2, and deprecations follow a published timeline.
+- The assistant recommended documenting the API versioning policy, examples of additive vs. breaking changes, deprecation windows, client notification methods, a migration checklist, and sample requests to inform client teams.
+- User wants to add a note to the sprint summary that Marcus Lee presented the billing metrics, including trend highlights and open follow-ups, in the team meeting on July 12, 2026.
+- User wants to add a note to the sprint summary that the billing dashboard refresh is due before Thursday, July 15, 2026.
+- Priya Nair still owns the billing module, despite discussions about transferring its ownership to Marcus Lee
+- The API review was added to the sprint board for July 13, 2026
+- User is preparing a handoff note for the analytics team regarding the reporting module and is deciding between Jake Thompson and Sarah Kim as the main contact.
+- The assistant recommended Sarah Kim as the main contact for the reporting module to minimize follow-up questions, noting she likely has broader cross-team context for roadmap, dependencies, and recent changes.
+- The assistant suggested Jake Thompson as a contact for the reporting module for technical clarifications, as he is likely closest to the current code and active fixes.
+- User decided to name Sarah Kim as the primary contact for the reporting module and Jake Thompson as the technical backup in the handoff note.
+
+Question: Who or what mentioned Marcus Lee, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

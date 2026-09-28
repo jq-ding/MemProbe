@@ -1,0 +1,67 @@
+CASE 1: PILOT-01B probe3 match=partial
+paradigm: interference  fact_type: current_gym
+
+GOLD: CrossFit Central was mentioned by a third party (Jamie) as their gym; the user never confirmed switching to it and remains at FitLife.
+
+PREDICTED: {"source_description": "user", "source_class": "user", "action": "mentioned", "accepted": false, "current_value": "The user is sticking with FitLife and not switching to CrossFit Central.", "reason": "The user mentioned CrossFit Central as a gym their coworker was considering, but explicitly stated they are sticking with FitLife for their own workouts."}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3792 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User friend joined CrossFit Central
+- [user-knowledge] - User tried guest pass at CrossFit Central yesterday
+- [user-knowledge] - User sticks with FitLife for workouts: 2026-07-12 04:18:24
+- [user-knowledge] - User goes to FitLife for workouts
+- [user-knowledge] - User is sticking with FitLife for workouts
+- [user-knowledge] - User was reading gym reviews earlier
+- [user-knowledge] - User's legs are tight after group class at FitLife
+- [user-knowledge] - Wants a fitness tracking app that keeps motivated without being complicated: 2026-07-12 04:19:20
+- [user-knowledge] - User has been doing intense workout sessions lately
+- [user-knowledge] - Tries to be consistent about walking every day: 2026-07-12 04:19:12
+- [user-knowledge] - User's coworker asked for gym comparison help
+- [user-knowledge] - User has Tuesday class at FitLife after work
+- [user-knowledge] - User's coworker is new to working out
+- [user-knowledge] - User has a workout tomorrow
+- [user-knowledge] - User's brother wants a new gym
+- [user-knowledge] - User's cousin moved downtown
+- [user-knowledge] - User's brother is serious about lifting
+- [user-knowledge] - Wants to add cardio: 2026-07-12 04:19:08
+- [user-knowledge] - User's cousin prioritizes gym price
+- [user-knowledge] - User concerned about back injury during squats
+- [assistant-knowledge] - Assistant listed fitness tracking apps at 2026-07-12 04:19:12
+- [assistant-knowledge] - Assistant provided quick stretching routine at 2026-07-12 04:18:08
+- [assistant-knowledge] - Assistant provided gym comparison advice at 2026-07-12 04:18:47
+- [assistant-knowledge] - Assistant provided home workout ideas at 2026-07-12 04:18:36
+- [assistant-knowledge] - Assistant compared gyms based on user's brother's preferences at 2026-07-12 04:19:22
+- [assistant-knowledge] - Assistant advised on timing cardio workouts at 2026-07-12 04:19:10
+- [assistant-knowledge] - Assistant provided workout nutrition advice at 2026-07-12 04:18:44
+- [assistant-knowledge] - Assistant offered help planning workout schedule: 2026-07-12 04:18:24
+- [assistant-knowledge] - Assistant advised on timing for stretching at 2026-07-12 04:19:06
+- [assistant-knowledge] - Assistant commented on gym review threads at 2026-07-12 04:19:34
+- [assistant-knowledge] - Assistant recommended Planet Fitness and YMCA Downtown for a low-pressure gym
+- [assistant-knowledge] - Assistant stated it doesn't have live class schedule: 2026-07-12 04:18:29
+- [assistant-knowledge] - Assistant estimated workout duration at 2026-07-12 04:18:42
+- [assistant-knowledge] - Assistant suggested recovery stretches at 2026-07-12 04:18:59
+- [assistant-knowledge] - Assistant provided post-workout meal ideas at 2026-07-12 04:18:08
+- [assistant-knowledge] - Assistant elaborated on gym atmospheres and suitability at 2026-07-12 04:19:24
+- [assistant-knowledge] - Assistant provided signs for replacing running shoes at 2026-07-12 04:19:08
+- [assistant-knowledge] - Assistant suggested adding cardio days at 2026-07-12 04:19:08
+- [assistant-knowledge] - Assistant explained how low to squat at 2026-07-12 04:18:57
+- [assistant-knowledge] - Assistant provided advice on squat form at 2026-07-12 04:18:56
+
+Question: Who mentioned CrossFit Central, and did the user confirm switching to it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

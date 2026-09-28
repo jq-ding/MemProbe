@@ -1,0 +1,228 @@
+{
+  "domain": "mixed_personal_work_agentic",
+  "description": "New 40-episode suite covering 12 fresh fact types across personal, work (project-state emphasis), and agentic (config emphasis) domains — no overlap with the original 21 fact types.",
+  "style": "personal = friendly casual chat; work = professional but conversational, some Jira/PR references; agentic = technical with tool-output blocks, kubectl/curl/config snippets",
+  "fact_types": {
+    "primary_streaming_service": {
+      "readable": "primary streaming service",
+      "domain": "personal",
+      "encoding_contexts": [
+        "user asks for show recommendations that fit what's on their current streaming service",
+        "user mentions logging in with their family plan on the service",
+        "user asks about billing or cancelling the subscription",
+        "user talks about which show they're currently binge-watching there"
+      ],
+      "distractor_values_pool": [
+        "Hulu",
+        "Disney+",
+        "Paramount+",
+        "Peacock",
+        "Apple TV+",
+        "Amazon Prime Video",
+        "Max"
+      ]
+    },
+    "go_to_delivery_app": {
+      "readable": "go-to food delivery app",
+      "domain": "personal",
+      "encoding_contexts": [
+        "user asks about restaurants nearby that deliver via their app",
+        "user references saved payment info in their delivery app",
+        "user complains about the delivery fees on the app",
+        "user asks how to redeem a promo code on the app"
+      ],
+      "distractor_values_pool": [
+        "Postmates",
+        "Grubhub",
+        "Seamless",
+        "Caviar",
+        "Instacart",
+        "ChowNow"
+      ]
+    },
+    "primary_commute_route": {
+      "readable": "primary commute route",
+      "domain": "personal",
+      "encoding_contexts": [
+        "user asks about traffic on their usual commute",
+        "user asks for coffee shops along the route they take",
+        "user complains about a specific bottleneck on their route",
+        "user asks about parking near the destination end of the route"
+      ],
+      "distractor_values_pool": [
+        "I-880 via Oakland",
+        "Route 24 through the tunnel",
+        "the Bay Bridge",
+        "Sunol Grade on 680",
+        "Route 92 across San Mateo",
+        "Skyline Boulevard"
+      ]
+    },
+    "favorite_podcast": {
+      "readable": "current favorite podcast",
+      "domain": "personal",
+      "encoding_contexts": [
+        "user quotes something a host of the podcast said recently",
+        "user asks about upcoming episode release timing",
+        "user recommends the podcast to a friend in conversation",
+        "user asks assistant to summarize a topic tied to the podcast's theme"
+      ],
+      "distractor_values_pool": [
+        "The Daily",
+        "Serial",
+        "This American Life",
+        "Radiolab",
+        "Freakonomics Radio",
+        "Planet Money",
+        "Reply All"
+      ]
+    },
+    "current_sprint_focus": {
+      "readable": "current sprint focus",
+      "domain": "work",
+      "encoding_contexts": [
+        "user drafts a standup update about what they're working on this sprint",
+        "user asks for help unblocking their current sprint task",
+        "user asks to schedule meetings around the sprint priority",
+        "user references a Jira ticket tied to their sprint focus"
+      ],
+      "distractor_values_pool": [
+        "onboarding docs cleanup",
+        "database index rebuild",
+        "notification service refactor",
+        "mobile app crash triage",
+        "search relevance A/B test",
+        "billing dashboard cleanup"
+      ]
+    },
+    "oncall_rotation_role": {
+      "readable": "on-call rotation role",
+      "domain": "work",
+      "encoding_contexts": [
+        "user asks about pager coverage for this week",
+        "user asks about incident escalation while they're covering",
+        "user asks to swap shifts with someone",
+        "user talks about handoff notes to the next person on rotation"
+      ],
+      "distractor_values_pool": [
+        "primary on-call",
+        "secondary on-call",
+        "off-call",
+        "escalation manager",
+        "incident commander",
+        "backup coverage"
+      ]
+    },
+    "release_train_target": {
+      "readable": "current release train target",
+      "domain": "work",
+      "encoding_contexts": [
+        "user asks which features must land before the release cutoff",
+        "user references the branch cut date for the release",
+        "user asks about the testing gates before it ships",
+        "user talks about backporting a fix to the release"
+      ],
+      "distractor_values_pool": [
+        "v2.4 hotfix",
+        "v3.0 major",
+        "v3.1 minor",
+        "v2.6 patch",
+        "Q1 release train",
+        "Q3 release train"
+      ]
+    },
+    "active_feature_branch": {
+      "readable": "actively developed feature branch",
+      "domain": "work",
+      "encoding_contexts": [
+        "user references specific commits going into this branch",
+        "user asks how to rebase this branch onto main",
+        "user asks who else is committing to the same branch",
+        "user asks about review criteria before merging it back"
+      ],
+      "distractor_values_pool": [
+        "feature/search-v2",
+        "feature/cart-redesign",
+        "feature/checkout-v3",
+        "hotfix/deploy-timeout",
+        "feature/notifications-overhaul",
+        "feature/admin-tools-cleanup"
+      ]
+    },
+    "active_kubernetes_context": {
+      "readable": "active Kubernetes context",
+      "domain": "agentic",
+      "encoding_contexts": [
+        "user runs kubectl commands and mentions their current context",
+        "user asks about debugging pods in the cluster they're pointed at",
+        "user references their kubeconfig with this context set",
+        "user asks about namespace defaults tied to their context"
+      ],
+      "distractor_values_pool": [
+        "prod-east-1",
+        "prod-west-2",
+        "staging-a",
+        "staging-b",
+        "dev-shared",
+        "minikube-local",
+        "sandbox"
+      ]
+    },
+    "cache_ttl_seconds": {
+      "readable": "cache TTL setting (seconds)",
+      "domain": "agentic",
+      "encoding_contexts": [
+        "user asks about a cache miss debugging thread tied to the TTL",
+        "user checks the cache config in staging",
+        "user asks about tradeoffs of tuning the TTL up or down",
+        "user references dashboards showing hit rate vs TTL"
+      ],
+      "distractor_values_pool": [
+        "60",
+        "300",
+        "600",
+        "900",
+        "1800",
+        "3600",
+        "7200"
+      ]
+    },
+    "rate_limit_threshold": {
+      "readable": "API rate limit threshold (requests per minute)",
+      "domain": "agentic",
+      "encoding_contexts": [
+        "user checks whether an upcoming load test will hit the rate limit",
+        "user asks about 429 error handling around the threshold",
+        "user asks about per-tenant rate limit overrides",
+        "user asks about propagating changes to the gateway config"
+      ],
+      "distractor_values_pool": [
+        "100 req/min",
+        "250 req/min",
+        "500 req/min",
+        "1000 req/min",
+        "50 req/min",
+        "2000 req/min"
+      ]
+    },
+    "log_shipping_destination": {
+      "readable": "log shipping destination",
+      "domain": "agentic",
+      "encoding_contexts": [
+        "user asks how to grep for errors in the log destination",
+        "user asks about log retention set by the destination",
+        "user asks about switching over the log forwarder config",
+        "user asks about billing on the destination"
+      ],
+      "distractor_values_pool": [
+        "Datadog",
+        "Splunk",
+        "Elastic Cloud",
+        "Sumo Logic",
+        "Grafana Loki",
+        "New Relic",
+        "Papertrail"
+      ]
+    }
+  }
+}

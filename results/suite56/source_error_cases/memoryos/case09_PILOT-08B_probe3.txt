@@ -1,0 +1,74 @@
+CASE 9: PILOT-08B probe3 match=partial
+paradigm: reconsolidation  fact_type: selected_database
+
+GOLD: user explicitly stated the migration
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "drafted",
+  "accepted": true,
+  "current_value": "A short recap for the ops channel about platform-sync meeting notes, including a formal evidence line and branch name.",
+  "reason": "The assistant drafted and polished a recap for the ops channel regarding database decisions and platform-sync meeting notes at the user's request."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (4432 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User wants database-engine decisions and next steps from notes
+- [user-knowledge] - User's primary database is PostgreSQL at 2026-07-12 05:08:41
+- [user-knowledge] - User uses SQL migrations against staging at 2026-07-12 05:08:28
+- [user-knowledge] - User is working on a project that uses PostgreSQL as the primary database on 2026-07-12
+- [user-knowledge] - User benchmarked migrated to MongoDB at 2026-07-12 05:08:41
+- [user-knowledge] - User's team migrated to MongoDB
+- [user-knowledge] - User was thinking of analytics-events service for other storage row
+- [user-knowledge] - User sees stale reads in staging at 2026-07-12 05:08:30
+- [user-knowledge] - User is reading an internal architecture review for analytics sandbox service at 2026-07-12 05:09:43
+- [user-knowledge] - User needs a short recap for the ops channel about analytics ingestion service platform-sync meeting notes
+- [user-knowledge] - User is looking at infra tracker with two storage-related rows
+- [user-knowledge] - User wants to draft a migration for active rows and check dropping an old index at 2026-07-12 05:08:28
+- [user-knowledge] - User is writing feedback on a review at 2026-07-12 05:09:48
+- [user-knowledge] - User has on-call personnel at 2026-07-12 05:08:58
+- [user-knowledge] - User read a benchmark last night
+- [user-knowledge] - User wants to speed up slow queries on 2026-07-12
+- [user-knowledge] - User is seeing a slow query in staging after the last deploy (2026-07-12 05:09:24)
+- [user-knowledge] - User's team's most reads are by tenant_id + session_id
+- [user-knowledge] - User works with a notification stack at 2026-07-12 05:09:00
+- [user-knowledge] - User is helping debug a teammate's service at 2026-07-12 05:09:59
+- [assistant-knowledge] - Assistant identified database migration for `notifications` microservice at 2026-07-12 05:09:00
+- [assistant-knowledge] - Assistant grabbed SQL from app logs at 2026-07-12 05:09:24
+- [assistant-knowledge] - Assistant verified connection details and SQL migration statements for PostgreSQL at 2026-07-12 05:08:28
+- [assistant-knowledge] - Assistant described initial checks for stale reads at 2026-07-12 05:08:30
+- [assistant-knowledge] - Assistant showed schema check at 2026-07-12 05:09:26
+- [assistant-knowledge] - Assistant provided a checklist for database indexing and query optimization at 2026-07-12 05:08:48
+- [assistant-knowledge] - Assistant ran `EXPLAIN ANALYZE` on a SQL query at 2026-07-12 05:09:24
+- [assistant-knowledge] - Assistant verified database engine for analytics-events is DynamoDB at 2026-07-12 05:08:28
+- [assistant-knowledge] - Assistant provided YAML configuration for database pool at 2026-07-12 05:08:28
+- [assistant-knowledge] - Assistant offered to point out risks in the schema at 2026-07-12 05:10:33
+- [assistant-knowledge] - Assistant provided a concise recap at 2026-07-12 05:09:29
+- [assistant-knowledge] - Assistant suggested further investigation steps at 2026-07-12 05:08:32
+- [assistant-knowledge] - Assistant identified staging setup leaning toward DynamoDB-style assumptions at 2026-07-12 05:10:33
+- [assistant-knowledge] - Assistant acknowledged proceeding with PostgreSQL migration check at 2026-07-12 05:08:41
+- [assistant-knowledge] - Assistant provided an updated recap with evidence line at 2026-07-12 05:09:31
+- [assistant-knowledge] - Assistant pulled a sample decision record template at 2026-07-12 05:09:43
+- [assistant-knowledge] - Assistant suggested common issues for MongoDB migration at 2026-07-12 05:09:59
+- [assistant-knowledge] - Assistant provided guidance on evaluating whether to keep an old index at 2026-07-12 05:08:28
+- [assistant-knowledge] - Assistant provided a polished version of the recap at 2026-07-12 05:09:41
+- [assistant-knowledge] - Assistant inspected config shape and suggested sensible DB pool settings at 2026-07-12 05:08:28
+
+Question: How was the database change communicated?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

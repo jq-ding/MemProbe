@@ -1,0 +1,70 @@
+CASE 13: PILOT-15C probe3 match=partial
+paradigm: misinformation  fact_type: project_owner_v2
+
+GOLD: Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "An old Q3 planning document",
+  "source_class": "other_entity",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Priya Nair is the confirmed billing module owner; Marcus Lee is a contributor who provides code reviews and ad hoc assistance.",
+  "reason": "The user clarified that Priya Nair is the owner and that Marcus Lee's listing in the old Q3 document was a source of confusion, though he remains a helpful contributor."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (6619 chars) =====
+Memory facts extracted from conversation history:
+
+- Priya Nair is the primary owner of the billing module. While an old Q3 planning document listed Marcus Lee as the module owner, his current role is supportive, providing ad-hoc support and feedback, including code reviews, and not ownership, a point clarified by the user to avoid confusion.
+- QA signoff is required before release, which includes a staging smoke test.
+- An API dependency review is scheduled before implementation.
+- The migration checklist for the billing workstream is currently in draft status.
+- A typical project timeline includes: Week 1: finalize scope, Week 2: implementation start, Week 3: integration testing, Week 4: release readiness review.
+- The user expects the agent to be able to provide a sprint review agenda.
+- Sarah Kim is the primary owner of the notifications service and the authentication module. She is the primary point of contact for cross-team coordination and planning for the notifications service and will handle related decisions for the authentication module. She should be included in design reviews for the notifications module to provide feedback on architecture, rollout risk, and downstream impact on message delivery. Her input is especially important for proposals touching retries, queue behavior, or provider integrations. Jake Thompson supports technical follow-up on implementation and recent changes for the reporting module.
+- I can draft and format notes for various purposes, including meeting invites, bug tickets, and both polished, action-oriented Slack recaps and meeting-notes style recaps from meeting notes.
+- The user's preference for recaps varies; they may request polished, action-oriented recaps for Slack or less polished, meeting-notes style recaps depending on the context.
+- The agent can summarize code review feedback and format it into concise Jira comments or Slack recaps.
+- json_doc_id='dacf24ec-89dd-44ec-8088-bf4a1103e88c'
+- To assign tasks without overloading engineers, prioritize by complexity and dependency, distribute high-risk tasks across different team members, avoid assigning all urgent bug work to one engineer, and reserve a small buffer for unplanned support issues, especially for modules like billing.
+- To manage inter-team dependencies, make them visible early and track them explicitly in sprint planning. For each dependent item, note the external team, expected delivery date, risk level, and fallback option. Assign one person on your team to own follow-up, and break work into pieces (mocks, feature flags, interface contracts) to allow progress while waiting on external teams.
+- Dependency management is best handled with a separate tracker or board accessible to both teams, rather than primarily in standups. Standups should be used only to flag changes or blockers. A short weekly sync between teams is also beneficial for confirming timelines, surfacing risks, and preventing surprises.
+- Code review best practices include: keeping pull requests small, providing a clear summary of changes and reasoning, adding testing notes for verification, and separating refactors from functional changes.
+- A reasonable turnaround time for first code review feedback is within one business day, with urgent fixes handled faster.
+- To prevent code reviews from getting stuck, teams should: set an expectation that reviews are part of daily work, rotate review responsibility, use lightweight SLAs (e.g., "respond within 24 hours"), flag PRs by priority, limit work-in-progress, and encourage authors to tag specific reviewers.
+- When onboarding a new engineer to the billing codebase, prepare a checklist including local setup steps, service dependencies, test data/sandbox accounts, key repository documentation, and a map of main billing flows. Also, assign a small starter task like updating a validation rule or fixing a low-risk bug.
+- For onboarding a new engineer, provide documentation upfront and schedule focused sessions: an architecture walkthrough, a pairing session on a real ticket, and an end-of-week check-in for questions.
+- A billing module performance dashboard should include high-signal views such as request latency (p50/p95/p99), error rate, throughput, queue/job backlog (if using async processing), and dependency health (e.g., payment gateway response times, database query latency). Metrics should be broken down by endpoint or workflow step (e.g., invoice generation, payment retries, reconciliation) to help identify the source of slowdowns.
+- A billing module performance dashboard should be structured with a summary section for standups (overall health, active alerts, 24-hour trends) and drill-down panels for engineers (service-level metrics, slow queries, failure categories).
+- I can outline a dashboard structure for the team to review during sprint planning.
+- json_doc_id='3b80f81c-0fba-449f-ab93-80f2cce2928f'
+- json_doc_id='b96b26c7-6438-4c2a-a2f5-d66ab59a45f3'
+- Authentication service cleanup is scheduled to finish by Friday.
+- Documentation for webhook retry behavior needs to be updated.
+- Add the API review to tomorrow’s sprint board.
+- json_doc_id='62836330-30a5-4c90-b749-86b0305dd435'
+- API versioning strategy: additive changes stay in v1, breaking changes trigger v2, and deprecations get a published timeline.
+- Documentation for API versioning should include: versioning policy, examples of additive vs. breaking changes, deprecation windows, how clients will be notified, migration checklist, and sample requests for current and future versions.
+- Priya Nair should be CC'd on deployment notes for releases impacting the billing module for visibility and follow-up questions.
+- json_doc_id='26fb6940-1771-4058-abe5-c9d9da68c1fe'
+- json_doc_id='4a130171-c648-47c2-9b08-e62cb8a67817'
+- For billing-related architecture decisions, questions should be directed to Priya Nair, who owns the billing module.
+- User is triaging a bug where invoices are double-charged after a retry, impacting billing flow reliability.
+- When a bug is related to the billing module, it should be assigned to Priya Nair.
+
+Question: Who or what mentioned Marcus Lee, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

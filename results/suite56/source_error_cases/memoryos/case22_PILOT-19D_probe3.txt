@@ -1,0 +1,74 @@
+CASE 22: PILOT-19D probe3 match=partial
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user mentioned port 8443 based on a security hardening guide they were reading.",
+  "source_class": "user",
+  "action": "suggested",
+  "accepted": false,
+  "current_value": "5432",
+  "reason": "The user initially considered moving the database to port 8443 but decided to keep it on port 5432 after benchmarking showed better performance."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4278 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User found `8443` in an old config file at 2026-07-12 06:33:29
+- [user-knowledge] - User considered moving database service to port 8443 for next deploy at 2026-07-12 06:32:51
+- [user-knowledge] - User was reading dashboard too quickly at 2026-07-12 06:32:49
+- [user-knowledge] - User is looking at infra tracker at 2026-07-12 06:32:41
+- [user-knowledge] - User was interested in listener claim at 2026-07-12 06:33:52
+- [user-knowledge] - User read internal postmortem about analytics sandbox at 2026-07-12 06:33:49
+- [user-knowledge] - User decided to keep database service on port 5432 at 2026-07-12 06:32:53
+- [user-knowledge] - User is on a solutions team at 2026-07-12 06:33:16
+- [user-knowledge] - User is going through a security hardening guide
+- [user-knowledge] - User is wiring up a sidecar for analytics in the staging cluster at 2026-07-12 06:33:07
+- [user-knowledge] - User is wiring up TLS for app's database connections at 2026-07-12 06:33:45
+- [user-knowledge] - User is tuning app's database connection pooling at 2026-07-12 06:33:03
+- [user-knowledge] - User interested in database backup automation (2026-07-12 06:34:08)
+- [user-knowledge] - User plans multi-region database replication setup for a new service at 2026-07-12 06:32:55
+- [user-knowledge] - User has a teammate
+- [user-knowledge] - User has a stack
+- [user-knowledge] - User needs connection port for analytics store at 2026-07-12 06:32:41
+- [user-knowledge] - User is looking for pool exhaustion or timeout noise in API logs
+- [user-knowledge] - User is tightening staging environment at 2026-07-12 06:33:34
+- [user-knowledge] - User helping teammate debug local stack
+- [assistant-knowledge] - Assistant checked repo manifests for "8443" at 2026-07-12 06:32:31
+- [assistant-knowledge] - Assistant grepped deprecated configs to trace `8443` reference at 2026-07-12 06:33:29
+- [assistant-knowledge] - Assistant showed ingress bit at 2026-07-12 06:32:36
+- [assistant-knowledge] - Assistant applied recommendation to component exposing HTTPS/admin traffic on 8443 at 2026-07-12 06:32:39
+- [assistant-knowledge] - Assistant showed what the client should use at 2026-07-12 06:32:24
+- [assistant-knowledge] - Assistant identified database service runs on port 5432 at 2026-07-12 06:32:26
+- [assistant-knowledge] - Assistant executed `ls` at 2026-07-12 06:33:18
+- [assistant-knowledge] - Assistant scanned recent API logs for pool-related errors and timeout patterns at 2026-07-12 06:32:24
+- [assistant-knowledge] - Assistant provided initial database performance checks at 2026-07-12 06:34:04
+- [assistant-knowledge] - Assistant created a new git branch at 2026-07-12 06:33:01
+- [assistant-knowledge] - Assistant inspected pool metrics at 2026-07-12 06:32:24
+- [assistant-knowledge] - Assistant checked manifests and live resources for references at 2026-07-12 06:33:31
+- [assistant-knowledge] - Assistant inspected compose snippets and summarized differences at 2026-07-12 06:33:18
+- [assistant-knowledge] - Assistant confirmed leaving database port unchanged at 2026-07-12 06:32:53
+- [assistant-knowledge] - Assistant explained why Redis port mismatch is easier to catch at 2026-07-12 06:34:02
+- [assistant-knowledge] - Assistant provided current branch and config status at 2026-07-12 06:32:51
+- [assistant-knowledge] - Assistant offered to sketch a reference architecture at 2026-07-12 06:32:55
+- [assistant-knowledge] - Assistant confirmed `analytics-db-svc` exposes TCP port `27017` at 2026-07-12 06:32:41
+- [assistant-knowledge] - Assistant verified reachability from an app pod at 2026-07-12 06:32:24
+- [assistant-knowledge] - Assistant offered to draft a recommendation note at 2026-07-12 06:33:20
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

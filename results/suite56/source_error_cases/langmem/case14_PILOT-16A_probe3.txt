@@ -1,0 +1,71 @@
+CASE 14: PILOT-16A probe3 match=incorrect
+paradigm: misinformation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "8443",
+  "reason": "The user uses port 8443 for the metrics-db-proxy in the analytics sandbox, as confirmed by container arguments and service configuration."
+}
+
+REASON: source_class mismatch: pred=user vs gold=stale_tool
+
+===== RETRIEVED MEMORY (12073 chars) =====
+Memory facts extracted from conversation history:
+
+- The user prioritizes compatibility when making configuration decisions, even after exploring and testing alternative options. This was demonstrated by the decision to keep the staging database service on port 5432 for compatibility, despite considering and testing a migration to port 8443.
+- json_doc_id='1127547c-890c-45ed-a610-ee086c8b7050'
+- The `metrics-db-proxy` in the analytics sandbox is configured to listen on port `8443` (via `--listen=:8443` in its container arguments) and is exposed via an internal ClusterIP service.
+- The user has encountered and discussed connectivity issues caused by database port mismatches (e.g., DB_PORT, ANALYTICS_DB_PORT). These can occur when an application (e.g., API container) is configured for a different port than the database (e.g., Postgres, MySQL on 3306, MongoDB on 27017, reporting database) is listening on, often due to configuration overrides (e.g., shared values files in Helm charts). A common troubleshooting flow involves first checking service and endpoint configurations, then verifying the container's exposed port in the deployment spec. Verification typically involves checking connection failures in pod logs and comparing with the database service manifest. Additionally, verifying the app's health checks and environment variable injection is crucial to prevent connection issues.
+- The user’s analytics team uses a MongoDB datastore in their staging environment. The `mongo-store` service is configured to listen on port `27017/TCP`. MongoDB is well-suited for flexible documents and fast iteration with semi-structured data. The agent verified that both the deployment and the analytics API ConfigMap (`DB_PORT="27017"`) are correctly aligned with this port. When port mismatches are ruled out as a cause for connectivity issues, the next troubleshooting steps include checking network policy, credentials, or whether the application is pointing to the wrong namespace or service name.
+- The user seeks quick recommendations for 'throwaway' staging environments for vendor demos, particularly for search and catalog browsing. Key concerns for these environments include minimizing connection issues and ensuring startup reliability in CI.
+- For demo environments focused on search and catalog browsing, the agent recommends: - MongoDB (port 27017) if product data is flexible or changes often. Pros: flexible documents, fast iteration for semi-structured catalog data, simple to seed. Cons: less natural for strong relational integrity. - MySQL (port 3306) if predictable joins, reporting, or stricter relational structure is needed. Pros: mature tooling, strong relational queries, easier to enforce schema consistency. Cons: can be slower to reshape if the demo dataset keeps changing.
+- To compare database startup reliability in CI for different branches, the agent recommends: 1. Checking out each branch. 2. Bringing up the backing service. 3. Waiting on readiness. 4. Running a lightweight connection test from the app container. 5. Comparing retries/timeouts from CI logs rather than benchmarking app features. This helps identify connection failures and container readiness issues.
+- The user's staging database service runs on port 5432, and this port will be maintained for compatibility, despite an earlier consideration to migrate to port 8443. Monitoring dashboards may show stale data (e.g., port 8443) from reverted migration attempts, requiring verification against live configurations. The Postgres connection string format is `postgres://app_user:***@staging-db.internal:5432/app_core`, which can also be exported as the `DATABASE_URL` environment variable.
+- The user is interested in improving visibility into database latency and query performance in their staging environment.
+- To troubleshoot database latency and query performance, the agent recommends: 1. Separating connection-level latency from slow-query behavior. 2. Checking DB exporter metrics (query duration, active sessions, lock waits). 3. Inspecting slow query logs or statement statistics. 4. Checking app-side timing to confirm if the delay is in the database or upstream. 5. If Postgres statement stats are enabled, inspecting the top queries by mean execution time.
+- To verify if a database query is missing an index, the agent recommends running an execution plan and then inspecting the indexes on the relevant table.
+- To verify Postgres TLS on the database side, confirm that TLS is enabled and that the certificate files are loaded from the expected configuration paths on the database host.
+- The user is troubleshooting intermittent DB errors in a staging API pod under load, suspecting connection pool exhaustion or slow queries. The API app is configured with a max connection pool size of 30, and current usage is below this limit. The database service is expected to be listening on port 5432. To sanity-check connection pooling and limits, the agent recommends comparing app pool size per replica, number of replicas, database `max_connections`, and reserved headroom for admin jobs, migrations, and monitoring. The agent advises tuning app pools first unless the database is clearly under-provisioned. A quick rule of thumb for tuning includes: lowering oversized pools if concurrency per process is modest, keeping total possible connections comfortably below DB capacity, leaving headroom for psql sessions, migrations, cron jobs, and observability agents, and if using a pooler, letting the app keep fewer direct connections. A practical checklist for connection pooling includes: web pool ≈ thread count, not 'just in case' large; worker pool aligned to actual parallel jobs; summing across all replicas before changing DB settings; and watching wait events / connection saturation during load tests.
+- The agent can investigate port usage (e.g., 8443) by inspecting ingress, service, and deployment/container configurations, and confirm TLS-related aspects by checking gateway deployments and their environment/config.
+- The user is tightening access to a staging environment and needs to review firewall rules and network security groups to ensure only the app tier can reach internal services.
+- For staging environment network security, a good pattern is to allow traffic by source security group rather than broad CIDR ranges, and keep ingress narrowly scoped per service. This includes: app-tier SG allowing egress to required internal subnets/services; internal-service SG allowing ingress only from app-tier SG; bastion/admin SG being separate and limited to admin ports from office/VPN ranges; and a default deny for anything not explicitly needed.
+- When inspecting network security rules, check for: `0.0.0.0/0` on sensitive ingress, overly broad east-west access between private subnets, duplicate rules spread across SGs and NACLs, and missing environment tags or inconsistent naming.
+- A least-privilege network access matrix for a staging environment includes: web/app tier SG allowing required TCP ports to internal API/service SG; admin/bastion SG allowing admin ports from VPN/corporate CIDR to private hosts; CI runner SG restricting to deployment path for deploy target SG; monitoring SG allowing specific exporter ports to all instrumented workloads; and a default deny for all others to internal services.
+- Practical guardrails for network security include: preferring bastion or SSM-style access over direct host exposure, separating admin access from app traffic, adding descriptions/tags to every rule to spot drift, and periodically diffing live rules against Infrastructure as Code (IaC).
+- The user prefers Redis over MySQL or MongoDB for sample applications that primarily involve caching reads and storing small amounts of session metadata, due to its lightweight nature, fast startup, and suitability for key/value access.
+- A sane starting point for multi-region database replication topology includes: 1 writable primary in the main region, 1 local replica in the same region for fast failover, and 1 cross-region replica for disaster recovery and read locality. This setup should also include automated backups plus WAL/binlog shipping (engine-dependent) and clear promotion rules for explicit and tested failover.
+- When implementing multi-region database replication on Kubernetes, it is recommended to separate replication configuration, backup/restore jobs, and traffic routing for reads vs. writes.
+- A checklist for multi-region database replication includes: defining RPO/RTO targets first, confirming replica lag thresholds, regularly testing promotion, and making application behavior explicit during region loss.
+- For cross-region database replication, default to asynchronous replication unless there is a very strict data-loss requirement and higher write latency can be tolerated. Synchronous replication over long distances typically negatively impacts throughput and tail latency.
+- A common multi-region database replication pattern involves: synchronous or semi-synchronous replication inside the primary region, asynchronous replication to secondary regions, serving reads locally where stale data is acceptable, and pinning writes to the primary until a planned failover.
+- Key monitoring aspects for multi-region database replication include: replication lag, replay/apply delay, failover health checks, and split-brain prevention via fencing or lease control.
+- The user maintains an "infra tracker" that lists services and their details, which can sometimes contain outdated or incorrect information.
+- The user needs assistance in correctly identifying and categorizing services within their "infra tracker", specifically distinguishing between datastores and cache tiers.
+- The service `events-mongo` in the `telemetry` namespace is a MongoDB-backed datastore, not a SQL backend.
+- The service `redis-events` is a Redis cache.
+- The agent can verify service types and correct categorization errors in the user's infra tracker by inspecting live service configurations.
+- The user is interested in database backup automation and wants to sketch a simple restore test workflow for CI or a staging environment.
+- A recommended workflow for database restore testing involves: 1. Triggering/fetching the latest backup artifact. 2. Provisioning a disposable database instance. 3. Restoring the backup into it. 4. Running a validation suite (checking schema, expected tables, non-zero row counts for critical tables, and app smoke queries). 5. Tearing down the environment. 6. Publishing a pass/fail report. This can be integrated into a nightly pipeline or a scheduled job. An example validation script for Postgres includes `createdb`, `pg_restore`, and `psql` commands to check table presence and row counts.
+- A Kubernetes CronJob can be used for automated database restore tests. A minimal pattern includes `apiVersion: batch/v1`, `kind: CronJob`, `metadata.name: restore-test`, `spec.schedule: "0 3 * * *"`, and a `jobTemplate` with a `postgres:16` image container that executes commands for fetching, restoring, and validating the backup.
+- To ensure trust and verifiability of database restore tests, useful evidence to log includes: backup artifact name and timestamp, backup checksum, restore start/end times, schema/table inventory after restore, results of validation queries, job exit code, and the environment name and git SHA for the validation scripts.
+- The agent can map recommended ports/protocols from security hardening guides to services within the user's cluster.
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

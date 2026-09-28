@@ -1,0 +1,54 @@
+CASE 20: PILOT-16B probe3 match=incorrect
+paradigm: misinformation  fact_type: ci_provider
+
+GOLD: GitHub Actions was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The conversation history and memory facts",
+  "source_class": "unknown",
+  "action": "none",
+  "accepted": false,
+  "current_value": "Not mentioned",
+  "reason": "There is no mention of GitHub Actions in the provided memory facts; the user's team uses Jenkins and CircleCI."
+}
+
+REASON: source_class mismatch: pred=unknown vs gold=stale_tool
+
+===== RETRIEVED MEMORY (4736 chars) =====
+Memory facts extracted from conversation history:
+
+- User kicked off a backend build in Jenkins before a standup and is seeking troubleshooting guidance for the pipeline's status.
+- User was provided a troubleshooting checklist for Jenkins CI/CD pipelines, which includes checking the current stage, console output, recent changes, test results, agent/executor issues, and comparing against previous successful runs.
+- User is updating the lint stage in Jenkins and is considering whether to keep the linter configuration in the Jenkinsfile or move it into a shared library for consistency across multiple services.
+- User is concerned about ensuring the linter plugin publishes warnings in PR builds without immediately failing every branch.
+- User was recommended to keep linter configuration files and repo-specific exceptions in each repository, but to place Jenkins-specific orchestration (pipeline step, standard flags, reporting, and failure handling) in a shared library for consistency across services.
+- User was recommended a pattern for linting in Jenkins that separates publishing results from enforcing quality gates, suggesting to always run the linter and publish warnings in PR builds, make the build unstable initially, and enforce failure only on protected branches or after a baseline period.
+- User is posting an update in the dev channel about a flaky integration test that failed overnight in the payments test suite.
+- User's team uses Jenkins for CI/CD pipelines, and the user wants to include the build URL in the update about the flaky integration test failure.
+- User was provided a draft message for the dev channel to communicate a flaky integration test failure in the payments test suite, including a placeholder for the Jenkins build URL.
+- User is tightening up their release process and is seeking advice on how to handle build artifact storage and versioning so engineers can easily find the correct packages later.
+- User was recommended to use a central artifact repository with clear retention rules and immutable versioning for build artifacts. For versioning, semantic versioning is suggested for releases, with a build number or commit-based suffix for non-release builds, and to separate snapshot-style artifacts from release artifacts.
+- User was recommended to organize build artifacts by product or service, then by environment or release type if necessary. This includes keeping releases immutable, applying automatic cleanup for old pre-release builds, and making metadata searchable by version, branch, and commit, along with using a short naming standard and documented retention policy.
+- User's release-readiness meeting notes for the vendor portal project indicate that its deployment pipeline is currently on CircleCI.
+- For the vendor portal project, flaky integration tests are blocking merges twice a week, causing schedule uncertainty and identifying test reliability as a primary delivery risk.
+- Priya proposed adding a separate staging workflow for the vendor portal project to validate hotfixes before release.
+- The vendor portal project team agreed to review build minutes cost before the next sprint to assess efficiency and budget impact.
+- User wants to tighten up how their CI pipeline health is monitored because failures are noticed too late, only when a merge is blocked, and is seeking an approach to failure alerting without creating too much noise.
+- User was recommended to alert on impact rather than every event for CI pipeline failures, with specific suggestions including immediate alerts for repeated main branch failures, notifications to service owners for build duration spikes, grouping flaky test failures into lower-priority digests, and escalating only if a failure persists for a set time window.
+- User was recommended to define clear ownership for CI pipeline alerts so they go to the correct team instead of a broad channel.
+- User was recommended to track the effectiveness of their CI pipeline alerting setup using operational metrics such as Mean Time to Detect a broken build, Mean Time to Recovery, Number of failed runs caught by alerts versus found manually, Alert Volume per week, and Percentage of alerts that were actionable.
+
+Question: Who or what mentioned GitHub Actions, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

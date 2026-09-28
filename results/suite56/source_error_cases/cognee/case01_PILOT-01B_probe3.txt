@@ -1,0 +1,159 @@
+CASE 1: PILOT-01B probe3 match=partial
+paradigm: interference  fact_type: current_gym
+
+GOLD: CrossFit Central was mentioned by a third party (Jamie) as their gym; the user never confirmed switching to it and remains at FitLife.
+
+PREDICTED: {
+  "source_description": "The user and their friend Jamie",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "The user is sticking with FitLife and is not switching to CrossFit Central.",
+  "reason": "The user explicitly stated, 'I'm sticking with FitLife for workouts' and 'I’m not trying to switch gyms or anything' after mentioning that their friend Jamie joined CrossFit Central."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (10187 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: My coworker asked me to help... [user, compare, crossfit]
+__node_content_start__
+User: My coworker asked me to help compare a couple gyms near the office. One of the options is CrossFit Central, but I don’t know much about it.
+Assistant: If they like group training and high-intensity workouts, CrossFit Central could be worth a look. I’d compare class schedule, coaching style, and how beginner-friendly it feels.
+User: Yeah, they’re pretty new to working out, so I’m trying to steer them somewhere not too intimidating.
+Assistant: Then I’d tell them to ask about intro classes, trial sessions, and whether the coaches offer modifications. That usually gives a good sense of whether a gym is a good fit.
+__node_content_end__
+
+Node: crossfit central
+__node_content_start__
+A gym that Jamie recently joined, associated with the CrossFit fitness program.
+__node_content_end__
+
+Node: User: My friend just joined CrossFit Central... [user, crossfit, assistant]
+__node_content_start__
+User: My friend just joined CrossFit Central and won’t stop talking about how intense the workouts are.
+Assistant: Haha, that tracks — people who start CrossFit usually become instant evangelists. Did they say if they’re loving it or just sore all the time?
+User: Both, apparently. They said everyone there is super welcoming, but they can barely walk after leg day.
+Assistant: That sounds very on-brand for CrossFit Central. At least it’s a good sign the community is keeping them motivated.
+User: Yeah, I’m happy they found a place they’re excited about.
+Assistant: For sure — having a gym you click with makes such a difference.
+__node_content_end__
+
+Node: User: Jamie was telling me they just... [like, workouts, fitlife]
+__node_content_start__
+User: Jamie was telling me they just joined CrossFit Central and apparently they're obsessed already lol. It sounds intense. I’m still doing my usual workouts at FitLife, but now I’m curious what the vibe is like at places like that.
+Assistant: Haha yeah, that tracks — people who get into CrossFit can get really into it fast. CrossFit Central probably has more of a group-based, high-intensity vibe, with coached workouts and a big community feel. FitLife is probably better if you like doing your own routine at your own pace. If you want, I can help you compare the two styles without assuming you want to switch.
+User: Yeah exactly, I’m not trying to switch gyms or anything. I just wanted to know why Jamie is suddenly talking about burpees like it’s a personality trait.
+Assistant: Totally fair. CrossFit-style gyms tend to make workouts feel like a team event, so people get attached to the challenge and the culture. There’s usually a lot of emphasis on timed workouts, tracking progress, and cheering each other on, which can be super motivating. At FitLife, you can still get a great workout, just with more flexibility and less of the “fitness cult” energy.
+User: Hah, “fitness cult” is exactly the vibe I was picturing.
+Assistant: Honestly, that’s the stereotype for a reason. Nothing wrong with it if Jamie loves it, but it makes sense that you’d stick with FitLife if that setup works better for you.
+__node_content_end__
+
+Node: User: I saw a promo for CrossFit... [user, i, saw]
+__node_content_start__
+User: I saw a promo for CrossFit Central, but I'm sticking with FitLife for workouts.
+Assistant: Makes sense. Want help planning this week's workout schedule?
+__node_content_end__
+
+Node: User: I tried a guest pass at... [user, i, fitlife]
+__node_content_start__
+User: I tried a guest pass at CrossFit Central yesterday. I’m sticking with FitLife for workouts.
+Assistant: Got it — FitLife it is. Hope the class was fun anyway!
+User: Can you remind me to pack my water bottle before my workout tomorrow?
+Assistant: Yep — I can help you remember that before tomorrow’s workout.
+__node_content_end__
+
+Node: crossfit
+__node_content_start__
+A high-intensity fitness program known for its group-based workouts and strong community aspect.
+__node_content_end__
+
+Node: users friend
+__node_content_start__
+A friend of the user who recently joined CrossFit Central.
+__node_content_end__
+
+Node: group-based, high-intensity vibe
+__node_content_start__
+A characteristic atmosphere of workouts at CrossFit Central.
+__node_content_end__
+
+Node: user
+__node_content_start__
+The person speaking in the conversation.
+__node_content_end__
+
+Node: User: I was reading gym reviews earlier... [people, user, assistant]
+__node_content_start__
+User: I was reading gym reviews earlier and one of them had a whole debate about CrossFit Central versus the other spots nearby.
+Assistant: Haha, review threads get intense fast. Was it mostly people arguing about coaching style and class vibe, or the usual price-and-parking complaints?
+User: Mostly class vibe, honestly. A few people loved CrossFit Central, but others said it felt too hardcore for beginners.
+Assistant: Yeah, that tracks. A place can be great for some people and still feel intimidating if you just want a more low-key workout routine.
+User: Exactly. It was kind of entertaining to read, even if people were being dramatic.
+Assistant: Totally. Online gym reviews are basically reality TV in text form.
+__node_content_end__
+
+Node: online gym reviews
+__node_content_start__
+Online discussions and opinions about gyms, often featuring debates about class vibe and suitability for different fitness levels.
+__node_content_end__
+
+Node: independent workout culture
+__node_content_start__
+A gym atmosphere that prioritizes individual autonomy and less intense group pressure.
+__node_content_end__
+
+Node: coworker
+__node_content_start__
+A person who is new to working out and is trying to find a suitable gym.
+__node_content_end__
+
+Node: burpees
+__node_content_start__
+A full-body exercise often associated with high-intensity interval training, particularly CrossFit.
+__node_content_end__
+
+Node: progress tracking
+__node_content_start__
+Monitoring and recording improvements in fitness performance over time.
+__node_content_end__
+
+Node: fitlife
+__node_content_start__
+A gym where the user regularly works out, offering a flexible, individual-paced environment.
+__node_content_end__
+
+
+Connections:
+User: My coworker asked me to help... [user, compare, crossfit] --[relationship_name: contains; entity_name: crossfit central; entity_description: One of the gym options near the office being considered.]--> crossfit central
+User: My friend just joined CrossFit Central... [user, crossfit, assistant] --[relationship_name: contains; entity_name: crossfit central; entity_description: A gym that offers CrossFit programs.]--> crossfit central
+User: Jamie was telling me they just... [like, workouts, fitlife] --[relationship_name: contains; entity_name: crossfit central; entity_description: A gym that Jamie recently joined, associated with the CrossFit fitness program.]--> crossfit central
+User: I saw a promo for CrossFit... [user, i, saw] --[relationship_name: contains; entity_name: crossfit central; entity_description: A fitness center for which the user saw a promotion.]--> crossfit central
+User: I tried a guest pass at... [user, i, fitlife] --[relationship_name: contains; entity_name: crossfit central; entity_description: A gym or fitness center.]--> crossfit central
+User: Jamie was telling me they just... [like, workouts, fitlife] --[relationship_name: contains; entity_name: crossfit; entity_description: A high-intensity fitness program known for its group-based workouts and strong community aspect.]--> crossfit
+User: My friend just joined CrossFit Central... [user, crossfit, assistant] --[relationship_name: contains; entity_name: users friend; entity_description: A friend of the user who recently joined CrossFit Central.]--> users friend
+User: Jamie was telling me they just... [like, workouts, fitlife] --[relationship_name: contains; entity_name: group-based, high-intensity vibe; entity_description: A characteristic atmosphere of workouts at CrossFit Central.]--> group-based, high-intensity vibe
+user --[tried_guest_pass_at]--> crossfit central
+User: I was reading gym reviews earlier... [people, user, assistant] --[relationship_name: contains; entity_name: online gym reviews; entity_description: Online discussions and opinions about gyms, often featuring debates about class vibe and suitability for different fitness levels.]--> online gym reviews
+User: Jamie was telling me they just... [like, workouts, fitlife] --[relationship_name: contains; entity_name: independent workout culture; entity_description: A gym atmosphere that prioritizes individual autonomy and less intense group pressure.]--> independent workout culture
+User: My coworker asked me to help... [user, compare, crossfit] --[relationship_name: contains; entity_name: coworker; entity_description: A person who is new to working out and is trying to find a suitable gym.]--> coworker
+User: Jamie was telling me they just... [like, workouts, fitlife] --[relationship_name: contains; entity_name: burpees; entity_description: A full-body exercise often associated with high-intensity interval training, particularly CrossFit.]--> burpees
+User: Jamie was telling me they just... [like, workouts, fitlife] --[relationship_name: contains; entity_name: progress tracking; entity_description: Monitoring and recording improvements in fitness performance over time.]--> progress tracking
+User: Jamie was telling me they just... [like, workouts, fitlife] --[relationship_name: contains; entity_name: fitlife; entity_description: A gym where the user regularly works out, offering a flexible, individual-paced environment.]--> fitlife
+
+Question: Who mentioned CrossFit Central, and did the user confirm switching to it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

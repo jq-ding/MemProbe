@@ -1,0 +1,54 @@
+CASE 7: PILOT-05B probe3 match=incorrect
+paradigm: interference  fact_type: config_value
+
+GOLD: 60 seconds was mentioned as a teammate's setting for a different service; the user did not change their own timeout from 30 seconds.
+
+PREDICTED: {
+  "source_description": "Not mentioned in the provided conversation history",
+  "source_class": "unknown",
+  "action": "none",
+  "accepted": false,
+  "current_value": "none",
+  "reason": "The value 60 seconds does not appear in the provided memory facts; the conversation focuses on 15, 20, 25, 30, and 45 second thresholds."
+}
+
+REASON: source_class mismatch: pred=unknown vs gold=third_party
+
+===== RETRIEVED MEMORY (3995 chars) =====
+Memory facts extracted from conversation history:
+
+- User is wiring up the API gateway configuration for the staging cluster, planning to switch the upstream route for `/v1/orders`, enable retry for 2 attempts, and set the request timeout to 30 seconds in the gateway values file because the order service has slow endpoints.
+- User was advised to ensure the API gateway timeout and upstream service timeout do not conflict, be aware that retrying slow endpoints can amplify load, verify if the timeout applies per attempt or across the full request lifecycle, and check for ingress/controller annotations overriding route-level settings.
+- User was provided a PR note draft for the API gateway changes, stating it updates the staging route for `/v1/orders` to `orders-service`, enables 2 retries, and sets a 30-second request timeout to accommodate slow endpoints, aiming to improve request handling consistency.
+- User was provided a post-deploy verification checklist for the API gateway config, which includes confirming the rendered configuration in the cluster.
+- User is wiring up retry logic for outbound service calls and is concerned about the total wall time, as the API request timeout is 30 seconds.
+- User's current client backoff strategy for outbound service calls is 1 second, then 2 seconds, then 4 seconds.
+- User requested suggestions on whether to cap retry attempts or shorten the backoff strategy for outbound service calls.
+- User requested a code change mockup for the retry logic to ensure total operation time, not per-attempt time, is considered.
+- User requested a check to see if any Kubernetes (k8s) settings, such as ingress or proxy timeouts, would conflict with the 30-second API request timeout for outbound service calls.
+- User was advised to cap the retry budget so that the cumulative delay plus request time does not exceed the timeout envelope.
+- Assistant checked the cluster-side settings for any timeouts lower than 30 seconds that might conflict with the outbound service call retry logic.
+- User is reviewing configurations for an internal analytics stack, specifically for a sandbox service's ingestion worker, and is considering a request timeout of 15 or 45 seconds.
+- User was provided a comparison of request timeout options for a sandbox ingestion worker: 15 seconds for quick failure surfacing and catching slow dependencies, or 45 seconds for slower third-party endpoints or larger payloads.
+- User requested the assistant to inspect the sandbox worker's current Helm values and deployment settings to recommend the better request timeout option.
+- Assistant confirmed it checked the sandbox deployment and related values for the ingestion worker.
+- User requested a comparison of the tradeoff for changing the request timeout to 45 seconds for a teammate's load-test branch before opening a PR.
+- User was advised that for sandbox validation, a 15-second timeout is preferred, but for a separate load-test branch, a 45-second timeout can be justified if the goal is observing sustained completion under pressure rather than fast fail behavior.
+- User is reviewing their service configuration and requested a sanity check on the retry strategy and exponential backoff settings in the repository.
+- User requested the assistant to check if the application code matches the retry configuration and if Kubernetes settings are affecting retries.
+- Assistant confirmed checking both the application wiring and cluster-side settings related to retries.
+
+Question: Who mentioned 60 seconds and did the user adopt it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

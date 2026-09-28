@@ -1,0 +1,49 @@
+CASE 18: PILOT-16B probe3 match=partial
+paradigm: misinformation  fact_type: ci_provider
+
+GOLD: GitHub Actions was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The Q1 migration planning doc",
+  "source_class": "third_party",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "The user canceled the GitHub Actions migration and shelved the proof-of-concept.",
+  "reason": "The Q1 migration planning doc mentioned GitHub Actions for CI, but the user evaluated it and ultimately canceled the migration and shelved the project."
+}
+
+REASON: source_class mismatch (pred=third_party vs gold=stale_tool) but accepted correct
+
+===== RETRIEVED MEMORY (1528 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- The Q1 migration planning doc mentions GitHub Actions for CI.
+- User evaluated GitHub Actions.
+- The User's team shelved the GitHub Actions proof-of-concept.
+- Recent changes can confirm whether there were dependency updates.
+- User wants a couple of bullets for their meeting notes on why people evaluate GitHub Actions.
+- Recent changes can confirm whether there were config updates.
+- User canceled the GitHub Actions migration.
+- Recent changes can confirm which commit triggered the run.
+- The internal tech talk was an overview of newer workflow automation features in GitHub Actions.
+- The Assistant can help track down where outdated GitHub Actions references appear.
+- GitHub Actions is used for repo checks.
+- GitHub Actions is usually strongest when a team already works heavily in GitHub.
+- GitHub Actions is used for release notes.
+- GitHub Actions is convenient for lightweight automation close to the repo.
+- GitHub Actions is used for scheduled jobs.
+
+Question: Who or what mentioned GitHub Actions, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

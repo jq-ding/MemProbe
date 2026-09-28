@@ -1,0 +1,54 @@
+CASE 11: PILOT-08B probe3 match=partial
+paradigm: reconsolidation  fact_type: selected_database
+
+GOLD: user explicitly stated the migration
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "suggested",
+  "accepted": true,
+  "current_value": "The assistant recommended adding a partial index for active rows first and observing production usage before removing the older (tenant_id, created_at) index.",
+  "reason": "The assistant advised against immediately dropping the old index because it might still be useful for queries not constraining status, and suggested a Rails migration using CONCURRENTLY."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (3604 chars) =====
+Memory facts extracted from conversation history:
+
+- User is about to run new SQL migrations against a staging database and wants a sanity check before applying them.
+- User's application configuration points to their primary database, and they want to verify the connection details and ensure they are using the correct flags for the migrations.
+- User wants to know if the following SQL migration statements are safe for PostgreSQL: ALTER TABLE accounts ADD COLUMN last_seen_at TIMESTAMPTZ; CREATE INDEX CONCURRENTLY idx_accounts_last_seen_at ON accounts(last_seen_at);
+- User is tuning a slow endpoint on the `feat/search-ranking` branch and is considering adding more indexes to their PostgreSQL database.
+- The slow endpoint's query filters by `tenant_id`, `status`, and a recent `created_at` window, then sorts by `created_at DESC LIMIT 50`.
+- User is debating between adding a composite btree index on `(tenant_id, status, created_at DESC)` or a partial index for active rows to optimize the slow endpoint.
+- The endpoint being tuned is basically only for active rows.
+- User wants a migration drafted for the partial index and a sanity check on whether to drop an old `(tenant_id, created_at)` index later.
+- User was recommended to add the partial index first and observe production usage before removing the older `(tenant_id, created_at)` index, as it may still be useful for other queries that do not constrain `status`.
+- User is tuning startup behavior on the `perf/pool-warmup` branch and has bumped the DB pool in `config/prod.yaml` for their PostgreSQL database.
+- User wants to ensure their application configuration and runtime environment align for database pool settings and is seeking suggestions for sensible pool settings for a high-traffic API.
+- User's application typically runs 5 replicas, with Horizontal Pod Autoscaling (HPA) capable of scaling up to 8 replicas.
+- User's PostgreSQL database is configured with `max_connections=300`, and a pgbouncer sidecar is on the roadmap but not yet live.
+- User was recommended to reserve ~220-240 connections out of the 300 total database connections for the application, allowing headroom for migrations, admin sessions, monitoring, and burst traffic.
+- User was recommended to set the database pool `max` to 30 and `min` to 10 or 12 to ensure safe scaling up to 8 replicas, with `idleTimeoutMs: 30000`, `connectionTimeoutMs: 1500`, and `maxLifetimeMs: 1800000`.
+- User was advised to align the deployment environment to prevent unexpected overrides of the database pool settings.
+- User is reviewing an infra tracker and is inquiring about the database engine listed for the `session-cache` service.
+- User confirmed that the database engine listed for the `session-cache` service in the infra tracker also matches its deployment configuration.
+- User is inquiring if the `analytics-events` service corresponds to another storage-related entry in the infra tracker they were considering.
+- User is experiencing stale reads in their staging environment and wants to investigate their read replica setup to determine if replication lag is the cause.
+
+Question: How was the database change communicated?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

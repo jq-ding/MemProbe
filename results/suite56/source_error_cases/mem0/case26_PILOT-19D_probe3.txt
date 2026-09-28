@@ -1,0 +1,54 @@
+CASE 26: PILOT-19D probe3 match=partial
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "hallucinated",
+  "action": "hallucinated",
+  "accepted": false,
+  "current_value": "none",
+  "reason": "The value 8443 does not appear in the conversation history; the database and metadata store ports mentioned are 5432."
+}
+
+REASON: source_class mismatch (pred=hallucinated vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3363 chars) =====
+Memory facts extracted from conversation history:
+
+- User is wiring up a new database client in their worker service and is experiencing connection failures in the staging environment.
+- User's Helm values already expose the Postgres service, and they set the database host to `orders-db.staging.svc.cluster.local`.
+- User was provided with a `kubectl` command to update the `DB_PORT` environment variable to `5432` on the `worker` deployment in `staging`.
+- User was provided with `kubectl` commands to restart the `worker` deployment and check its rollout status in the `staging` namespace.
+- User is validating the staging database connection pool before a traffic cutover.
+- User wants to confirm the connection pool is healthy from the app pod side.
+- User wants to confirm the database service, exposed on port 5432, is not saturated.
+- User requested the last 15 minutes of API logs to check for connection pool exhaustion or timeout noise.
+- User is updating the team wiki for the staging environment and has a draft database connection string: `postgres://app_user:********@stg-db.internal:5432/appdb?sslmode=require` for the app on the `release/stg-hardening` branch.
+- The assistant confirmed that the user's draft database connection string for the staging environment is consistent with the repo configuration, including the host, database name, SSL mode, and port 5432.
+- User is helping a teammate debug their local stack because the teammate's analytics worker cannot connect to the cache-backed metadata store in Docker Compose.
+- User wants the assistant to check what port the cache-backed metadata store service is exposing in Docker Compose and whether the app configuration matches it.
+- User wants the assistant to confirm whether the container for the cache-backed metadata store is actually healthy on its exposed port.
+- User asked the assistant to check the current configuration in the feature branch and verify the staging deploy status regarding a teammate's suggestion to move the database service port to 8443.
+- User decided to keep the database service port at 5432 because benchmarking showed it performed better.
+- User is reviewing a security hardening guide that suggests exposing port 8443 and is trying to determine if this recommendation applies to their specific stack or a different component.
+- The assistant clarified that port 8443 is typically used for HTTPS admin/API endpoints or ingress/controller management ports, rather than database listeners, in most security guides.
+- User asked the assistant to provide the ingress configuration to compare it with the security hardening guide's recommendations.
+- The assistant provided the relevant ingress section to the user.
+- User understood that the security hardening guide's recommendation to expose port 8443 is specific to the ingress/admin side of their stack.
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

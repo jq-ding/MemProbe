@@ -1,0 +1,74 @@
+CASE 2: PILOT-02A probe2 match=partial
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: user explicitly stated the extension from conference organizers
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "provided wording to clarify",
+  "accepted": true,
+  "current_value": "The user is sticking with the March 28 deadline for a paper, not April 15",
+  "reason": "The assistant provided wording to clarify a deadline change at 2026-05-20 00:38:09, following the user's decision to stick with the March 28 deadline."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (4206 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User is sticking with a March 28 deadline for the paper
+- [user-knowledge] - User is drafting a workshop paper; deadline is March 28
+- [user-knowledge] - User is comparing timelines for internal deliverables: 2026-07-12 04:20:26
+- [user-knowledge] - User needs to schedule legal review: 2026-07-12 04:20:28
+- [user-knowledge] - User wants to sketch a workable schedule.
+- [user-knowledge] - User updates weekly status notes for checklists.
+- [user-knowledge] - User updating project tracker: 2026-07-12 04:21:15
+- [user-knowledge] - User has a paper draft
+- [user-knowledge] - User has an analytics dashboard handoff due April 10: 2026-07-12 04:20:26
+- [user-knowledge] - User is setting up submission portal account for their team: 2026-07-12 04:21:29
+- [user-knowledge] - User is planning focused writing blocks for this week.
+- [user-knowledge] - User is reorganizing the related work section for their draft
+- [user-knowledge] - User is rolling out an analytics dashboard; client feedback closes April 10; design sign-off pending
+- [user-knowledge] - User is wrapping up a paper draft for the team
+- [user-knowledge] - User was skimming another call-for-papers this morning
+- [user-knowledge] - User is coordinating with co-author on section assignments.
+- [user-knowledge] - User needs a status update for the API migration checklist.
+- [user-knowledge] - User needs a checklist for a team: 2026-07-12 04:20:24
+- [user-knowledge] - User has notes for a mobile app launch meeting
+- [user-knowledge] - User has sprint planning and two code reviews next week
+- [assistant-knowledge] - Assistant offered to pull out key dates and submission constraints from a CFP at 2026-07-12 04:20:49
+- [assistant-knowledge] - Assistant drafted a status update at 2026-07-12 04:20:21
+- [assistant-knowledge] - Assistant provided a delivery date for the weekly status note at 2026-07-12 04:21:47.
+- [assistant-knowledge] - Assistant clarified the due date for the API migration checklist at 2026-07-12 04:21:45.
+- [assistant-knowledge] - Assistant outlined last review steps for a paper at 2026-07-12 04:20:22
+- [assistant-knowledge] - Assistant turned notes into a short recap at 2026-07-12 04:20:37
+- [assistant-knowledge] - Assistant offered to help phrase the status at 2026-07-12 04:21:47.
+- [assistant-knowledge] - Assistant drafted a note to a coauthor at 2026-07-12 04:20:21
+- [assistant-knowledge] - Assistant provided a template message at 2026-07-12 04:21:01.
+- [assistant-knowledge] - Assistant provided a polished version of an update at 2026-07-12 04:20:21
+- [assistant-knowledge] - Assistant offered to create a side-by-side decision note from a CFP at 2026-07-12 04:20:47
+- [assistant-knowledge] - Assistant suggested letting the team know about writing blocks at 2026-07-12 04:21:13.
+- [assistant-knowledge] - Assistant provided a workshop paper outline at 2026-07-12 04:20:21
+- [assistant-knowledge] - Assistant suggested reserving deep-work blocks on lighter meeting days at 2026-07-12 04:21:03.
+- [assistant-knowledge] - Assistant provided a team checklist at 2026-07-12 04:20:24
+- [assistant-knowledge] - Assistant made recap more polished and action-oriented at 2026-07-12 04:20:39
+- [assistant-knowledge] - Assistant provided guidance on organization signup at 2026-07-12 04:21:31.
+- [assistant-knowledge] - Assistant suggested writing down section owner, deliverable, and review partner at 2026-07-12 04:20:59.
+- [assistant-knowledge] - Assistant provided a one-line status update at 2026-07-12 04:21:58.
+- [assistant-knowledge] - Assistant provided additional wording for project tracker note: 2026-07-12 04:21:17
+
+Question: Who communicated the deadline change and how?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

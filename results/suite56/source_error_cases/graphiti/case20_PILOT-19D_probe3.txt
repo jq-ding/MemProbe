@@ -1,0 +1,49 @@
+CASE 20: PILOT-19D probe3 match=incorrect
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "8443",
+  "reason": "The user identified port 8443 in old configs, manifests, and live resources while updating the team wiki and verifying Helm values."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (1193 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User is updating the team wiki.
+- 8443 was from an old test instance
+- User has a connection string draft for the page.
+- 8443 was found in an old config file.
+- User asks about PostgreSQL specifically.
+- 8443 is referenced in manifests.
+- User is wiring up a sidecar for analytics.
+- 8443 is referenced in live resources.
+- User wants to verify the Helm values.
+- 8443 is used for an HTTPS admin/API endpoint.
+- User wants to ensure that port 8443 is coming from the chart.
+- User got a sample compose pair.
+- User is tightening up the staging environment.
+- 8443 is referenced in deprecated configs.
+- User states the app is on Kubernetes.
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

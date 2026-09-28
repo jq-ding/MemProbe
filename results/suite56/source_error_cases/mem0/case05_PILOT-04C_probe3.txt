@@ -1,0 +1,54 @@
+CASE 5: PILOT-04C probe3 match=partial
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Sarah Kim remains the owner of the authentication module.",
+  "reason": "The user noted a reorg proposal to hand ownership to David Chen, but explicitly stated that Sarah Kim still owns the module despite those discussions."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3305 chars) =====
+Memory facts extracted from conversation history:
+
+- User is triaging open backend PRs before a standup scheduled for July 13, 2026.
+- User wants to assign the login token refresh review to Sarah, as Sarah Kim owns the authentication module.
+- User is triaging the new backlog, which includes several auth-related tickets that came in after the standup on July 12, 2026.
+- User wants to ensure that auth-related tickets are routed to Sarah Kim first, as she owns the authentication module.
+- User was provided a draft routing note for auth-related tickets, instructing the team to tag Sarah Kim first, and to add relevant service owners if the issue affects another dependent service after initial review.
+- User is drafting an email for an authentication module deployment to the wider backend list.
+- User has already CC'd Sarah Kim on the authentication module deployment email because she owns the authentication module.
+- User is unsure whether to add the on-call alias to the authentication module deployment email.
+- User was recommended to add the on-call alias to the authentication module deployment email as a backup for visibility in case issues arise during or after rollout, or if it affects support coverage.
+- User was provided a draft email for the authentication module deployment, which includes Sarah Kim as the module owner and the on-call alias for visibility.
+- Sarah Kim still owns the authentication module, despite previous discussions about moving its ownership to David Chen.
+- User wants to update the sprint notes with an API review deadline.
+- User's sprint planning agenda for July 13, 2026, includes backlog prioritization, capacity review, carryover from the current sprint, and finalizing owners for API cleanup tasks.
+- User attended an analytics sync meeting on July 12, 2026, where dashboard latency on the executive reports page was still higher than expected.
+- During the analytics sync on July 12, 2026, the team agreed to defer the filter redesign until after the quarterly release.
+- Priya Nair will make the final call on prioritization for the reporting work discussed at the analytics sync on July 12, 2026.
+- A follow-up with the infrastructure team is needed regarding caching behavior, as discussed in the analytics sync on July 12, 2026.
+- The tentative deadline for the first round of fixes discussed at the analytics sync on July 12, 2026, is July 21, 2026.
+- User's CI/CD pipeline has been flaky, with builds intermittently failing in the test stage and then passing on rerun.
+- User was recommended a practical approach to fixing flaky CI/CD pipelines: tag and log failures, look for patterns, quarantine the worst flaky tests, and stabilize the pipeline by pinning tool versions, reducing runner variance, and improving retry visibility.
+
+Question: Who suggested David Chen might take over auth, and was it confirmed?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

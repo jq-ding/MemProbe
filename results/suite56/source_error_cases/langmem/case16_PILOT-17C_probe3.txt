@@ -1,0 +1,67 @@
+CASE 16: PILOT-17C probe3 match=incorrect
+paradigm: consolidation  fact_type: submission_deadline_v2
+
+GOLD: Monday noon was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "Monday noon",
+  "reason": "The user identified multiple deliverables with a Monday noon deadline: an old planning document, an old email about a client onboarding checklist, Priya's analytics report, and a conference workshop proposal. The user confirmed these deadlines for their respective contexts."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (7783 chars) =====
+Memory facts extracted from conversation history:
+
+- The user re-confirmed that the quarterly report deadline is Friday at 5 PM, dismissing a mention of it potentially slipping to Monday noon found in an old planning doc. The agent should continue to treat Friday 5 PM as the firm deadline.
+- The agent can transform rough notes into a concise recap for a team, and can refine recaps to be polished and suitable for chat.
+- Jenna's report is due Monday noon, and the user needs to provide feedback before then.
+- For a short internal team-facing presentation deck, a good structure includes: Title and objective, Brief context/scope, Key findings, Supporting data or examples, Risks/gaps/caveats, Recommendations, and Next steps/decisions needed. For a technical audience, add a slide for methodology or assumptions.
+- For findings slides in a presentation, aim for headline-level clarity on the slide with detail in the spoken explanation. A good pattern is: one takeaway as the slide title, 2-3 supporting bullets, and one chart/table/visual if helpful. For internal team reviews, end each findings slide with a short "so what" statement to make implications obvious.
+- For a rigorous yet practical analysis section in a report, structure it by starting with the question, describing the dataset and assumptions, summarizing cleaning steps, focusing on analyses tied to business outcomes, presenting key metrics, highlighting trends/anomalies, and concluding with limitations and recommendations.
+- When performing data analysis for a report, use both high-level trend comparisons and segment-based breakdowns. Start with trend comparisons to show overall movement, then use segmentation (e.g., by team, product, customer type) to explain the drivers behind those shifts, making findings actionable and using segmentation where it changes interpretation.
+- For an efficient review session with co-authors, start with a quick recap of the draft's current status, then review major sections one by one, focusing on gaps, unclear arguments, and ownership of edits. Conclude by confirming action items and revision owners.
+- To prepare co-authors for a review session, send the latest draft, a short agenda, and 3-5 specific questions for feedback. Also, ask each co-author to comment on their area of expertise in advance to facilitate focused discussion on resolving issues.
+- For lightweight document collaboration, tools like Confluence, Notion, or Google Docs are effective due to features like simultaneous editing, comments, and revision history.
+- For more controlled technical documentation, storing Markdown files in Git allows for changes to be reviewed via pull requests.
+- A common document version control setup involves collaborative drafting in a shared document tool, followed by finalizing technical documents in a repository-backed knowledge base.
+- To make Git approachable for non-developers, implement a simple, template-driven process with a clear folder structure, standard document templates, and a web UI for editing instead of the command line.
+- When using Git for documentation, define clear guidelines on which document types belong in Git (e.g., architecture decisions, API specs) versus a wiki-style tool (e.g., meeting notes, team procedures).
+- The agent can draft concise reminders for the team based on provided information.
+- For a strong project write-up, the introduction should frame the problem, explain why it matters, and state the goal of the work.
+- For a strong project write-up, the methodology section should logically follow the introduction, detailing the approach, key assumptions, tools or systems involved, and how the work was evaluated.
+- When reviewing a project write-up introduction, check if the objective is clear in the first few paragraphs and if it avoids too much implementation detail.
+- When reviewing a project write-up methodology section, check if it explains the process step by step without reading like raw notes, and if technical choices are justified.
+- When reviewing a project write-up, ensure low-level details are kept to what a reviewer needs to understand the approach, sections lead naturally into each other, and terms, component names, and metrics are used consistently throughout.
+- The agent can provide structural guidance and checklists for writing tasks.
+- The agent can offer to review excerpts of a write-up to help tighten wording and flag uneven levels of detail.
+- The user appreciates checklists for writing guidance.
+- The agent recommended Wednesday EOD as the draft lock for the design team's quarterly summary. This allows writers a full day to incorporate numbers finalized late Tuesday and polish the summary, providing a buffer for review before final submission.
+- From the analytics sync: The Q2 metrics report (or quarterly summary draft) requires finance sign-off. Priya is responsible for cleaning up the churn section. The leadership review copy is due Thursday 3 PM to allow for leadership feedback. Design has requested that all charts be updated to the new template. Including supporting charts and a short summary upfront can expedite the review process.
+- The agent can refine a recap to be more action-oriented and include a list of owners.
+- The agent can offer to format a recap as a Slack update, a formal email, or a status note with risks and next steps.
+- For internal engineering reports, use clean and consistent formatting with clear section headings, numbered pages, a short executive summary, and labeled figures/tables with captions. For citations, choose one style and apply it consistently; IEEE is suitable for technical documents, while an author-date style works for non-technical audiences. Always cite screenshots, diagrams, design details, and internal documents (using team-recognized identifiers like wiki page titles, design doc numbers, or repository links) for traceability, allowing reviewers to quickly find original sources for context.
+- A client onboarding checklist was due by Monday noon for ops review before a kickoff.
+- Priya's analytics package report is due Monday noon. The user is coordinating with Priya and will send their section this afternoon. A handoff checklist for Priya's report includes: attaching the latest draft and chart files, summarizing key updates, listing open questions or assumptions, flagging anything Priya should verify, and noting where supporting data is stored.
+- The user has a quarterly report due on Friday at 5 PM, a deadline recently re-confirmed despite a rumor of it moving to Monday noon. Their priorities for the week include finishing dashboard bug fixes, completing two code reviews, and dedicating time to the report. A suggested plan involves completing dashboard bug fixes by Tuesday, code reviews by Wednesday, drafting the report on Wednesday afternoon, revising on Thursday, and final checks on Friday morning.
+- The compliance appendix entry is due Thursday at 3 PM. Legal requires it by this time for their review and markup before the broader packet is finalized.
+- Conference submission checklist: Draft title, 200–500 word abstract, Speaker bio, Target audience, Learning outcomes, Outline or agenda, AV/setup needs, Contact info, Final proofread before the Monday noon cutoff.
+
+Question: Who or what mentioned Monday noon, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

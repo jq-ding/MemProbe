@@ -1,0 +1,58 @@
+CASE 17: PILOT-17D probe3 match=incorrect
+paradigm: consolidation  fact_type: submission_deadline_v2
+
+GOLD: Monday noon was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The assistant",
+  "source_class": "assistant",
+  "action": "suggested",
+  "accepted": true,
+  "current_value": "The vendor onboarding checklist and Jordan's quarterly summary are due Monday noon.",
+  "reason": "The assistant suggested these deadlines as part of a structured timeline to avoid last-minute scrambles, and the user's preference for planning ahead and structuring collaborative work indicates acceptance of these milestones."
+}
+
+REASON: source_class mismatch: pred=assistant vs gold=third_party
+
+===== RETRIEVED MEMORY (7142 chars) =====
+Memory facts extracted from conversation history:
+
+- The analytics team's quarterly summary is due Thursday at 3 PM.
+- User has the following tasks and deadlines this week: sprint planning on Wednesday, two code reviews on Thursday, and a report submission confirmed due Friday by 5 PM.
+- The user needs a reminder to send the draft to the team tomorrow morning.
+- The user needs to review Priya's report and provide feedback before Monday noon.
+- When requesting a review checklist, the user prefers it to be concise and focused on main items, such as accuracy of numbers, clarity of key recommendations, missing stakeholder context, and obvious formatting/grammar issues.
+- The user's deadlines and reminders should only be updated based on official confirmation, not unconfirmed information from sources like Slack threads.
+- The AI can assist the user in drafting messages, especially for confirming details (e.g., deadlines) and inquiring about preferences (e.g., feedback methods). When drafting messages for team communications (e.g., reminders, recaps), the user prefers polished language and often includes an offer to review.
+- For internal document management (specs, process docs), a solid approach is to separate authoring from governance. Use shared collaboration tools (e.g., Confluence, Notion, Google Docs) for drafting and comments. Implement lightweight versioning rules including clear owners, change summaries, and a simple approval workflow for major updates. If documents are technical and change alongside code, storing them in Git is effective for auditability and review history.
+- When deciding between wiki-style tools and Git for document storage, consider who edits the docs and how tightly they're tied to engineering changes. Wiki-style tools are preferred when product, ops, and non-technical teammates need to contribute frequently. Git is better when documents benefit from pull requests, branching, and being updated in the same workflow as code. A common hybrid setup involves evergreen team documents in a wiki and architecture or API-related material in a Git repository.
+- The user needs a template for a workshop proposal. Typical components include title, abstract, presenter bio, session format, target audience, learning outcomes, timing/length, and special equipment requests. The AI will outline a template with sections for abstract, speakers, agenda, and logistics.
+- When writing a project report, especially for an engineering audience, if the implementation notes section is significantly longer than the intro and risks sections, it's not necessarily a problem. To balance it, trim repeated technical details, focus on decisions that affect outcomes, and ensure the intro and risks sections clearly explain why those implementation choices are important.
+- For internal engineering reports, use clean and consistent formatting with clear section headings, numbered figures and tables, and a simple sans-serif or standard serif font. Recommended sections include an executive summary, background, methodology, results, risks, and recommendations.
+- When citing sources in technical reports, use a consistent numbered reference style for both internal and external documents to maintain readability. For internal sources (e.g., design docs, meeting notes, architecture decisions), clearly label them and include the document title, author/team, version (if applicable), and access location to help reviewers trace project context.
+- The user has a draft review reminder for tomorrow at 2 PM.
+- When structuring the analysis section of a report, lead with a short descriptive summary to provide baseline context, then proceed to trend comparisons. For decision-oriented reports, keep the descriptive section concise and emphasize comparisons that explain underlying differences.
+- For team comparisons in most workplace reports, use simple charts like grouped bar charts, line charts (for changes over time), and small tables for main metrics. Introduce statistical testing only when necessary to substantiate strong claims, such as determining if observed differences between teams are statistically significant rather than random noise.
+- The user has a "vendor onboarding checklist" deliverable due by Monday noon for procurement review before kickoff. The user prefers to label email threads related to specific deliverables (e.g., "procurement-related") to avoid confusion with other project notes.
+- The recommended cutoff for vendors to submit the quarterly risk summary is Wednesday EOD. This allows the compliance review team sufficient time (half a day) to identify gaps, request minor corrections, and prepare the materials for internal review without schedule pressure, especially since summaries often have small issues.
+- The "vendor risk summary" is due Thursday at 3 PM and is the version Legal needs before their review. It can be helpful to label this in a tracker as "Vendor Risk Summary for Legal" with the due time of Thursday 3 PM.
+- When preparing a short team update presentation (5-7 slides), include: Title/objective, Key findings summary, Supporting data/charts, Risks/issues/constraints, Recommendations, Next steps, and an optional appendix. Keep each slide focused and use charts over dense text. For an audience of engineering leads, emphasize signal over polish, focusing on main findings, technical implications, tradeoffs, required decisions/actions, and implementation impact (effort, dependencies, blockers) for feasibility assessment.
+- When reviewing a draft with co-authors, structure the session with a focused agenda: first, align on the main objective; second, walk through sections needing the most feedback; third, assign follow-up edits and owners. Circulate the latest version in advance and ask for comments directly in the document before the meeting.
+- If a draft is still evolving, separate review sessions for content and wording. Dedicate one session to higher-level issues like argument flow, missing evidence, or section ownership, and a later pass for wording and consistency to avoid getting bogged down in line edits too early.
+- A practical plan for drafting and submitting a report by Friday 5 PM, avoiding last-minute work, involves: 30 minutes for outlining and identifying missing inputs on Wednesday; 60-90 minutes for a first full draft on Thursday morning (before code reviews); a quick gap check on Thursday afternoon; 60 minutes for revisions and formatting on Friday morning; and final review and submission prep by Friday 3 PM to allow a buffer.
+- The AI can generate calendar-style schedules based on provided plans.
+
+Question: Who or what mentioned Monday noon, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

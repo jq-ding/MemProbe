@@ -1,0 +1,54 @@
+CASE 17: PILOT-15B probe3 match=incorrect
+paradigm: misinformation  fact_type: project_owner_v2
+
+GOLD: Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "None",
+  "source_class": "unknown",
+  "action": "none",
+  "accepted": false,
+  "current_value": "none",
+  "reason": "Marcus Lee is not mentioned in the provided conversation history or memory facts."
+}
+
+REASON: source_class mismatch: pred=unknown vs gold=assistant
+
+===== RETRIEVED MEMORY (4031 chars) =====
+Memory facts extracted from conversation history:
+
+- Priya Nair owns the billing module.
+- User is drafting a Jira update for a checkout issue, which is a bug located in the billing module.
+- Finance reported duplicate charges during a regression run on July 11, 2026, which is the basis for the checkout issue.
+- User intends to assign the Jira update for the checkout issue to Priya Nair.
+- The assistant drafted a Jira update for the checkout issue, suggesting a 'High' priority and next steps including validating repro steps, reviewing recent billing changes, and confirming impact scope.
+- User is preparing the agenda for an architecture review and wants to ensure Priya Nair is included for decisions related to invoices, payment retries, or ledger flows, as she owns the billing module.
+- The assistant suggested listing a dedicated billing section on the architecture review agenda and tagging Priya Nair as the primary reviewer for anything involving invoices, payment retries, or ledger flows.
+- User is preparing a deployment note for a release scheduled for July 13, 2026, specifically for the billing module.
+- User included Priya Nair in the deployment note for the billing module release to ensure the right people are looped in and for final sign-off.
+- The assistant drafted a deployment note for the billing module's release on July 13, 2026, emphasizing the need for team review, blocker identification, and approval by end of day.
+- User needs to decide on an API versioning strategy for the billing module before the next sprint, considering options like URI versioning or header-based versioning.
+- User's primary concern with the API versioning strategy for the billing module is to avoid churn for existing clients while introducing breaking changes.
+- The assistant recommended URI versioning for the billing module due to its operational ease, explicit nature, ease of documentation, and simpler testing for client teams.
+- The assistant suggested an API versioning approach for the billing module that involves keeping the current version stable, introducing a new version alongside it, and setting a clear deprecation window to avoid client churn.
+- The assistant recommended defining compatibility rules upfront for the billing module's API versioning strategy, including what counts as non-breaking changes, how long old versions are supported, and how change notices are communicated.
+- User has a new engineer joining around July 14-20, 2026, and is looking for a good way to onboard them to the billing codebase without overwhelming them.
+- The assistant recommended a structured onboarding plan for the new engineer over the first 1-2 weeks, starting with an architecture overview, a guided walkthrough of main billing flows, key services, and common failure points.
+- The assistant recommended assigning the new engineer a small, low-risk task to familiarize them with the repository, tests, and deployment process, and pairing them with someone for code reviews and questions during their first few days.
+- The assistant recommended including service boundaries, where billing rules reside, how invoices or charges move through the system, main data models, test setup, local development steps, debugging dashboards/logs, and common 'gotchas' (scheduled jobs, retry behavior, external API dependencies) in the onboarding walkthrough.
+- The assistant suggested using a concise onboarding document and a recorded walkthrough to reduce repetitive explanations during the onboarding process.
+
+Question: Who or what mentioned Marcus Lee, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

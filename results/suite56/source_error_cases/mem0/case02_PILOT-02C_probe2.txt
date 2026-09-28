@@ -1,0 +1,54 @@
+CASE 2: PILOT-02C probe2 match=incorrect
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: April 15 was mentioned as a colleague's deadline for a different project; the user did not confirm it applied to their own paper.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "April 15, 2026",
+  "reason": "The user introduced April 15, 2026, as an internal review milestone they wanted to slot into their research timeline, and the assistant then provided a plan based on that date."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (4435 chars) =====
+Memory facts extracted from conversation history:
+
+- User needs to block out focused writing time for the methods section of their workshop paper during the week of July 14, 2026, despite having sprint planning and two code reviews scheduled.
+- The submission deadline for the user's workshop paper is March 28, 2027.
+- The assistant suggested a writing schedule for the week of July 14, 2026, including Monday 9:00–11:00 for outlining, Wednesday 1:00–3:00 for a full draft, and Friday 9:00–10:30 for revisions.
+- The assistant advised the user to schedule sprint planning and code reviews outside the writing blocks, suggested a Thursday 4:00–5:00 overflow slot, and offered to create a day-by-day plan.
+- User is preparing the last pass on their workshop paper draft and plans to ask their coauthor to review it by March 25, 2027, to allow a buffer before the March 28, 2027 submission deadline.
+- The assistant confirmed that asking for a coauthor review by March 25, 2027, is a reasonable and well-paced deadline, providing a sensible buffer before the March 28, 2027 submission.
+- User is cleaning up the references section of their workshop paper and wants to make the citations look consistent.
+- User's paper draft has inconsistent citation formatting, specifically with author names (full first names vs. initials) and conference names.
+- The assistant advised that the easiest approach for citation consistency is to pick one style and apply it uniformly, offering to check for consistency in author name format, title capitalization, journal/conference names, volume/issue/page numbers, year placement, and DOI/URL formatting.
+- The assistant suggested a citation cleanup process including standardizing author names, using one capitalization rule for titles, writing venue names consistently, ensuring uniform punctuation and ordering, and adding missing metadata.
+- User is helping Priya map out her conference plan for the Data Systems Summit, which has a submission deadline of April 15, 2027.
+- Priya's draft timeline for the Data Systems Summit includes finalizing the abstract and coauthor list during the week of July 8, 2026, completing the first full draft during the week of July 15, 2026, and circulating for internal feedback during the week of July 22, 2026.
+- Priya's draft timeline for the Data Systems Summit includes revising and formatting submission materials 3-4 days before April 15, 2027, and submitting to the portal on April 15, 2027.
+- User was advised to set a reminder for April 8, 2027, to check in with Priya regarding her draft status, reviewer feedback, and any submission issues for the Data Systems Summit.
+- User is mapping out a research timeline and wants to schedule an internal review milestone for April 15, 2027, working backward to plan prep tasks.
+- The assistant suggested a simplified research timeline for the user's team leading up to the April 15, 2027 internal review, which includes completing analysis and results polishing, assembling the full draft, and allowing a few days for internal comments and revisions.
+- The assistant provided a checklist for the user's team's research project tracker: finalize analysis and figures, assemble complete draft for team circulation, collect internal reviewer feedback, revise based on comments, and an internal review milestone on April 15, 2027.
+- User is reorganizing the related work section of a draft, which currently feels disorganized, and is seeking a clean structure to help readers quickly understand the landscape.
+- User was advised to structure the related work section by theme, using 2-4 major categories that reflect differences in prior work's method, assumptions, or scope.
+- User was advised that within each related work category, they should summarize the common idea first, then mention representative examples, and conclude with the limitation or gap that leads into their own approach.
+
+Question: Who mentioned April 15 and did the user confirm it applied to their own paper?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

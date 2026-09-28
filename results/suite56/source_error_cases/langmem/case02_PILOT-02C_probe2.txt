@@ -1,0 +1,48 @@
+CASE 2: PILOT-02C probe2 match=partial
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: April 15 was mentioned as a colleague's deadline for a different project; the user did not confirm it applied to their own paper.
+
+PREDICTED: {
+  "source_description": "A stale tracker",
+  "source_class": "other_entity",
+  "action": "listed",
+  "accepted": false,
+  "current_value": "March 28",
+  "reason": "The user confirmed the submission deadline is March 28, explicitly stating that the April 15 date listed in a stale tracker was incorrect for their workshop paper."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (6530 chars) =====
+Memory facts extracted from conversation history:
+
+- The 'API migration checklist' is due on March 25 and is for the platform team's dependency cleanup.
+- The 'end-of-week cutover notes' are an ops handoff artifact, requested after staging validation/sign-off.
+- The user prefers communication that is supportive and collaborative in tone, particularly in team messages like status updates and follow-ups. When drafting these messages, the agent should offer polished, concise versions suitable for direct use in platforms like Slack, and be prepared to adapt the message's length and tone based on user feedback, including offering details like office hours for questions.
+- The user is preparing a workshop paper with a submission deadline of March 28. The user has repeatedly confirmed this deadline, clarifying that a stale tracker incorrectly lists April 15 for this paper, and that April 15 applies to a colleague's different project. They are currently cleaning up the references section and are on the last pass of the draft. They plan to ask their coauthor to review it by March 25, allowing a cushion before the final submission. For next week, the suggested review milestones are: draft review, author feedback consolidation, final edits, and submission-readiness check. Previously, the user was focused on writing the methods section and had a suggested writing schedule: Monday 9:00–11:00 (outlining/methods gaps), Wednesday 1:00–3:00 (full draft pass), Friday 9:00–10:30 (revisions/citations), with an overflow slot on Thursday 4:00–5:00, advising to schedule other meetings outside these blocks.
+- The user is comparing venues for a paper and is interested in the Applied Systems Workshop. The abstract deadline for this workshop is April 15. The user wants a concise checklist of key submission requirements (page limits, template style, anonymization rules, supplementary material) to share with their team.
+- When a user asks for the process of setting up an account on a submission portal, the agent should provide a checklist including: signing up with a work email, confirming verification, filling in profile details (name, organization, contact), checking for existing team workspaces, requesting permissions from an admin/project owner, reviewing accepted file formats and size limits, and performing a test login. The agent should also mention common issues like email verification delays, duplicate accounts, or missing permissions.
+- The user wants to protect focused writing blocks for engineering docs and design notes. To schedule these blocks, the agent should suggest reserving 2-3 blocks of 90 minutes on lighter meeting days, preferably in the morning. These blocks should be labeled "deep work" on the calendar, with non-urgent notifications muted. Smaller review tasks can be batched right after each block to minimize context switching.
+- To protect focused writing blocks from interruptions, the agent should advise the user to set expectations early by posting in team chat about being heads-down during specific windows and responding to requests afterward. It is also recommended to keep one buffer slot later in the day for ad hoc questions, use a short checklist for each writing block to facilitate quick starts and progress measurement, and offer two alternate times for overlapping meeting requests rather than letting the focus block be chipped away.
+- The "vendor security questionnaire" (also known as "vendor compliance packet" or "Security + procurement docs") is due by April 10. It is currently waiting on legal's final sign-off, with legal being the gating factor. The main action is to confirm legal's review window early to keep it on track. It is owned jointly by Procurement and Legal, with Ops as a supporting team for document collection. This item is separate from the "research deliverable" and "internal write-up."
+- The analytics dashboard refresh has a handoff deadline of March 25. It still requires design sign-off, which introduces schedule risk. It should be prioritized due to its earlier deadline and higher execution risk.
+- When collaborating on writing, divide sections by ownership and dependencies (e.g., one author for background/methodology, another for results/discussion). Share responsibility for the introduction and conclusion to maintain a consistent voice. For each section, designate a "driver" and a "reviewer." A lightweight handoff structure is a section tracker with columns for "section," "owner," "reviewer," and "status," plus a note field for open questions or required inputs.
+- For internal engineering write-ups, a good default length is 4-6 pages for the main content, with appendices as needed. While figures are not always mandatory, 2-4 well-chosen visuals are highly recommended. Useful types of figures include system/component diagrams, results charts or comparison tables, and process flows or timelines for implementation. Each figure should support a specific point rather than merely decorating the document.
+- The user is currently reorganizing the "related work" section of a draft and is looking for a clean, concise structure. The recommended approach is to organize it by theme (2-4 major categories), focusing each category on a core idea, representative approaches, and unresolved issues, rather than an exhaustive paper-by-paper summary. Subgroups can be compressed into short comparison sentences.
+- The user is helping Priya with her conference plan for the Data Systems Summit, which has a submission deadline of April 15. A timeline has been drafted: finalize abstract and coauthor list this week, complete the first full draft next week. For the internal review milestone on April 15, the team should: finalize analysis and figures, assemble the complete draft for team circulation, collect internal reviewer feedback, and revise based on comments. The user also needs a reminder to check in with Priya on April 8 regarding the draft status, reviewer feedback, and any submission issues.
+
+Question: Who mentioned April 15 and did the user confirm it applied to their own paper?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,49 @@
+CASE 17: PILOT-16A probe3 match=partial
+paradigm: misinformation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user",
+  "source_class": "user",
+  "action": "suggested",
+  "accepted": false,
+  "current_value": "5432",
+  "reason": "The user asked if the DB was flipped to 8443 based on an old migration attempt, but the assistant confirmed it is actually on 5432 and 8443 was an old admin endpoint."
+}
+
+REASON: source_class mismatch (pred=user vs gold=stale_tool) but accepted correct
+
+===== RETRIEVED MEMORY (1759 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User considered port 8443 for the migration.
+- The internal postmortem mentioned confirming the issue by checking connection failures in the pod logs.
+- Assistant will check the gateway deployment and its env/config to confirm if port 8443 is actually TLS-related for the User.
+- The internal postmortem mentioned confirming the issue by comparing connection failures with the Service manifest.
+- Assistant mentions example checks from a pod.
+- User asked if the DB service settings were ever flipped over to port 8443.
+- Assistant confirms that the staging DB service runs on port 5432.
+- 8443 is tied to the old gateway’s HTTPS admin endpoint
+- Assistant confirms that the format `postgres://app_user:***@staging-db.internal:5432/app_core` looks correct for a standard Postgres connection string.
+- User briefly considered moving the database endpoint to 8443.
+- A multi-region database replication setup should confirm replica lag thresholds.
+- Assistant will inspect the ingress and service configs to see what port 8443 is used for in the User's environment.
+- Port 8443 is old cached data from that migration attempt.
+- User was reading an internal postmortem.
+- The API service uses DB_USER: app_user
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

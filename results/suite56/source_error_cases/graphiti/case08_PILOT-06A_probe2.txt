@@ -1,0 +1,49 @@
+CASE 8: PILOT-06A probe2 match=partial
+paradigm: misinformation  fact_type: reported_port
+
+GOLD: user explicitly stated the change
+
+PREDICTED: {
+  "source_description": "a migration note",
+  "source_class": "other_entity",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "the service moved to port 3000",
+  "reason": "The memory facts mention a migration note states the service moved to port 3000, though the assistant later verified this only applied to frontend-related config."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (1510 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- local dev is noisy after the last compose change.
+- A migration note states that the service moved to port 3000.
+- The main API was not touched by the compose change.
+- Assistant found all obvious references to the old port in the repo.
+- The dashboard incident could have been fixed by changing the targetPort to `http-ui` or `9090`
+- User decided to keep the API service on port 8080.
+- User instructed Assistant to make sure nothing still assumes port 8080.
+- Assistant will treat port 8080 as the active service port.
+- The cache UI/admin sidecar was touched by the compose change.
+- Port 8080 is the active service port for this release.
+- User asked why local dev is noisy after the last compose change.
+- Assistant would verify the bound port.
+- Assistant checked whether the latest config change actually rolled out.
+- Assistant verified that the phrase "service moved to port 3000" is only present in the frontend-related config.
+- The frontend stays on port 3000.
+
+Question: Who communicated the port change and why?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

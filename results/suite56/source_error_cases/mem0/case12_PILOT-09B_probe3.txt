@@ -1,0 +1,54 @@
+CASE 12: PILOT-09B probe3 match=incorrect
+paradigm: interference  fact_type: selected_database
+
+GOLD: MongoDB was mentioned as a teammate's database choice for a different microservice; the user did not migrate their own project from PostgreSQL.
+
+PREDICTED: {
+  "source_description": "The conversation history provided",
+  "source_class": "unknown",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "none",
+  "reason": "There is no mention of MongoDB in the provided conversation history; the user is exclusively working with a PostgreSQL database."
+}
+
+REASON: source_class mismatch: pred=unknown vs gold=third_party
+
+===== RETRIEVED MEMORY (4310 chars) =====
+Memory facts extracted from conversation history:
+
+- User is working on the `feature/audit-log-retention` branch and is trying to apply a new migration for audit log retention.
+- The migration step is failing against the dev PostgreSQL instance, even though the application starts locally.
+- User identified that the migration file performs a backfill operation before the `ALTER TABLE` statement, causing the failure.
+- User requested a safe PostgreSQL SQL sequence to add a column, backfill existing rows, and then make the column `NOT NULL` with a default value of 30.
+- User was provided a safe PostgreSQL SQL sequence to add an integer column named `retention_days` to the `audit_logs` table, backfill existing rows with a value of 30, and then set the column to `NOT NULL` with a default of 30.
+- User is tuning query hotspots in their PostgreSQL database for an upcoming deploy. For a feed query on the `events` table, they are filtering by `workspace_id`, `status`, and a recent `created_at` window, then sorting by `created_at DESC LIMIT 50`. User is considering a composite index, possibly partial for `status='active'` rows, which dominate reads.
+- User was recommended a composite PostgreSQL index `ON events (workspace_id, status, created_at DESC)` for their feed query. If `status='active'` is the hot path, a partial index `ON events (workspace_id, created_at DESC) WHERE status = 'active'` was suggested to reduce index size and improve cache behavior.
+- User has another query pattern that omits the `status` filter, using `WHERE workspace_id = $1 ORDER BY created_at DESC LIMIT 50`. User asked if both query patterns could be served by a single index or if two indexes should be maintained, considering the need to avoid excessive write impact on a feature branch.
+- User was advised to use two separate PostgreSQL indexes for optimal read latency: one general index `ON events (workspace_id, created_at DESC)` for queries without a `status` filter, and a partial index `ON events (workspace_id, created_at DESC) WHERE status = 'active'` for the feed query where `status='active'` dominates reads.
+- The assistant explained that a single full index is weaker when `status` is omitted, and while two indexes increase write cost, the recommended btree indexes are targeted, and the partial index has lower maintenance. User was advised to verify with `EXPLAIN (ANALYZE, BUFFERS)` and check table/index size and write pressure before merging.
+- User is tuning database concurrency for an upcoming deploy and wants to adjust connection pool settings for their PostgreSQL database.
+- User increased the worker count last sprint and wants to ensure they are not oversubscribing connections in their PostgreSQL database.
+- The assistant checked the app config and found the current connection pool settings to be conservative relative to the user's new worker count.
+- User requested the Kubernetes patch version for the connection pool configuration.
+- User asked if a maximum of 12 connections per pod is acceptable if Horizontal Pod Autoscaling (HPA) scales to 10 pods during a traffic window.
+- The assistant confirmed that a maximum of 12 connections per pod is a reasonable ceiling for the API deployment.
+- The assistant calculated that 10 pods with 12 possible connections each would result in 120 connections from the application, leaving approximately 180 connections from PostgreSQL's max_connections of 300 for other services, migrations, psql sessions, and system overhead.
+- The assistant will provide a patch for the deployment related to the connection pool configuration.
+- User is checking their read replica setup to determine if replication lag is causing stale reads.
+- User is concerned that routing through a proxy layer might be causing issues with replication lag.
+
+Question: Who mentioned MongoDB and did the user adopt it for their project?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

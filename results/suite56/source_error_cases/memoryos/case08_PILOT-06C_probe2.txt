@@ -1,0 +1,74 @@
+CASE 8: PILOT-06C probe2 match=partial
+paradigm: misinformation  fact_type: reported_port
+
+GOLD: Port 3000 was mentioned as a colleague's service port; the user did not confirm it applied to their own API service.
+
+PREDICTED: {
+  "source_description": "Assistant",
+  "source_class": "assistant",
+  "action": "identified and suggested",
+  "accepted": false,
+  "current_value": "8080",
+  "reason": "The assistant identified port 3000 being used by the frontend service and suggested it for CACHE_PORT, but the user considered moving the API to 3000 and ultimately decided to keep the API service on port 8080."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4483 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User brought API up locally on port 8080 at 2026-07-12 04:57:37
+- [user-knowledge] - User's API service runs on port 8080 at 2026-07-12 04:58:50
+- [user-knowledge] - User helping observability team decide on metrics sidecar port at 2026-07-12 04:59:05
+- [user-knowledge] - User has meeting notes about telemetry gateway service at 2026-07-12 04:58:00
+- [user-knowledge] - User is debugging service discovery in their cluster at 2026-07-12 04:58:06
+- [user-knowledge] - User's API service runs on port 8080
+- [user-knowledge] - User is tightening up monitoring for service uptime at 2026-07-12 04:58:44
+- [user-knowledge] - User debugging container networking at 2026-07-12 04:59:19
+- [user-knowledge] - User's app container exposes 8080 internally at 2026-07-12 04:57:37
+- [user-knowledge] - User wants to move staging metrics service scrape endpoint to port 9090 this afternoon
+- [user-knowledge] - User's service name is `app-api` at 2026-07-12 04:57:37
+- [user-knowledge] - User inspecting platform docs at 2026-07-12 04:59:22
+- [user-knowledge] - User's cluster has `payments.default.svc.cluster.local` at 2026-07-12 04:58:06
+- [user-knowledge] - User has a staging metrics service
+- [user-knowledge] - User has a small internal API
+- [user-knowledge] - User wants to wire frontend to API at 2026-07-12 04:57:37
+- [user-knowledge] - User's frontend is serving fine at 2026-07-12 04:57:37
+- [user-knowledge] - User has docker-compose setup at 2026-07-12 04:57:50
+- [user-knowledge] - User works on cluster networking
+- [user-knowledge] - User is wiring up nginx for a staging box at 2026-07-12 04:57:37
+- [assistant-knowledge] - Assistant confirmed port 3000 used in local dev and k8s manifests at 2026-07-12 04:59:33
+- [assistant-knowledge] - Assistant identified port 3000 for web frontend dev server/container at 2026-07-12 04:59:22
+- [assistant-knowledge] - Assistant listed necessary changes for moving a service to a different port at 2026-07-12 04:58:27
+- [assistant-knowledge] - Assistant searched for "3000" in repo at 2026-07-12 04:59:22
+- [assistant-knowledge] - Assistant checked staging namespace for services, pods, ingress, and NetworkPolicy references to port 9090 at 2026-07-12 04:58:18
+- [assistant-knowledge] - Assistant showed k8s manifest snippet for containerPort 3000 at 2026-07-12 04:59:33
+- [assistant-knowledge] - Assistant confirmed health-check URL matches app's exposed port at 2026-07-12 04:57:37
+- [assistant-knowledge] - Assistant provided a friendlier version of the blurb with port-forward command at 2026-07-12 04:57:37
+- [assistant-knowledge] - Assistant offered to trace compose service networks and volumes at 2026-07-12 04:57:54
+- [assistant-knowledge] - Assistant confirmed CACHE_PORT from staging env config at 2026-07-12 04:59:03
+- [assistant-knowledge] - Assistant showed a NetworkPolicy at 2026-07-12 04:58:16
+- [assistant-knowledge] - Assistant checked pod logs and service definitions at 2026-07-12 04:59:01
+- [assistant-knowledge] - Assistant provided firewall rules and ingress configuration at 2026-07-12 04:58:15
+- [assistant-knowledge] - Assistant provided triage flow using `docker inspect`, `docker exec`, and `sudo iptables` at 2026-07-12 04:59:20
+- [assistant-knowledge] - Assistant showed inspecting network with `docker network ls` and `docker network inspect` at 2026-07-12 04:59:19
+- [assistant-knowledge] - Assistant verified secret contents and ingress controller logs for TLS mismatch at 2026-07-12 04:57:37
+- [assistant-knowledge] - Assistant inspected service and deployment settings at 2026-07-12 04:57:43
+- [assistant-knowledge] - Assistant verified recap against staging manifests at 2026-07-12 04:58:02
+- [assistant-knowledge] - Assistant verified live service for staging metrics exporter at 2026-07-12 04:58:31
+- [assistant-knowledge] - Assistant confirmed leaving API on 8080 at 2026-07-12 04:57:47
+
+Question: Who mentioned port 3000 and did the user confirm it for their own service?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,54 @@
+CASE 27: PILOT-20C probe3 match=partial
+paradigm: reconsolidation  fact_type: sleep_schedule
+
+GOLD: 10 PM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "10 PM",
+  "reason": "The user mentioned reading a sleep study that suggested 10 PM as an ideal bedtime, which made them rethink their routine, but they did not explicitly confirm they were switching to it, as they were still discussing their 11 PM goal and wind-down routine."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3917 chars) =====
+Memory facts extracted from conversation history:
+
+- User's usual bedtime is 11 PM, which they decided to stick with after trying 10 PM for a few days.
+- User is trying to plan their evening to include a quick workout, dinner, and time to unwind before their 11 PM bedtime.
+- User was recommended an evening schedule to meet their goals: a quick workout around 7:00 PM, dinner by 8:00 PM, followed by a shower and cleanup, leaving an hour to relax before an 11 PM bedtime.
+- User wants a nightly phone reminder to help them start winding down before their 11 PM bedtime, as they often scroll too late into the night.
+- User was recommended to set a nightly phone reminder for 10:30 PM or 10:45 PM with a message such as: "Wind-down starts now — put the phone away so 11 PM bedtime actually happens."
+- User is leaning toward skipping a 10:15 PM movie with friends because it conflicts with their regular 11 PM bedtime.
+- User was recommended a text message to decline a late movie invitation: "I’m gonna sit this one out tonight — that start time’s a little too late for me since I’m usually in bed by 11 PM. Hope you all have fun though, and I’m down for an earlier movie another time!"
+- User has been experiencing afternoon fatigue, feeling sluggish and unable to focus by mid-afternoon.
+- User believes their afternoon fatigue is due to eating carb-heavy lunches and not drinking enough water.
+- User was recommended to combat afternoon fatigue by adding protein and healthy fats to lunch (e.g., chicken, tofu, eggs, Greek yogurt, nuts), drinking more water throughout the day, and taking 10-minute walks or stretch breaks.
+- User's sleep schedule shifts significantly on weekends, and they are concerned this is negatively impacting their energy levels.
+- User was informed that large shifts between weekday and weekend sleep timing can cause grogginess, similar to a mini jet lag, and that maintaining a consistent wake-up time throughout the week can lead to steadier energy.
+- User was recommended to make their weekend sleep schedule more consistent by aiming for a similar wake-up time, getting sunlight soon after waking, avoiding sleeping much later to 'catch up,' and taking short naps if tired instead of shifting their entire schedule.
+- User read a sleep study suggesting 10 PM as an ideal time to fall asleep, which made them rethink their evening routine.
+- User is considering trying melatonin for sleep and wants to know if it is helpful and if there are more natural options to try first.
+- User was informed that melatonin can help with an off sleep schedule or jet lag, that a low dose is usually better, and that it is not a knockout pill.
+- User was recommended natural options for sleep including magnesium glycinate, chamomile tea, tart cherry juice, and keeping lights/screens low before sleep, noting that a simple wind-down routine can be more effective than supplements.
+- User asked if melatonin is safe to use every night or if it is better as an occasional thing.
+- User was advised that melatonin is usually better as an occasional or short-term tool unless a doctor advises otherwise, as nightly use can cause grogginess or unpredictable sleep, and it's safest to start with a low dose.
+- User was advised that if sleep has been consistently rough, it is worth reviewing basics such as caffeine timing, stress levels, room temperature, and daily exposure to daylight and movement.
+
+Question: Who or what mentioned 10 PM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

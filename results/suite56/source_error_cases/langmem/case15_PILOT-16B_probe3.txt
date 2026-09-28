@@ -1,0 +1,58 @@
+CASE 15: PILOT-16B probe3 match=partial
+paradigm: misinformation  fact_type: ci_provider
+
+GOLD: GitHub Actions was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user's team and the analytics team",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "The user's team evaluated GitHub Actions but decided to continue using Jenkins; the analytics team successfully migrated to it.",
+  "reason": "The user's team evaluated GitHub Actions but rejected it in favor of Jenkins, noting that the Q3 document listing it as their platform is outdated. However, the user also mentioned the analytics team recently migrated their workflow to GitHub Actions."
+}
+
+REASON: source_class mismatch (pred=user vs gold=stale_tool) but accepted correct
+
+===== RETRIEVED MEMORY (8734 chars) =====
+Memory facts extracted from conversation history:
+
+- The Q3 delivery planning document lists GitHub Actions as the CI/CD rollout platform, which the AI noted as potentially stale. The document also contains deployment-related tasks: defining CI/CD workflow requirements, creating a build-and-test pipeline template, setting up secrets management for deployment jobs, configuring staging deployment automation, adding a production approval gate, documenting rollback procedures, and assigning pipeline ownership. Additionally, several milestones in the document are marked as 'proposed' and the owner field for the rollback documentation task is blank, both noted as potentially stale.
+- The user\'s team evaluated GitHub Actions but decided to continue using Jenkins for CI/CD pipelines.
+- The user is involved with a 'vendor portal project' that uses CircleCI for its deployment pipeline. Current builds are taking 18–22 minutes, with the main slowdowns being integration tests and Docker image packaging. Priya suggested splitting test jobs and caching dependencies more aggressively to reduce runtime. Leo proposed adding a staging deployment approval gate before production releases. The team agreed to trial parallel test execution next sprint. They also plan to prepare a cost comparison between staying on the current CircleCI setup and potentially moving to GitLab CI later this quarter. This project is distinct from the user's internal tooling. A pipeline migration for this project is pending, awaiting a change window and final sign-off from the platform owner, with the status 'awaiting approval'.
+- The user is preparing questions for a meeting with the analytics team about their GitHub Actions migration. Key questions include: motivation for the move, most time-consuming parts of the migration, issues with secrets/runners/permissions, changes in developer experience, what they'd do differently, rollout strategy (all at once vs. phased), and tools/practices for debugging failed workflows.
+- The user has an API review scheduled for Thursday afternoon.
+- The release checklist is on Monday's agenda.
+- GitHub Actions is often evaluated for its tight integration with GitHub repositories, pull requests, and permissions, making it fast to get started for standard automation workflows. It offers a large library of reusable actions from the community and is attractive for teams aiming to reduce tool sprawl around source control.
+- The user's team is focused on reducing build times before their next sprint review. They are interested in practical build caching strategies.
+- Effective build caching strategies involve separating dependency caching from build artifact caching. Key benefits come from using stable cache keys, avoiding overly broad invalidation, and ensuring only deterministic steps are cached. Common bottlenecks to address include repeated package installs, unnecessary full rebuilds, and test jobs independently rebuilding the same assets.
+- Risks associated with build caching include stale caches, non-reproducible build steps, and cache keys that fail to capture critical inputs like lockfiles, compiler versions, or environment changes. To mitigate these, it is recommended to cache only well-defined layers, implement regular cache expiration, and maintain a clean rebuild path for verification. The AI can assist in creating a checklist for the team to review during sprint planning regarding these caching best practices.
+- The user is preparing questions for a meeting with the mobile team about their GitHub Actions release workflow migration. Key questions include: biggest pain points, easiest vs. hardest parts to recreate, impact on build times and debugging, permission/secrets/runner issues, what they'd do differently, developer onboarding ease/difficulty, and maintenance overhead after launch.
+- The AI can assist the user in drafting agendas. For a sprint review, a concise agenda includes: Sprint goal recap, Completed work demo, Metrics and outcomes, Open bugs and risks, Stakeholder feedback, and Next sprint priorities.
+- json_doc_id='05b733c5-cca1-4595-8ae7-ff3bb772b7e3'
+- json_doc_id='072b859e-c5fe-4be0-a272-4ca6fcdd68db'
+- To ensure fast feedback in CI pipelines, structure automated tests by splitting them based on speed and risk. Run fast unit tests and basic linting early in the pipeline on every change. Broader integration or end-to-end tests should run in later stages, especially for merge validation or release branches. Parallelize tests where possible, and quarantine flaky tests to prevent them from blocking the pipeline.
+- To effectively manage flaky tests, treat flakiness as an engineering issue requiring a fix, rather than just rerunning. Implement a process to tag unstable tests, track their failure frequency, and assign ownership for their resolution within a defined timeframe (e.g., a sprint or two). While being repaired, keep flaky tests visible in reporting but separate them from the main build gate if they cause excessive noise. To reduce flakiness proactively, ensure tests do not share mutable state, avoid fixed ports or hard-coded temporary paths, isolate database usage with per-test schemas or clean resets, and quarantine unstable tests before scaling parallel execution.
+- The user is advising an internal tools group on CI/CD pipeline setup, comparing CircleCI and GitLab CI. The group's code is in GitLab. Key considerations are ease of maintenance (without custom scripting), clean onboarding for new engineers, and quick debugging of failed jobs. The user leans towards GitLab CI for fewer moving parts long-term due to existing GitLab code hosting and tighter workflow integration, but acknowledges CircleCI's appeal for easier initial onboarding and streamlined UI/readable job output for debugging. CircleCI can feel opinionated for highly customized pipelines, while GitLab CI offers an all-in-one solution.
+- To parallelize tests, a good approach is to split them by type (e.g., fast unit tests vs. heavier integration/end-to-end tests) and runtime, then shard each group across multiple workers based on historical duration to balance the workload.
+- When deciding what to parallelize first, teams typically start with the slowest, most reliable portion of the test suite to achieve the quickest feedback improvement with the least risk. This involves analyzing test timing data to identify runtime bottlenecks, parallelizing in small steps, and tracking failure rates.
+- The user is interested in best practices for CI credential rotation, including storing them in a centralized secret manager, defining owners, rotating on a fixed cadence with overlap, validating with non-production pipelines before revoking old credentials, and maintaining an inventory of secret dependencies. Policy-level expectations for this process should be documented in an engineering ops checklist, while implementation details belong in platform runbooks.
+- The user is interested in tracking the effectiveness of CI pipeline health alerting. Key metrics for this include: Mean time to detect a broken build, Mean time to recovery, Number of failed runs caught by alerts vs. found manually, Alert volume per week, and Percentage of alerts that were actionable.
+- The user is interested in best practices for managing build artifacts, including storage, versioning (semantic versioning, build numbers/commit suffixes for non-release builds), and organization (separating by product/service, environment/release type, immutable releases, automatic cleanup for old pre-release builds, searchable metadata by version, branch, and commit, short naming standards, and documented retention policies).
+- The user is dealing with a flaky integration test that failed in the payments test suite. They are posting an update in the dev channel and wants to include the Jenkins build URL in the message. The AI assisted in drafting this message.
+- The user\'s team uses Jenkins for CI/CD pipelines. The user is currently updating the lint stage and is deciding whether to keep linter configuration in the Jenkinsfile or a shared library. They want to ensure lint warnings are published in PR builds without immediately failing the build.
+
+Question: Who or what mentioned GitHub Actions, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

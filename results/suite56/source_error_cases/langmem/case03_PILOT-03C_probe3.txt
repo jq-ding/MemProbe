@@ -1,0 +1,45 @@
+CASE 3: PILOT-03C probe3 match=partial
+paradigm: consolidation  fact_type: diet_preference
+
+GOLD: Mediterranean diet was suggested by a third party or mentioned in passing; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "suggested",
+  "accepted": false,
+  "current_value": "The user tried a Mediterranean diet meal plan for a week but decided to stick with their vegetarian diet.",
+  "reason": "The assistant provided a Mediterranean diet meal plan which the user tried for one week, but the user ultimately decided to remain committed to their vegetarianism."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (7097 chars) =====
+Memory facts extracted from conversation history:
+
+- The user's cousin is following a pescatarian diet and seeks low-effort, budget-friendly meal and snack ideas to avoid boredom, especially when just getting started. For beginners, simple meals built around fish plus a carb and some produce are recommended. Meal suggestions include: salmon rice bowls (or salmon with rice and roasted veggies), shrimp tacos, shrimp stir-fry, lemon garlic cod, tuna pasta (or pasta with fish and greens), fish curry, and veggie omelets. A 5-day budget-friendly meal plan was also given: Monday (Tuna melts + tomato soup), Tuesday (Veggie fried rice with scrambled egg and baked fish), Wednesday (Chickpea salad wraps with feta and cucumbers), Thursday (Garlic shrimp pasta with frozen peas), and Friday (Sheet-pan tilapia with carrots and potatoes). Money-saving tips included using canned/frozen fish and repeating ingredients. Snack ideas provided were: Greek yogurt (with berries), fruit, nuts, hummus (with crackers and sliced peppers), cottage cheese with pineapple or cucumber, and crackers with smoked salmon. The agent can also put together a super basic 3-day pescatarian meal plan.
+- The user experiences low energy in the afternoons. Simple habits to help include: ensuring adequate water intake, avoiding long periods without eating, incorporating short movement breaks (5-10 minutes) if sitting a lot, and opting for lighter lunches. Inconsistent sleep also contributes to low energy; maintaining a consistent sleep schedule, reducing screen time before bed, and getting morning daylight can improve energy levels.
+- The user follows a vegetarian diet and is not looking to change it. They are interested in the Mediterranean diet for recipe inspiration, having previously tried a Mediterranean diet meal plan for a week but deciding to stick with vegetarian. They are also interested in practical food management and meal planning, including finding plant-based protein options for post-workout recovery. For cooking grains and legumes, they appreciate tips like rinsing first, soaking beans overnight, cooking in broth/seasoning (salt, garlic, bay leaf), avoiding over-stirring, and letting grains rest covered. Specific ratios include 1 part quinoa to 2 parts water, 1 part brown rice to 2-2.5 parts water, and simmering lentils until tender without soaking. To keep meal-prepped grains and legumes interesting throughout the week, they can vary add-ins such as olive oil/lemon/herbs, salsa/cumin, garlic/chili flakes, tahini/yogurt-based sauces, or roasted vegetables. Cooking a couple of staples like rice and lentils at once and combining them differently for meals is also a useful strategy. For group dinners, they prefer fun restaurants with lighter food options, ensuring everyone has choices and avoids feeling overly full. They appreciate places with shareable plates (like tapas or sushi), menus offering a variety of portion sizes, lighter options, protein-forward mains (grilled/roasted), veggie sides, and easy-to-split desserts. A not-too-loud atmosphere is also preferred for a relaxed dining experience.
+- The user is interested in the health benefits of the Mediterranean diet, specifically its link to heart health. They are curious about the role of olive oil and nuts in this diet, which are recognized as sources of healthy fats and nutrients.
+- The user is interested in budget grocery shopping. Tips include: making a short meal plan, buying store brands, building meals around cheap staples (oats, rice, potatoes, beans, eggs, frozen fruit/veggies), utilizing frozen items for longevity and waste reduction, and checking price per unit.
+- The user struggles with impulse buying snacks. Strategies to avoid this include: shopping after eating, bringing and sticking to a grocery list, allowing one "fun" item to prevent feeling restricted, and avoiding unnecessary aisles. The agent can also help create a simple one-week cheap grocery list.
+- The user's partner follows a Mediterranean diet, and the user seeks easy dinner ideas that work for both, avoiding cooking two separate meals. The recommended strategy is to keep the base shared and customize at the end. Suitable suggestions include: Mezze plates (hummus, olives, whole-grain pita, cucumber salad, falafel or lentils, and other Mediterranean diet staples), Grain bowls (quinoa, roasted vegetables, chickpeas, feta, with optional olives or fish for the partner), Pasta nights (a veggie pasta base with separate toppings), Stuffed peppers, and Sheet pan vegetables with separate add-ons. For dessert, fresh fruit with Greek yogurt and honey, or baked pears with cinnamon and chopped nuts are good light options.
+- The user is interested in meal prep. Recommendations include: glass containers (sturdy, microwave-safe, 2-3 compartments to prevent sogginess) or BPA-free plastic containers (lighter). Batch cooking tips involve making basics in bulk (protein, grain, roasted vegetables) and mixing them differently throughout the week to avoid repetition. Prepped meals last 3-4 days in the fridge, and freezing portions can extend this. Tricks to make meal prep less annoying include: letting food cool before sealing, labeling lids with the date, keeping sauces separate, and designating one simple prep day and one short midweek restock session.
+- The user learned about a meal-delivery startup through a review. The startup's keto plan was generally good, with solid portion sizes, fresh produce, and reliable shipping. However, the breakfasts became repetitive after a week, and the snacks were considered overpriced. The agent concluded that the service is good if convenience is prioritized over budget, suggesting to skip the overpriced snacks and focus on the core meal plan.
+- The user has a brother who is considering a dietary change, specifically between keto and pescatarian. For someone prioritizing ease of adherence, flexibility, and convenience (especially with long work shifts), pescatarian is generally recommended over keto. Pescatarian offers more food options (fish, eggs, dairy, grains, beans, fruits, veggies), making eating out and meal prep simpler, and requires less strict tracking compared to keto.
+- The user struggles to remember to drink water. A general target for water intake is 2-3 liters a day for most adults, with more needed during exercise, sweating, or hot weather. Tips to remember include keeping a visible water bottle, drinking a glass with each meal, taking sips when standing up or checking the phone, and adding ice or fruit to plain water.
+
+Question: Who or what suggested the Mediterranean diet, and did the user confirm switching?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

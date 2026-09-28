@@ -1,0 +1,49 @@
+CASE 12: PILOT-11B probe3 match=partial
+paradigm: interference  fact_type: team_standup
+
+GOLD: 10:00 AM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The planning doc, the team ops tracker, and the proposed team cadence",
+  "source_class": "other_entity",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "9:30 AM",
+  "reason": "The user dismissed the 10:00 AM time as a sync glitch and confirmed the standup remains at 9:30 AM per the Slack note."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1541 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- The client check-in for User starts at 10:00 AM.
+- User needs confirmation from Ops.
+- The planning doc has a line that says the daily standup is at 10:00 AM.
+- User needs confirmation on the timeout settings.
+- Assistant confirms to User that the daily standup remains scheduled at 9:30 AM.
+- The Slack note mentions the daily standup at 9:30 AM.
+- User believes the calendar briefly showing the standup at 10:00 AM was a sync glitch.
+- The Proposed team cadence includes daily standup at 10:00 AM.
+- Priya will confirm with the vendor whether weekend cutover support is available.
+- Assistant thinks moving the morning check-in to 10:30 AM is reasonable
+- User has a product review listed for later this morning.
+- User wants to ask Priya to cover any blockers.
+- The standup at 10:00 AM might make it harder to grab Priya first thing.
+- The User is looking at the team ops tracker.
+- User agrees with Assistant's assessment that moving the morning check-in to 10:30 AM is reasonable
+
+Question: Who or what mentioned 10:00 AM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,56 @@
+CASE 8: PILOT-11B probe3 match=partial
+paradigm: interference  fact_type: team_standup
+
+GOLD: 10:00 AM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "An old planning document for the platform team and the user's manager",
+  "source_class": "other_entity",
+  "action": "proposed",
+  "accepted": false,
+  "current_value": "9:30 AM",
+  "reason": "An old planning document proposed 10:00 AM, and the user's manager proposed it for West Coast teammates, but the user flagged it as outdated and pushed back due to a cross-team sync, keeping the standup at 9:30 AM."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (6600 chars) =====
+Memory facts extracted from conversation history:
+
+- The platform team had a proposed cadence that included a daily standup at 10:00 AM, a backlog review on Thursdays, and weekly bug triage rotating by owner. This proposed cadence is likely outdated.
+- The user has the following PRs waiting on review: auth refactor, billing webhook fix, and dashboard pagination update.
+- The Mobile Platform team's morning check-in is moving to 10:30 AM starting next Tuesday.
+- If a scheduling conflict arises with the Mobile Platform team's 10:30 AM morning check-in, the agent should suggest an afternoon meeting option.
+- The user's preferred communication tone for a project channel can vary; while a polished tone might be a default, they may request a less formal, 'PM-like' tone depending on the specific message and context, as demonstrated by their request to make a recap 'less formal and more like something a PM would drop in the channel'.
+- The user's manager proposed moving the daily standup to 10:00 AM to accommodate west coast teammates, but the user has a conflicting cross-team sync at that time, and another teammate also pushed back, leading to the proposal being tabled. The team's daily standup remains at 9:30 AM.
+- The user has a cross-team sync at 10:00 AM.
+- The design team has their daily check-in at 10:00 AM.
+- 10:00 AM is a commonly recommended time for standups in productivity blogs and team management advice, often seen as a balance between avoiding early morning chaos and maintaining daily momentum. However, the optimal standup time is highly dependent on specific team schedules, time zones, and overall meeting load.
+- Async standup tools allow distributed teams to post updates at their convenience and automatically document responses, reducing meeting load. However, they can lead to lower immediacy, potentially delaying the surfacing of blockers, and make it harder to gauge team energy or alignment.
+- Live standups are effective for quick clarifications and maintaining team momentum, but they can become repetitive if updates are routine.
+- Async standups work best when the team is disciplined with written updates, work changes infrequently, and there is a clear process for escalating blockers outside the standup. A hybrid approach, using async for status updates and live discussions for risks, dependencies, or issues requiring conversation, is often effective.
+- The Mobile QA team has a standup meeting. It was temporarily moved to 10:30 AM for one week due to morning client validation coverage by some testers. The regular recurring schedule for the Mobile QA standup remains unchanged.
+- To plan morning priorities, use a "quick triage" method: select one must-finish task, one task that unblocks someone else, and one small administrative item. When managing a task list, prioritize by impact and dependency rather than just urgency.
+- When handling early morning messages, perform a short inbox sweep to address anything truly blocking, then transition to focused work on top priorities.
+- For early morning code review requests, prioritize quick reviews that are blocking teammates. Otherwise, batch code reviews to be completed after an initial deep-work block. The overall goal is to protect personal work momentum while remaining responsive to the team.
+- When advising on morning sync times for mixed-function teams (e.g., engineers and analysts) that include members supporting other regions (leading to later starts), a later sync time (e.g., 10:30 AM) is generally preferable over an earlier one (e.g., 9:00 AM). This allows team members time to gather context, improves attendance for those with later starts, and leads to a more useful check-in, even if it means breaking up the morning.
+- To protect meeting-free deep work blocks, the agent should advise the user to: 1) make blocks predictable and visible by picking 2-3 recurring calendar windows, marking them as focus time, and sharing the norm with the team; 2) define exceptions (e.g., production issues, urgent review requests); and 3) cluster collaborative meetings around these blocks. When communicating these blocks, the agent should advise framing it around 'better output, not less availability,' using phrasing like: 'I’m reserving a few focus blocks each week for implementation and design work so I can reduce context switching and deliver faster. I’ll still be available outside those windows, and urgent issues can always reach me.'
+- The agent should adapt its communication style, including formality and phrasing, based on the specified audience or context (e.g., a 'project channel' requires more polished language).
+- For engineering teams, effective sprint retrospective formats include Start/Stop/Continue (simple, action-oriented), Mad/Sad/Glad (surfaces sentiment), 4Ls (Liked, Learned, Lacked, Longed For - for reflection), and Sailboat (discusses blockers/momentum). For quiet teams, Start/Stop/Continue is a good starting point. For teams technically engaged but not vocal, 4Ls or Start/Stop/Continue with a silent brainstorm first can encourage more honest input by lowering pressure to speak immediately.
+- For distributed teams across multiple time zones (e.g., North America, Europe, Asia), effective strategies include defining a small window of overlapping hours for live collaboration, making other work asynchronous by default, and rotating meeting times to distribute inconvenience. Documenting decisions clearly in tickets or notes is crucial for offline team members to catch up. For smooth handoffs between regions, use a consistent handoff template in the project tracker (including current status, blockers, next steps, and relevant links) and maintain detailed PR descriptions and issue comments to minimize back-and-forth.
+- The user has a daily team sync/standup every weekday at 9:30 AM for 15 minutes and is looking for ways to make them more efficient. Strategies include tightening the format (finished, next, blockers), deferring deep discussions, concise updates, rotating facilitation, and framing brevity as protecting focus time.
+
+Question: Who or what mentioned 10:00 AM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

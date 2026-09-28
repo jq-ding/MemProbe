@@ -1,0 +1,49 @@
+CASE 19: PILOT-19C probe3 match=partial
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The security hardening guide and an old Kubernetes manifest",
+  "source_class": "other_entity",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "8443",
+  "reason": "The user found the port in documentation and manifests but noted it was never used in production and was only considering it for migration."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1351 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- The security hardening guide keeps mentioning port 8443.
+- User considered 8443 for the database service port.
+- Assistant would confirm key tables are present
+- 8443 was found in an old Kubernetes manifest.
+- User asks Assistant to confirm what port the analytics-db-proxy service is exposing.
+- Server enforcement confirms the certificate chain is valid.
+- Port 8443 is commonly used for internal web UIs.
+- User was in the config repo.
+- Server enforcement confirms the DB is configured to require encrypted connections.
+- Production never used port 8443.
+- User wants to verify the ingress.
+- User provided the excerpt.
+- Port 8443 is commonly used for HTTPS admin endpoints.
+- User was evaluating whether to migrate the database service to port 8443.
+- User wants to verify the backend mapping.
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

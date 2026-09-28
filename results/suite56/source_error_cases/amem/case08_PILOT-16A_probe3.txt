@@ -1,0 +1,183 @@
+CASE 8: PILOT-16A probe_idx=3 match=incorrect
+paradigm: misinformation
+fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "8443",
+  "reason": "The user first mentioned port 8443 in memory 15 when asking about an old config, and the assistant confirmed it was a historical setting for a legacy gateway's admin endpoint."
+}
+
+REASON: source_class mismatch: pred=user vs gold=stale_tool
+
+================================================================================
+RETRIEVED MEMORY:
+================================================================================
+Memory notes retrieved from A-MEM (with evolved links / tags):
+
+memory index:15	 talk start time:202601160001	 memory content: User: I found `8443` in an old config under `services/legacy-gateway/values.yaml`. Can you check what that was for? I want to make sure it’s not something still in use.
+Assistant: I checked the deprecated service config and cluster refs. `8443` is tied to the old gateway’s HTTPS admin endpoint, not anything current in the active stack.
+User: Can you see whether anything still references that legacy gateway branch or deployment?
+Assistant: I looked for active references; it seems isolated to deprecated manifests and an old branch.
+User: Got it, so I can treat that as historical?
+Assistant: Yes — based on the repo and cluster checks, `8443` is just a historical setting for the deprecated legacy gateway’s admin listener.	 memory context: This memory concerns the investigation of port 8443 in an old configuration (`legacy-gateway/values.yaml`), confirming its historical use for a deprecated legacy gateway's HTTPS admin endpoint and its non-use in the active stack. It clarifies specific, often legacy, roles for port 8443.	 memory keywords: []	 memory tags: ['port 8443', 'legacy gateway', 'configuration verification', 'deprecation status', 'historical configuration', 'resource identification', 'system audit', 'service endpoint', 'admin endpoint', 'HTTPS', 'manifest review', 'branch review', 'cluster checks', 'deprecated service']
+memory index:16	 talk start time:202601170001	 memory content: User: I’m reviewing the config before we cut the release; can you check the DB service settings in this branch and whether we ever flipped it over to 8443?
+Assistant: I checked the branch config and deployment manifests.
+User: We considered 8443 for the migration, but database service runs on port 5432 for compatibility.
+Assistant: Got it — I’ll leave the DB port unchanged and proceed with the rest of the release checks.	 memory context: This memory, similar to the new memory, describes reviewing database service settings and confirming that port 5432 is maintained for compatibility, despite considering port 8443 during a migration. It emphasizes config review and decisions regarding database port changes.	 memory keywords: []	 memory tags: ['database', 'port configuration', 'port 5432', 'port 8443', 'release management', 'compatibility', 'config review', 'service settings', 'deployment', 'configuration verification', 'service port']
+memory index:17	 talk start time:202601180001	 memory content: User: A teammate floated moving the database service to 8443; can you check the current config in this branch and then verify the migration job status?
+Assistant: I checked the branch config and cluster state.
+User: We reviewed it, but database service runs on port 5432, so we're keeping that and just proceed with the deploy checklist.
+Assistant: Understood — keeping 5432. Next deploy checks look clear from here; if you want, I can validate the rollout status and service endpoints.	 memory context: This memory, similar to the new memory, details a decision to keep the database service on port 5432 despite a proposal to move it to 8443, emphasizing configuration review and migration decisions. It directly relates to the new memory's theme of verifying database port configurations and managing potential changes.	 memory keywords: []	 memory tags: ['database', 'port configuration', 'port 5432', 'port 8443', 'deployment', 'config review', 'service settings', 'migration decision', 'compatibility', 'deploy checklist', 'configuration verification', 'service port']
+memory index:21	 talk start time:202601220001	 memory content: User: I was reviewing the service config and briefly considered moving the database endpoint to 8443; can you check what the current deployment is using?
+Assistant: Sure — I checked the repo and the running pod config.
+User: We tested the migration path, but for compatibility the database service stays on port 5432.
+Assistant: Understood — I'll leave the config as-is.	 memory context: General	 memory keywords: []	 memory tags: ['database', 'port configuration', 'port 5432', 'port 8443', 'deployment', 'config review', 'service settings', 'migration decision', 'compatibility', 'configuration verification', 'service port']
+memory index:4	 talk start time:202601050001	 memory content: User: I'm reviewing a security hardening guide and it keeps mentioning port 8443. Can you check whether that applies to our stack?
+Assistant: Sure — I'll inspect the ingress and service configs to see what 8443 is used for in your environment.
+User: That makes sense. Can you confirm from config whether it's actually TLS-related?
+Assistant: Yep — I'll check the gateway deployment and its env/config.
+User: Got it, that's enough context for the review.
+Assistant: Sounds good. If you want, I can also map the security guide's recommended ports/protocols to the services in your cluster.	 memory context: This memory describes a user querying about the application of port 8443 in a security hardening guide, involving the inspection of ingress and service configurations to determine its specific use, often for TLS or secure services, contrasting with standard database ports.	 memory keywords: []	 memory tags: ['security hardening', 'port 8443', 'TLS', 'configuration inspection', 'ingress configuration', 'service configuration', 'gateway configuration', 'environment variables', 'port mapping', 'system analysis', 'network security rules', 'secure services']
+memory index:18	 talk start time:202601190001	 memory content: User: Can you check the monitoring dashboard for the `db-service` endpoint? It’s showing port `8443` right now, and I’m wondering if someone actually changed it during last week’s maintenance window.
+Assistant: I checked the dashboard snapshot and the recent deployment notes.
+User: Yeah, check the live config. That dashboard might be lagging. If the remap was reverted, `8443` could just be old cached data from that migration attempt.
+Assistant: Verifying the live Kubernetes service and app config now.
+User: Got it — yeah, that dashboard is outdated then. The database service runs on port `5432`, not `8443`. Can you update or invalidate the stale dashboard data so nobody gets confused again?
+Assistant: Yep. I’ll invalidate the cached dashboard entry and leave a note pointing to the reverted migration.	 memory context: This memory describes verifying the correct port for a database service, specifically comparing a stale monitoring dashboard showing port 8443 with the live configuration which correctly indicates port 5432. It highlights the importance of real-time configuration verification and the process of invalidating outdated monitoring data.	 memory keywords: []	 memory tags: ['database service', 'port configuration', 'port 8443', 'port 5432', 'monitoring dashboard', 'stale data', 'configuration verification', 'Kubernetes', 'migration attempt', 'troubleshooting', 'data invalidation', 'service endpoint']
+memory index:11	 talk start time:202601120001	 memory content: User: I'm wiring up a sidecar for the analytics stack. Can you check why the `reporting-db-proxy` service isn't reachable from the pod? I think that one is supposed to listen on 8443.
+Assistant: Sure — I'll inspect the service and endpoints for `reporting-db-proxy`.
+User: Can you also verify the container is exposing the same port in the deployment?
+Assistant: Yep — checking the deployment spec now.	 memory context: This memory describes troubleshooting connectivity issues for a 'reporting-db-proxy' service within a Kubernetes analytics stack, specifically verifying port 8443 exposure and container configuration. It highlights 8443's use for specific proxy or analytics services, contrasting with standard database ports like 5432.	 memory keywords: []	 memory tags: ['Kubernetes', 'service reachability', 'port verification', 'configuration inspection', 'troubleshooting', 'analytics stack', 'sidecar', 'service', 'deployment', 'endpoints', 'port 8443', 'proxy service']
+memory index:6	 talk start time:202601070001	 memory content: User: I’m looking at the infra tracker and I can’t tell which entry is for the analytics datastore versus the cache tier. The row I’m asking about says `svc=events-mongo`, namespace `telemetry`, and there’s a port column with a number I don’t recognize. Can you check what that service is exposing?
+Assistant: I’ll check the service definition in the cluster and confirm what `events-mongo` is exposing.
+User: Got it. I think I mixed it up because the dashboard also shows `redis-events` nearby. Can you verify that one too so I can label the tracker correctly?
+Assistant: Yep — I’ll check `redis-events` so you can distinguish the two entries cleanly.
+User: Perfect. One last thing: is the tracker wrong to list `events-mongo` under “sql backends,” or is that just an old category?
+Assistant: That looks like an outdated category label. Based on the live service config, `events-mongo` is clearly a MongoDB-backed datastore, so it should be grouped under document/datastore services rather than SQL backends.	 memory context: This memory focuses on identifying and distinguishing database services (MongoDB `events-mongo` and Redis `redis-events`) within a `telemetry` Kubernetes namespace using an infra tracker. It involves verifying their exposed ports and correcting an outdated categorization label for `events-mongo` from 'SQL backends' to 'document/datastore services'.	 memory keywords: []	 memory tags: ['service identification', 'database type', 'configuration inspection', 'port verification', 'categorization', 'MongoDB', 'Redis', 'infra tracker', 'service definition', 'telemetry', 'datastore', 'document database', 'SQL', 'Kubernetes', 'namespace']
+memory index:20	 talk start time:202601210001	 memory content: User: I'm wiring up a sidecar for the analytics sandbox. Can you check why the `metrics-db-proxy` pod isn't reachable? I thought that one was exposed on 8443.
+Assistant: I checked the sandbox namespace and the proxy is indeed listening on `8443`, but it's only bound behind the internal ClusterIP service.
+User: That makes sense. Can you also confirm the container args in that deployment? I want to be sure the proxy itself is actually starting with the right listener.
+Assistant: Yep — the deployment is passing `--listen=:8443`, so the sidecar config matches the service definition.	 memory context: General	 memory keywords: []	 memory tags: ['Kubernetes', 'sidecar', 'proxy service', 'metrics', 'analytics sandbox', 'connectivity troubleshooting', 'port 8443', 'ClusterIP service', 'service reachability', 'deployment configuration', 'container arguments', 'port verification', 'configuration inspection']
+memory index:3	 talk start time:202601040001	 memory content: User: I was reading an internal postmortem from another team about a metrics dashboard outage. It mentioned their analytics datastore was accidentally pointed at the wrong socket after a Helm change. Can you help me sanity-check what they were talking about?
+Assistant: Sure — if you paste the snippet or describe the config, I can translate it. For analytics stacks, this often comes down to a service name, port, or env var mismatch between chart values and the app deployment.
+User: The write-up says: “During the chart upgrade, `ANALYTICS_DB_PORT` was overridden by a shared values file, so the API pods could no longer reach the reporting database.” They included a small config fragment and said reviewers missed it because the rest of the diff was mostly image tags.
+Assistant: That sounds plausible. A shared values file can easily override a per-service setting if merge order is wrong. If you want, I can mock up the kind of thing they probably saw.
+User: Yeah, that makes sense. The article also said they confirmed it by checking connection failures in the pod logs and comparing them with the Service manifest for the reporting store. Is that a normal way to verify it?
+Assistant: Yes, that’s a standard verification path: compare what the app is trying to dial with what Kubernetes exposes.	 memory context: This memory describes a postmortem scenario involving a metrics dashboard outage caused by an analytics datastore pointing to the wrong socket due to a Helm configuration change. Specifically, `ANALYTICS_DB_PORT` was overridden by a shared values file, leading to a port mismatch. The resolution involved verifying connection failures in pod logs against the Kubernetes Service manifest, highlighting the process of configuration inspection and reconciliation.	 memory keywords: []	 memory tags: ['database', 'connectivity', 'troubleshooting', 'configuration inspection', 'port mismatch', 'Helm', 'Kubernetes', 'shared values', 'postmortem', 'verification', 'environment variables', 'service manifest', 'system analysis']
+memory index:1	 talk start time:202601020001	 memory content: User: Can you sanity-check the connection pool on the staging API pod? I’m seeing intermittent timeouts after the last deploy, and I want to confirm the app is still pointing at the DB correctly before I restart anything. The service should still be listening on 5432, so maybe check env/config and then probe connectivity from one of the pods.
+Assistant: Yep — I’d verify the runtime config first, then test reachability from the pod to the DB endpoint on port 5432.
+User: Yeah, check whether we’re hitting pool exhaustion versus just slow queries. If there’s an easy way to compare configured max with active/idle connections, do that.
+Assistant: I checked the pool settings from the deployment and compared them with current DB activity. The app is configured with a max pool size of 30, and current usage is well below that.	 memory context: This memory details troubleshooting intermittent database timeouts and connection pool exhaustion on a staging API pod, involving the inspection and verification of runtime configuration and connectivity to a Postgres database on its standard port 5432. It reinforces 5432 as the expected database port.	 memory keywords: []	 memory tags: ['database', 'connectivity', 'troubleshooting', 'connection pool', 'timeouts', 'staging', 'configuration inspection', 'port 5432', 'environment variables', 'runtime configuration', 'resource exhaustion', 'network connectivity', 'slow queries', 'database port standard']
+memory index:7	 talk start time:202601080001	 memory content: User: A teammate on the analytics side is blocked connecting to their staging datastore. Can you help me verify what port that service is actually listening on in their Kubernetes namespace? I think it might be Mongo, but I’m not sure.
+Assistant: Sure — I’ll check the staging namespace resources and inspect the service plus container settings for the analytics team’s datastore.
+Assistant: It is Mongo in that namespace, and the `mongo-store` service is exposing `27017/TCP`. I can also confirm from the deployment if you want to make sure the container is aligned.
+User: Yes, please confirm from the deployment too. They said their app config might be stale.
+Assistant: I checked the deployment and the app-side ConfigMap. Both point to the same Mongo listener.
+Assistant: Confirmed: the deployment exposes container port `27017`, and the analytics API ConfigMap also uses `DB_PORT="27017"`. If their app still can’t connect, the next things I’d check are network policy, credentials, or whether they accidentally pointed at the wrong namespace/service name.	 memory context: This memory details troubleshooting database connectivity in a Kubernetes staging environment, specifically verifying the port a Mongo service is listening on. It involves inspecting Kubernetes service manifests, deployment configurations, and ConfigMaps to ensure correct port exposure and application configuration (27017/TCP) and explicitly mentions network policy as a potential troubleshooting step, aligning with broader network access control strategies.	 memory keywords: []	 memory tags: ['database', 'connectivity', 'troubleshooting', 'Kubernetes', 'port verification', 'configuration inspection', 'service manifest', 'deployment', 'ConfigMap', 'staging', 'Mongo', 'network policy', 'credentials', 'namespace', 'port 27017', 'network access control']
+memory index:2	 talk start time:202601030001	 memory content: User: I’m cleaning up our onboarding docs and want to mirror what I just put in the team wiki for the staging DB. Can you sanity-check the connection details format before I paste it into `docs/setup.md`? I used: `postgres://app_user:***@staging-db.internal:5432/app_core` and noted that folks can also export it as `DATABASE_URL`.
+Assistant: Yes — that format looks correct for a standard Postgres connection string, and your wiki example clearly indicates the database service runs on port 5432. If you want, I can also verify whether the app already expects `DATABASE_URL` in the repo config.	 memory context: This memory focuses on verifying and documenting the correct format for a Postgres connection string, explicitly mentioning port 5432 as the standard database port, and the use of the DATABASE_URL environment variable for onboarding and setup documentation. It reinforces the use of 5432 for databases.	 memory keywords: []	 memory tags: ['database', 'connectivity', 'configuration documentation', 'Postgres', 'connection string', 'DATABASE_URL', 'staging', 'onboarding', 'port 5432', 'setup documentation', 'database port standard']
+memory index:19	 talk start time:202601200001	 memory content: User: I'm reviewing two staging setups for a vendor demo and need a quick recommendation. One option uses MySQL on 3306, the other uses MongoDB on 27017. This isn't for our main app, it's for a throwaway environment to showcase search and catalog browsing. Which would you pick?
+Assistant: For a short-lived demo focused on search and catalog browsing, I'd usually lean toward MongoDB on 27017 if the product data is flexible or changes shape often, and MySQL on 3306 if you want predictable joins, reporting, or stricter relational structure.
+
+Quick comparison:
+
+- **MySQL / 3306**
+  - Pros: mature tooling, strong relational queries, easier to enforce schema consistency
+  - Cons: can be slower to reshape if the demo dataset keeps changing
+
+- **MongoDB / 27017**
+  - Pros: flexible documents, fast iteration for semi-structured catalog data, simple to seed
+  - Cons: less natural if the demo needs relational integrity across many entities
+
+If you want, I can inspect sample configs for both patterns and point out operational tradeoffs for the demo stack.
+User: Yeah, can you sanity-check what the container configs would look like for each? I'm mostly worried about whether the app team will have fewer connection issues during the demo.
+Assistant: Sure — here are two minimal examples and the practical differences.
+
+**Option A: MySQL**
+```yaml
+services:
+  app:
+    environment:
+      DB_CLIENT: mysql
+      DB_HOST: demo-mysql
+      DB_PORT: 3306
+  demo-mysql:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: catalog
+      MYSQL_USER: demo
+```
+
+**Option B: MongoDB**
+```yaml
+services:
+  app:
+    environment:
+      DB_CLIENT: mongodb
+      DB_HOST: demo-mongo
+      DB_PORT: 27017
+  demo-mongo:
+    image: mongo:7
+```
+
+I’d also verify that the app’s health checks and env injection are aligned with whichever backend they choose.
+User: Suppose the frontend engineer wants to compare startup reliability in CI for these two branches before deciding. Is there a fast way to check?
+Assistant: Yes — I’d compare container readiness and connection failures from each branch in CI logs rather than benchmarking app features.
+
+A simple approach:
+1. Check out each branch
+2. Bring up the backing service
+3. Wait on readiness
+4. Run a lightweight connection test from the app container
+5. Compare retries/timeouts	 memory context: General	 memory keywords: []	 memory tags: ['database selection', 'demo setup', 'MySQL', 'MongoDB', 'container configuration', 'Docker Compose', 'connection issues', 'startup reliability', 'CI testing', 'backend choice']
+memory index:13	 talk start time:202601140001	 memory content: User: I'm wiring up a service to connect to Postgres from Kubernetes, and I want to make sure TLS is configured correctly. What should I check?
+Assistant: For Postgres TLS from Kubernetes, I’d check four things:
+
+1. **Client connection mode**
+   - Use `sslmode=require` if you only need encryption.
+   - Use `sslmode=verify-ca` or `verify-full` if you want certificate validation.
+   - `verify-full` is best if the hostname in the cert matches the DB endpoint.
+
+2. **CA certificate mounting**
+   - Mount the CA bundle into the pod, often via a Secret:
+   ```yaml
+   volumeMounts:
+     - name: db-ca
+       mountPath: /etc/db-certs
+       readOnly: true
+   volumes:
+     - name: db-ca
+       secret:
+         secretName: postgres-ca
+   ```
+   Then point the client at it with something like:
+   `sslrootcert=/etc/db-certs/ca.crt`
+
+3. **Server-side settings**
+   - On the DB side, confirm TLS is enabled and cert paths are valid.
+User: Yes — can you show me what to verify on the database side?
+Assistant: Sure — on the database host, verify TLS is enabled and the cert files are loaded from the expected config.	 memory context: General	 memory keywords: []	 memory tags: ['Postgres', 'TLS', 'Kubernetes', 'security', 'connectivity', 'configuration', 'sslmode', 'CA certificates', 'certificate validation', 'encryption', 'troubleshooting']
+
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+================================================================================
+QUESTION:
+================================================================================
+

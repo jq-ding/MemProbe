@@ -1,0 +1,54 @@
+CASE 6: PILOT-04D probe3 match=partial
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Sarah Kim",
+  "reason": "The user mentioned a discussion about David Chen potentially taking over the authentication module, but then confirmed that Sarah Kim still owns it."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4007 chars) =====
+Memory facts extracted from conversation history:
+
+- User is triaging open code reviews on July 12, 2026, in preparation for a standup scheduled for July 13, 2026.
+- An open code review exists for a login flow refactor that the user believes should be assigned to the correct owner instead of the general backend queue.
+- Sarah Kim owns the authentication module, which encompasses the login flow area, clarifying a previous discussion about David Chen's potential ownership of the module.
+- User plans to draft a note to assign the code review for the login flow refactor to Sarah Kim.
+- User is cleaning up their Jira board before sprint planning and found several auth-related tickets in triage with no clear assignee.
+- User plans to re-route auth-related tickets to Sarah Kim, who is the point of contact for the authentication module.
+- User was provided a draft comment for re-routing Jira tickets: "Re-routing to the appropriate owner for review. Sarah Kim owns the authentication module and is the best point of contact for auth-related tickets."
+- User is sending an authentication deployment update this afternoon and sought advice on whether to include Sarah Kim on the email.
+- User was advised to include Sarah Kim on the authentication deployment update email because she owns the authentication module.
+- User was provided a draft email for an authentication deployment update, which states the deployment is proceeding this afternoon, current checks look good, and Sarah Kim is cc'd as the authentication module owner.
+- User wants to send a status update for the data platform channel mentioning that Priya Nair is leading the reporting pipeline workstream and they are on track for the internal demo scheduled for Friday, July 16, 2026.
+- User requested a more concise version of the status update and to include a sentence asking people to flag any dependencies early.
+- User was provided a concise draft status update for the data platform channel, stating that Priya Nair is leading the reporting pipeline workstream, the team is on track for the internal demo on Friday, July 16, 2026, core data mapping is complete, and teams should flag any dependencies early.
+- User is planning the next sprint and is looking for a simple way to assign tasks across the team without overloading anyone.
+- User was recommended an approach for assigning sprint tasks: group work by priority, effort, and dependencies; list all candidate tasks, mark must-have vs nice-to-have, estimate each one, and assign owners based on current bandwidth and relevant experience, leaving a small buffer for support requests and review time.
+- User was recommended a hybrid approach for assigning sprint tasks: assign high-priority and dependency-heavy tasks during planning, and leave lower-priority items unassigned or loosely assigned for flexibility.
+- User has a sprint planning sync scheduled for 1:30 PM on July 12, 2026.
+- User has a code review block scheduled for 3:00 PM on July 12, 2026.
+- User's team is focusing on tightening up their internal API documentation during the current sprint.
+- User was recommended to standardize internal API documentation with sections for purpose, endpoint/interface summary, authentication requirements, request/response examples, error codes, rate limits, versioning, and known caveats. It was also suggested to add human-readable context like when to use the API, common failure cases, and example payloads for happy-path and validation-error scenarios.
+
+Question: Who suggested David Chen might take over auth, and was it confirmed?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

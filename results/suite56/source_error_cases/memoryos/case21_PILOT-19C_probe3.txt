@@ -1,0 +1,74 @@
+CASE 21: PILOT-19C probe3 match=incorrect
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "identified",
+  "accepted": true,
+  "current_value": "8443",
+  "reason": "The assistant identified port 8443 as an old admin HTTPS endpoint for legacy-auth and later as an analytics-db-proxy in staging; the user confirmed they were cleaning up old configs and it was safe to ignore."
+}
+
+REASON: source_class mismatch: pred=assistant vs gold=third_party
+
+===== RETRIEVED MEMORY (4389 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User found `8443` in an old config on the `legacy-auth` branch
+- [user-knowledge] - User has a separate metrics database behind a gateway reachable on 8443
+- [user-knowledge] - User evaluated migrating database service to port 8443
+- [user-knowledge] - User had a TLS proxy on 8443 in front of Postgres for a short-lived integration test
+- [user-knowledge] - User has a colleague named Priya at 2026-07-12 06:30:17
+- [user-knowledge] - User is going through a security hardening guide at 2026-07-12 06:30:19
+- [user-knowledge] - User's production uses direct DB service on 5432
+- [user-knowledge] - User's database service is on port 5432 at 2026-07-12 06:31:13
+- [user-knowledge] - User is looking at infra tracker with `orders-mysql` and `analytics-mongo` at 2026-07-12 06:30:39
+- [user-knowledge] - User has a teammate named Priya
+- [user-knowledge] - User kept database service on port 5432 for compatibility
+- [user-knowledge] - User is reading a postmortem from another team about a staging outage at 2026-07-12 06:29:50
+- [user-knowledge] - User has a small k8s app stack at 2026-07-12 06:31:09
+- [user-knowledge] - User is updating client config at 2026-07-12 06:31:13
+- [user-knowledge] - User is reviewing two staging setups for another team's analytics sandbox at 2026-07-12 06:30:01
+- [user-knowledge] - User is wiring up the staging analytics stack
+- [user-knowledge] - User suspects database connection pooling related to app failures at 2026-07-12 06:29:37
+- [user-knowledge] - User is troubleshooting the staging analytics stack
+- [user-knowledge] - User is wiring up a staging analytics stack
+- [user-knowledge] - User has a teammate
+- [assistant-knowledge] - Assistant confirmed `8443` reference is safe to ignore during cleanup at 2026-07-12 06:29:48
+- [assistant-knowledge] - Assistant confirmed `8443` belonged to old admin HTTPS endpoint for `legacy-auth` at 2026-07-12 06:29:40
+- [assistant-knowledge] - Assistant grepped for "8443" in `deploy/`, `config/`, `services/` at 2026-07-12 06:29:40
+- [assistant-knowledge] - Assistant searched for "8443|https" in deploy/, k8s/, config/ at 2026-07-12 06:30:19
+- [assistant-knowledge] - Assistant provided a short note at 2026-07-12 06:30:17
+- [assistant-knowledge] - Assistant aligned branch and manifests to 5432 at 2026-07-12 06:31:07
+- [assistant-knowledge] - Assistant showed the diff of the change at 2026-07-12 06:29:39
+- [assistant-knowledge] - Assistant confirmed database service port at 2026-07-12 06:31:13
+- [assistant-knowledge] - Assistant calculated worst-case app connections based on provided numbers at 2026-07-12 06:29:37
+- [assistant-knowledge] - Assistant executed `openssl x509` to show certificate details at 2026-07-12 06:29:27
+- [assistant-knowledge] - Assistant described ingress "admin-ingress" in "platform" namespace at 2026-07-12 06:30:22
+- [assistant-knowledge] - Assistant confirmed `analytics-mongo` is analytics document store at 2026-07-12 06:30:50
+- [assistant-knowledge] - Assistant verified ingress and backend mapping at 2026-07-12 06:30:53
+- [assistant-knowledge] - Assistant offered to verify k8s service or app config at 2026-07-12 06:31:13
+- [assistant-knowledge] - Assistant executed `psql` with `EXPLAIN ANALYZE` for a query at 2026-07-12 06:29:31
+- [assistant-knowledge] - Assistant inspected ingress and service definitions at 2026-07-12 06:30:22
+- [assistant-knowledge] - Assistant found `DB_POOL_MAX` was "25" at line 52 in `deploy/values.yaml` at 2026-07-12 06:29:39
+- [assistant-knowledge] - Assistant inspected deployment env and mounted secrets at 2026-07-12 06:29:25
+- [assistant-knowledge] - Assistant provided firewall rule recommendations at 2026-07-12 06:31:09
+- [assistant-knowledge] - Assistant explained how to verify indexing versus overall load at 2026-07-12 06:29:31
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

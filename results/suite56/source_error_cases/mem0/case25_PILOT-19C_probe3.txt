@@ -1,0 +1,54 @@
+CASE 25: PILOT-19C probe3 match=partial
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "User",
+  "source_class": "user",
+  "action": "evaluated",
+  "accepted": false,
+  "current_value": "5432",
+  "reason": "The user considered migrating the database service to port 8443 but decided to keep it on port 5432 for compatibility reasons."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4270 chars) =====
+Memory facts extracted from conversation history:
+
+- User is wiring up their local development stack and is experiencing an issue where their app container cannot reach Postgres.
+- User has configured the client for their app container to point the host to `db` and the port to 5432, but the health check is still failing.
+- User asked for help to verify what the Postgres service is actually listening on and what the client environment should look like for the app container.
+- User is validating the staging DB pooler and requested a check to ensure clients are connecting on the same socket the app uses, confirming the database service runs on port 5432, and wants to see pool health and a quick connect test from the pod.
+- User is updating their team wiki page for local development setup and wants to verify that the database example connection string `postgres://app_user:devpass@db.internal:5432/appdb` is consistent with the current Kubernetes service exposure.
+- User is tightening up their database backup automation and requested help to sketch a simple restore-testing workflow to ensure backups are usable.
+- User was provided with a lightweight restore-testing workflow pattern that includes a nightly backup job, a scheduled restore-test job to provision a temporary database, restore the latest backup, run sanity checks, tear down the instance, and report status. This can be wired into CI or a cron-driven Kubernetes Job.
+- User was recommended fast and deterministic checks to run after a database restore, including verifying the backup file, confirming key tables are present, checking row counts, validating the migration/version table, and optionally running a read-only app health query.
+- User was evaluating whether to migrate the database service to port 8443 while working in the config repository.
+- User decided to keep the database service on port 5432 for compatibility reasons.
+- User is tightening up security on one of their services and wants to know what to check for TLS configuration on database connections, specifically regarding app configurations and Kubernetes secrets.
+- User was advised to check three areas for TLS configuration on database connections: client settings/app config, trust material (Kubernetes secrets), and server enforcement.
+- For client/app config, User was advised to look for flags like `sslmode`, `tls`, `requireTLS`, or connection-string parameters such as `ssl=true`, `sslmode=verify-full`, `sslrootcert`, `sslcert`, `sslkey`.
+- For Kubernetes secrets, User was advised to verify that CA bundles and any client certificate/key pairs are mounted where the application expects them.
+- For the server side, User was advised to confirm that the database is configured to require encrypted connections and that its certificate chain is valid.
+- User asked for the difference between `require` and full verification in TLS configuration, specifically which one is safer.
+- User was informed that `verify-full` is the safest TLS setting, as `require` encrypts traffic but does not fully validate server identity, `verify-ca` validates the certificate chain to a trusted CA, and `verify-full` validates both the CA chain and that the certificate hostname matches the database endpoint.
+- User was provided a quick checklist for TLS configuration: use a controlled or trusted CA bundle, match the database hostname in config to the certificate SAN/CN, rotate certificates before expiry, and avoid `disable` or opportunistic modes outside local development.
+- User is seeking to improve visibility into database latency and slow queries in their staging environment.
+- User was advised to check query timing, connection pressure, and basic resource saturation to diagnose database latency and slow queries.
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

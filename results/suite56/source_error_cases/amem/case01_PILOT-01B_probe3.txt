@@ -1,0 +1,125 @@
+CASE 1: PILOT-01B probe_idx=3 match=partial
+paradigm: interference
+fact_type: current_gym
+
+GOLD: CrossFit Central was mentioned by a third party (Jamie) as their gym; the user never confirmed switching to it and remains at FitLife.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": false,
+  "current_value": "The user is sticking with FitLife and did not switch to CrossFit Central.",
+  "reason": "The user mentioned their friend Jamie joined CrossFit Central, but explicitly stated in multiple entries (index 3, 7, 18) that they are sticking with FitLife."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+================================================================================
+RETRIEVED MEMORY:
+================================================================================
+Memory notes retrieved from A-MEM (with evolved links / tags):
+
+memory index:6	 talk start time:202601070001	 memory content: User: My friend just joined CrossFit Central and won’t stop talking about how intense the workouts are.
+Assistant: Haha, that tracks — people who start CrossFit usually become instant evangelists. Did they say if they’re loving it or just sore all the time?
+User: Both, apparently. They said everyone there is super welcoming, but they can barely walk after leg day.
+Assistant: That sounds very on-brand for CrossFit Central. At least it’s a good sign the community is keeping them motivated.
+User: Yeah, I’m happy they found a place they’re excited about.
+Assistant: For sure — having a gym you click with makes such a difference.	 memory context: User: My friend just joined CrossFit Central and won’t stop talking about how intense the workouts are. Assistant: Haha, that tracks — people who start CrossFit usually become instant evangelists. Did they say if they’re loving it or just sore all the time? User: Both, apparently. They said everyone there is super welcoming, but they can barely walk after leg day. Assistant: That sounds very on-brand for CrossFit Central. At least it’s a good sign the community is keeping them motivated. User: Yeah, I’m happy they found a place they’re excited about. Assistant: For sure — having a gym you click with makes such a difference.	 memory keywords: []	 memory tags: ['fitness', 'CrossFit Central', 'gym experience', 'workout intensity', 'gym community', 'motivation', 'soreness', 'gym selection', 'gym vibe', 'beginner suitability', 'gym reviews', 'fitness cult', 'social aspect of fitness']
+memory index:18	 talk start time:202601190001	 memory content: User: Jamie was telling me they just joined CrossFit Central and apparently they're obsessed already lol. It sounds intense. I’m still doing my usual workouts at FitLife, but now I’m curious what the vibe is like at places like that.
+Assistant: Haha yeah, that tracks — people who get into CrossFit can get really into it fast. CrossFit Central probably has more of a group-based, high-intensity vibe, with coached workouts and a big community feel. FitLife is probably better if you like doing your own routine at your own pace. If you want, I can help you compare the two styles without assuming you want to switch.
+User: Yeah exactly, I’m not trying to switch gyms or anything. I just wanted to know why Jamie is suddenly talking about burpees like it’s a personality trait.
+Assistant: Totally fair. CrossFit-style gyms tend to make workouts feel like a team event, so people get attached to the challenge and the culture. There’s usually a lot of emphasis on timed workouts, tracking progress, and cheering each other on, which can be super motivating. At FitLife, you can still get a great workout, just with more flexibility and less of the “fitness cult” energy.
+User: Hah, “fitness cult” is exactly the vibe I was picturing.
+Assistant: Honestly, that’s the stereotype for a reason. Nothing wrong with it if Jamie loves it, but it makes sense that you’d stick with FitLife if that setup works better for you.	 memory context: General	 memory keywords: []	 memory tags: ['fitness', 'CrossFit Central', 'FitLife', 'gym comparison', 'gym vibe', 'workout intensity', 'community', 'motivation', 'fitness cult', 'gym preference', 'user curiosity', 'social aspect of fitness']
+memory index:7	 talk start time:202601080001	 memory content: User: I saw a promo for CrossFit Central, but I'm sticking with FitLife for workouts.
+Assistant: Makes sense. Want help planning this week's workout schedule?	 memory context: User: I saw a promo for CrossFit Central, but I'm sticking with FitLife for workouts. Assistant: Makes sense. Want help planning this week's workout schedule?	 memory keywords: []	 memory tags: ['fitness', 'gym preference', 'FitLife', 'CrossFit Central', 'workout planning', 'personal assistant', 'gym comparison']
+memory index:17	 talk start time:202601180001	 memory content: User: I was reading gym reviews earlier and one of them had a whole debate about CrossFit Central versus the other spots nearby.
+Assistant: Haha, review threads get intense fast. Was it mostly people arguing about coaching style and class vibe, or the usual price-and-parking complaints?
+User: Mostly class vibe, honestly. A few people loved CrossFit Central, but others said it felt too hardcore for beginners.
+Assistant: Yeah, that tracks. A place can be great for some people and still feel intimidating if you just want a more low-key workout routine.
+User: Exactly. It was kind of entertaining to read, even if people were being dramatic.
+Assistant: Totally. Online gym reviews are basically reality TV in text form.	 memory context: User: I was reading gym reviews earlier and one of them had a whole debate about CrossFit Central versus the other spots nearby. Assistant: Haha, review threads get intense fast. Was it mostly people arguing about coaching style and class vibe, or the usual price-and-parking complaints? User: Mostly class vibe, honestly. A few people loved CrossFit Central, but others said it felt too hardcore for beginners. Assistant: Yeah, that tracks. A place can be great for some people and still feel intimidating if you just want a more low-key workout routine. User: Exactly. It was kind of entertaining to read, even if people were being dramatic. Assistant: Totally. Online gym reviews are basically reality TV in text form.	 memory keywords: []	 memory tags: ['fitness', 'gym reviews', 'CrossFit Central', 'gym comparison', 'class vibe', 'workout intensity', 'beginner suitability', 'intimidation', 'online debate', 'fitness cult', 'gym preference', 'social aspect of fitness']
+memory index:3	 talk start time:202601040001	 memory content: User: I tried a guest pass at CrossFit Central yesterday. I’m sticking with FitLife for workouts.
+Assistant: Got it — FitLife it is. Hope the class was fun anyway!
+User: Can you remind me to pack my water bottle before my workout tomorrow?
+Assistant: Yep — I can help you remember that before tomorrow’s workout.	 memory context: General	 memory keywords: []	 memory tags: ['fitness', 'FitLife', 'CrossFit Central', 'user preference', 'gym evaluation', 'gym experience', 'workout prep', 'reminders', 'personal assistant']
+memory index:11	 talk start time:202601120001	 memory content: User: My coworker asked me to help compare a couple gyms near the office. One of the options is CrossFit Central, but I don’t know much about it.
+Assistant: If they like group training and high-intensity workouts, CrossFit Central could be worth a look. I’d compare class schedule, coaching style, and how beginner-friendly it feels.
+User: Yeah, they’re pretty new to working out, so I’m trying to steer them somewhere not too intimidating.
+Assistant: Then I’d tell them to ask about intro classes, trial sessions, and whether the coaches offer modifications. That usually gives a good sense of whether a gym is a good fit.	 memory context: User: My coworker asked me to help compare a couple gyms near the office. One of the options is CrossFit Central, but I don’t know much about it. Assistant: If they like group training and high-intensity workouts, CrossFit Central could be worth a look. I’d compare class schedule, coaching style, and how beginner-friendly it feels. User: Yeah, they’re pretty new to working out, so I’m trying to steer them somewhere not too intimidating. Assistant: Then I’d tell them to ask about intro classes, trial sessions, and whether the coaches offer modifications. That usually gives a good sense of whether a gym is a good fit.	 memory keywords: []	 memory tags: ['fitness', 'gym comparison', 'gym selection', 'CrossFit Central', 'beginner-friendly', 'non-intimidating gym', 'intro classes', 'trial sessions', 'workout modifications', 'group training', 'high-intensity workout', 'gym evaluation criteria', 'gym reviews', 'gym vibe']
+memory index:9	 talk start time:202601100001	 memory content: User: I’m trying to be better about staying active on days I don’t make it out. Got any simple home workout ideas?
+Assistant: Yeah — a quick bodyweight circuit works really well. You could do 3 rounds of: 15 squats, 10 push-ups, 12 reverse lunges per leg, 30 seconds of plank, and 20 glute bridges. Rest about 30–60 seconds between rounds. It’s simple, doesn’t need equipment, and still gets your whole body working.
+User: That actually sounds doable. How long would that usually take?
+Assistant: Usually around 15–20 minutes, depending on how long you rest. If you want, you can keep it super low-pressure: even just 10 minutes is better than skipping movement completely. A short walk or a quick stretch after can help too.	 memory context: User: I’m trying to be better about staying active on days I don’t make it out. Got any simple home workout ideas?
+Assistant: Yeah — a quick bodyweight circuit works really well. You could do 3 rounds of: 15 squats, 10 push-ups, 12 reverse lunges per leg, 30 seconds of plank, and 20 glute bridges. Rest about 30–60 seconds between rounds. It’s simple, doesn’t need equipment, and still gets your whole body working.
+User: That actually sounds doable. How long would that usually take?
+Assistant: Usually around 15–20 minutes, depending on how long you rest. If you want, you can keep it super low-pressure: even just 10 minutes is better than skipping movement completely. A short walk or a quick stretch after can help too.	 memory keywords: []	 memory tags: ['home workout', 'bodyweight circuit', 'no equipment', 'quick workout', 'fitness routine', 'strength training', 'exercise']
+memory index:2	 talk start time:202601030001	 memory content: User: I just got home from a group class at FitLife and my legs are ridiculously tight. Do you have a quick stretching routine I can do after those workouts so I’m not hobbling tomorrow?
+Assistant: Definitely — try a short 8–10 minute cooldown:
+1. **Hamstring stretch** – 30 sec each side
+2. **Quad stretch** – 30 sec each side
+3. **Figure-four glute stretch** – 30 sec each side
+4. **Hip flexor lunge stretch** – 30 sec each side
+5. **Calf stretch against a wall** – 30 sec each side
+6. **Child’s pose** – 45–60 sec
+7. **Cat-cow** – 6–8 slow reps
+8. **Deep squat hold** – 20–30 sec if it feels okay
+
+A couple tips: don’t bounce, breathe slowly, and ease into each stretch right after your FitLife session while you’re still warm. If you want, I can also turn this into a super simple post-class routine you can save on your phone.	 memory context: General	 memory keywords: []	 memory tags: ['stretching routine', 'post-workout', 'cooldown', 'flexibility', 'fitness', 'FitLife', 'exercise recovery', 'tight muscles']
+memory index:15	 talk start time:202601160001	 memory content: User: I’ve been trying to be more consistent about walking every day. Do you know any good fitness tracking apps for step goals?
+Assistant: Yeah — Apple Health, Google Fit, Fitbit, and Strava are all solid depending on what you want. If you mostly care about daily steps and simple trends, Apple Health or Google Fit are easy. Fitbit is nice if you like badges and more detailed progress, and Strava can be fun if you want a more social vibe.
+User: I mainly just want something that keeps me motivated without being too complicated. Is 10,000 steps actually the goal I should use?
+Assistant: Not necessarily. 10,000 is a popular benchmark, but the best goal is one that fits your current routine and feels doable. If you’re averaging, say, 4,000–5,000 steps now, aiming for 6,000 first is usually smarter than jumping straight to 10,000. A small daily target plus reminders or streaks in the app can be way more motivating.	 memory context: General	 memory keywords: []	 memory tags: ['fitness tracking', 'step goals', 'fitness apps', 'motivation', 'personalized goals', 'Apple Health', 'Google Fit', 'Fitbit', 'Strava', 'exercise advice']
+memory index:13	 talk start time:202601140001	 memory content: User: I’ve been doing some pretty intense workout sessions lately. Got any good recovery stretches I can do after?
+Assistant: Definitely — after high-intensity sessions, a short cooldown stretch can help a lot. Try this for 5–10 minutes:
+- **Hip flexor stretch**: 30–45 sec each side
+- **Hamstring stretch**: 30 sec each side
+- **Figure-four glute stretch**: 30–45 sec each side
+- **Quad stretch**: 30 sec each side
+- **Child’s pose**: 45–60 sec
+- **Chest/shoulder doorway stretch**: 30 sec each side
+
+Keep it gentle and steady, no bouncing. Slow breathing helps bring your heart rate down too.
+User: Nice, that’s helpful. Should I stretch right away or wait a bit?
+Assistant: Right after your workout is usually best, once you’ve done a quick cooldown like walking for a couple minutes. Your muscles are warm then, so stretching tends to feel better. If you’re super wiped, you can keep it really light and do a longer mobility session later in the day. If anything feels sharp or pinchy, skip that stretch.	 memory context: General	 memory keywords: []	 memory tags: ['post-workout stretch', 'recovery stretch', 'stretching routine', 'flexibility', 'cooldown', 'fitness', 'exercise recovery', 'muscle relief']
+memory index:4	 talk start time:202601050001	 memory content: User: My cousin just moved downtown and wants a gym that’s not too intimidating. Any recommendations?
+Assistant: If they want something low-pressure, Planet Fitness is usually a solid pick. It’s beginner-friendly, has lots of cardio machines, and tends to be pretty affordable. If they want more variety, YMCA Downtown could be nice too since it often has classes and a more community vibe. Does your cousin care more about price, classes, or weight equipment?
+User: Probably price first, but having a few classes would help them stay motivated.
+Assistant: In that case, I’d lean toward YMCA Downtown if the membership fits their budget, since classes can make it way easier to stick with a routine. Planet Fitness is often cheaper, but the class options can be more limited depending on the location. If they’re really nervous about starting out, I’d tell them to ask for a tour before signing up.
+User: Good call. What should they look for on the tour?
+Assistant: I’d have them check how crowded it gets at the times they’d actually go, whether the equipment looks clean and well-maintained, and if the staff seem approachable. It’s also smart to ask about cancellation terms, guest passes, and whether classes are included or cost extra. If a place feels comfortable on the first visit, that’s usually a really good sign.	 memory context: User: My cousin just moved downtown and wants a gym that’s not too intimidating. Any recommendations? Assistant: If they want something low-pressure, Planet Fitness is usually a solid pick. It’s beginner-friendly, has lots of cardio machines, and tends to be pretty affordable. If they want more variety, YMCA Downtown could be nice too since it often has classes and a more community vibe. Does your cousin care more about price, classes, or weight equipment? User: Probably price first, but having a few classes would help them stay motivated. Assistant: In that case, I’d lean toward YMCA Downtown if the membership fits their budget, since classes can make it way easier to stick with a routine. Planet Fitness is often cheaper, but the class options can be more limited depending on the location. If they’re really nervous about starting out, I’d tell them to ask for a tour before signing up. User: Good call. What should they look for on the tour? Assistant: I’d have them check how crowded it gets at the times they’d actually go, whether the equipment looks clean and well-maintained, and if the staff seem approachable. It’s also smart to ask about cancellation terms, guest passes, and whether classes are included or cost extra. If a place feels comfortable on the first visit, that’s usually a really good sign.	 memory keywords: []	 memory tags: ['fitness', 'gym recommendations', 'gym selection', 'beginner-friendly gym', 'non-intimidating', 'gym tour', 'evaluation criteria', 'affordability', 'classes', 'community vibe', 'Planet Fitness', 'YMCA Downtown', 'class scheduling', 'workout modifications', 'intro classes', 'gym reviews']
+memory index:1	 talk start time:202601020001	 memory content: User: I'm trying to plan tomorrow morning without wasting time. The grocery store opens at 8, the pharmacy at 9, and I usually go to FitLife for workouts before all that. Can you help me figure out the best order?
+Assistant: Yep — if you want to keep it efficient, I'd do FitLife first, then the grocery store right when it opens at 8, and hit the pharmacy after 9. That way you’re not waiting around for stores to open, and you get your workout done early. If you want, I can also turn that into a simple timeline with rough travel and buffer time.	 memory context: General	 memory keywords: []	 memory tags: ['daily planning', 'morning routine', 'time management', 'scheduling', 'errands', 'fitness', 'FitLife', 'efficiency', 'workout planning']
+memory index:5	 talk start time:202601060001	 memory content: User: I was reading a review of Iron Works Gym this morning, and people are really split on it. Some say the equipment is awesome, but others complain it gets way too crowded after work.
+Assistant: Yeah, that sounds pretty typical for a popular weight-focused place. If the equipment is solid, people will forgive a lot, but peak-hour crowding can make the whole experience frustrating. Did the reviews say anything about cleanliness or staff?
+User: Mostly that the staff are friendly, but the locker rooms seem hit or miss. One person said it feels motivating if you’re serious about lifting, though.
+Assistant: That tracks. Some gyms really build a strong reputation around a specific vibe, like being great for people who want a no-nonsense strength setup. If the atmosphere is motivating and the staff are good, that can matter a lot—assuming someone can live with the busy times and uneven locker room situation.
+User: Yeah, my takeaway was basically that it sounds great for dedicated lifters, but maybe not for someone who just wants a quick, low-stress workout.
+Assistant: Exactly. It sounds like one of those places where the right person would love it, and the wrong person would bounce fast. Reviews like that are useful because they tell you less about whether a gym is “good” overall and more about who it’s actually good for.	 memory context: User: I was reading a review of Iron Works Gym this morning, and people are really split on it. Some say the equipment is awesome, but others complain it gets way too crowded after work. Assistant: Yeah, that sounds pretty typical for a popular weight-focused place. If the equipment is solid, people will forgive a lot, but peak-hour crowding can make the whole experience frustrating. Did the reviews say anything about cleanliness or staff? User: Mostly that the staff are friendly, but the locker rooms seem hit or miss. One person said it feels motivating if you’re serious about lifting, though. Assistant: That tracks. Some gyms really build a strong reputation around a specific vibe, like being great for people who want a no-nonsense strength setup. If the atmosphere is motivating and the staff are good, that can matter a lot—assuming someone can live with the busy times and uneven locker room situation. User: Yeah, my takeaway was basically that it sounds great for dedicated lifters, but maybe not for someone who just wants a quick, low-stress workout. Assistant: Exactly. It sounds like one of those places where the right person would love it, and the wrong person would bounce fast. Reviews like that are useful because they tell you less about whether a gym is “good” overall and more about who it’s actually good for.	 memory keywords: []	 memory tags: ['fitness', 'gym reviews', 'gym selection', 'gym evaluation', 'crowding', 'equipment quality', 'staff', 'locker rooms', 'gym vibe', 'dedicated lifters', 'workout intensity', 'beginner suitability', 'online debate', 'parking', 'squat rack']
+memory index:0	 talk start time:202601010001	 memory content: User: I’ve got that Tuesday class at FitLife after work again, and I’m trying not to just grab chips when I get home. Any good post-workout meal ideas that are fast but actually filling?
+Assistant: Totally — after your Tuesday class at FitLife, a quick combo of protein + carbs will probably hit the spot and help you recover. A few easy ideas: rotisserie chicken with microwave rice and frozen veggies, Greek yogurt with fruit and granola, eggs on toast with avocado, a turkey wrap, or a smoothie with protein powder, banana, peanut butter, and milk. If you want, I can also give you a few options based on how much time you have when you get home.	 memory context: General	 memory keywords: []	 memory tags: ['post-workout meals', 'quick meals', 'healthy eating', 'nutrition advice', 'protein-rich', 'meal ideas', 'fitness', 'FitLife', 'recovery']
+memory index:8	 talk start time:202601090001	 memory content: User: Hey, do you know what time the beginner spin class starts at YMCA Downtown on Thursdays?
+Assistant: I don’t have their live class schedule, but beginner spin classes at places like YMCA Downtown are often in the early evening on weekdays. Want me to help you draft a quick message or call script to confirm?
+User: Yeah, and I’m trying to figure out if my cousin could make it after work if she gets off at 5:30.
+Assistant: If the class starts at 6 or later, she’d probably be fine unless commute time is tight. If it starts around 5:45, that could be cutting it close. Best move is to confirm the exact start time and ask whether they let people join a few minutes late.
+User: Good point — can you give me a short text I can send her?
+Assistant: Sure: “Hey! Can you check whether the beginner spin class at YMCA Downtown on Thursday starts late enough for you to make it after your 5:30 shift? If it’s 6 or later, it might work.”	 memory context: General	 memory keywords: []	 memory tags: ['fitness', 'YMCA Downtown', 'spin class', 'beginner class', 'class schedule', 'start time', 'scheduling', 'logistics', 'personal assistant', 'text message drafting', 'class accessibility']
+
+
+Question: Who mentioned CrossFit Central, and did the user confirm switching to it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+================================================================================
+QUESTION:
+================================================================================
+

@@ -1,0 +1,287 @@
+CASE 4: PILOT-09B probe_idx=3 match=partial
+paradigm: interference
+fact_type: selected_database
+
+GOLD: MongoDB was mentioned as a teammate's database choice for a different microservice; the user did not migrate their own project from PostgreSQL.
+
+PREDICTED: {
+  "source_description": "User",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "PostgreSQL",
+  "reason": "The user benchmarked MongoDB but decided to keep PostgreSQL as the primary database because it performed better for their specific workload."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+================================================================================
+RETRIEVED MEMORY:
+================================================================================
+Memory notes retrieved from A-MEM (with evolved links / tags):
+
+memory index:11	 talk start time:202601120001	 memory content: User: I finished the benchmark branch and compared MongoDB against our current stack.
+Assistant: I checked the benchmark artifacts and config diff.
+User: We benchmarked it but project uses PostgreSQL as the primary database performed better—keeping it.
+Assistant: Understood — I’ll leave the database config as-is and proceed with the rest of the branch cleanup.	 memory context: User completed a benchmark comparing MongoDB against an existing stack, leading to the decision to keep PostgreSQL as the primary database due to better performance. This decision is consistently upheld, requiring verification of PostgreSQL configurations in staging and other environments. The assistant confirms leaving the database configuration as-is.	 memory keywords: []	 memory tags: ['Database Benchmarking', 'Database Performance Comparison', 'MongoDB', 'PostgreSQL', 'Database Selection', 'Workload Analysis', 'Database Configuration', 'Relational Database', 'Performance Optimization', 'MySQL', 'Redis', 'Configuration Verification']
+memory index:17	 talk start time:202601180001	 memory content: User: The team floated migrating to MongoDB, but project uses PostgreSQL as the primary database, so let's leave it and just verify the staging config on branch `agent-runtime`.
+Assistant: Got it — I'll check the branch and staging DB settings.
+User: Great, also confirm the staging pod is healthy before I kick off the build.
+Assistant: Healthy on config; checking the pod now.	 memory context: This memory details verifying PostgreSQL configuration in a staging environment on a specific branch, explicitly contrasting with a floated MongoDB migration. It emphasizes comprehensive checks before deployment, including pod health.	 memory keywords: []	 memory tags: ['PostgreSQL', 'MongoDB', 'Database Selection', 'Staging Environment', 'Configuration Verification', 'Pod Health Check', 'Branch-specific Configuration', 'Deployment Verification', 'Database Engine Verification', 'Deployment Configuration']
+memory index:8	 talk start time:202601090001	 memory content: User: Can you check the analytics-ingest microservice config on the `feat/event-pipeline` branch? I think that one uses MongoDB for raw event storage, and I want to confirm the connection settings.
+Assistant: Sure — I checked that branch and inspected the service config.
+User: Yeah, check staging too — mostly want to know if it's pointing at the in-cluster router or an external host.
+Assistant: I checked the staging manifests and secret refs.
+User: Great. One more thing: can you see whether that service expects MongoDB transactions, or is it just doing plain inserts?
+Assistant: From the code path, it looks like plain inserts only.	 memory context: This memory details the configuration verification for the 'analytics-ingest' microservice on a specific branch and in staging, focusing on its use of MongoDB for raw event storage, connection settings (in-cluster vs. external), and transaction management. It serves as an example of verifying database configurations in staging environments, particularly for NoSQL databases, and highlights the need for thorough connection and operational checks.	 memory keywords: []	 memory tags: ['MongoDB', 'Microservice Configuration', 'Event Ingestion', 'Database Connection Settings', 'Transaction Management', 'NoSQL', 'Deployment Environment', 'Analytics Service', 'Service Configuration', 'Raw Event Storage', 'Database Verification', 'Connection Configuration', 'Staging Configuration Verification', 'Branch-specific Configuration', 'Deployment Manifests', 'Secret References']
+memory index:5	 talk start time:202601060001	 memory content: User: I was reading a benchmark that claimed MongoDB had better write throughput for event logs. Can you sanity-check whether that would matter for our API?
+Assistant: Sure — I’ll look at the current service config and recent write patterns first so we can compare workload shape rather than raw benchmark numbers.
+User: Yeah, inspect the hot endpoints. I mostly want to know if the benchmark is even comparable to what we’re doing.
+Assistant: I’ll check recent API routes and database-heavy traces.
+User: Got it. Can you summarize that for the team in one sentence?
+Assistant: The MongoDB benchmark is informative for append-only event ingestion, but it’s not representative of our API’s main bottlenecks, which are dominated by multi-query relational reads and reporting paths rather than raw log-write throughput.	 memory context: This memory compares MongoDB's write throughput for event logs against an API's bottlenecks, primarily multi-query relational reads, concluding that MongoDB is suitable for append-only event ingestion but not for the API's main bottlenecks. This reinforces the importance of matching database capabilities to specific workload patterns, a principle applied in the Atlas Billing system by separating transactional data (MySQL) from analytical reporting data (object storage) to avoid performance contention.	 memory keywords: []	 memory tags: ['Database Performance Comparison', 'Workload Analysis', 'MongoDB', 'Relational Database', 'Write Performance', 'Read Performance', 'API Bottlenecks', 'Event Sourcing', 'Query Optimization', 'NoSQL', 'Database Selection', 'Event Ingestion', 'Write Patterns', 'Service Configuration', 'Hybrid Data Storage', 'Metadata Storage', 'Raw Data Storage', 'Object Storage', 'Analytics Service', 'Workload Separation']
+memory index:13	 talk start time:202601140001	 memory content: User: I'm looking at the infra tracker and there's an entry for the **analytics-ingest** service that just says "DB engine pending verification." That's not the app backend one — can you check what engine analytics-ingest is actually on?
+Assistant: I'll verify against the service repo and the live deployment config for **analytics-ingest**.
+User: Can you sanity-check whether it's only for transactional metadata and not using some separate store for the event payloads?
+Assistant: Yes — I'll check the code paths and any cloud resource references for analytics-ingest.
+User: Got it. Give me a one-line note I can paste into the tracker for that specific service.
+Assistant: `analytics-ingest verified on MySQL; relational DB stores event metadata/object keys, while raw event payloads are persisted to object storage.`	 memory context: This memory verifies the database engine for the 'analytics-ingest' service, confirming its use of MySQL for transactional metadata and object storage for raw event payloads. This demonstrates a practical application of a hybrid data persistence strategy, which aligns with the Atlas Billing system's decision to keep transactional data in MySQL while exporting daily aggregates to object storage for finance reporting.	 memory keywords: []	 memory tags: ['analytics-ingest', 'MySQL', 'Object Storage', 'Event Metadata', 'Raw Event Payloads', 'Database Configuration', 'Service Configuration', 'Data Persistence Strategy', 'Relational Database', 'Analytics Service', 'Service Verification', 'Database Engine Verification', 'Hybrid Storage']
+memory index:10	 talk start time:202601110001	 memory content: User: I was reading an internal architecture review for the analytics sandbox service. The reviewer kept praising the choice of MySQL for the metadata store and said it simplified local dev. Can you sanity-check that repo and see if the review matches what’s actually configured?
+Assistant: Sure — I’ll inspect the repo config, compose files, and any deployment manifests for the analytics sandbox service.
+User: Nice. The review also claimed startup is resilient because the app waits for the DB health check before running migrations. Can you verify that part too?
+Assistant: Yep — checking compose dependencies and migration startup scripts now.
+User: That makes sense. Anything in the review you’d push back on?
+Assistant: One nuance: “simplified local dev” is fair, but I wouldn’t oversell parity with prod unless the review is explicitly sandbox-only. From what I found, the setup is clean for developer laptops and CI, but the evidence only supports the analytics sandbox service itself:
+
+- local compose uses a single MySQL container
+- app config is hard-coded to a local JDBC endpoint
+- CI boots the same engine for tests
+- migrations are handled with Flyway in a straightforward startup wrapper
+
+So I’d say the review is solid, with a small caveat: it demonstrates a practical sandbox setup, not necessarily a statement about every environment.	 memory context: This memory details an architecture review for the analytics sandbox service, focusing on MySQL as a metadata store and its benefits for local development. It includes verifying database health checks, migration startup, and configuration across local, CI, and sandbox environments, emphasizing the importance of environment-specific verification.	 memory keywords: []	 memory tags: ['MySQL', 'Metadata Store', 'Analytics Sandbox Service', 'Local Development', 'Database Configuration', 'Database Migration', 'Health Checks', 'Environment Parity', 'CI/CD', 'Service Configuration', 'Data Persistence Strategy', 'Analytics Service', 'Configuration Verification', 'Architecture Review', 'Deployment Manifests', 'Service Deployment']
+memory index:20	 talk start time:202601210001	 memory content: User: I dropped some rough notes from the Atlas Billing sync into `notes/atlas-billing-sync.md`. Can you pull out a brief recap focused on the storage decisions and any action items?
+Assistant: Sure — I’ll open the notes file and summarize the storage-related discussion.
+Assistant: Brief recap from the Atlas Billing sync:
+
+- The team confirmed the billing service’s transactional data is stored in MySQL.
+- They want to avoid running analytical rollups on the live billing datastore.
+- One proposal was to export daily aggregates to object storage for finance reporting.
+- A key concern was reconciliation jobs causing table locks during month-end processing.
+- Priya recommended adding read replicas ahead of April to offload reporting traffic.
+- There’s still an open question on the audit trail: keep it in the main store or use Redis for short-lived lookup acceleration.
+
+Action items:
+- Benchmark replica lag under simulated quarter-end load.
+- Draft schema changes for the reconciliation status table.
+- Document retention windows for invoices, disputes, and refunds.
+User: Can you make that even shorter — like a meeting recap I can paste into Slack?
+Assistant: Sure:
+
+Atlas Billing recap: team confirmed MySQL remains the transactional store, agreed reporting workloads shouldn’t hit the live billing path, and discussed exporting daily aggregates for finance. Main risk raised was reconciliation jobs causing locks during month-end. Read replicas were suggested to reduce pressure, while the audit-trail storage approach is still undecided. Actions: test replica lag under quarter-end load, draft reconciliation table updates, and document retention windows.	 memory context: General	 memory keywords: []	 memory tags: ['Atlas Billing', 'MySQL', 'Transactional Data', 'Object Storage', 'Analytical Workloads', 'Reporting', 'Redis', 'Audit Trail', 'Database Architecture', 'Data Storage Strategy', 'Reconciliation Jobs', 'Lock Contention', 'Read Replicas', 'Performance Optimization', 'Action Items', 'Meeting Recap', 'Data Retention']
+memory index:18	 talk start time:202601190001	 memory content: User: I'm wiring up the staging deploy checks for our service. One teammate mentioned their analytics microservice uses MongoDB, but that's separate from us — our project is still on PostgreSQL. Can you verify the current config and make sure the migration job is pointed at the right database before I merge the branch?
+Assistant: Yep — I'll check the branch config, deployment manifests, and migration job settings to confirm we're still targeting PostgreSQL.
+Assistant: Config scan looks clean so far:
+- `config/app.yaml` sets `engine: postgresql`
+- migration job has `DB_ENGINE=postgresql`
+- migration script explicitly expects PostgreSQL
+- the MongoDB mention is only in `notes/team-services.md` for the analytics microservice, not this project
+
+I'll also inspect the secret reference and the live staging job template.
+Assistant: Verified: staging is pointed at PostgreSQL end-to-end. Nothing indicates your service switched engines.
+
+Before you merge:
+- migration job env is correct
+- secret resolves to a PostgreSQL connection string
+- live staging job template also uses `DB_ENGINE=postgresql`
+
+If you want, I can do one more quick check against the app startup logs to confirm it initializes the PostgreSQL driver successfully.	 memory context: This memory details a comprehensive process for verifying staging deployment configurations, particularly focusing on database settings (PostgreSQL vs MongoDB), migration job parameters, secret references, and branch configuration, all before a code merge.	 memory keywords: []	 memory tags: ['PostgreSQL', 'MongoDB', 'Staging Environment', 'Configuration Verification', 'Database Migration', 'Deployment Verification', 'Secret Management', 'Service Configuration', 'Database Selection', 'Branch-specific Configuration', 'App Startup Logs', 'Database Engine Verification', 'Deployment Configuration', 'Release Checks', 'Environment Variables']
+memory index:16	 talk start time:202601170001	 memory content: User: Can you help me sanity-check a connection issue for a teammate? Their MongoDB instance is timing out from a service in k8s. I only need quick triage steps.
+Assistant: Sure — I’d start with DNS, service endpoints, and auth/TLS from inside the pod. If you want, I can outline a fast checklist and example commands.
+
+1. Resolve the service name from the app pod
+2. Check whether the MongoDB Service has healthy endpoints
+3. Test TCP reachability on 27017
+4. Verify the connection string/secret mounted in the pod
+5. Check server logs for auth or TLS handshake failures
+
+Example commands:
+```bash
+kubectl get svc,endpoints -n data | grep mongo
+kubectl exec -n app deploy/api -- nslookup mongo.data.svc.cluster.local
+kubectl exec -n app deploy/api -- sh -c 'nc -vz mongo.data.svc.cluster.local 27017'
+kubectl logs -n data statefulset/mongo --tail=100
+```
+
+If you want, I can mock a quick diagnostic run.
+User: Yeah, do a mock run. Assume the app is `orders-api` in `staging`, and their DB is `mongo-router` in namespace `data`.
+Assistant: Here’s a realistic first pass.
+User: Can you show what you’d inspect in the deployment env and secret refs?
+Assistant: Yep — I’d look for the connection URI, CA/cert mounts, and any flags that disable or require TLS.	 memory context: This memory details steps for troubleshooting MongoDB connection issues in Kubernetes, providing a diagnostic checklist and example commands. It serves as a guide for resolving specific database connectivity problems within a deployed environment.	 memory keywords: []	 memory tags: ['MongoDB', 'Kubernetes', 'Connection Troubleshooting', 'Service Connectivity', 'Database Connectivity', 'Networking', 'DNS Resolution', 'Service Endpoints', 'TCP Reachability', 'Authentication', 'TLS Handshake', 'Connection String', 'Secrets Management', 'Deployment Environment', 'kubectl commands', 'Diagnostic Checklist', 'Timeout Issues', 'Microservice Troubleshooting']
+memory index:12	 talk start time:202601130001	 memory content: User: Can you turn these raw notes from the Atlas Billing sync into a brief recap for the team? Keep it to bullets with decisions, open questions, and next steps.
+
+Notes:
+- billing-api branch: feat/invoice-retry-cleanup
+- Service under discussion was atlas-billing, not the main app
+- Current persistence layer for invoice state is MySQL 8.0
+- Team said read replicas are probably enough for Q3 traffic
+- One concern: long-running reconciliation jobs holding locks
+- Priya suggested moving ephemeral idempotency keys to Redis instead of keeping them in relational tables
+- Need to confirm whether the Helm values in staging still point at billing-mysql.internal
+- Action item to check migration ordering in db/changelog/2026-01-reconcile.xml
+- Someone pasted these snippets:
+Assistant: - **Decisions**
+  - The meeting focused on **atlas-billing** and its invoice-state persistence, currently running on **MySQL 8.0**.
+  - The team’s working assumption is that **read replicas should cover Q3 traffic** without a larger database architecture change.
+  - There was directional agreement to **store short-lived idempotency keys in Redis** rather than in relational tables.
+
+- **Open questions**
+  - Whether **long-running reconciliation jobs** are causing problematic lock contention and need query or job redesign.
+  - Whether **staging Helm values and the deployed finance namespace config** are still correctly targeting `billing-mysql.internal`.
+  - Whether the migration sequence in `db/changelog/2026-01-reconcile.xml` is safe and ordered correctly for rollout.
+
+- **Evidence / notes checked**
+  - Active branch shown as `feat/invoice-retry-cleanup`.
+  - Staging config currently lists:
+    - `DB_HOST: billing-mysql.internal`
+    - `DB_PORT: "3306"`
+  - Deployed `atlas-billing` manifest in `finance` also shows `billing-mysql.internal` on port `3306`.
+
+- **Next steps**
+  - Review reconciliation-job queries/transactions for lock duration and contention hotspots.
+  - Verify `charts/atlas-billing/values-staging.yaml` matches intended staging infrastructure.
+  - Audit `db/changelog/2026-01-reconcile.xml` for migration ordering dependencies.
+  - If approved, split ephemeral idempotency-key storage into **Redis** and leave durable invoice state in **MySQL**.
+User: Good. Make it even shorter and more like something I could paste into Slack after the meeting.
+Assistant: - **Atlas Billing recap**
+  - Confirmed `atlas-billing` is still on **MySQL 8.0** for invoice state.
+  - Team thinks **read replicas are enough for Q3** for now.
+  - Main risk discussed: **reconciliation jobs may be holding locks too long**.
+  - Proposed change: move **ephemeral idempotency keys to Redis**.
+  - Follow-ups: verify staging still points to `billing-mysql.internal` and review migration ordering in `db/changelog/2026-01-reconcile.xml`.	 memory context: This memory provides a detailed recap of an Atlas Billing meeting, confirming MySQL 8.0 for invoice state, considering read replicas for Q3 traffic, addressing concerns about reconciliation job locks, and proposing Redis for ephemeral idempotency keys. It also includes follow-up actions like verifying staging configuration and reviewing migration ordering, which aligns with ongoing discussions about Atlas Billing's data architecture and performance.	 memory keywords: []	 memory tags: ['Atlas Billing', 'MySQL', 'Redis', 'Invoice State', 'Database Architecture', 'Reconciliation Jobs', 'Lock Contention', 'Idempotency Keys', 'Helm Configuration', 'Database Migrations', 'Performance Optimization', 'Read Replicas', 'Service Configuration', 'SQL', 'Meeting Recap']
+memory index:7	 talk start time:202601080001	 memory content: User: I'm advising another team that runs a high-write event ingestion service. They're deciding between MySQL and DynamoDB for the metadata store. Can you compare the tradeoffs? If helpful, check a sample deployment config.
+Assistant: For that kind of service, the decision usually comes down to operational model, query shape, and scaling style:
+
+- **MySQL**
+  - Good if they need joins, transactions across related tables, and familiar SQL tooling
+  - Easier for ad hoc querying and reporting
+  - Usually better when the schema is fairly stable and access patterns are mixed
+  - Requires more hands-on capacity planning, replication, backups, and failover design
+
+- **DynamoDB**
+  - Strong fit for predictable key-based access at very high scale
+  - Fully managed, so less operational overhead
+  - Great for bursty workloads if the table design is aligned to access patterns
+  - Harder if they later need relational queries, flexible filtering, or many new query patterns
+
+If you want, I can mock-review a sample config to see which direction it already leans.
+User: Yeah, here's a simplified helm values snippet from their staging setup. Which option does this look more aligned with?
+Assistant: Based on the config, I’d inspect whether they already assume table-style cloud provisioning versus connection-pooled SQL access.
+User: What would be the main reasons to switch that team to MySQL anyway?
+Assistant: Good reasons would be:
+- They’ve started needing **joins** across tenants, events, and audit data
+- Product asks for more **ad hoc filtering** and reporting than simple key lookups
+- They want stronger **multi-record transactional workflows**
+- Their engineers are more comfortable with SQL migrations and relational modeling
+- They expect analytics/debugging queries directly against the operational store
+
+A rough rule:
+- If the access pattern is mostly `tenant_id + event_id` lookups and high-volume writes, keep the current direction
+- If requirements are drifting toward relational querying and cross-entity consistency, MySQL becomes more attractive
+
+If you want, I can sketch example schemas for both options for that ingestion service.	 memory context: This memory compares MySQL and DynamoDB for a high-write event ingestion service, highlighting tradeoffs based on operational model, query shape, and scaling style. It reinforces the principle of selecting a database based on specific workload requirements, such as transactional needs, ad hoc querying, or high-scale key-based access, a concept exemplified by the Atlas Billing discussion's decision to use MySQL for transactional data and object storage for analytical reporting.	 memory keywords: []	 memory tags: ['Database Comparison', 'MySQL', 'DynamoDB', 'Event Ingestion', 'NoSQL', 'Relational Database', 'Operational Model', 'Scaling', 'Query Patterns', 'Transactions', 'Ad Hoc Querying', 'Managed Service', 'Service Configuration', 'Connection Settings', 'Helm Configuration', 'Workload Optimization']
+memory index:4	 talk start time:202601050001	 memory content: User: I'm checking our read replica setup and trying to understand whether replication lag is causing stale reads. What would you look at first?
+Assistant: I’d start with three things: replica health, lag metrics, and whether your app is routing any read-after-write traffic to replicas.
+
+First, I’d inspect the cluster and any exposed replication metrics.
+User: Yeah, a checklist would help. We do have some traffic going through a proxy layer, so I want to make sure routing isn't the issue.
+Assistant: Here’s a practical checklist for replica lag with a proxy in front:
+
+1. Verify topology and endpoints	 memory context: User is troubleshooting read replica lag and stale reads, asking what to inspect first. Assistant suggests replica health, lag metrics, and app routing. A checklist is provided for diagnosing replica lag with a proxy layer, focusing on topology and endpoints. This memory is a general troubleshooting checklist for database issues, similar in approach to the new memory (providing a structured diagnostic process), even if the specific problem differs.	 memory keywords: []	 memory tags: ['Database Replication', 'Replication Lag', 'Stale Reads', 'Read Replicas', 'Proxy', 'Troubleshooting', 'Performance Monitoring', 'Database Performance', 'Checklist', 'Database Troubleshooting', 'Connectivity Diagnostics']
+memory index:6	 talk start time:202601070001	 memory content: User: I’m seeing one API endpoint spike to 2s latency. Can you help me debug the SQL behind it and check the execution plan?
+Assistant: Sure — first I’d capture the exact statement, then run an explain plan with timing to see whether it’s doing a full scan, bad join order, or sorting a huge intermediate set. If you have a staging shell, I’d start with something like this:
+User: I ran the plan in staging. Can you help interpret it?
+Assistant: Yes — if it looks like this, the expensive part is usually the sort or scanning too many `orders` rows before joining:	 memory context: User: I’m seeing one API endpoint spike to 2s latency. Can you help me debug the SQL behind it and check the execution plan?
+Assistant: Sure — first I’d capture the exact statement, then run an explain plan with timing to see whether it’s doing a full scan, bad join order, or sorting a huge intermediate set. If you have a staging shell, I’d start with something like this:
+User: I ran the plan in staging. Can you help interpret it?
+Assistant: Yes — if it looks like this, the expensive part is usually the sort or scanning too many `orders` rows before joining:	 memory keywords: []	 memory tags: ['SQL Debugging', 'Latency Troubleshooting', 'EXPLAIN PLAN', 'Execution Plan Analysis', 'Database Performance', 'Query Optimization', 'Full Scan', 'Bad Join Order', 'Sorting', 'Relational Database', 'Lock Contention', 'Reconciliation Jobs', 'MySQL']
+memory index:2	 talk start time:202601030001	 memory content: User: I'm tuning DB concurrency before tomorrow's deploy. Can you check our service config and tell me what to change for the connection pool? We switched the worker count up last sprint, and since the project uses PostgreSQL as the primary database I want to make sure we're not oversubscribing connections.
+Assistant: I checked the app config and the current pool settings are pretty conservative relative to the new worker count.
+User: Yeah, give me the k8s patch version. Also can you sanity-check whether max 12 is still okay if HPA actually hits 10 pods during the traffic window?
+Assistant: Yep — `max 12` is still a reasonable ceiling for the API deployment.
+
+At 10 pods:
+- `12 x 10 = 120` possible connections from this app
+- PostgreSQL `max_connections = 300`
+- leaves roughly `180` for other services, migrations, psql sessions, and system overhead
+
+Patch for the deployment:	 memory context: User is tuning PostgreSQL DB concurrency and connection pooling settings for a Kubernetes deployment before a deploy, specifically regarding worker count and max_connections with HPA. The discussion includes sanity-checking max 12 connections per pod if HPA scales to 10 pods, calculating total potential connections, and providing a Kubernetes patch. This memory relates to managing database connections and configuration in a Kubernetes environment, which is crucial for preventing connection-related issues.	 memory keywords: []	 memory tags: ['PostgreSQL', 'Connection Pooling', 'Concurrency', 'Kubernetes', 'HPA', 'Database Performance', 'Scaling', 'max_connections', 'Service Configuration', 'Relational Database', 'Operational Overhead', 'Connection Management', 'Kubernetes Configuration']
+memory index:9	 talk start time:202601100001	 memory content: User: I'm cleaning up our migration workflow. Right now we have ad-hoc SQL files and no clear schema versioning. What's a lightweight way to standardize this without introducing too much process?
+Assistant: A good middle ground is to adopt numbered, forward-only migrations plus a tiny metadata table for applied versions. Keep each change in its own file, for example:
+
+- `001_init_schema.sql`
+- `002_add_audit_columns.sql`
+- `003_backfill_status.sql`
+
+Then have your migration runner:
+1. create a `schema_migrations` table if it doesn't exist
+2. check which versions have already been applied
+3. run pending files in order
+4. record version, checksum, and applied timestamp
+
+You can also separate:
+- **DDL migrations** for structure changes
+- **data migrations** for backfills/recomputations
+- **repeatable scripts** for views or derived objects
+
+A simple repo layout could be:
+
+```text
+db/
+  migrations/
+    001_init_schema.sql
+    002_add_audit_columns.sql
+  data/
+    003_backfill_status.sql
+  scripts/
+    verify_checksums.sh
+```
+
+If you want, I can sketch a minimal migration table schema and a CI check for out-of-order files.
+User: Yeah, show me a minimal setup. Also, how would you enforce this in CI so people don't rename or edit old migrations?
+Assistant: Here's a minimal pattern.
+
+**Migration metadata table**
+```sql
+CREATE TABLE IF NOT EXISTS schema_migrations (
+  version        VARCHAR(64) PRIMARY KEY,
+  name           VARCHAR(255) NOT NULL,
+  checksum       VARCHAR(128) NOT NULL,
+  applied_at     TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**Simple CI rules**
+- migration filenames must match `^\d{3}_[a-z0-9_]+\.sql$`
+- new migrations must use a version greater than the highest existing one
+- previously applied/committed migration files must not change checksum
+- optional: require a rollback note in PR description even if you use forward-only fixes
+
+Example check script behavior:	 memory context: This memory outlines best practices for standardizing database migration workflows, proposing a lightweight, forward-only approach with schema versioning, a metadata table, and CI enforcement rules to prevent out-of-order or modified migrations.	 memory keywords: []	 memory tags: ['Database Migration', 'Schema Versioning', 'SQL', 'CI/CD', 'Best Practices', 'Metadata Table', 'Checksums', 'Forward-Only Migrations', 'DDL Migrations', 'Data Migrations', 'Repeatable Scripts', 'Migration Enforcement', 'Schema_migrations Table', 'Lightweight Migration', 'Migration Ordering', 'db/changelog', 'MySQL Migrations']
+
+
+Question: Who mentioned MongoDB and did the user adopt it for their project?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+================================================================================
+QUESTION:
+================================================================================
+

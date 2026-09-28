@@ -1,0 +1,49 @@
+CASE 7: PILOT-05B probe3 match=partial
+paradigm: interference  fact_type: config_value
+
+GOLD: 60 seconds was mentioned as a teammate's setting for a different service; the user did not change their own timeout from 30 seconds.
+
+PREDICTED: {
+  "source_description": "The user mentioned it while checking service documentation and observing the release branch/worker service.",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "30 seconds",
+  "reason": "The user noted 60 seconds in the release branch and worker service but explicitly stated they are keeping the API request timeout at 30 seconds to avoid excessive wall time during client backoffs."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1719 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User is keeping the API request timeout at 30 seconds.
+- User is asking to check whether the 60 seconds timeout aligns with their service documentation.
+- Assistant recommends 45 seconds for a separate load-test branch.
+- The client backs off at 1s, 2s, then 4s, but User is worried about total wall time because API request timeout is set to 30 seconds.
+- Assistant discusses the tradeoffs for moving to 45 seconds for a teammate's load-test branch.
+- User asks Assistant to compare the tradeoff one more time if they changed it to 45 seconds for a teammate's load-test branch.
+- User asks if the batch importer row is the shorter one (referring to a timeout value).
+- Assistant recommends 15 seconds for sandbox validation.
+- The release branch shows a lease timeout of `60 seconds`.
+- The worker service in staging shows a lease timeout of `60 seconds`.
+- The repo config has the API request timeout set to 30 seconds.
+- The deployment manifest has the API request timeout set to 30 seconds.
+- In the gateway config, API request timeout is set to 30 seconds.
+- The live staging pod has the API request timeout set to 30 seconds.
+- User is looking at the config tracker.
+
+Question: Who mentioned 60 seconds and did the user adopt it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

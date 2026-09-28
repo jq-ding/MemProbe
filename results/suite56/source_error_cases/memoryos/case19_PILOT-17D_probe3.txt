@@ -1,0 +1,74 @@
+CASE 19: PILOT-17D probe3 match=incorrect
+paradigm: consolidation  fact_type: submission_deadline_v2
+
+GOLD: Monday noon was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "Monday noon",
+  "reason": "The user stated they need the workshop proposal checklist by Monday noon on 2026-05-20."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (4388 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User confirmed report submission deadline is Friday 5 PM.
+- [user-knowledge] - User has a report submission deadline on Friday 5 PM
+- [user-knowledge] - User found an email mentioning a deadline for a vendor onboarding checklist: 2026-07-12 06:10:44
+- [user-knowledge] - User plans around Friday 5 PM as report submission deadline
+- [user-knowledge] - User needs to draft a reminder for Jordan about quarterly summary due Monday noon
+- [user-knowledge] - User wants a reminder for draft review tomorrow at 2 PM.
+- [user-knowledge] - User has two code reviews on Thursday
+- [user-knowledge] - User is polishing a technical report for the team at 2026-07-12 06:11:07
+- [user-knowledge] - User is cleaning old project emails: 2026-07-12 06:10:42
+- [user-knowledge] - User has sprint planning tomorrow
+- [user-knowledge] - User needs to submit a workshop proposal by Monday noon on 2026-07-12
+- [user-knowledge] - User will label a thread as procurement-related: 2026-07-12 06:10:51
+- [user-knowledge] - User thinks colleague's quarterly summary draft is due Wednesday EOD
+- [user-knowledge] - User's compliance team reviewers need half a day to flag missing sections in summaries
+- [user-knowledge] - User needs to sanity-check a colleague's quarterly summary timeline
+- [user-knowledge] - User's implementation notes are much longer than intro and risks sections at 2026-07-12 06:11:20
+- [user-knowledge] - User is looking at delivery tracker
+- [user-knowledge] - User is planning a review session with co-authors for a draft
+- [user-knowledge] - User has rough drafts for intro, implementation notes, and risks section of project write-up at 2026-07-12 06:11:10
+- [user-knowledge] - User wants to draft a checklist to compare requirements on 2026-07-12
+- [assistant-knowledge] - Assistant provided a polished recap at 2026-07-12 06:11:41
+- [assistant-knowledge] - Assistant drafted a checklist at 2026-07-12 06:11:24
+- [assistant-knowledge] - Assistant confirmed keeping a deadline in user's notes at 2026-07-12 06:11:51
+- [assistant-knowledge] - Assistant provided a brief recap of meeting notes at 2026-07-12 06:11:39
+- [assistant-knowledge] - Assistant affirmed user's labeling action at 2026-07-12 06:10:51
+- [assistant-knowledge] - Assistant noted a draft review reminder for tomorrow at 2 PM at 2026-07-12 06:11:05.
+- [assistant-knowledge] - Assistant identified a separate deliverable and deadline at 2026-07-12 06:10:44
+- [assistant-knowledge] - Assistant drafted a reminder for Jordan about quarterly summary due Monday noon at 2026-07-12 06:10:22
+- [assistant-knowledge] - Assistant noted the report submission deadline as Friday 5 PM at 2026-07-12 06:10:58.
+- [assistant-knowledge] - Assistant polished reminder and added an offer to review it at 2026-07-12 06:10:24
+- [assistant-knowledge] - Assistant provided a polished message to confirm a deadline and preferred comment method
+- [assistant-knowledge] - Assistant outlined a template at 2026-07-12 06:11:26
+- [assistant-knowledge] - Assistant recommended a cutoff time based on review needs at 2026-07-12 06:10:39
+- [assistant-knowledge] - Assistant offered to review sections one at a time at 2026-07-12 06:11:10
+- [assistant-knowledge] - Assistant kept sprint notes aligned to Friday 5 PM and pulled together open review items at 2026-07-12 06:10:20
+- [assistant-knowledge] - Assistant offered to identify deliverable from relevant line at 2026-07-12 06:10:42
+- [assistant-knowledge] - Assistant offered to help word a message to confirm a deadline
+- [assistant-knowledge] - Assistant offered to turn a plan into a calendar-style schedule
+- [assistant-knowledge] - Assistant provided a sensible plan for blocking time for a report
+- [assistant-knowledge] - Assistant suggested renaming a tracker row at 2026-07-12 06:10:30
+
+Question: Who or what mentioned Monday noon, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,49 @@
+CASE 14: PILOT-14B probe3 match=incorrect
+paradigm: misinformation  fact_type: commute_method
+
+GOLD: the subway was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "User",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "The user is considering taking the subway for a one-off errand to avoid traffic.",
+  "reason": "The user mentioned thinking of taking the subway to pick up papers after work to avoid traffic, which the assistant then supported as a good idea."
+}
+
+REASON: source_class mismatch: pred=user vs gold=assistant
+
+===== RETRIEVED MEMORY (1608 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User tried the subway for a week
+- The commute plan in the old weekly routine doc mentions the subway.
+- User is not taking the subway to work.
+- User's roommate switched to the subway this week
+- The article mentioned that weekday ridership is almost back to pre-pandemic levels.
+- User's roommate intends to stick with the subway.
+- User is thinking of taking the subway to pick up some papers after work to avoid dealing with traffic.
+- User's roommate believes the subway is faster.
+- Assistant suggests the subway is an easy call for a one-off errand.
+- User's roommate believes not having to deal with traffic is worth it regarding the subway.
+- Assistant suggests the subway should keep it pretty simple and predictable if User goes a little before rush hour.
+- Assistant suggests the subway is probably less hassle if User is carrying papers back.
+- cycling to work is faster than the subway.
+- The subway is considered a less stressful option when gas prices go up.
+- The subway is considered a less stressful option when traffic gets worse.
+
+Question: Who or what mentioned the subway, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

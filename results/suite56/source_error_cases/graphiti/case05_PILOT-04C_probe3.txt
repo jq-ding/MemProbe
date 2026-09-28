@@ -1,0 +1,49 @@
+CASE 5: PILOT-04C probe3 match=partial
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.
+
+PREDICTED: {
+  "source_description": "The User",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "Sarah Kim is the owner of the auth module; David Chen only reviewed the PR as a favor.",
+  "reason": "The user mentioned a proposal to hand auth to David, but clarified that David only did a one-time favor and Sarah Kim is the actual owner to be cc'd and tagged."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (2093 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- David Chen reviewed the auth module PR as a one-time favor.
+- There was a proposal to hand the authentication module to David Chen.
+- David Chen is the owner for the payments module follow-up
+- Assistant suggests adding the on-call alias to the auth deployment email.
+- Sarah Kim is cc’d as the module owner in the auth deployment email.
+- auth-related tickets should be tagged to Sarah Kim first.
+- The User is working through the remaining feedback on the auth module PR.
+- User is sending the auth deployment email.
+- Assistant suggests scoring technical debt by impact and urgency.
+- The auth deployment email is being sent to the wider backend list.
+- User already cc’d Sarah Kim on the auth deployment email.
+- The on-call alias is included in the auth deployment email for visibility in case any issues come up during or after rollout.
+- Assistant suggests that a lightweight guideline for code review turnaround time would help, including acknowledging review requests within a few hours, reviewing standard PRs within 24 hours, and flagging anything that needs deeper review early, and encouraging smaller PRs with context.
+- User is not sure whether to add the on-call alias to the auth deployment email.
+- Assistant suggested a follow-up message: “Thanks everyone for the discussion today. Here’s a quick recap of the main points we aligned on, the open questions, and the next steps. Please reply if I missed anything or if any timelines need adjusting. I’ll follow up again once the outstanding items are clarified.”
+
+Question: Who suggested David Chen might take over auth, and was it confirmed?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

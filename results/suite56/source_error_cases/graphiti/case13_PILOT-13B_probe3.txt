@@ -1,0 +1,49 @@
+CASE 13: PILOT-13B probe3 match=partial
+paradigm: interference  fact_type: log_level
+
+GOLD: DEBUG was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user and the incident runbook",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "INFO",
+  "reason": "The user asked about flipping the log level to DEBUG based on the runbook, but ultimately decided to keep the application log level set to INFO."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1594 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User asked whether to flip the application log level to DEBUG.
+- The incident runbook tells on-call to use DEBUG during live debugging.
+- The DEBUG usage mentioned in the runbook is for the telemetry sidecar.
+- The DEBUG setting is only present in staging.
+- The service block names provide context for the DEBUG env var.
+- The DEBUG setting in staging does not affect the production config.
+- The suggested phrasing involves temporarily enabling DEBUG on the telemetry sidecar during incident investigation.
+- TRACE is allowed only in sandbox runs for short-lived queue debugging, and only with on-call approval
+- User is keeping the application log level set to INFO
+- User reports that their teammate's staging environment has verbose logs.
+- User wants a sanity check on where logging settings are configured.
+- User wants to confirm the issue is with their staging setup.
+- User is trying to trim their logging bill.
+- User is looking at the ops tracker.
+- User asks Assistant for help checking why their teammate's logs are so verbose.
+
+Question: Who or what mentioned DEBUG, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

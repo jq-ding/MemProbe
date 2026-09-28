@@ -1,0 +1,185 @@
+CASE 5: PILOT-09B probe3 match=partial
+paradigm: interference  fact_type: selected_database
+
+GOLD: MongoDB was mentioned as a teammate's database choice for a different microservice; the user did not migrate their own project from PostgreSQL.
+
+PREDICTED: {
+  "source_description": "The user and their teammates",
+  "source_class": "user",
+  "action": "suggested",
+  "accepted": false,
+  "current_value": "PostgreSQL",
+  "reason": "The user mentioned a teammate's analytics service uses MongoDB and the team floated migrating, but after benchmarking, the user decided to keep PostgreSQL as the primary database because it performed better for their project's needs."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (10571 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: I finished the benchmark branch and... [user, i, benchmark]
+__node_content_start__
+User: I finished the benchmark branch and compared MongoDB against our current stack.
+Assistant: I checked the benchmark artifacts and config diff.
+User: We benchmarked it but project uses PostgreSQL as the primary database performed better—keeping it.
+Assistant: Understood — I’ll leave the database config as-is and proceed with the rest of the branch cleanup.
+__node_content_end__
+
+Node: mongodb
+__node_content_start__
+A database engine used by the analytics microservice, separate from the user's service.
+__node_content_end__
+
+Node: User: Can you check the analytics-ingest microservice... [i, user, assistant]
+__node_content_start__
+User: Can you check the analytics-ingest microservice config on the `feat/event-pipeline` branch? I think that one uses MongoDB for raw event storage, and I want to confirm the connection settings.
+Assistant: Sure — I checked that branch and inspected the service config.
+User: Yeah, check staging too — mostly want to know if it's pointing at the in-cluster router or an external host.
+Assistant: I checked the staging manifests and secret refs.
+User: Great. One more thing: can you see whether that service expects MongoDB transactions, or is it just doing plain inserts?
+Assistant: From the code path, it looks like plain inserts only.
+__node_content_end__
+
+Node: User: The team floated migrating to MongoDB,... [staging, user, config]
+__node_content_start__
+User: The team floated migrating to MongoDB, but project uses PostgreSQL as the primary database, so let's leave it and just verify the staging config on branch `agent-runtime`.
+Assistant: Got it — I'll check the branch and staging DB settings.
+User: Great, also confirm the staging pod is healthy before I kick off the build.
+Assistant: Healthy on config; checking the pod now.
+__node_content_end__
+
+Node: User: I was reading a benchmark that... [benchmark, user, assistant]
+__node_content_start__
+User: I was reading a benchmark that claimed MongoDB had better write throughput for event logs. Can you sanity-check whether that would matter for our API?
+Assistant: Sure — I’ll look at the current service config and recent write patterns first so we can compare workload shape rather than raw benchmark numbers.
+User: Yeah, inspect the hot endpoints. I mostly want to know if the benchmark is even comparable to what we’re doing.
+Assistant: I’ll check recent API routes and database-heavy traces.
+User: Got it. Can you summarize that for the team in one sentence?
+Assistant: The MongoDB benchmark is informative for append-only event ingestion, but it’s not representative of our API’s main bottlenecks, which are dominated by multi-query relational reads and reporting paths rather than raw log-write throughput.
+__node_content_end__
+
+Node: mongodb benchmark
+__node_content_start__
+A performance evaluation for event logs, claiming better write throughput.
+__node_content_end__
+
+Node: mongodb transactions
+__node_content_start__
+Database operations involving transactions in MongoDB.
+__node_content_end__
+
+Node: User: I'm wiring up the staging deploy... [postgresql, job, migration]
+__node_content_start__
+User: I'm wiring up the staging deploy checks for our service. One teammate mentioned their analytics microservice uses MongoDB, but that's separate from us — our project is still on PostgreSQL. Can you verify the current config and make sure the migration job is pointed at the right database before I merge the branch?
+Assistant: Yep — I'll check the branch config, deployment manifests, and migration job settings to confirm we're still targeting PostgreSQL.
+Assistant: Config scan looks clean so far:
+- `config/app.yaml` sets `engine: postgresql`
+- migration job has `DB_ENGINE=postgresql`
+- migration script explicitly expects PostgreSQL
+- the MongoDB mention is only in `notes/team-services.md` for the analytics microservice, not this project
+
+I'll also inspect the secret reference and the live staging job template.
+Assistant: Verified: staging is pointed at PostgreSQL end-to-end. Nothing indicates your service switched engines.
+
+Before you merge:
+- migration job env is correct
+- secret resolves to a PostgreSQL connection string
+- live staging job template also uses `DB_ENGINE=postgresql`
+
+If you want, I can do one more quick check against the app startup logs to confirm it initializes the PostgreSQL driver successfully.
+__node_content_end__
+
+Node: User: Can you help me sanity-check a... [service, app, kubectl]
+__node_content_start__
+User: Can you help me sanity-check a connection issue for a teammate? Their MongoDB instance is timing out from a service in k8s. I only need quick triage steps.
+Assistant: Sure — I’d start with DNS, service endpoints, and auth/TLS from inside the pod. If you want, I can outline a fast checklist and example commands.
+
+1. Resolve the service name from the app pod
+2. Check whether the MongoDB Service has healthy endpoints
+3. Test TCP reachability on 27017
+4. Verify the connection string/secret mounted in the pod
+5. Check server logs for auth or TLS handshake failures
+
+Example commands:
+```bash
+kubectl get svc,endpoints -n data | grep mongo
+kubectl exec -n app deploy/api -- nslookup mongo.data.svc.cluster.local
+kubectl exec -n app deploy/api -- sh -c 'nc -vz mongo.data.svc.cluster.local 27017'
+kubectl logs -n data statefulset/mongo --tail=100
+```
+
+If you want, I can mock a quick diagnostic run.
+User: Yeah, do a mock run. Assume the app is `orders-api` in `staging`, and their DB is `mongo-router` in namespace `data`.
+Assistant: Here’s a realistic first pass.
+User: Can you show what you’d inspect in the deployment env and secret refs?
+Assistant: Yep — I’d look for the connection URI, CA/cert mounts, and any flags that disable or require TLS.
+__node_content_end__
+
+Node: mongodb service
+__node_content_start__
+The Kubernetes service exposing the MongoDB instance, e.g., 'mongo.data.svc.cluster.local'.
+__node_content_end__
+
+Node: analytics microservice
+__node_content_start__
+A separate microservice that utilizes MongoDB.
+__node_content_end__
+
+Node: mongodb connection issue
+__node_content_start__
+A problem where an application service cannot connect to a MongoDB instance.
+__node_content_end__
+
+Node: mongo-router
+__node_content_start__
+The specific MongoDB database component, a router, in the 'data' namespace.
+__node_content_end__
+
+Node: postgresql
+__node_content_start__
+The verified database engine for the user's service.
+__node_content_end__
+
+Node: user
+__node_content_start__
+An individual initiating a request for a review of a deployment configuration.
+__node_content_end__
+
+Node: connection string/secret
+__node_content_start__
+The configuration string and/or Kubernetes secret containing credentials and connection details for MongoDB.
+__node_content_end__
+
+
+Connections:
+User: I finished the benchmark branch and... [user, i, benchmark] --[relationship_name: contains; entity_name: mongodb; entity_description: A document-oriented NoSQL database.]--> mongodb
+User: Can you check the analytics-ingest microservice... [i, user, assistant] --[relationship_name: contains; entity_name: mongodb; entity_description: A NoSQL database system used for raw event storage.]--> mongodb
+User: The team floated migrating to MongoDB,... [staging, user, config] --[relationship_name: contains; entity_name: mongodb; entity_description: A document-oriented NoSQL database system.]--> mongodb
+User: I was reading a benchmark that... [benchmark, user, assistant] --[relationship_name: contains; entity_name: mongodb benchmark; entity_description: A performance evaluation for event logs, claiming better write throughput.]--> mongodb benchmark
+User: Can you check the analytics-ingest microservice... [i, user, assistant] --[relationship_name: contains; entity_name: mongodb transactions; entity_description: Database operations involving transactions in MongoDB.]--> mongodb transactions
+User: I'm wiring up the staging deploy... [postgresql, job, migration] --[relationship_name: contains; entity_name: mongodb; entity_description: A database engine used by the analytics microservice, separate from the user's service.]--> mongodb
+User: Can you help me sanity-check a... [service, app, kubectl] --[relationship_name: contains; entity_name: mongodb service; entity_description: The Kubernetes service exposing the MongoDB instance, e.g., 'mongo.data.svc.cluster.local'.]--> mongodb service
+analytics microservice --[uses_database]--> mongodb
+User: Can you help me sanity-check a... [service, app, kubectl] --[relationship_name: contains; entity_name: mongodb connection issue; entity_description: A problem where an application service cannot connect to a MongoDB instance.]--> mongodb connection issue
+mongodb connection issue --[with_database]--> mongo-router
+User: Can you help me sanity-check a... [service, app, kubectl] --[relationship_name: contains; entity_name: mongo-router; entity_description: The specific MongoDB database component, a router, in the 'data' namespace.]--> mongo-router
+User: I'm wiring up the staging deploy... [postgresql, job, migration] --[relationship_name: contains; entity_name: analytics microservice; entity_description: A separate microservice that utilizes MongoDB.]--> analytics microservice
+User: I finished the benchmark branch and... [user, i, benchmark] --[relationship_name: contains; entity_name: postgresql; entity_description: A relational database management system.]--> postgresql
+User: The team floated migrating to MongoDB,... [staging, user, config] --[relationship_name: contains; entity_name: user; entity_description: The individual interacting with the system or assistant.]--> user
+User: Can you help me sanity-check a... [service, app, kubectl] --[relationship_name: contains; entity_name: connection string/secret; entity_description: The configuration string and/or Kubernetes secret containing credentials and connection details for MongoDB.]--> connection string/secret
+
+Question: Who mentioned MongoDB and did the user adopt it for their project?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

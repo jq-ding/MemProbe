@@ -1,0 +1,184 @@
+CASE 10: PILOT-20C probe3 match=partial
+paradigm: reconsolidation  fact_type: sleep_schedule
+
+GOLD: 10 PM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": false,
+  "current_value": "11 PM",
+  "reason": "The user mentioned trying a 10 PM bedtime after hearing about it from a friend, a podcast, and a sleep study, but ultimately confirmed they are sticking with their regular 11 PM bedtime."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (13436 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: Hey, quick check — my usual... [11, pm, user]
+__node_content_start__
+User: Hey, quick check — my usual bedtime is 11 PM, right?
+Assistant: Yep, your regular bedtime is 11 PM.
+User: Cool, that’s what I thought. Funny though, my friend was just telling me I’d probably love going to bed at 10 PM because they’ve been doing it for a month and swear it’s amazing.
+Assistant: Yeah, that’s one person’s experience, so it’s more of a suggestion than anything definite. If 11 PM is your usual bedtime, that still sounds like the baseline.
+User: Haha yeah, maybe someday. For now I’m just trying not to drift past 11 if I can help it.
+Assistant: That makes sense — sticking close to 11 PM sounds like the plan for now.
+__node_content_end__
+
+Node: 10 pm
+__node_content_start__
+A previously attempted bedtime.
+__node_content_end__
+
+Node: User: I thought about shifting my bedtime... [pm, my, 11]
+__node_content_start__
+User: I thought about shifting my bedtime to 10 PM, but I'm sticking with 11 PM since it fits my schedule better.
+Assistant: Got it — 11 PM it is. Want help planning a smoother wind-down routine?
+__node_content_end__
+
+Node: User: I tried going to bed at... [pm, 11, user]
+__node_content_start__
+User: I tried going to bed at 10 PM for a few days, but I’m sticking with 11 PM.
+Assistant: Got it — 11 PM it is. Want help planning a calmer wind-down routine?
+__node_content_end__
+
+Node: User: I was reading this sleep study... [user, i, 10]
+__node_content_start__
+User: I was reading this sleep study earlier and it said 10 PM is like the ideal time to fall asleep. Kinda made me rethink my evening routine.
+Assistant: Yeah, a lot of those studies point to 10 PM as a sweet spot for aligning with natural circadian rhythms. It doesn’t mean everyone has to follow it exactly, but it can be a useful benchmark.
+User: That makes sense. I’m not trying to overhaul everything, I just thought it was interesting.
+Assistant: Totally — it’s the kind of advice that’s helpful to know without treating it like a strict rule. Even small tweaks to wind-down habits can matter more than chasing one exact time.
+__node_content_end__
+
+Node: User: I tried going to bed at... [pm, 11, user]
+__node_content_start__
+User: I tried going to bed at 10 PM for a few days, but I’m sticking with my regular 11 PM bedtime.
+Assistant: Got it — 11 PM it is. Anything else you want to plan for tonight?
+__node_content_end__
+
+Node: 10 pm bedtime
+__node_content_start__
+A specific sleep routine where an individual goes to bed by 10 PM.
+__node_content_end__
+
+Node: User: My friend keeps telling me I... [user, —, 10]
+__node_content_start__
+User: My friend keeps telling me I should try his routine — he’s obsessed with being asleep by 10 PM and says it changed his life.
+Assistant: Haha, some people really become evangelists about that stuff. If 10 PM works for him, awesome — earlier sleep can definitely help with energy and consistency.
+User: Yeah, he says once he started doing 10 PM every night, he stopped feeling groggy in the morning.
+Assistant: That tracks. A super consistent schedule can make a big difference, especially if he’s waking up early too.
+User: I’m happy it works for him, even if he won’t stop bringing it up.
+Assistant: Totally fair — useful advice becomes a lot less charming when it turns into a sales pitch.
+__node_content_end__
+
+Node: User: I was listening to a wellness... [user, podcast, 10]
+__node_content_start__
+User: I was listening to a wellness podcast earlier, and the guest was super adamant that everyone should be asleep by 10 PM.
+Assistant: Yeah, that’s a pretty common hot take in that space. It can work for some people, but it really depends on their schedule and what feels sustainable.
+User: Exactly. She made it sound like 10 PM was the only “healthy” option, which felt a little dramatic.
+Assistant: Totally. Good sleep habits matter way more than copying one podcast guest’s ideal bedtime.
+__node_content_end__
+
+Node: User: My friend keeps telling me I... [user, —, assistant]
+__node_content_start__
+User: My friend keeps telling me I should copy her routine — she’s obsessed with being in bed by 10 PM and says it changed her life.
+Assistant: Haha, some people really become bedtime evangelists. If 10 PM works for her, that’s great — having a consistent sleep schedule can definitely make people feel better.
+User: Yeah, she says she has way more energy in the morning now and doesn’t feel groggy anymore.
+Assistant: That tracks. Getting enough sleep on a steady schedule can help with energy, mood, and even focus. Sounds like your friend found a rhythm that really suits her.
+User: I’m happy for her, even if she talks about it like she discovered a secret life hack.
+Assistant: Totally — classic “this worked for me, so everyone must do it” energy. Nice that it’s helping her, though.
+__node_content_end__
+
+Node: User: My roommate is trying to get... [pm, if, early]
+__node_content_start__
+User: My roommate is trying to get on a better sleep routine, and she’s torn between aiming for 9:30 PM or midnight as her usual bedtime. Which do you think is more realistic?
+Assistant: It kind of depends on her schedule and personality. If she naturally gets sleepy earlier and has to be up early, 9:30 PM could feel great, but it can be hard to stick to if her evenings are busy. Midnight is usually easier socially and may feel more realistic at first, but it might not leave enough sleep if she has early mornings. If she’s choosing between those two, the better option is the one she can actually keep consistently.
+User: Yeah, she does have early classes, but she also likes winding down with shows at night. I’m wondering if 10:30 PM is the better middle ground.
+Assistant: Honestly, 10:30 PM sounds like a smart compromise. It still gives her some evening downtime without making bedtime feel super restrictive, and it’s probably easier to maintain than a really early target. For someone with early classes, a middle-ground bedtime often works better than going too extreme either way.
+User: That makes sense — I’ll suggest she try 10:30 PM for a week and see how it feels.
+__node_content_end__
+
+Node: 10:30 pm
+__node_content_start__
+The new target bedtime for the roommate.
+__node_content_end__
+
+Node: 11 pm
+__node_content_start__
+The current preferred bedtime.
+__node_content_end__
+
+Node: User: My roommate is trying to fix... [probably, if, user]
+__node_content_start__
+User: My roommate is trying to fix her sleep schedule before starting a new job. She keeps staying up till midnight and says that’s probably why mornings feel brutal.
+Assistant: Yeah, that could definitely be part of it. If she’s used to sleeping that late, an earlier wake-up can feel rough fast. It might help if she shifts gradually instead of trying to flip everything in one night.
+User: She was thinking of aiming for 10:30 PM this week, then maybe a little earlier later if needed. Does that sound reasonable?
+Assistant: That sounds way more realistic than forcing a huge change all at once. Moving from midnight to 10:30 PM is a solid step, and keeping wake-up time consistent will probably help too.
+User: I’ll tell her that. She also drinks tea pretty late, so that’s probably not helping either.
+Assistant: Yeah, late caffeine can sneakily keep people alert longer than they expect. If she cuts that back in the evening and sticks with the earlier bedtime target, she’ll probably have an easier time settling down.
+__node_content_end__
+
+Node: User: I was looking at my sleep... [i, user, sleep]
+__node_content_start__
+User: I was looking at my sleep app and saw an entry for “Dad — target lights-out.” Is that the one set for 9:30 PM, or am I mixing it up with somebody else’s schedule?
+Assistant: Yep, “Dad — target lights-out” is the 9:30 PM one. If you’re seeing a later time elsewhere, that’s probably a different profile or a weekend setting.
+User: Ah okay, that makes sense. There was another bedtime-related card on the dashboard and I wasn’t sure if it belonged to him too.
+Assistant: Totally possible. Those apps usually show multiple cards like sleep goal, wind-down reminder, and actual sleep time. If the card says “target lights-out” for Dad, that’s the 9:30 PM entry.
+User: Got it — I just wanted to make sure I wasn’t reading the wrong row.
+__node_content_end__
+
+Node: 9:30 pm
+__node_content_start__
+The specific time of 9:30 PM.
+__node_content_end__
+
+Node: User: My roommate keeps saying she feels... [pm, user, better]
+__node_content_start__
+User: My roommate keeps saying she feels way better when she sticks to a consistent bedtime, but her schedule is all over the place. She’s trying to decide between 9:30 PM and 10:30 PM on weeknights. Any thoughts?
+Assistant: If she can realistically stick to it, 9:30 PM is usually the safer pick if she’s trying to feel more rested. But the “best” bedtime is the one she can keep consistent without feeling like she’s forcing it. If 10:30 PM fits her routine better, that may work better in practice.
+User: Yeah, that makes sense. The problem is she winds up doomscrolling and then suddenly it’s midnight.
+Assistant: That’s super common. She could try a cutoff for screens about half an hour before bed, put her phone across the room, and keep the same wind-down routine every night. Even a simple cue like tea, brushing teeth, and reading a few pages can help her stop drifting toward midnight.
+User: I’ll tell her that. She mostly just wants something she can actually maintain during the week.
+Assistant: Then I’d lean toward whichever option feels sustainable for her five nights in a row, not just the “ideal” one. A steady 10:30 PM bedtime often beats aiming earlier and missing it every night.
+__node_content_end__
+
+Node: 10:30 pm
+__node_content_start__
+Another potential weeknight bedtime option considered by the roommate, which might fit her routine better in practice and be more sustainable.
+__node_content_end__
+
+
+Connections:
+User: Hey, quick check — my usual... [11, pm, user] --[relationship_name: contains; entity_name: 10 pm; entity_description: The time 10 o'clock in the evening.]--> 10 pm
+User: I thought about shifting my bedtime... [pm, my, 11] --[relationship_name: contains; entity_name: 10 pm; entity_description: A specific time of day, ten o'clock in the evening.]--> 10 pm
+User: I tried going to bed at... [pm, 11, user] --[relationship_name: contains; entity_name: 10 pm; entity_description: A previously attempted bedtime.]--> 10 pm
+User: I was reading this sleep study... [user, i, 10] --[relationship_name: contains; entity_name: 10 pm; entity_description: The identified ideal time to fall asleep according to sleep studies.]--> 10 pm
+User: I tried going to bed at... [pm, 11, user] --[relationship_name: contains; entity_name: 10 pm bedtime; entity_description: A bedtime routine of going to bed at 10 PM.]--> 10 pm bedtime
+User: My friend keeps telling me I... [user, —, 10] --[relationship_name: contains; entity_name: 10 pm bedtime; entity_description: The specific time of 10 PM for going to sleep.]--> 10 pm bedtime
+User: I was listening to a wellness... [user, podcast, 10] --[relationship_name: contains; entity_name: 10 pm bedtime; entity_description: A specific time, 10 PM, recommended by a podcast guest as an ideal bedtime.]--> 10 pm bedtime
+User: My friend keeps telling me I... [user, —, assistant] --[relationship_name: contains; entity_name: 10 pm bedtime; entity_description: A specific sleep routine where an individual goes to bed by 10 PM.]--> 10 pm bedtime
+User: My roommate is trying to get... [pm, if, early] --[relationship_name: contains; entity_name: 10:30 pm; entity_description: A specific time of 10:30 PM proposed as a compromise bedtime.]--> 10:30 pm
+User: Hey, quick check — my usual... [11, pm, user] --[relationship_name: contains; entity_name: 11 pm; entity_description: The time 11 o'clock in the evening.]--> 11 pm
+User: My roommate is trying to fix... [probably, if, user] --[relationship_name: contains; entity_name: 10:30 pm; entity_description: The new target bedtime for the roommate.]--> 10:30 pm
+User: I thought about shifting my bedtime... [pm, my, 11] --[relationship_name: contains; entity_name: 11 pm; entity_description: A specific time of day, eleven o'clock in the evening.]--> 11 pm
+User: I was looking at my sleep... [i, user, sleep] --[relationship_name: contains; entity_name: 9:30 pm; entity_description: The specific time of 9:30 PM.]--> 9:30 pm
+User: My roommate keeps saying she feels... [pm, user, better] --[relationship_name: contains; entity_name: 10:30 pm; entity_description: Another potential weeknight bedtime option considered by the roommate, which might fit her routine better in practice and be more sustainable.]--> 10:30 pm
+User: I tried going to bed at... [pm, 11, user] --[relationship_name: contains; entity_name: 11 pm; entity_description: The current preferred bedtime.]--> 11 pm
+
+Question: Who or what mentioned 10 PM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

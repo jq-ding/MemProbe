@@ -1,0 +1,54 @@
+CASE 13: PILOT-10B probe3 match=partial
+paradigm: interference  fact_type: current_gym_v2
+
+GOLD: Summit Climbing Gym was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "assistant",
+  "source_class": "assistant",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "User decided to stick with YMCA Downtown for workouts, despite seeing a promotion for Summit Climbing Gym.",
+  "reason": "The assistant mentioned a promotion for Summit Climbing Gym, but the user decided to stick with YMCA Downtown instead."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3448 chars) =====
+Memory facts extracted from conversation history:
+
+- User plans to do a 45-minute workout before dinner on July 12, 2026, at YMCA Downtown.
+- User's preferred workout location is YMCA Downtown.
+- User was recommended a 45-minute workout plan for YMCA Downtown including a 5-minute warm-up, 20-minute strength circuit (squats, dumbbell bench/push-ups, seated row/lat pulldown, planks), 15-minute cardio finisher, and 5-minute cool-down.
+- User usually does their own workouts at YMCA Downtown but is interested in finding out if they have good group fitness classes.
+- User was informed that YMCA Downtown typically offers a mix of group fitness classes including yoga, cycling, HIIT, strength/bootcamp, Zumba, Pilates, and barre.
+- User was recommended to check the YMCA Downtown class schedule on their app or website, or ask the front desk for the weekly calendar.
+- User's commute to YMCA Downtown for workouts can take 20 to 40 minutes depending on traffic, which is often unpredictable.
+- User was advised to manage their unpredictable commute to YMCA Downtown by going straight after work, checking traffic 30 minutes before leaving, and packing gym essentials the night before.
+- User was offered help by the assistant to build a simple after-work routine around their commute to the gym.
+- User saw a promotion for Summit Climbing Gym but decided to continue with YMCA Downtown for workouts, confirming it as their preferred location.
+- User asked the assistant to remind them to pack their water bottle on the morning of July 13, 2026.
+- User's roommate is trying to decide between Equinox and Anytime Fitness for a gym membership.
+- User's roommate prioritizes a clean gym with decent group fitness classes and is not particularly interested in hardcore lifting.
+- The assistant suggested Equinox for the user's roommate, highlighting its polished, clean environment, premium experience, nicer locker rooms, and greater class variety as key benefits.
+- The assistant noted that Anytime Fitness is a more practical and convenient option for the user's roommate, offering lower costs and 24/7 access, though it might feel simpler depending on the location.
+- User's roommate works unusual hours, making 24/7 gym access tempting, but strong group classes are essential to prevent boredom and maintain motivation.
+- The assistant advised the user's roommate to tour both Equinox and Anytime Fitness, check their specific class schedules, and consider which gym she would realistically want to attend after a long day.
+- User believes their roommate would be willing to pay a higher price if the group fitness classes offered are of good quality.
+- User had a trial pass for Equinox gym around the week of July 1-7, 2026, which they recorded in their habit tracker.
+- User's habit tracker note "guest fee too high?" likely refers to Equinox's potentially steep guest fees, which was a downside compared to other gyms considered.
+
+Question: Who or what mentioned Summit Climbing Gym, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

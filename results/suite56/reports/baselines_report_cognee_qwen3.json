@@ -1,0 +1,2244 @@
+{
+  "cognee_full": {
+    "PILOT-01A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "CrossFit Central",
+          "predicted": "{\n  \"answer\": \"CrossFit Central\",\n  \"reason\": \"The user mentioned they signed up at CrossFit Central after canceling their FitLife membership and also confirmed they tried a guest pass and almost switched to it.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12604
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "FitLife",
+          "predicted": "{\n  \"answer\": \"FitLife\",\n  \"reason\": \"The user mentioned they canceled their membership at FitLife and switched to CrossFit Central.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 13508
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"FitLife\" to \"CrossFit Central\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"CrossFit Central\",\n  \"previous_value\": \"FitLife\",\n  \"reason\": \"The user canceled their FitLife membership due to overcrowding and signed up at CrossFit Central instead.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 9648
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the switch",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"FitLife became too crowded\",\n  \"old_value\": \"FitLife\",\n  \"new_value\": \"CrossFit Central\",\n  \"timing\": \"The user canceled their FitLife membership and signed up at CrossFit Central instead.\",\n  \"reason\": \"The user mentioned that FitLife got way too crowded, leading them to cancel the membership and switch gyms.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 11191
+        }
+      ],
+      "ingest_time_sec": 657.0,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 701.4
+    },
+    "PILOT-01B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "FitLife",
+          "predicted": "{\n  \"answer\": \"FitLife\",\n  \"reason\": \"The user mentioned they are still doing their usual workouts at FitLife and compared it to CrossFit Central.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 14126
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"CrossFit Central\" was mentioned, but from an invalid source (third_party_mention_of_CrossFit_Central_by_Jamie). The user's current gym remains \"FitLife\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"CrossFit Central\",\n  \"source\": \"User: Jamie was telling me they just... [like, workouts, fitlife]\",\n  \"source_class\": \"assistant\",\n  \"status\": \"not accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"FitLife\",\n  \"reason\": \"The user mentioned that they tried CrossFit Central but decided to stick with FitLife for their workouts.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 9706
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"FitLife\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"FitLife\",\n  \"previous_value\": null,\n  \"reason\": \"The user mentioned they are still doing their usual workouts at FitLife and did not express any intention or action of changing gyms.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 14792
+        },
+        {
+          "probe_type": "source",
+          "gold": "CrossFit Central was mentioned by a third party (Jamie) as their gym; the user never confirmed switching to it and remains at FitLife.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"The user has not confirmed switching to CrossFit Central and continues to prefer FitLife.\",\n  \"reason\": \"The user explicitly stated they are sticking with FitLife despite trying a guest pass at CrossFit Central.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 9620
+        }
+      ],
+      "ingest_time_sec": 668.0,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 718.5
+    },
+    "PILOT-02A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "April 15",
+          "predicted": "{\n  \"answer\": \"March 28\",\n  \"reason\": \"The user has consistently affirmed that they are sticking with the March 28 deadline despite rumors or other venues offering an extended deadline of April 15.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'April 15' not found",
+          "ctx_chars": 10604
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "March 28",
+          "predicted": "{\n  \"answer\": \"March 28\",\n  \"reason\": \"The user initially mentioned the paper submission deadline as March 28 before it was extended to April 15.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 10299
+        },
+        {
+          "probe_type": "source",
+          "gold": "user explicitly stated the extension from conference organizers",
+          "predicted": "{\n  \"source_description\": \"The conference organizers\",\n  \"source_class\": \"other_entity\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"April 15\",\n  \"reason\": \"The user mentioned the conference organizers extended the paper submission deadline to April 15, and the assistant confirmed the change.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=other_entity vs gold=user) but accepted correct",
+          "ctx_chars": 8795
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"March 28\" to \"April 15\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"April 15\",\n  \"previous_value\": \"March 28\",\n  \"reason\": \"The user mentioned that the conference organizers extended the paper submission deadline from March 28 to April 15.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 10426
+        }
+      ],
+      "ingest_time_sec": 750.8,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 812.9
+    },
+    "PILOT-02B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "March 28",
+          "predicted": "{\n  \"answer\": \"March 28\",\n  \"reason\": \"The user has consistently confirmed that the paper submission deadline is March 28, and the assistant has adjusted its references accordingly.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12072
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"April 15\" was mentioned, but from an invalid source (assistant_hallucinated_April_15). The user's submission deadline remains \"March 28\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"April 15\",\n  \"source\": \"User and Assistant\",\n  \"source_class\": \"assistant\",\n  \"status\": \"superseded\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": true,\n  \"current_value\": \"March 28\",\n  \"reason\": \"The user confirmed that the correct submission deadline is March 28, and April 15 was either a rumor or incorrectly mentioned as the deadline in some contexts.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 15714
+        },
+        {
+          "probe_type": "source",
+          "gold": "April 15 was introduced by the assistant as an error; the user corrected it and did not accept it as the paper deadline.",
+          "predicted": "{\n  \"source_description\": \"Assistant\",\n  \"source_class\": \"assistant\",\n  \"action\": \"stated\",\n  \"accepted\": false,\n  \"current_value\": \"March 28\",\n  \"reason\": \"The user corrected the assistant when they stated April 15 as the paper submission deadline, confirming that the correct date is March 28.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=assistant gold=assistant",
+          "ctx_chars": 11668
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"March 28\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"March 28\",\n  \"previous_value\": null,\n  \"reason\": \"The user consistently confirmed the paper submission deadline as March 28 and clarified that April 15 was incorrect or a rumor.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 11872
+        }
+      ],
+      "ingest_time_sec": 724.1,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 779.6
+    },
+    "PILOT-02C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "March 28",
+          "predicted": "{\n  \"answer\": \"March 28\",\n  \"reason\": \"The user has consistently mentioned March 28 as the confirmed paper submission deadline in multiple parts of the conversation.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11285
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"April 15\" was mentioned, but from an invalid source (third_party_mention_of_April_15_for_different_project). The user's submission deadline remains \"March 28\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"April 15\",\n  \"source\": \"colleague\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": false,\n  \"current_value\": \"March 28\",\n  \"reason\": \"The user confirmed that the April 15 deadline mentioned by a colleague is for a different project, and March 28 remains the correct submission deadline for their own project.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 11701
+        },
+        {
+          "probe_type": "source",
+          "gold": "April 15 was mentioned as a colleague's deadline for a different project; the user did not confirm it applied to their own paper.",
+          "predicted": "{\n  \"source_description\": \"A colleague of the user\",\n  \"source_class\": \"third_party\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"March 28\",\n  \"reason\": \"The user confirmed their own paper submission deadline is still March 28 after checking submission notes and clarified it is not affected by April 15.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=third_party gold=third_party",
+          "ctx_chars": 11817
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"March 28\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"March 28\",\n  \"previous_value\": null,\n  \"reason\": \"The user confirmed that the paper submission deadline is still March 28 and clarified that April 15 applies to a colleague's project, not theirs.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 10402
+        }
+      ],
+      "ingest_time_sec": 657.1,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 701.2
+    },
+    "PILOT-03A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Mediterranean diet",
+          "predicted": "{\n  \"answer\": \"vegetarian diet\",\n  \"reason\": \"The user explicitly stated they are sticking with a vegetarian diet in multiple conversations, despite considering or briefly trying other diets like Mediterranean.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Mediterranean diet' not found",
+          "ctx_chars": 12052
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "vegetarian",
+          "predicted": "{\n  \"answer\": \"vegetarian diet\",\n  \"reason\": \"The user previously followed a vegetarian diet before switching to the Mediterranean diet.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11139
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"vegetarian\" to \"Mediterranean diet\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"Mediterranean diet\",\n  \"previous_value\": \"vegetarian diet\",\n  \"reason\": \"The user mentioned switching from a vegetarian diet to a Mediterranean diet after reading about its health benefits.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 11278
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the switch",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"Reading more about the health benefits\",\n  \"old_value\": \"vegetarian diet\",\n  \"new_value\": \"Mediterranean diet\",\n  \"timing\": \"After previously trying a vegetarian meal plan and deciding to switch for better heart-healthy options\",\n  \"reason\": \"The user mentioned switching from vegetarian to Mediterranean after reading about its health benefits and wanting to incorporate fish and olive oil into their meals.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 11758
+        }
+      ],
+      "ingest_time_sec": 660.6,
+      "ingest_errors": 0,
+      "sessions_fed": 22,
+      "total_time_sec": 701.0
+    },
+    "PILOT-03B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Mediterranean diet",
+          "predicted": "{\n  \"answer\": \"Mediterranean diet\",\n  \"reason\": \"The user has switched from a vegetarian diet to a Mediterranean diet, as confirmed in the conversation where they requested fish and olive-oil-based recipes.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 8517
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "vegetarian",
+          "predicted": "{\n  \"answer\": \"vegetarian diet\",\n  \"reason\": \"The user initially followed a vegetarian diet and later decided to switch to a Mediterranean diet after considering health benefits.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11387
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"vegetarian\" to \"Mediterranean diet\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"Mediterranean diet\",\n  \"previous_value\": \"vegetarian diet\",\n  \"reason\": \"The user mentioned switching from a vegetarian diet to a Mediterranean diet after reading about health benefits.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 11157
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the switch",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"Reading about health benefits of the Mediterranean diet\",\n  \"old_value\": \"vegetarian diet\",\n  \"new_value\": \"Mediterranean diet\",\n  \"timing\": \"Quick update from the user indicating a recent decision\",\n  \"reason\": \"The user wanted to switch from vegetarian to Mediterranean for its health benefits and included fish and olive oil-based recipes.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 11611
+        }
+      ],
+      "ingest_time_sec": 690.9,
+      "ingest_errors": 0,
+      "sessions_fed": 19,
+      "total_time_sec": 736.3
+    },
+    "PILOT-04A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "David Chen",
+          "predicted": "{\n  \"answer\": \"Sarah Kim\",\n  \"reason\": \"The conversation history confirms that Sarah Kim still owns the authentication module despite previous discussions about ownership transfer.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'David Chen' not found",
+          "ctx_chars": 10503
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Sarah Kim",
+          "predicted": "{\n  \"answer\": \"Sarah Kim\",\n  \"reason\": \"Multiple messages in the conversation history confirm that Sarah Kim was the original owner of the authentication module before any proposed or actual transfer.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 10363
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Sarah Kim\" to \"David Chen\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"David Chen\",\n  \"previous_value\": \"Sarah Kim\",\n  \"reason\": \"The user mentioned that Sarah Kim moved to the platform team and David Chen is now taking over auth ownership.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 10754
+        },
+        {
+          "probe_type": "source",
+          "gold": "user explicitly stated after reactivating the old memory",
+          "predicted": "{\n  \"source_description\": \"David Chen\",\n  \"source_class\": \"other_entity\",\n  \"action\": \"stated\",\n  \"accepted\": false,\n  \"current_value\": \"Sarah Kim still owns the authentication module, and David Chen provided a one-time review as a favor.\",\n  \"reason\": \"The user recalled that Sarah Kim remains the owner of the authentication module, clarifying that David's involvement was only for a one-time review.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=other_entity vs gold=user",
+          "ctx_chars": 10726
+        }
+      ],
+      "ingest_time_sec": 623.5,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 670.5
+    },
+    "PILOT-04B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "David Chen",
+          "predicted": "{\n  \"answer\": \"David Chen\",\n  \"reason\": \"The user confirmed that David Chen is now the owner of the auth module, and Sarah Kim has moved to the platform team.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 10724
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Sarah Kim",
+          "predicted": "{\n  \"answer\": \"Sarah Kim\",\n  \"reason\": \"The conversation history confirms that Sarah Kim was the owner of the authentication module before any ownership transfer to David Chen.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12029
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Sarah Kim\" to \"David Chen\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Sarah Kim\",\n  \"previous_value\": null,\n  \"reason\": \"The conversation confirms that while there was a proposal during the reorg that ownership transferred to David Chen, Sarah Kim still owns the authentication module.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 11200
+        },
+        {
+          "probe_type": "source",
+          "gold": "user stated directly without reactivation",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"ownership transferred to David Chen as part of the team reorg\",\n  \"reason\": \"The user mentioned in the conversation that they are drafting an update for the engineering channel about a transfer of ownership to David Chen, implying this is the current communication method.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=user gold=user",
+          "ctx_chars": 15651
+        }
+      ],
+      "ingest_time_sec": 645.5,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 687.6
+    },
+    "PILOT-03C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "vegetarian",
+          "predicted": "{\n  \"answer\": \"vegetarian diet\",\n  \"reason\": \"The user has mentioned following a vegetarian diet in multiple conversations and confirmed they are not looking to change it despite exploring other diets for recipe inspiration.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12570
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"Mediterranean diet\" was mentioned, but from an invalid source (third_party_suggestion_of_Mediterranean_diet). The user's diet preference remains \"vegetarian\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Mediterranean diet\",\n  \"source\": \"User's friend and articles\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"Vegetarian diet\",\n  \"reason\": \"The user expressed interest in the Mediterranean diet but stated they are sticking with a vegetarian diet and have not adopted it.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=correct, applicability=correct",
+          "ctx_chars": 8588
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"vegetarian\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"vegetarian diet\",\n  \"previous_value\": null,\n  \"reason\": \"The user consistently mentioned following a vegetarian diet and did not adopt any other dietary preference in the conversation.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 12555
+        },
+        {
+          "probe_type": "source",
+          "gold": "Mediterranean diet was suggested by a third party or mentioned in passing; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User's friend\",\n  \"source_class\": \"other_entity\",\n  \"action\": \"suggested\",\n  \"accepted\": false,\n  \"current_value\": \"The user is still following a vegetarian diet and only considers the Mediterranean diet for recipe inspiration.\",\n  \"reason\": \"The user confirmed they are sticking to their vegetarian diet and mentioned that the Mediterranean diet is more like optional meal inspiration.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct",
+          "ctx_chars": 8617
+        }
+      ],
+      "ingest_time_sec": 773.4,
+      "ingest_errors": 0,
+      "sessions_fed": 22,
+      "total_time_sec": 818.3
+    },
+    "PILOT-03D": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "vegetarian",
+          "predicted": "{\n  \"answer\": \"vegetarian diet\",\n  \"reason\": \"The user explicitly mentioned that they are sticking with a vegetarian diet in multiple interactions and clarified that other diets, like the Mediterranean or pescatarian, are just sources of inspiration or for others.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 13578
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"Mediterranean diet\" was mentioned, but from an invalid source (third_party_suggestion_of_Mediterranean_diet). The user's diet preference remains \"vegetarian\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Mediterranean diet\",\n  \"source\": \"third_party\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"vegetarian diet\",\n  \"reason\": \"The user mentioned trying the Mediterranean diet briefly but ultimately decided to stick with a vegetarian diet. They also expressed interest in incorporating some Mediterranean-style meal ideas while maintaining their vegetarian preference.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=correct, applicability=correct",
+          "ctx_chars": 10110
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"vegetarian\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"vegetarian diet\",\n  \"previous_value\": null,\n  \"reason\": \"The user has consistently mentioned sticking with a vegetarian diet despite exploring other dietary styles like the Mediterranean and pescatarian diets for recipe inspiration or flexibility.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 12243
+        },
+        {
+          "probe_type": "source",
+          "gold": "Mediterranean diet was suggested by a third party or mentioned in passing; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"coworker\",\n  \"source_class\": \"other_entity\",\n  \"action\": \"suggested\",\n  \"accepted\": false,\n  \"current_value\": \"vegetarian diet\",\n  \"reason\": \"The user mentioned their coworker recommended the Mediterranean diet, but they confirmed they are still sticking to a vegetarian diet and have not switched.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct",
+          "ctx_chars": 9357
+        }
+      ],
+      "ingest_time_sec": 653.9,
+      "ingest_errors": 0,
+      "sessions_fed": 19,
+      "total_time_sec": 697.6
+    },
+    "PILOT-04C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Sarah Kim",
+          "predicted": "{\n  \"answer\": \"Sarah Kim\",\n  \"reason\": \"Multiple interactions confirm that Sarah Kim is the current owner of the authentication module, and there has been no official update indicating a change in ownership.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11290
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"David Chen\" was mentioned, but from an invalid source (ambiguous_suggestion_of_David_Chen). The user's project owner remains \"Sarah Kim\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"David Chen\",\n  \"source\": \"User and Assistant\",\n  \"source_class\": \"assistant\",\n  \"status\": \"hypothetical\",\n  \"status_class\": \"hypothetical\",\n  \"applies_to_target\": false,\n  \"current_value\": \"Sarah Kim\",\n  \"reason\": \"David Chen was discussed as a potential owner for the authentication module during a reorg but has not been officially assigned. Sarah Kim is consistently mentioned as the current owner.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 10865
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"Sarah Kim\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Sarah Kim\",\n  \"previous_value\": null,\n  \"reason\": \"The conversation consistently states that Sarah Kim owns the authentication module and there is no confirmation of a change in ownership to David Chen or anyone else.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 11290
+        },
+        {
+          "probe_type": "source",
+          "gold": "David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.",
+          "predicted": "{\n  \"source_description\": \"a colleague\",\n  \"source_class\": \"user\",\n  \"action\": \"suggested\",\n  \"accepted\": false,\n  \"current_value\": \"Sarah Kim owns the authentication module\",\n  \"reason\": \"The user mentioned that a colleague casually suggested David Chen might take over auth, but the assistant clarified it was speculative and unconfirmed information.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 8076
+        }
+      ],
+      "ingest_time_sec": 591.0,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 635.8
+    },
+    "PILOT-04D": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Sarah Kim",
+          "predicted": "{\n  \"answer\": \"Sarah Kim\",\n  \"reason\": \"Multiple parts of the conversation confirm that Sarah Kim owns the authentication module, including direct statements from the assistant and guidance on assigning code reviews or emails related to auth.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11160
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"David Chen\" was mentioned, but from an invalid source (ambiguous_suggestion_of_David_Chen). The user's project owner remains \"Sarah Kim\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"David Chen taking over auth\",\n  \"source\": \"User\",\n  \"source_class\": \"user\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"hypothetical\",\n  \"applies_to_target\": false,\n  \"current_value\": \"Sarah Kim owns the authentication module\",\n  \"reason\": \"The user mentioned a proposal for David Chen to take over the authentication module, but confirmed that Sarah Kim still owns it.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 7616
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"Sarah Kim\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Sarah Kim\",\n  \"previous_value\": null,\n  \"reason\": \"The conversation confirms that Sarah Kim still owns the authentication module, despite some informal mentions of David Chen helping with auth stuff.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 9412
+        },
+        {
+          "probe_type": "source",
+          "gold": "David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"suggested\",\n  \"accepted\": false,\n  \"current_value\": \"Sarah Kim still owns the authentication module.\",\n  \"reason\": \"The user mentioned a proposal during the reorg for David Chen to take over auth, but it was clarified that Sarah Kim remains the owner.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 7325
+        }
+      ],
+      "ingest_time_sec": 618.4,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 663.2
+    },
+    "PILOT-05A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "60 seconds",
+          "predicted": "{\n  \"answer\": \"60 seconds\",\n  \"reason\": \"The user confirmed in the conversation that the API request timeout was increased from 30 seconds to 60 seconds after profiling showed P99 latencies hitting 28 seconds under load, and the assistant verified and confirmed this change in the repo.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 13086
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "30 seconds",
+          "predicted": "{\n  \"answer\": \"30 seconds\",\n  \"reason\": \"The original API request timeout was set to 30 seconds, as confirmed by multiple checks in the conversation history.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12901
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"30 seconds\" to \"60 seconds\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"60 seconds\",\n  \"previous_value\": \"30 seconds\",\n  \"reason\": \"The user increased the API request timeout from 30 seconds to 60 seconds after profiling showed P99 latencies hitting 28 seconds under load.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 13086
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the change",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"profiling showed P99 latencies hitting 28 seconds under load\",\n  \"old_value\": \"30 seconds\",\n  \"new_value\": \"60 seconds\",\n  \"timing\": \"this morning, in the service config\",\n  \"reason\": \"The user increased the API request timeout to 60 seconds after profiling indicated that P99 latencies were approaching the previous limit of 30 seconds under load.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 15415
+        }
+      ],
+      "ingest_time_sec": 707.7,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 757.3
+    },
+    "PILOT-05B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "30 seconds",
+          "predicted": "{\n  \"answer\": \"30 seconds\",\n  \"reason\": \"The API request timeout is confirmed to be set to 30 seconds in the repo config, deployment manifest, and live staging pod.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 14947
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"60 seconds\" was mentioned, but from an invalid source (third_party_mention_of_60s_timeout). The user's config value remains \"30 seconds\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"60 seconds\",\n  \"source\": \"User\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"30 seconds\",\n  \"reason\": \"The user mentioned that their teammate uses 60 seconds for a different service, and the team decided to keep the API request timeout at 30 seconds in staging and production.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 12655
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"30 seconds\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"30 seconds\",\n  \"previous_value\": null,\n  \"reason\": \"The user explicitly confirmed to leave their API request timeout as-is at 30 seconds and no evidence of any changes to this setting was found in the conversation.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 14608
+        },
+        {
+          "probe_type": "source",
+          "gold": "60 seconds was mentioned as a teammate's setting for a different service; the user did not change their own timeout from 30 seconds.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"30 seconds\",\n  \"reason\": \"The user discussed the 60-second timeout in the context of their teammate's service and PR but rejected it, keeping the API request timeout at 30 seconds as verified across repo config, deployment manifest, and staging pod.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 12549
+        }
+      ],
+      "ingest_time_sec": 728.1,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 779.1
+    },
+    "PILOT-06A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "3000",
+          "predicted": "{\n  \"answer\": \"8080\",\n  \"reason\": \"The conversation confirms that the user's API service is currently running on port 8080 and that this port is active in deployment manifests.\"\n}",
+          "match": "incorrect",
+          "reason": "expected '3000' not found",
+          "ctx_chars": 8911
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "8080",
+          "predicted": "{\n  \"answer\": \"8080\",\n  \"reason\": \"The service was previously running on port 8080, as confirmed in multiple parts of the conversation where it is referred to as the old or active port for the API.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 13667
+        },
+        {
+          "probe_type": "source",
+          "gold": "user explicitly stated the change",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"3000\",\n  \"reason\": \"The user mentioned the API service moved to port 3000 to avoid a conflict with the new monitoring stack using 8080.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=user gold=user",
+          "ctx_chars": 11496
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"8080\" to \"3000\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"3000\",\n  \"previous_value\": \"8080\",\n  \"reason\": \"The user mentioned that the API service moved to port 3000 to avoid a conflict with the new monitoring stack using 8080.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 9394
+        }
+      ],
+      "ingest_time_sec": 707.0,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 756.6
+    },
+    "PILOT-06B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "8080",
+          "predicted": "{\n  \"answer\": \"8080\",\n  \"reason\": \"The user confirmed that their API service runs on port 8080, and the assistant verified it from the repo, cluster, and ensured alignment with Kubernetes service and ingress configurations.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11199
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"3000\" was mentioned, but from an invalid source (assistant_hallucinated_port_3000). The user's reported port remains \"8080\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"3000\",\n  \"source\": \"Assistant\",\n  \"source_class\": \"assistant\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": false,\n  \"current_value\": \"8080\",\n  \"reason\": \"The assistant initially assumed the API service was on port 3000, but the user corrected this to port 8080 and confirmed it in multiple contexts.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 8576
+        },
+        {
+          "probe_type": "source",
+          "gold": "Port 3000 was incorrectly stated by the assistant; the user corrected it and confirmed the service remains on port 8080.",
+          "predicted": "{\n  \"source_description\": \"Assistant\",\n  \"source_class\": \"assistant\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"port 8080\",\n  \"reason\": \"The assistant initially assumed port 3000 for the API service, but after being corrected by the user, confirmed that the API service runs on port 8080 and verified it from the repo and cluster.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=assistant gold=assistant",
+          "ctx_chars": 11500
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"8080\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"8080\",\n  \"previous_value\": null,\n  \"reason\": \"The user confirmed that the API service runs on port 8080 and not 3000, which was initially assumed by the assistant.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 8471
+        }
+      ],
+      "ingest_time_sec": 747.2,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 799.0
+    },
+    "PILOT-06C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "8080",
+          "predicted": "{\n  \"answer\": \"8080\",\n  \"reason\": \"Multiple checks in the conversation confirmed that the user's API service runs on port 8080, including Kubernetes deployment and service configurations, code references, and previous discussions.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11313
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"3000\" was mentioned, but from an invalid source (third_party_mention_of_port_3000_for_different_service). The user's reported port remains \"8080\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"3000\",\n  \"source\": \"Marcus\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": false,\n  \"current_value\": \"8080\",\n  \"reason\": \"The user's API service runs on port 8080, and the mention of port 3000 was from Marcus\u2019s local/mock setup.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 10818
+        },
+        {
+          "probe_type": "source",
+          "gold": "Port 3000 was mentioned as a colleague's service port; the user did not confirm it applied to their own API service.",
+          "predicted": "{\n  \"source_description\": \"Marcus\",\n  \"source_class\": \"third_party\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"8080\",\n  \"reason\": \"The user confirmed that their API service runs on port 8080 and clarified that the mention of port 3000 was from Marcus\u2019s local/mock setup.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=third_party gold=third_party",
+          "ctx_chars": 9469
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"8080\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"8080\",\n  \"previous_value\": null,\n  \"reason\": \"The user's API service has consistently been confirmed to run on port 8080 in the conversation history, with no evidence of a change.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 12145
+        }
+      ],
+      "ingest_time_sec": 796.1,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 853.4
+    },
+    "PILOT-07A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "feature/payment-v2",
+          "predicted": "{\n  \"answer\": \"feature/auth-redesign branch\",\n  \"reason\": \"The user confirmed they are working on the 'feature/auth-redesign' branch in a previous interaction.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'feature/payment-v2' not found",
+          "ctx_chars": 11624
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "feature/auth-redesign",
+          "predicted": "{\n  \"answer\": \"main\",\n  \"reason\": \"The user mentioned that the main repo checkout stayed on the pipeline ref and didn't run a branch change command, implying that 'main' was the default or original branch.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'feature/auth-redesign' not found",
+          "ctx_chars": 14392
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"feature/auth-redesign\" to \"feature/payment-v2\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"feature/auth-redesign\",\n  \"previous_value\": null,\n  \"reason\": \"The user confirmed they are working on the feature/auth-redesign branch and there was no indication of a switch to another branch.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 13993
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the switch",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"CI logs mentioned a branch switch\",\n  \"old_value\": \"unknown branch\",\n  \"new_value\": \"feature/payment-v2 branch\",\n  \"timing\": \"during a CI job execution\",\n  \"reason\": \"The user observed the line 'switched to the feature/payment-v2 branch' in the CI logs and asked for confirmation about its context.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 13926
+        }
+      ],
+      "ingest_time_sec": 787.8,
+      "ingest_errors": 0,
+      "sessions_fed": 22,
+      "total_time_sec": 843.6
+    },
+    "PILOT-07B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "feature/payment-v2",
+          "predicted": "{\n  \"answer\": \"feature/auth-redesign\",\n  \"reason\": \"The user was confirmed to be working on the `feature/auth-redesign` branch in previous interactions, and no recent evidence suggests a switch away from it.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'feature/payment-v2' not found",
+          "ctx_chars": 11999
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "feature/auth-redesign",
+          "predicted": "{\n  \"answer\": \"feature/auth-redesign\",\n  \"reason\": \"The user mentioned they were working on the feature/auth-redesign branch and that they should stay there.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11618
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"feature/auth-redesign\" to \"feature/payment-v2\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"feature/auth-redesign\",\n  \"previous_value\": null,\n  \"reason\": \"The user was asked to verify if they switched to the feature/payment-v2 branch, but it was confirmed that they remained on the `feature/auth-redesign` branch.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 11312
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the switch",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"User requested to check recent branch activity and referenced a line indicating the switch.\",\n  \"old_value\": \"Not specified, but likely not `feature/payment-v2`.\",\n  \"new_value\": \"feature/payment-v2\",\n  \"timing\": \"During an inspection of reflog and shell history for branch operations.\",\n  \"reason\": \"The user mentioned seeing a line stating 'switched to the feature/payment-v2 branch' and wanted clarification on what it was from.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 11360
+        }
+      ],
+      "ingest_time_sec": 723.7,
+      "ingest_errors": 0,
+      "sessions_fed": 19,
+      "total_time_sec": 771.6
+    },
+    "PILOT-08A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "MongoDB",
+          "predicted": "{\n  \"answer\": \"PostgreSQL\",\n  \"reason\": \"Multiple parts of the conversation confirm that PostgreSQL is currently used as the primary database, including runtime config, deployment settings, and health checks.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'MongoDB' not found",
+          "ctx_chars": 17536
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "PostgreSQL",
+          "predicted": "{\n  \"answer\": \"PostgreSQL\",\n  \"reason\": \"The project was using PostgreSQL as the primary database before any migration discussions, as confirmed by multiple references and configurations pointing to it.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 18022
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"PostgreSQL\" to \"MongoDB\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"PostgreSQL\",\n  \"previous_value\": \"MongoDB\",\n  \"reason\": \"The project initially considered migrating from PostgreSQL to MongoDB, but later decided to keep PostgreSQL due to better performance. All current configurations and deployments still reference PostgreSQL.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 18076
+        },
+        {
+          "probe_type": "source",
+          "gold": "user explicitly stated after reactivating the old memory",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"The service is migrating from PostgreSQL to MongoDB due to a new document-heavy feature.\",\n  \"reason\": \"The user explicitly communicated the decision to switch databases in the initial prompt.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=user gold=user",
+          "ctx_chars": 23588
+        }
+      ],
+      "ingest_time_sec": 911.5,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 969.9
+    },
+    "PILOT-08B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "MongoDB",
+          "predicted": "{\n  \"answer\": \"PostgreSQL\",\n  \"reason\": \"The user explicitly confirmed that PostgreSQL remains the primary database in multiple contexts, including backend configuration and discussions about SQL migrations.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'MongoDB' not found",
+          "ctx_chars": 18252
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "PostgreSQL",
+          "predicted": "{\n  \"answer\": \"PostgreSQL\",\n  \"reason\": \"The project was using PostgreSQL as the primary database before migration to MongoDB. The user confirmed this by stating, 'project uses PostgreSQL as the primary database.'\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 15871
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"PostgreSQL\" to \"MongoDB\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"PostgreSQL\",\n  \"previous_value\": null,\n  \"reason\": \"The project uses PostgreSQL as the primary database, and there are no indications that it has been changed to MongoDB in production or staging.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 15885
+        },
+        {
+          "probe_type": "source",
+          "gold": "user explicitly stated the migration",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"The project migrated to MongoDB, and all services now point to MongoDB.\",\n  \"reason\": \"The user confirmed the migration to MongoDB and provided evidence through config files, environment variables, and deployment manifests indicating MongoDB as the primary database.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=user gold=user",
+          "ctx_chars": 15641
+        }
+      ],
+      "ingest_time_sec": 935.5,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 992.8
+    },
+    "PILOT-09A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "MongoDB",
+          "predicted": "{\n  \"answer\": \"MongoDB\",\n  \"reason\": \"The user confirmed that the project no longer uses PostgreSQL as the primary database and has migrated to MongoDB, which is now the source of truth.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 8086
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "PostgreSQL",
+          "predicted": "{\n  \"answer\": \"PostgreSQL\",\n  \"reason\": \"The project previously used PostgreSQL as the primary database before migrating to MongoDB.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 7391
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"PostgreSQL\" to \"MongoDB\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"MongoDB\",\n  \"previous_value\": \"PostgreSQL\",\n  \"reason\": \"The user confirmed that the project has migrated to MongoDB as the primary database and all services are now connected to it.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 10669
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the migration",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"database migration\",\n  \"old_value\": \"PostgreSQL\",\n  \"new_value\": \"MongoDB\",\n  \"timing\": \"this morning\",\n  \"reason\": \"The project completed a database migration from PostgreSQL to MongoDB, as confirmed by the user in the conversation.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 14427
+        }
+      ],
+      "ingest_time_sec": 1006.0,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 1060.4
+    },
+    "PILOT-09B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "PostgreSQL",
+          "predicted": "{\n  \"answer\": \"PostgreSQL\",\n  \"reason\": \"The project uses PostgreSQL as the primary database, as confirmed in multiple parts of the conversation.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 6937
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"MongoDB\" was mentioned, but from an invalid source (third_party_mention_of_MongoDB_for_different_service). The user's selected database remains \"PostgreSQL\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"MongoDB\",\n  \"source\": \"analytics microservice\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": false,\n  \"current_value\": \"PostgreSQL\",\n  \"reason\": \"The project uses PostgreSQL as the primary database, and MongoDB was only mentioned in relation to the analytics microservice.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 9968
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"PostgreSQL\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"PostgreSQL\",\n  \"previous_value\": null,\n  \"reason\": \"The project uses PostgreSQL as the primary database, and there is no evidence of a change in the conversation history.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 5804
+        },
+        {
+          "probe_type": "source",
+          "gold": "MongoDB was mentioned as a teammate's database choice for a different microservice; the user did not migrate their own project from PostgreSQL.",
+          "predicted": "{\n  \"source_description\": \"user\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"MongoDB was mentioned but not adopted by the user's project.\",\n  \"reason\": \"The user discussed MongoDB in relation to benchmarks and microservices, but confirmed their primary database is PostgreSQL.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 10011
+        }
+      ],
+      "ingest_time_sec": 876.6,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 927.0
+    },
+    "PILOT-10A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Summit Climbing Gym",
+          "predicted": "{\n  \"answer\": \"YMCA Downtown\",\n  \"reason\": \"The user mentioned canceling their membership at Summit Climbing Gym and reaffirmed that they are sticking with YMCA Downtown for workouts in multiple parts of the conversation.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Summit Climbing Gym' not found",
+          "ctx_chars": 12416
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "YMCA Downtown",
+          "predicted": "{\n  \"answer\": \"YMCA Downtown\",\n  \"reason\": \"The user mentioned canceling their YMCA Downtown membership and previously expressed preference for sticking with it over switching to a climbing gym.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12477
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"YMCA Downtown\" to \"Summit Climbing Gym\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"YMCA Downtown\",\n  \"previous_value\": null,\n  \"reason\": \"The user canceled their YMCA Downtown membership but later clarified they are sticking with it for workouts.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 10910
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"YMCA Downtown\" to \"Summit Climbing Gym\". Trigger: user stated they cancelled YMCA Downtown membership. Reason: wanted to focus on bouldering; YMCA Downtown lacked proper climbing walls.",
+          "predicted": "{\n  \"changed\": false,\n  \"trigger\": \"None\",\n  \"old_value\": \"YMCA Downtown\",\n  \"new_value\": \"Still YMCA Downtown\",\n  \"timing\": \"Recent weeks\",\n  \"reason\": \"The user canceled their YMCA Downtown membership earlier but has not switched gyms permanently. They tried a guest pass at Summit Climbing Gym and expressed interest, but ultimately stated they are sticking with YMCA Downtown for workouts.\"\n}",
+          "match": "incorrect",
+          "reason": "temporal JSON missed: {'direction': False, 'trigger': False, 'old_value': True}",
+          "ctx_chars": 12563
+        }
+      ],
+      "ingest_time_sec": 1080.7,
+      "ingest_errors": 0,
+      "sessions_fed": 26,
+      "total_time_sec": 1170.2
+    },
+    "PILOT-10B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "YMCA Downtown",
+          "predicted": "{\n  \"answer\": \"YMCA Downtown\",\n  \"reason\": \"The user mentioned using a guest pass at Summit Climbing Gym but confirmed they are sticking with YMCA Downtown for workouts.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 10974
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"Summit Climbing Gym\" was mentioned, but from an invalid source (friend_suggestion_of_Summit_Climbing_Gym). The user's current gym v2 remains \"YMCA Downtown\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Summit Climbing Gym\",\n  \"source\": \"User\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"YMCA Downtown\",\n  \"reason\": \"The user mentioned using a guest pass at Summit Climbing Gym but ultimately decided to stick with YMCA Downtown for workouts.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 11607
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"YMCA Downtown\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"YMCA Downtown\",\n  \"previous_value\": null,\n  \"reason\": \"The user confirmed they are sticking with YMCA Downtown for workouts despite using a guest pass at Summit Climbing Gym.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 8521
+        },
+        {
+          "probe_type": "source",
+          "gold": "Summit Climbing Gym was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"Summit Climbing Gym\",\n  \"reason\": \"The user directly mentioned Summit Climbing Gym multiple times in the conversation, and the assistant acknowledged and responded to these mentions.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=third_party",
+          "ctx_chars": 11536
+        }
+      ],
+      "ingest_time_sec": 1077.2,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 1147.7
+    },
+    "PILOT-11A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "10:00 AM",
+          "predicted": "{\n  \"answer\": \"10:00 AM\",\n  \"reason\": \"The team voted to shift the daily standup from 9:30 AM to a later slot due to the timezone issue affecting Pacific-time teammates, and recent Slack notes confirm that it has moved to 10:00 AM.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 13455
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "9:30 AM",
+          "predicted": "{\n  \"answer\": \"9:30 AM\",\n  \"reason\": \"The team voted to keep the daily standup at 9:30 AM and later confirmed it was moved to 10:00 AM due to a timezone issue.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12053
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"9:30 AM\" to \"10:00 AM\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"10:00 AM\",\n  \"previous_value\": \"9:30 AM\",\n  \"reason\": \"The team discussed the standup time multiple times, with decisions driven by timezone issues and a desire to align with later standups. A Slack note was drafted confirming the change to 10:00 AM.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 12989
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"9:30 AM\" to \"10:00 AM\". Trigger: team agreed in retro to accommodate remote teammates in later time zone. Reason: new remote teammates in Pacific time zone found 9:30 AM ET too early.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"timezone adjustment affecting Pacific-time teammates\",\n  \"old_value\": \"9:30 AM\",\n  \"new_value\": \"10:00 AM\",\n  \"timing\": \"after a retro discussion and team vote\",\n  \"reason\": \"The change was made to better accommodate Pacific-time teammates after the timezone adjustment.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': True}",
+          "ctx_chars": 11280
+        }
+      ],
+      "ingest_time_sec": 1067.7,
+      "ingest_errors": 0,
+      "sessions_fed": 26,
+      "total_time_sec": 1145.8
+    },
+    "PILOT-11B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "9:30 AM",
+          "predicted": "{\n  \"answer\": \"9:30 AM\",\n  \"reason\": \"Multiple conversations confirm that the team voted to keep daily standup at 9:30 AM despite suggestions to move it to 10:00 AM.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 15295
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"10:00 AM\" was mentioned, but from an invalid source (other_team_suggestion_of_10AM). The user's team standup remains \"9:30 AM\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"10:00 AM\",\n  \"source\": \"third_party\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"9:30 AM\",\n  \"reason\": \"The user's team discussed and voted to keep the daily standup at 9:30 AM despite the recommendation for 10:00 AM.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 14494
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"9:30 AM\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"9:30 AM\",\n  \"previous_value\": null,\n  \"reason\": \"The team discussed moving the standup to 10:00 AM, but it was decided that the daily standup would remain at 9:30 AM.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 13929
+        },
+        {
+          "probe_type": "source",
+          "gold": "10:00 AM was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"9:30 AM\",\n  \"reason\": \"The user mentioned multiple times that the team voted to keep the daily standup at 9:30 AM, despite several proposals or discussions about moving it to 10:00 AM.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 16309
+        }
+      ],
+      "ingest_time_sec": 895.2,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 957.4
+    },
+    "PILOT-12A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Stumptown Coffee",
+          "predicted": "{\n  \"answer\": \"Blue Bottle Coffee\",\n  \"reason\": \"The user mentioned that Blue Bottle Coffee is still their go-to coffee shop despite trying other spots like Stumptown Coffee and considering Philz Coffee.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Stumptown Coffee' not found",
+          "ctx_chars": 12122
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Blue Bottle Coffee",
+          "predicted": "{\n  \"answer\": \"Blue Bottle Coffee\",\n  \"reason\": \"The user mentioned that Blue Bottle Coffee is their go-to coffee shop and also referenced a past habit of sticking with it for loyalty points.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 9595
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Blue Bottle Coffee\" to \"Stumptown Coffee\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Blue Bottle Coffee\",\n  \"previous_value\": null,\n  \"reason\": \"The user mentioned that they tried a place with Stumptown Coffee but are still sticking with Blue Bottle Coffee for loyalty points and that it is their go-to coffee shop.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 9292
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"Blue Bottle Coffee\" to \"Stumptown Coffee\". Trigger: user discovered Stumptown Coffee opened a new location on their commute route. Reason: closer to home, better single-origin selection, shorter morning line.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"The user's original coffee shop stopped offering the pour-over bar service.\",\n  \"old_value\": \"Blue Bottle Coffee\",\n  \"new_value\": \"A roastery down the block (not explicitly named)\",\n  \"timing\": \"Recently, as the user mentioned a shift in their routine and preference for convenience when heading out in the morning.\",\n  \"reason\": \"The user found it inconvenient to detour after the pour-over bar was removed and now prefers the roastery down the block for its ease of access.\"\n}",
+          "match": "partial",
+          "reason": "temporal JSON partial: {'direction': True, 'trigger': False, 'old_value': True}",
+          "ctx_chars": 11015
+        }
+      ],
+      "ingest_time_sec": 876.2,
+      "ingest_errors": 0,
+      "sessions_fed": 26,
+      "total_time_sec": 922.4
+    },
+    "PILOT-12B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "bi-weekly",
+          "predicted": "{\n  \"answer\": \"bi-weekly\",\n  \"reason\": \"The team has confirmed switching to bi-weekly deployments, as noted in the statement: 'Since we\u2019ve switched to bi-weekly deployments, can you update the deploy calendar and move the next release window out by two weeks?'\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12482
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "weekly",
+          "predicted": "{\n  \"answer\": \"weekly deployment cadence\",\n  \"reason\": \"The team previously followed a weekly deployment rhythm, which was noted as driving too many hotfixes and leading to compressed QA and follow-up fixes.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12482
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"weekly\" to \"bi-weekly\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"bi-weekly deployment cadence\",\n  \"previous_value\": \"weekly deployment cadence\",\n  \"reason\": \"The team discussed and later confirmed that they switched to bi-weekly deployments after realizing the weekly cadence was causing too many hotfixes. This change was also influenced by a decision made during their last retro.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 12482
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"weekly\" to \"bi-weekly\". Trigger: team decided after two back-to-back hotfixes caused by rushed weekly releases. Reason: rushed weekly releases caused two consecutive production hotfixes; team needed more QA time.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"retro decision to reduce hotfixes and add more breathing room between releases\",\n  \"old_value\": \"weekly deployment cadence\",\n  \"new_value\": \"slower deployment rhythm (bi-weekly deployments)\",\n  \"timing\": \"after a retro meeting where the team discussed issues with the previous setup\",\n  \"reason\": \"The weekly deployment cadence was driving too many hotfixes, leading the team to slow down releases for better QA and follow-up fix management.\"\n}",
+          "match": "partial",
+          "reason": "temporal JSON partial: {'direction': True, 'trigger': False, 'old_value': True}",
+          "ctx_chars": 12482
+        }
+      ],
+      "ingest_time_sec": 871.4,
+      "ingest_errors": 0,
+      "sessions_fed": 26,
+      "total_time_sec": 941.0
+    },
+    "PILOT-13A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "DEBUG",
+          "predicted": "{\n  \"answer\": \"DEBUG\",\n  \"reason\": \"The user confirmed that the application log level was switched to DEBUG for investigation, and the assistant verified the deployed config and rollout status.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 10060
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "INFO",
+          "predicted": "{\n  \"answer\": \"INFO\",\n  \"reason\": \"The application log level was previously set to INFO, as confirmed in the conversation where the user mentions keeping it at INFO for production and staging.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 9397
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"INFO\" to \"DEBUG\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"DEBUG\",\n  \"previous_value\": \"INFO\",\n  \"reason\": \"The user mentioned switching the application log level to DEBUG and confirmed it was redeployed, with the assistant acknowledging the change to DEBUG.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 9208
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "user explicitly stated the change",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"investigating intermittent connection timeout\",\n  \"old_value\": \"INFO\",\n  \"new_value\": \"DEBUG\",\n  \"timing\": \"after updating the config and redeploying\",\n  \"reason\": \"User switched the application log level to DEBUG for investigation purposes.\"\n}",
+          "match": "correct",
+          "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}",
+          "ctx_chars": 9397
+        }
+      ],
+      "ingest_time_sec": 759.9,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 804.6
+    },
+    "PILOT-13B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "INFO",
+          "predicted": "{\n  \"answer\": \"INFO\",\n  \"reason\": \"The application log level is set to INFO in production, as confirmed by multiple interactions and discussions in the conversation history.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12134
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"DEBUG\" was mentioned, but from an invalid source (teammate_mention_of_DEBUG_for_staging). The user's log level remains \"INFO\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"DEBUG\",\n  \"source\": \"User\",\n  \"source_class\": \"user\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"hypothetical\",\n  \"applies_to_target\": false,\n  \"current_value\": \"INFO or WARN, depending on the service\",\n  \"reason\": \"DEBUG was mentioned in discussions about logging levels for incident investigation and local tooling. However, it was not adopted for production environments like payments or billing-worker services, which remained at INFO or WARN to avoid excessive noise.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 15057
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"INFO\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"INFO\",\n  \"previous_value\": null,\n  \"reason\": \"The application log level is consistently set to INFO in production across all references in the conversation.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 12210
+        },
+        {
+          "probe_type": "source",
+          "gold": "DEBUG was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"DEBUG\",\n  \"reason\": \"The user mentioned DEBUG in the context of logging and Docker Compose setup, and the assistant confirmed it by checking for `DEBUG` env vars and common debug flags.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=third_party",
+          "ctx_chars": 13317
+        }
+      ],
+      "ingest_time_sec": 738.4,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 781.8
+    },
+    "PILOT-14A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "the subway",
+          "predicted": "{\n  \"answer\": \"cycling\",\n  \"reason\": \"The user mentioned they are sticking with cycling to work as it is faster, and their wellness tracker still reflects this.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'the subway' not found",
+          "ctx_chars": 12838
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "cycling",
+          "predicted": "{\n  \"answer\": \"cycling\",\n  \"reason\": \"The user mentioned they were using a wellness tracker that still shows 'user commutes to work by cycling' and also discussed trying to find a less hectic cycling route.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12676
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"cycling\" to \"the subway\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"cycling\",\n  \"previous_value\": null,\n  \"reason\": \"The user mentioned they stopped biking due to a stolen bike and considered public transit, but later confirmed they are sticking with cycling as it is faster.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 12838
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"cycling\" to \"the subway\". Trigger: user stated they switched to the subway after the bike lane construction started. Reason: bike lane on their commute route is under construction for the next three months.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"Bike got stolen\",\n  \"old_value\": \"Cycling to work\",\n  \"new_value\": \"Using public transit to get to the office\",\n  \"timing\": \"After the bike was stolen outside the grocery store this weekend\",\n  \"reason\": \"User mentioned that they had to stop biking to work for now because their bike was stolen and are figuring out a public transit option instead.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': True}",
+          "ctx_chars": 12676
+        }
+      ],
+      "ingest_time_sec": 482.5,
+      "ingest_errors": 0,
+      "sessions_fed": 26,
+      "total_time_sec": 507.7
+    },
+    "PILOT-14B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "cycling",
+          "predicted": "{\n  \"answer\": \"cycling\",\n  \"reason\": \"The user mentioned they commute to work by cycling and discussed tips for making their bike commute less stressful.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12781
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"the subway\" was mentioned, but from an invalid source (assistant_hallucinated_subway_commute). The user's commute method remains \"cycling\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": false,\n  \"conflict_value\": null,\n  \"source\": \"\",\n  \"source_class\": \"unknown\",\n  \"status\": \"\",\n  \"status_class\": \"unknown\",\n  \"applies_to_target\": true,\n  \"current_value\": \"The subway was mentioned in the context of commuting trends in the city, with increasing weekday ridership and potential service expansion through new lines. It has been adopted by some individuals like the user's roommate who switched to using it for their commute due to its convenience despite crowded rides.\",\n  \"reason\": \"The subway is discussed as a growing mode of transportation influenced by factors like traffic congestion and gas prices, with users adopting it for daily commutes.\"\n}",
+          "match": "incorrect",
+          "reason": "value=incorrect, source=incorrect, status=incorrect, applicability=incorrect",
+          "ctx_chars": 8392
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"cycling\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"cycling\",\n  \"previous_value\": null,\n  \"reason\": \"The user consistently mentions commuting by cycling and has not indicated any change in their method.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 13701
+        },
+        {
+          "probe_type": "source",
+          "gold": "the subway was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"The subway is being used by more people in the city, with weekday ridership almost back to pre-pandemic levels. The user's roommate also switched to using the subway for their daily commute.\",\n  \"reason\": \"The user confirmed this by discussing commuting trends and sharing details about their roommate's switch to the subway.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=assistant",
+          "ctx_chars": 8790
+        }
+      ],
+      "ingest_time_sec": 433.5,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 456.7
+    },
+    "PILOT-14C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "cycling",
+          "predicted": "{\n  \"answer\": \"cycling\",\n  \"reason\": \"The user explicitly confirmed that they still bike to work, despite being mistaken for taking the subway.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12679
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"the subway\" was mentioned, but from an invalid source (third_party_mistaken_sighting_at_subway). The user's commute method remains \"cycling\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"subway\",\n  \"source\": \"coworker\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"hypothetical\",\n  \"applies_to_target\": false,\n  \"current_value\": \"cycling\",\n  \"reason\": \"The coworker incorrectly assumed the user takes the subway to work, but the user clarified they still bike to work.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 8107
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"cycling\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"cycling\",\n  \"previous_value\": null,\n  \"reason\": \"The user explicitly stated that their coworker was mistaken about them taking the subway, and they confirmed they still bike to work like always.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 11786
+        },
+        {
+          "probe_type": "source",
+          "gold": "the subway was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"The user\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"The subway is a mode of public transport the user considered for an errand and was seen at the station, but it's not their regular commute method.\",\n  \"reason\": \"The user confirmed they were at the subway station meeting a friend and still bike to work.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=third_party",
+          "ctx_chars": 6303
+        }
+      ],
+      "ingest_time_sec": 454.2,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 479.8
+    },
+    "PILOT-15A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Marcus Lee",
+          "predicted": "{\n  \"answer\": \"Marcus Lee\",\n  \"reason\": \"The user confirmed that ownership transferred to Marcus Lee for the billing module and requested updates to reflect this in the CODEOWNERS entry.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 15381
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Priya Nair",
+          "predicted": "{\n  \"answer\": \"Priya Nair\",\n  \"reason\": \"The conversation confirms that Priya Nair was the original owner of the billing module and remained the owner even after discussions about transferring ownership to Marcus Lee.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 16525
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Priya Nair\" to \"Marcus Lee\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Priya Nair\",\n  \"previous_value\": null,\n  \"reason\": \"Multiple messages confirm that despite proposals and discussions, Priya Nair still owns the billing module.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 15381
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"Priya Nair\" to \"Marcus Lee\". Trigger: user stated Priya moved to platform team; Marcus Lee took over billing ownership this sprint. Reason: Priya Nair transferred to the platform team as part of a planned reorg.",
+          "predicted": "{\n  \"changed\": false,\n  \"trigger\": \"team reorg\",\n  \"old_value\": \"Priya Nair\",\n  \"new_value\": \"Priya Nair\",\n  \"timing\": \"During the team reorg discussion\",\n  \"reason\": \"Despite a proposal to transfer ownership to Marcus Lee, Priya Nair was confirmed to still own the billing module.\"\n}",
+          "match": "incorrect",
+          "reason": "temporal JSON missed: {'direction': False, 'trigger': False, 'old_value': True}",
+          "ctx_chars": 17288
+        }
+      ],
+      "ingest_time_sec": 411.3,
+      "ingest_errors": 0,
+      "sessions_fed": 25,
+      "total_time_sec": 436.2
+    },
+    "PILOT-15B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Priya Nair",
+          "predicted": "{\n  \"answer\": \"Priya Nair\",\n  \"reason\": \"Multiple messages in the conversation confirm that Priya Nair is the current owner of the billing module.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 16027
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"Marcus Lee\" was mentioned, but from an invalid source (assistant_hallucinated_Marcus_as_owner). The user's project owner v2 remains \"Priya Nair\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Marcus Lee\",\n  \"source\": \"Q1 planning doc\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": true,\n  \"current_value\": \"Priya Nair\",\n  \"reason\": \"The user and assistant clarified that Priya Nair remains the owner of the billing module despite Marcus Lee being proposed in the Q1 planning doc.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 12842
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"Priya Nair\"",
+          "predicted": "```json\n{\n  \"changed\": false,\n  \"current_value\": \"Priya Nair\",\n  \"previous_value\": null,\n  \"reason\": \"Multiple mentions in the conversation confirm that Priya Nair remains the owner of the billing module, even though Marcus Lee was floated as a potential owner during reorg discussions.\"\n}\n```",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 16027
+        },
+        {
+          "probe_type": "source",
+          "gold": "Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"Marcus Lee is no longer the owner of the billing module; Priya Nair remains the owner.\",\n  \"reason\": \"The user corrected the assistant's initial incorrect identification of Marcus Lee as the billing module owner, confirming that Priya Nair still owns it.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=assistant",
+          "ctx_chars": 10774
+        }
+      ],
+      "ingest_time_sec": 471.5,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 500.4
+    },
+    "PILOT-15C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Priya Nair",
+          "predicted": "{\n  \"answer\": \"Priya Nair\",\n  \"reason\": \"Multiple conversations confirm that Priya Nair is the current owner of the billing module, including discussions about code reviews, bug fixes, and deployment notes.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 15475
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"Marcus Lee\" was mentioned, but from an invalid source (new_hire_confusion_about_billing_owner). The user's project owner v2 remains \"Priya Nair\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Marcus Lee\",\n  \"source\": \"Jordan\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": true,\n  \"current_value\": \"Priya Nair\",\n  \"reason\": \"Jordan mentioned Marcus Lee as the billing owner during a planning meeting, but it was clarified that Priya Nair is the actual billing owner.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 10453
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"Priya Nair\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Priya Nair\",\n  \"previous_value\": null,\n  \"reason\": \"Multiple messages confirm that Priya Nair is consistently listed as the owner of the billing module, despite discussions about Marcus Lee being involved in reviews or floated for ownership.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 15475
+        },
+        {
+          "probe_type": "source",
+          "gold": "Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"Jordan\",\n  \"source_class\": \"other_entity\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"Priya Nair is the confirmed billing owner.\",\n  \"reason\": \"Jordan mistakenly identified Marcus Lee as the billing owner during a planning meeting, but the user clarified that Priya Nair remains the owner.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct",
+          "ctx_chars": 11110
+        }
+      ],
+      "ingest_time_sec": 433.6,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 461.7
+    },
+    "PILOT-16A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "5432",
+          "predicted": "{\n  \"answer\": \"5432\",\n  \"reason\": \"The database service runs on port 5432 for compatibility, as confirmed in multiple discussions and corrected configurations.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 9547
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"8443\" was mentioned, but from an invalid source (stale_dashboard_showing_port_8443). The user's reported port v2 remains \"5432\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"8443\",\n  \"source\": \"user\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"stale\",\n  \"applies_to_target\": false,\n  \"current_value\": \"5432\",\n  \"reason\": \"Port 8443 was mentioned in the context of legacy configurations, a proposed database service migration, and outdated monitoring dashboard data. It was not adopted due to compatibility reasons, and the current database service runs on port 5432.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=incorrect, status=correct, applicability=correct",
+          "ctx_chars": 8479
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"5432\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"5432\",\n  \"previous_value\": null,\n  \"reason\": \"The database service has consistently been confirmed to run on port 5432 for compatibility, and no changes were made to switch it to another port like 8443.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 11167
+        },
+        {
+          "probe_type": "source",
+          "gold": "8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"user\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"5432\",\n  \"reason\": \"The user confirmed that the database service runs on port `5432`, and not `8443`.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=stale_tool",
+          "ctx_chars": 8422
+        }
+      ],
+      "ingest_time_sec": 562.3,
+      "ingest_errors": 0,
+      "sessions_fed": 22,
+      "total_time_sec": 585.3
+    },
+    "PILOT-16B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Jenkins",
+          "predicted": "{\n  \"answer\": \"Jenkins\",\n  \"reason\": \"The team confirmed they use Jenkins for CI/CD pipelines and canceled the GitHub Actions migration.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 13271
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"GitHub Actions\" was mentioned, but from an invalid source (stale_onboarding_doc_showing_github_actions). The user's ci provider remains \"Jenkins\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"GitHub Actions\",\n  \"source\": \"User\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": false,\n  \"current_value\": \"Jenkins\",\n  \"reason\": \"The team evaluated GitHub Actions but decided to stick with Jenkins for CI/CD pipelines. The migration to GitHub Actions was canceled and marked as a shelved proof-of-concept.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 13647
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"Jenkins\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Jenkins\",\n  \"previous_value\": null,\n  \"reason\": \"The team uses Jenkins for CI/CD pipelines and the GitHub Actions migration was canceled or not adopted.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 13393
+        },
+        {
+          "probe_type": "source",
+          "gold": "GitHub Actions was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"The team is sticking with Jenkins for CI/CD pipelines and GitHub Actions migration was canceled.\",\n  \"reason\": \"The user confirmed in the conversation that they canceled the GitHub Actions migration and the team continues to use Jenkins.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=stale_tool",
+          "ctx_chars": 13524
+        }
+      ],
+      "ingest_time_sec": 627.7,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 664.6
+    },
+    "PILOT-17A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Monday noon",
+          "predicted": "{\n  \"answer\": \"later submission window\",\n  \"reason\": \"The user confirmed that the previous Friday 5 PM deadline is outdated and mentioned a new timeline tied to the rescheduled review committee meeting.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Monday noon' not found",
+          "ctx_chars": 9063
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Friday 5 PM",
+          "predicted": "{\n  \"answer\": \"Friday 5 PM\",\n  \"reason\": \"The user confirmed that the old report submission deadline was Friday 5 PM, which is now outdated due to the rescheduled review committee meeting.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 9308
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Friday 5 PM\" to \"Monday noon\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"Monday noon\",\n  \"previous_value\": \"Friday 5 PM\",\n  \"reason\": \"The user confirmed that the report submission deadline was initially Friday 5 PM, but it was pushed out to a later window tied to the rescheduled review committee meeting. The abstract submission deadline is now Monday noon.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 10709
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"Friday 5 PM\" to \"Monday noon\". Trigger: manager email about review committee reschedule. Reason: review committee meeting pushed to Tuesday.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"Rescheduling of the review committee meeting\",\n  \"old_value\": \"Friday 5 PM\",\n  \"new_value\": \"Later submission window tied to the rescheduled review\",\n  \"timing\": \"After the user received an email from their manager about the rescheduling\",\n  \"reason\": \"The user mentioned that the old Friday 5 PM deadline was outdated because the review committee meeting was rescheduled, pushing out the report submission deadline.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': True}",
+          "ctx_chars": 9342
+        }
+      ],
+      "ingest_time_sec": 653.4,
+      "ingest_errors": 0,
+      "sessions_fed": 27,
+      "total_time_sec": 687.9
+    },
+    "PILOT-17B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Monday noon",
+          "predicted": "{\n  \"answer\": \"Friday 5 PM\",\n  \"reason\": \"The user confirmed that the report submission deadline remains Friday at 5 PM despite suggestions of a change to Monday noon.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Monday noon' not found",
+          "ctx_chars": 9885
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Friday 5 PM",
+          "predicted": "{\n  \"answer\": \"Friday 5 PM\",\n  \"reason\": \"The user confirmed that the report submission deadline is Friday 5 PM after initial confusion about a Monday noon update.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11198
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Friday 5 PM\" to \"Monday noon\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Friday 5 PM\",\n  \"previous_value\": \"Monday noon\",\n  \"reason\": \"The user confirmed that the report submission deadline is still Friday 5 PM despite suggestions it was moved to Monday noon.\"\n}",
+          "match": "incorrect",
+          "reason": "structured: gold=changed, pred=unchanged",
+          "ctx_chars": 9992
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"Friday 5 PM\" to \"Monday noon\". Trigger: manager email about review committee reschedule. Reason: review committee meeting pushed to Tuesday.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"review committee meeting\",\n  \"old_value\": \"Friday 5 PM\",\n  \"new_value\": \"Monday noon\",\n  \"timing\": \"initially pushed to Monday noon due to the review committee meeting being rescheduled\",\n  \"reason\": \"The user mentioned that the report submission deadline moved to Monday at noon because the review committee meeting was pushed.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': True}",
+          "ctx_chars": 11722
+        }
+      ],
+      "ingest_time_sec": 446.6,
+      "ingest_errors": 0,
+      "sessions_fed": 19,
+      "total_time_sec": 480.8
+    },
+    "PILOT-17C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Friday 5 PM",
+          "predicted": "{\n  \"answer\": \"Friday 5 PM\",\n  \"reason\": \"The manager confirmed the report submission deadline is Friday 5 PM, and there hasn't been any official update to change it.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 7692
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"Monday noon\" was mentioned, but from an invalid source (third_party_rumor_of_Monday_noon). The user's submission deadline v2 remains \"Friday 5 PM\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Monday noon\",\n  \"source\": \"someone in marketing\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"hypothetical\",\n  \"applies_to_target\": false,\n  \"current_value\": \"Friday 5 PM\",\n  \"reason\": \"The assistant and user both confirmed that the report submission deadline remains Friday at 5 PM, treating Monday noon as an unverified possibility.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 13622
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"Friday 5 PM\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Friday 5 PM\",\n  \"previous_value\": null,\n  \"reason\": \"Multiple discussions confirm the report submission deadline remains Friday 5 PM, and no official update has been communicated to change it.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 10794
+        },
+        {
+          "probe_type": "source",
+          "gold": "Monday noon was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"Someone in marketing\",\n  \"source_class\": \"third_party\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"Friday at 5 PM\",\n  \"reason\": \"The user acknowledged the mention but emphasized there hasn\u2019t been any official update and continued treating Friday 5 PM as the confirmed deadline.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=third_party gold=third_party",
+          "ctx_chars": 9605
+        }
+      ],
+      "ingest_time_sec": 570.4,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 604.0
+    },
+    "PILOT-17D": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Friday 5 PM",
+          "predicted": "{\n  \"answer\": \"Friday 5 PM\",\n  \"reason\": \"The user confirmed multiple times that the report submission deadline remains Friday 5 PM, and the assistant has consistently aligned with this confirmation.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 6861
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"Monday noon\" was mentioned, but from an invalid source (third_party_rumor_of_Monday_noon). The user's submission deadline v2 remains \"Friday 5 PM\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Monday noon\",\n  \"source\": \"User and Slack thread\",\n  \"source_class\": \"user\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": true,\n  \"current_value\": \"Friday 5 PM\",\n  \"reason\": \"Multiple users mentioned Monday noon as a rumored or suggested deadline, but the official confirmation from the manager and user's planning kept Friday 5 PM as the accepted deadline.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 8548
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"Friday 5 PM\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"Friday 5 PM\",\n  \"previous_value\": null,\n  \"reason\": \"The user confirmed multiple times that the report submission deadline remains Friday 5 PM, despite rumors suggesting Monday noon.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 10863
+        },
+        {
+          "probe_type": "source",
+          "gold": "Monday noon was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"Friday 5 PM\",\n  \"reason\": \"The user confirmed the report submission deadline is still Friday 5 PM and explicitly stated Monday noon was unconfirmed or tied to other deliverables.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 9047
+        }
+      ],
+      "ingest_time_sec": 543.0,
+      "ingest_errors": 0,
+      "sessions_fed": 20,
+      "total_time_sec": 568.8
+    },
+    "PILOT-18A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "whole-food plant-based",
+          "predicted": "{\n  \"answer\": \"whole-food plant-based diet\",\n  \"reason\": \"The user mentioned transitioning to a dietary pattern focused more on plants and explicitly stated they are now following a whole-food plant-based diet.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 9387
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "paleo",
+          "predicted": "{\n  \"answer\": \"paleo diet\",\n  \"reason\": \"The user mentioned they were following a paleo diet and have now started transitioning to a more plant-based approach.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 8522
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"paleo\" to \"whole-food plant-based\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"plant-based diet\",\n  \"previous_value\": \"paleo diet\",\n  \"reason\": \"The user mentioned transitioning to a plant-based diet after experiencing digestive issues with the paleo diet.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 7972
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"paleo diet\" to \"whole-food plant-based diet\". Trigger: digestive issues with paleo diet. Reason: health research showed plant-based benefits.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"Digestive issues\",\n  \"old_value\": \"paleo diet\",\n  \"new_value\": \"plant-based diet\",\n  \"timing\": \"Recently, after admitting the paleo diet might not be working anymore\",\n  \"reason\": \"The user mentioned their digestion has been a mess lately and that they leaned into eating patterns focused more on plants because it made sense for what they've been experiencing.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': True}",
+          "ctx_chars": 8587
+        }
+      ],
+      "ingest_time_sec": 543.3,
+      "ingest_errors": 0,
+      "sessions_fed": 27,
+      "total_time_sec": 566.9
+    },
+    "PILOT-18B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "whole-food plant-based",
+          "predicted": "{\n  \"answer\": \"whole-food plant-based diet\",\n  \"reason\": \"The user confirmed switching to a whole-food plant-based diet in the conversation and mentioned sticking with it.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 9683
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "paleo",
+          "predicted": "{\n  \"answer\": \"paleo diet\",\n  \"reason\": \"The user mentioned that they were previously sticking with a paleo diet before switching to a whole-food plant-based diet.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 10519
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"paleo\" to \"whole-food plant-based\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"whole-food plant-based diet\",\n  \"previous_value\": \"paleo diet\",\n  \"reason\": \"The user mentioned switching from a paleo diet to a whole-food plant-based diet.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 12702
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"paleo diet\" to \"whole-food plant-based diet\". Trigger: health concerns. Reason: digestive issues with paleo.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"personal choice and experimentation\",\n  \"old_value\": \"paleo diet\",\n  \"new_value\": \"whole-food plant-based diet\",\n  \"timing\": \"at some point after initially considering the paleo diet and later updating about switching\",\n  \"reason\": \"The user mentioned they are not doing paleo anymore and switched to a whole-food plant-based diet, indicating a change in preference.\"\n}",
+          "match": "partial",
+          "reason": "temporal JSON partial: {'direction': True, 'trigger': False, 'old_value': True}",
+          "ctx_chars": 11953
+        }
+      ],
+      "ingest_time_sec": 399.6,
+      "ingest_errors": 0,
+      "sessions_fed": 19,
+      "total_time_sec": 426.6
+    },
+    "PILOT-18C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "11 PM",
+          "predicted": "{\n  \"answer\": \"11 PM\",\n  \"reason\": \"The user has mentioned that they are sticking with their regular 11 PM bedtime despite trying 10 PM for a few days.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 9583
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"10 PM\" was mentioned, but from an invalid source (podcast_recommendation_of_10PM). The user's sleep schedule remains \"11 PM\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"10 PM\",\n  \"source\": \"third_party\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"11 PM\",\n  \"reason\": \"The user tried 10 PM but ultimately decided to stick with their regular bedtime of 11 PM, which they find more suitable for their schedule.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=correct, applicability=correct",
+          "ctx_chars": 10497
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"11 PM\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"11 pm\",\n  \"previous_value\": null,\n  \"reason\": \"The user tried going to bed at 10 PM for a few days but ultimately decided to stick with their regular 11 PM bedtime.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 12242
+        },
+        {
+          "probe_type": "source",
+          "gold": "10 PM was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"11 PM\",\n  \"reason\": \"The user mentioned trying 10 PM but confirmed they still stick to their regular bedtime of 11 PM.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 11273
+        }
+      ],
+      "ingest_time_sec": 473.8,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 500.4
+    },
+    "PILOT-18D": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "3 retries",
+          "predicted": "{\n  \"answer\": \"3\",\n  \"reason\": \"The current configured API retry count is confirmed to be set to 3 in the repo, consistent with production Helm values and prior testing results indicating better performance at this value.\"\n}",
+          "match": "correct",
+          "reason": "reverse numeric match (pred '3' in gold '3 retries')",
+          "ctx_chars": 13646
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"5 retries\" was mentioned, but from an invalid source (blog_post_recommendation_of_5_retries). The user's config value v2 remains \"3 retries\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"5\",\n  \"source\": \"blog post and SRE recommendation\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"hypothetical\",\n  \"applies_to_target\": false,\n  \"current_value\": \"3\",\n  \"reason\": \"The blog post recommended 5 retries for flaky third-party APIs, and the SRE suggested it as a potential change. However, the current configured API retry count remains at 3 due to observed cascading failures under load when higher retry counts were tested.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 14124
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"3 retries\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"3\",\n  \"previous_value\": null,\n  \"reason\": \"The conversation confirms the API retry count remains at 3, with past tests and discussions showing no change was implemented.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 15802
+        },
+        {
+          "probe_type": "source",
+          "gold": "5 retries was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"A blog post and SRE\",\n  \"source_class\": \"third_party\",\n  \"action\": \"suggested\",\n  \"accepted\": false,\n  \"current_value\": \"3 retries\",\n  \"reason\": \"The user checked the repo config and confirmed that the current API retry count is set to 3, which has been tested and is consistent with production settings.\"\n}",
+          "match": "correct",
+          "reason": "source_class match: pred=third_party gold=third_party",
+          "ctx_chars": 16656
+        }
+      ],
+      "ingest_time_sec": 511.6,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 540.8
+    },
+    "PILOT-19A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Stumptown Coffee",
+          "predicted": "{\n  \"answer\": \"new coffee spot\",\n  \"reason\": \"The user mentioned that they have been going to a different spot closer to their place, which has better beans and faster service, making it their go-to instead of Blue Bottle.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Stumptown Coffee' not found",
+          "ctx_chars": 13685
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Blue Bottle Coffee",
+          "predicted": "{\n  \"answer\": \"Blue Bottle\",\n  \"reason\": \"The user mentioned that Blue Bottle was their default coffee shop before a closer spot with better beans and faster service changed their routine.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Blue Bottle Coffee' not found",
+          "ctx_chars": 12515
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Blue Bottle Coffee\" to \"Stumptown Coffee\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"new coffee spot\",\n  \"previous_value\": \"Blue Bottle\",\n  \"reason\": \"The user mentioned that Blue Bottle is no longer their default choice and that they have been going to a new coffee shop closer to their place instead.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 12895
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"Blue Bottle Coffee\" to \"Stumptown Coffee\". Trigger: user tried new roastery that opened nearby. Reason: better beans and shorter line.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"A different spot opened up closer to the user's place\",\n  \"old_value\": \"Blue Bottle Coffee\",\n  \"new_value\": \"The new coffee shop near the user's place\",\n  \"timing\": \"Recently, as the user mentioned it is no longer their default choice\",\n  \"reason\": \"The new spot offers better beans and a faster line.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': True}",
+          "ctx_chars": 13221
+        }
+      ],
+      "ingest_time_sec": 455.0,
+      "ingest_errors": 0,
+      "sessions_fed": 26,
+      "total_time_sec": 479.9
+    },
+    "PILOT-19B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "Stumptown Coffee",
+          "predicted": "{\n  \"answer\": \"new coffee spot\",\n  \"reason\": \"The user mentioned that Blue Bottle isn\u2019t their go-to anymore and they found a better spot closer to home, which they now prefer.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Stumptown Coffee' not found",
+          "ctx_chars": 9279
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Blue Bottle Coffee",
+          "predicted": "{\n  \"answer\": \"Blue Bottle\",\n  \"reason\": \"The user mentioned that Blue Bottle isn't their go-to anymore, implying it was previously their main coffee shop.\"\n}",
+          "match": "incorrect",
+          "reason": "expected 'Blue Bottle Coffee' not found",
+          "ctx_chars": 8405
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Blue Bottle Coffee\" to \"Stumptown Coffee\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"new coffee spot\",\n  \"previous_value\": \"Blue Bottle\",\n  \"reason\": \"The user mentioned that Blue Bottle isn\u2019t their go-to anymore and they have found a better spot closer to home which they now prefer.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 9725
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"Blue Bottle Coffee\" to \"Stumptown Coffee\". Trigger: user found better coffee shop nearby. Reason: convenience and quality.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"found a better spot closer to home\",\n  \"old_value\": \"Blue Bottle\",\n  \"new_value\": \"the new coffee shop closer to home\",\n  \"timing\": \"recently, as mentioned in the user's life update\",\n  \"reason\": \"The user stated that the new spot is closer and has more consistent espresso.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': False}",
+          "ctx_chars": 9308
+        }
+      ],
+      "ingest_time_sec": 404.3,
+      "ingest_errors": 0,
+      "sessions_fed": 24,
+      "total_time_sec": 426.2
+    },
+    "PILOT-19C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "5432",
+          "predicted": "{\n  \"answer\": \"5432\",\n  \"reason\": \"The conversation confirms that the database service runs on port 5432 in the production environment and aligns with current configurations, while port 8443 is associated with retired or unrelated services.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 14646
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"8443\" was mentioned, but from an invalid source (colleague_found_outdated_config_with_8443). The user's reported port v2 remains \"5432\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"8443\",\n  \"source\": \"security hardening guide and old configurations in the repository\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"stale\",\n  \"applies_to_target\": false,\n  \"current_value\": \"5432\",\n  \"reason\": \"The port 8443 was mentioned in the security hardening guide, an old Kubernetes manifest, and a planning document. However, it was determined to be legacy or hypothetical and not adopted for production use. The database service remains on port 5432.\"\n}",
+          "match": "partial",
+          "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct",
+          "ctx_chars": 8337
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"5432\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"5432\",\n  \"previous_value\": null,\n  \"reason\": \"The database service has consistently run on port 5432 in production, and any references to port 8443 were from a retired TLS proxy or planning documents.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 14713
+        },
+        {
+          "probe_type": "source",
+          "gold": "8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"security hardening guide\",\n  \"source_class\": \"other_entity\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"8443 is associated with admin endpoints or retired services and not used in the database layer.\",\n  \"reason\": \"The user confirmed that 8443 is tied to admin endpoints or old configurations and that the current database service runs on port 5432.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=other_entity vs gold=third_party",
+          "ctx_chars": 8726
+        }
+      ],
+      "ingest_time_sec": 576.6,
+      "ingest_errors": 0,
+      "sessions_fed": 23,
+      "total_time_sec": 600.8
+    },
+    "PILOT-19D": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "5432",
+          "predicted": "{\n  \"answer\": \"5432\",\n  \"reason\": \"Multiple parts of the conversation confirm that the database service currently runs on port 5432, including discussions about the staging DB connection and deployment decisions.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 12602
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"8443\" was mentioned, but from an invalid source (colleague_confusion_about_port_8443). The user's reported port v2 remains \"5432\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"8443\",\n  \"source\": \"security hardening guide and old proposal/config files\",\n  \"source_class\": \"third_party\",\n  \"status\": \"stale\",\n  \"status_class\": \"stale\",\n  \"applies_to_target\": false,\n  \"current_value\": \"5432\",\n  \"reason\": \"The port 8443 was mentioned in a security hardening guide for HTTPS admin/API endpoints or ingress/controller management, as well as in old config files and proposals. However, it was confirmed to be stale data from test instances or planning notes, not an active setting. The database service continues to use port 5432.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=incorrect, applicability=correct",
+          "ctx_chars": 8008
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"5432\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"5432\",\n  \"previous_value\": \"8443\",\n  \"reason\": \"The database service port has consistently been confirmed as 5432 in the conversation, with no active changes or updates to it. The value 8443 was referenced in old planning documents and security guides but not applied.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 12783
+        },
+        {
+          "probe_type": "source",
+          "gold": "8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"8443\",\n  \"reason\": \"The user mentioned port 8443 in the context of a security hardening guide, old config files, and health check alerts. They confirmed its origin as an old test instance or proposal and accepted that it is not relevant to current configurations.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=third_party",
+          "ctx_chars": 8545
+        }
+      ],
+      "ingest_time_sec": 504.1,
+      "ingest_errors": 0,
+      "sessions_fed": 22,
+      "total_time_sec": 531.5
+    },
+    "PILOT-20A": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "GitHub Actions",
+          "predicted": "{\n  \"answer\": \"GitHub Actions\",\n  \"reason\": \"The team mentioned they have migrated CI/CD to GitHub Actions and are actively using it for pipeline runs and addressing related issues.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 15866
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "Jenkins",
+          "predicted": "{\n  \"answer\": \"Jenkins\",\n  \"reason\": \"The team initially used Jenkins for their CI/CD pipelines and later decided to transition off it due to maintenance challenges and the benefits of tighter repo integration with an alternative platform.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 17101
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"Jenkins\" to \"GitHub Actions\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"Jenkins\",\n  \"previous_value\": \"GitHub Actions\",\n  \"reason\": \"The team initially considered migrating CI/CD to GitHub Actions due to tighter repo integration, but ultimately decided to stay on Jenkins for their pipelines.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 17101
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"Jenkins\" to \"GitHub Actions\". Trigger: team decision to modernize CI/CD. Reason: Jenkins maintenance burden, better integration with GitHub.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"maintenance overhead and better repo integration\",\n  \"old_value\": \"Jenkins\",\n  \"new_value\": \"GitHub Actions\",\n  \"timing\": \"the transition had already started, with new pipeline runs being solid in testing\",\n  \"reason\": \"The team decided to move off Jenkins because maintaining jobs and plugins was becoming a headache, and the tighter repo integration of the new platform made more sense for them.\"\n}",
+          "match": "partial",
+          "reason": "temporal JSON partial: {'direction': True, 'trigger': False, 'old_value': True}",
+          "ctx_chars": 17275
+        }
+      ],
+      "ingest_time_sec": 790.9,
+      "ingest_errors": 0,
+      "sessions_fed": 26,
+      "total_time_sec": 817.7
+    },
+    "PILOT-20B": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "5 retries",
+          "predicted": "{\n  \"answer\": \"3\",\n  \"reason\": \"The user confirmed in multiple interactions that the API retry count is currently configured at 3 retries, including for the payments client and during testing in staging.\"\n}",
+          "match": "incorrect",
+          "reason": "expected '5 retries' not found",
+          "ctx_chars": 11710
+        },
+        {
+          "probe_type": "previous_value",
+          "gold": "3 retries",
+          "predicted": "{\n  \"answer\": \"3\",\n  \"reason\": \"The original API retry count was set at 3 retries, as confirmed in multiple interactions where users referenced this value and validated its behavior in staging and production environments.\"\n}",
+          "match": "correct",
+          "reason": "reverse numeric match (pred '3' in gold '3 retries')",
+          "ctx_chars": 12148
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "Yes \u2014 changed from \"3 retries\" to \"5 retries\"",
+          "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"3 retries\",\n  \"previous_value\": \"5 retries\",\n  \"reason\": \"The API retry count was initially considered to be increased to 5 retries, but it was later determined that 3 retries performed better and the current configuration remains at 3 retries.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say changed",
+          "ctx_chars": 11727
+        },
+        {
+          "probe_type": "temporal",
+          "gold": "Changed from \"3 retries\" to \"5 retries\". Trigger: upstream service timeout issues. Reason: needed more retry headroom for flaky upstream.",
+          "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"upstream instability and timeout spikes\",\n  \"old_value\": \"3 retries\",\n  \"new_value\": \"5 retries\",\n  \"timing\": \"after observing too many requests giving up before the upstream recovered\",\n  \"reason\": \"The change was made to tolerate brief upstream timeout windows better and provide more headroom during transient failures.\"\n}",
+          "match": "correct",
+          "reason": "temporal JSON checks passed: {'direction': True, 'trigger': True, 'old_value': True}",
+          "ctx_chars": 11925
+        }
+      ],
+      "ingest_time_sec": 570.8,
+      "ingest_errors": 0,
+      "sessions_fed": 24,
+      "total_time_sec": 597.5
+    },
+    "PILOT-20C": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "11 PM",
+          "predicted": "{\n  \"answer\": \"11 PM\",\n  \"reason\": \"The user has mentioned multiple times that they prefer and stick to an 11 PM bedtime, such as in the statement: 'I\u2019m sticking with my regular 11 PM bedtime.'\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 11230
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"10 PM\" was mentioned, but from an invalid source (friend_suggestion_of_10PM_bedtime). The user's sleep schedule remains \"11 PM\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"10 PM\",\n  \"source\": \"third_party\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"11 PM\",\n  \"reason\": \"The user tried 10 PM but ultimately decided to stick with their regular bedtime of 11 PM, citing it as more suitable for their schedule.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=correct, applicability=correct",
+          "ctx_chars": 11993
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"11 PM\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"11 PM\",\n  \"previous_value\": null,\n  \"reason\": \"The user mentioned they tried shifting to a 10 PM bedtime but ultimately decided to stick with their regular 11 PM bedtime.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 12330
+        },
+        {
+          "probe_type": "source",
+          "gold": "10 PM was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"The user and their friend\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": true,\n  \"current_value\": \"11 PM\",\n  \"reason\": \"The user confirmed that they tried going to bed at 10 PM but are sticking with 11 PM as their usual bedtime.\"\n}",
+          "match": "incorrect",
+          "reason": "source_class mismatch: pred=user vs gold=third_party",
+          "ctx_chars": 12885
+        }
+      ],
+      "ingest_time_sec": 450.9,
+      "ingest_errors": 0,
+      "sessions_fed": 22,
+      "total_time_sec": 474.7
+    },
+    "PILOT-20D": {
+      "answers": [
+        {
+          "probe_type": "current_value",
+          "gold": "weekly",
+          "predicted": "{\n  \"answer\": \"weekly\",\n  \"reason\": \"The team follows a weekly deployment cadence, as confirmed in multiple parts of the conversation history.\"\n}",
+          "match": "correct",
+          "reason": "value present in answer",
+          "ctx_chars": 14676
+        },
+        {
+          "probe_type": "conflict_value",
+          "gold": "Yes \u2014 \"bi-weekly\" was mentioned, but from an invalid source (platform_eng_suggestion_of_biweekly). The user's deploy cadence remains \"weekly\".",
+          "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"bi-weekly deployments\",\n  \"source\": \"platform team and external articles/blog posts\",\n  \"source_class\": \"third_party\",\n  \"status\": \"not_accepted\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"weekly deployment cadence\",\n  \"reason\": \"The team has consistently followed a weekly deployment cadence and explicitly decided not to change it despite discussions and suggestions from the platform team and external sources.\"\n}",
+          "match": "correct",
+          "reason": "value=correct, source=correct, status=correct, applicability=correct",
+          "ctx_chars": 12465
+        },
+        {
+          "probe_type": "change_detection",
+          "gold": "No \u2014 it remains \"weekly\"",
+          "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"weekly deployment cadence\",\n  \"previous_value\": null,\n  \"reason\": \"The team explicitly decided to stay on a weekly deployment cadence despite discussions and proposals about bi-weekly deployments.\"\n}",
+          "match": "correct",
+          "reason": "structured: both say unchanged",
+          "ctx_chars": 11856
+        },
+        {
+          "probe_type": "source",
+          "gold": "bi-weekly was mentioned in a non-authoritative context; the user did not confirm adopting it.",
+          "predicted": "{\n  \"source_description\": \"User\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"weekly deployment cadence\",\n  \"reason\": \"The user discussed bi-weekly deployments in multiple contexts but confirmed the team is staying on a weekly deployment cadence for now.\"\n}",
+          "match": "partial",
+          "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct",
+          "ctx_chars": 9790
+        }
+      ],
+      "ingest_time_sec": 509.0,
+      "ingest_errors": 0,
+      "sessions_fed": 21,
+      "total_time_sec": 537.3
+    }
+  }
+}

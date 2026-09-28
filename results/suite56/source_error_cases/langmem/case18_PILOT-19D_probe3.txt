@@ -1,0 +1,42 @@
+CASE 18: PILOT-19D probe3 match=partial
+paradigm: reconsolidation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "docs/proposals/db-service-hardening.md",
+  "source_class": "other_entity",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "5432",
+  "reason": "The user confirmed that the reference to 8443 for the database service was stale planning data from a proposal document and not an active configuration, opting to keep the database on port 5432."
+}
+
+REASON: source_class mismatch (pred=other_entity vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (5598 chars) =====
+Memory facts extracted from conversation history:
+
+- The user has encountered port 8443 in various contexts. It was found in an old config file during repo cleanup, and specifically in an old rollout note (`docs/proposals/db-service-hardening.md`) where it was *planned* as a database service port, confirming it as stale planning data rather than active config. This led to an investigation into its current usage in Kubernetes. It's noted that 8443 is typically for HTTPS admin/API endpoints or ingress/controller management, not database listeners. An ingress component uses 8443 for HTTPS/admin traffic. The user was also debugging a `metrics-db-proxy` service in staging, which is exposed on port 8443 and is not remapped by the service. In a recent incident, a PagerDuty health check for the *production database service* was incorrectly configured to port 8443, originating from an old test instance. The actual production database port is 5432. The health check was subsequently corrected.
+- The user is evaluating database choices (MySQL on 3306 vs. MongoDB on 27017) for short-lived, low-maintenance vendor demo applications in staging environments, specifically for a preview namespace where quick resets and simple debugging are priorities. For a safer, lower-maintenance default, MySQL is generally preferred unless the application is explicitly document-oriented. MySQL offers clearer operational expectations, straightforward health/readiness checks, and easier troubleshooting for generalist engineers. MongoDB is more suitable when sample records vary, the app stores JSON-like documents, or migration maintenance is to be avoided. A key deciding factor is also what the app config is currently wired for. The user also requested checking compose snippets for service exposure and health checks.
+- Recommended validation steps for a database restore-testing workflow in CI/scheduled jobs include: confirming database reachability, verifying expected schemas/tables, checking migration/version table against production metadata, running row-count sanity checks on critical tables (3-5), executing representative reads with joins, validating app-dependent extensions/functions, checking restore timestamp/backup label in metadata, and failing if any check exceeds a timeout. The focus should be on restore correctness, not application behavior.
+- When diagnosing database latency and query performance, to differentiate between index issues, locks, or vacuum activity, the recommended approach is to compare the execution plan with the current lock/wait state and vacuum statistics.
+- Redis connection string configurations are generally simpler and have less URI variation and fewer auth/database parameters compared to MongoDB connection strings. This simplicity often makes it easier to identify port mismatches during configuration reviews for Redis services.
+- The user is configuring TLS for database connections and needs to verify client-side server certificate validation. Key verification points include: 1) `sslmode` or TLS mode set to a verifying mode (e.g., `verify-full`), 2) a trusted CA bundle configured on the client, and 3) hostname verification matching the server certificate's SAN/CN. An example configuration snippet was provided. To inspect the certificate chain and verify the hostname from a Linux host, the `openssl s_client -connect <host>:<port> -servername <host> -showcerts` command can be used, checking the subject, issuer, and SAN entries in the output.
+- The user is tightening up their staging environment and is reviewing firewall rules and network security groups. A recommended pattern for network security is to default-deny inbound traffic and then allow only specific source security groups between tiers (e.g., `web-sg` from load balancer, `app-sg` from `web-sg`, `data-sg` from `app-sg`). Admin access should be restricted to a bastion or VPN CIDR, and egress should be limited. When reviewing cloud configuration, the user should check: 1) Inbound rules: verify each tier allows traffic only from the expected security group, not broad CIDRs like `0.0.0.0/0`. 2) Outbound rules: ensure instances are not allowed unrestricted egress unless required. 3) Environment separation: staging groups should not trust dev or shared catch-all groups. 4) Unused rules: remove stale entries. 5) IaC alignment: confirm Terraform/CloudFormation matches what’s actually deployed.
+- The user is planning a multi-region database replication setup for a new service, specifically using PostgreSQL. They are interested in practical ways to structure it for local reads and manageable failover, as well as strategies to avoid stale reads during regional issues. The recommended approach involves a single writable primary in one region with asynchronous read replicas in other regions, routing latency-tolerant reads to local replicas, and using promotion tooling for failover. Strategies to mitigate stale reads include gating replica usage on lag thresholds, pinning read-after-write sessions to the primary, and exposing replication lag as a health signal.
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,58 @@
+CASE 6: PILOT-09B probe3 match=partial
+paradigm: interference  fact_type: selected_database
+
+GOLD: MongoDB was mentioned as a teammate's database choice for a different microservice; the user did not migrate their own project from PostgreSQL.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": false,
+  "current_value": "The user's team considered migrating to MongoDB but decided to retain PostgreSQL as their primary database.",
+  "reason": "The user confirmed that while their team considered MongoDB, they chose to keep PostgreSQL because benchmarks showed it performed better for their specific workload. A separate analytics microservice uses MongoDB, but it is not the primary database for the user's project."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (8262 chars) =====
+Memory facts extracted from conversation history:
+
+- The user prefers very concise, Slack-ready meeting recaps for team communication.
+- The user, a software developer, requests a pre-release sanity check of deployment configuration, specifically to confirm the image tag, environment variables, readiness probe, comparison to the previous rollout, and whether the current branch matches the release tag.
+- The user, a software developer, uses PostgreSQL as the primary database for their project, having decided against migrating to MongoDB due to PostgreSQL's superior performance in benchmarks. They are currently verifying staging deploy checks and migration job configurations to ensure they consistently target PostgreSQL before merging a branch. The agent confirmed that the staging environment is configured for PostgreSQL end-to-end, verifying `config/app.yaml`, migration job environment variables (`DB_ENGINE`), migration script expectations, secret references, and live staging job templates. A teammate's analytics microservice uses MongoDB, but this is distinct from the user's project.
+- The user wants to confirm the health of the staging pod before kicking off a build.
+- The user is currently debugging MongoDB connection issues from a Kubernetes service.
+- The user is helping a teammate debug a MongoDB connection issue.
+- The user prefers practical examples and mock runs when debugging technical issues.
+- When debugging MongoDB connection issues, the user is interested in inspecting deployment environment and secret references for the connection URI, CA/cert mounts, and TLS flags.
+- The user prefers practical, concise checklists and examples for technical procedures, especially for debugging and recovery.
+- The user, a software developer, is focused on tightening backup and disaster recovery procedures for staging environments, specifically seeking sanity checks and practical checklists for restore drills and config recovery.
+- The agent provided a detailed checklist for backup and disaster recovery, covering: 1. Backup coverage (persistent volumes, config/secrets, object storage, app exports). 2. Restore path verification (isolated environment, credentials, encryption keys, restore time). 3. Policy targets (RPO, RTO, retention). 4. Runbook review (who, where, how DNS/endpoints). 5. Restore drill steps (confirm backups, pick target, restore data/configs/secrets, deploy app, run smoke tests, measure RTO/RPO, cleanup). 6. Config recovery steps (versioned config in git, reproducible secrets, documented ingress/DNS/TLS, env vars, cronjobs/webhooks). 7. Evidence to capture (restore logs, commit SHA, image tags, health check outputs).
+- The user, a software developer, is debugging slow API endpoints and interpreting SQL execution plans, identifying common performance bottlenecks like full scans, poor join order, sorting large intermediate result sets, and investigating long-running reconciliation jobs causing lock contention in MySQL. They are interested in indexing strategies, specifically: indexing columns in WHERE, JOIN, and ORDER BY clauses; using composite indexes for common multi-column query patterns (with attention to column order); considering covering indexes; avoiding over-indexing; and verifying index usage via execution plans and before/after timings. They also want to understand the decision-making process between single composite indexes (preferred for consistent multi-column query patterns, combined filtering/sorting) and multiple separate indexes (more flexible for varied queries, but less efficient), emphasizing practical testing with real workloads.
+- The user, a software developer, is investigating the 'analytics-ingest' microservice. It uses MySQL for event metadata/object keys, and raw event payloads are persisted to object storage.
+- The user, a software developer, is investigating read replica setup and replication lag to identify if it's causing stale reads, and is interested in a checklist for replica lag, particularly when a proxy layer is involved. For the `atlas-billing` service, read replicas are currently considered sufficient for Q3 traffic.
+- The user, a software developer, is standardizing their database migration workflow, moving from ad-hoc SQL files to a versioned approach, and is interested in lightweight, numbered, forward-only SQL migrations with CI enforcement. They are currently auditing migration ordering in `db/changelog/2026-01-reconcile.xml` for the `atlas-billing` service.
+- The `atlas-billing` service uses MySQL 8.0 for invoice state persistence.
+- The user is considering moving ephemeral idempotency keys from relational tables to Redis for the `atlas-billing` service to mitigate lock contention.
+- The user needs to verify staging Helm values for the `atlas-billing` service point to `billing-mysql.internal`.
+- The user, a software developer, is reviewing an internal architecture for the `analytics sandbox service`. The service uses MySQL for its metadata store, which simplifies local development through a single MySQL container, a local JDBC endpoint, and consistent CI environment. Migrations are handled by Flyway and are configured to wait for database health checks, ensuring resilient startup. The agent noted that while this setup is effective for the sandbox, it does not necessarily imply production parity for other services.
+- The agent provided a comparison of MySQL and DynamoDB for a high-write event ingestion service's metadata store. MySQL is suitable for needs like joins, transactions, ad hoc querying, stable schemas, and mixed access patterns, but requires more operational overhead. DynamoDB is strong for predictable key-based access at high scale, is fully managed, and good for bursty workloads, but struggles with relational queries or flexible filtering. Key reasons to switch to MySQL include needing joins, ad hoc filtering, multi-record transactions, SQL comfort, or direct analytics queries. The decision hinges on whether access patterns are primarily key-value lookups (favoring DynamoDB) or drifting towards relational querying and cross-entity consistency (favoring MySQL).
+- The user is a software developer who advises other teams on architectural decisions, specifically regarding database selection and optimization for high-write services. They are interested in understanding the tradeoffs between different database technologies (e.g., MySQL vs. DynamoDB) based on application requirements and operational considerations.
+- The user, a software developer, is investigating the relevance of a MongoDB write throughput benchmark for event logs to their API's workload. The agent determined that the benchmark is not representative of the API's main bottlenecks, which are dominated by multi-query relational reads and reporting paths, rather than raw log-write throughput.
+- The user is a software developer currently working on tuning PostgreSQL database concurrency and connection pooling for a Kubernetes deployment with 2 worker pods (and implied 3 API pods). They are focused on ensuring optimal connection management, specifically estimating safer settings for `max_connections` and connections per pod, considering the impact of Horizontal Pod Autoscaling (HPA), and methods for allocating connection budgets across different pod types (e.g., API and worker pods) while reserving headroom.
+- The user is a software developer currently working on optimizing PostgreSQL database indexing for an `events` table on a feature branch. They are focused on tuning query hotspots, specifically considering composite and partial indexes to improve read performance for queries filtering on `workspace_id`, `status`, and `created_at` while being mindful of write performance impact.
+
+Question: Who mentioned MongoDB and did the user adopt it for their project?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

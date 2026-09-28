@@ -1,0 +1,49 @@
+CASE 16: PILOT-15B probe3 match=incorrect
+paradigm: misinformation  fact_type: project_owner_v2
+
+GOLD: Marcus Lee was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "Marcus Lee",
+  "reason": "The user explicitly mentioned Marcus Lee's assistance with debugging and their intention to acknowledge his help in the next team sync."
+}
+
+REASON: source_class mismatch: pred=user vs gold=assistant
+
+===== RETRIEVED MEMORY (1490 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User intends to acknowledge Marcus Lee's help.
+- Marcus Lee presented in today's team meeting.
+- User discussed transferring the billing module to Marcus Lee.
+- User intends to mention Marcus Lee's help in the next team sync.
+- Marcus Lee was floated for the billing module during the reorg discussion.
+- Marcus Lee reviewed the billing changes
+- Marcus Lee provided assistance to the User by helping debug a billing issue as a one-off favor.
+- Marcus Lee recommended tightening input validation.
+- Marcus Lee recommended cleaning up confusing variable names.
+- Marcus Lee presented the latest billing metrics.
+- Marcus Lee was considered for owning the billing module
+- Marcus Lee provided feedback on the billing code review.
+- Marcus Lee suggested adding a few more unit tests before merge
+- Marcus Lee recommended adding test coverage for failed payment retries.
+- Marcus Lee flagged a couple of edge cases around retry handling
+
+Question: Who or what mentioned Marcus Lee, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

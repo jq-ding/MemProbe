@@ -1,0 +1,49 @@
+CASE 1: PILOT-01B probe3 match=partial
+paradigm: interference  fact_type: current_gym
+
+GOLD: CrossFit Central was mentioned by a third party (Jamie) as their gym; the user never confirmed switching to it and remains at FitLife.
+
+PREDICTED: {
+  "source_description": "The user mentioned seeing a promo and their friend Jamie joining, while the assistant suggested it for a coworker.",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "User is sticking with FitLife and rejecting CrossFit Central.",
+  "reason": "The user mentioned the gym because of a promo and a friend, but explicitly stated they are sticking with FitLife and rejecting CrossFit Central for their own workouts."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1520 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User saw a promo for CrossFit Central.
+- User doesn’t know much about CrossFit Central.
+- User's friend joined CrossFit Central
+- User tried a guest pass at CrossFit Central
+- CrossFit Central has a super welcoming community for User's friend
+- User was reading gym reviews that had a whole debate about CrossFit Central versus the other spots nearby.
+- The community at CrossFit Central is keeping User's friend motivated
+- Jamie joined CrossFit Central.
+- Jamie is obsessed with CrossFit Central.
+- User is rejecting CrossFit Central for workouts despite seeing a promo.
+- User's friend talks about how intense the workouts are at CrossFit Central
+- Assistant suggests CrossFit Central could be worth a look for User's coworker if they like group training and high-intensity workouts.
+- User's friend can barely walk after leg day workouts at CrossFit Central
+- User is sticking with FitLife for workouts
+- User usually goes to FitLife for workouts.
+
+Question: Who mentioned CrossFit Central, and did the user confirm switching to it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

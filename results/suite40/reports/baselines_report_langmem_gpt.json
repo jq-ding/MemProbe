@@ -1,0 +1,1204 @@
+{
+  "langmem_full": {
+    "G40-MIS-01": [
+      {
+        "probe_type": "current_value",
+        "gold": "v2.6.0 shipping April 10",
+        "predicted": "{\"answer\":\"v2.6.0 shipping April 10\",\"reason\":\"The product release schedule was updated from v2.5.0 on March 15 to v2.6.0 on April 10 to allow more time for QA regression testing.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "v2.5.0 shipping March 15",
+        "predicted": "{\"answer\":\"v2.5.0 shipping March 15\",\"reason\":\"The release schedule was changed from v2.5.0 shipping March 15 to v2.6.0 shipping April 10 to allow more QA regression testing time.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user directly stated the change",
+        "predicted": "{\"source_description\":\"The user introduced the updated release schedule while asking for a Slack announcement.\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"v2.6.0 shipping April 10, replacing v2.5.0 shipping March 15\",\"reason\":\"The user asked the AI to announce that the target had changed to v2.6.0 on April 10 to allow QA more regression-testing time.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"v2.5.0 shipping March 15\" to \"v2.6.0 shipping April 10\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"v2.6.0 shipping April 10\",\"previous_value\":\"v2.5.0 shipping March 15\",\"reason\":\"The product release schedule was updated to give QA more time for regression testing.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      }
+    ],
+    "G40-MIS-02": [
+      {
+        "probe_type": "current_value",
+        "gold": "280 through Daly City",
+        "predicted": "{\"answer\":\"280 through Daly City\",\"reason\":\"The user commutes to the office via 280 through Daly City, checking traffic around 7:15 AM.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "101 North via SFO",
+        "predicted": "[ERROR: AuthenticationError]",
+        "match": "execution_error",
+        "reason": "execution error: [ERROR: AuthenticationError]"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user directly stated the change",
+        "predicted": "{\"source_description\":\"the user\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"The user's primary office commute is via Highway 280 through Daly City, with traffic checked around 7:15 AM.\",\"reason\":\"The conversation history records the user\u2019s commute to the office as taking 280 through Daly City and checking traffic around 7:15 AM.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"101 North via SFO\" to \"280 through Daly City\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"280 through Daly City\",\"previous_value\":null,\"reason\":\"The only stated primary commute route is via 280 through Daly City, with traffic checks around 7:15 AM; no change was mentioned.\"}",
+        "match": "incorrect",
+        "reason": "structured: gold=changed, pred=unchanged"
+      }
+    ],
+    "G40-MIS-03": [
+      {
+        "probe_type": "current_value",
+        "gold": "300",
+        "predicted": "{\"answer\":\"300 seconds\",\"reason\":\"The API gateway cache TTL in the staging environment was recently updated to 300 seconds to address stale data issues.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "900",
+        "predicted": "{\"answer\":\"86400\",\"reason\":\"The Cloudflare browser_cache_ttl for static assets was changed from 86400 seconds to 7200 seconds.\"}",
+        "match": "incorrect",
+        "reason": "expected '900' not found"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user directly stated the change",
+        "predicted": "{\n  \"source_description\": \"The user communicated the cache TTL change directly.\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"300 seconds\",\n  \"reason\": \"The user said the staging API gateway cache TTL was updated to 300 seconds to address stale data issues.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"900\" to \"300\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"7200 seconds\",\"previous_value\":\"86400 seconds\",\"reason\":\"The Cloudflare browser_cache_ttl for static assets was reduced from 86400 seconds (24 hours) to 7200 seconds (2 hours) due to a UI revamp with new image assets.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      }
+    ],
+    "G40-REC-01": [
+      {
+        "probe_type": "current_value",
+        "gold": "feature/signup-form-v2",
+        "predicted": "{\"answer\":\"feature/signup-form-v2\",\"reason\":\"The conversation explicitly states that the user's active feature branch is `feature/signup-form-v2`.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "feature/onboarding-refactor",
+        "predicted": "{\"answer\":\"feature/onboarding-refactor\",\"reason\":\"It was the prior branch before being shelved; the active branch then changed to feature/signup-form-v2.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user recalled the old value, then stated the change",
+        "predicted": "{\"source_description\":\"The user (Kylie) directly communicated the branch change\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"feature/signup-form-v2\",\"reason\":\"The user said the shelved feature/onboarding-refactor branch was awaiting review and identified feature/signup-form-v2 as the active feature branch.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"feature/onboarding-refactor\" to \"feature/signup-form-v2\"",
+        "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"feature/signup-form-v2\",\n  \"previous_value\": \"feature/onboarding-refactor\",\n  \"reason\": \"The onboarding refactor branch was shelved after passing CI and awaiting review; the active branch is now feature/signup-form-v2.\"\n}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      }
+    ],
+    "G40-REC-02": [
+      {
+        "probe_type": "current_value",
+        "gold": "I-580 via Livermore",
+        "predicted": "{\"answer\":\"I-580 via Livermore\",\"reason\":\"The conversation memory explicitly states that the user's primary commute route is I-580 via Livermore.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "I-880 via Oakland",
+        "predicted": "{\"answer\":\"I-580 via Livermore\",\"reason\":\"The conversation states that the user's primary commute route was I-580 via Livermore; later route changes concerned the roommate or husband.\"}",
+        "match": "incorrect",
+        "reason": "expected 'I-880 via Oakland' not found"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user recalled the old value, then stated the change",
+        "predicted": "{\"source_description\":\"the user\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"I-580 via Livermore\",\"reason\":\"The user communicated that their primary commute route had changed to I-580 via Livermore.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"I-880 via Oakland\" to \"I-580 via Livermore\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"I-580 via Livermore\",\"previous_value\":null,\"reason\":\"The user's primary commute route is stated as I-580 via Livermore; route changes discussed concerned the user's roommate and husband, not the user.\"}",
+        "match": "incorrect",
+        "reason": "structured: gold=changed, pred=unchanged"
+      }
+    ],
+    "G40-REC-03": [
+      {
+        "probe_type": "current_value",
+        "gold": "500 req/min",
+        "predicted": "{\n  \"answer\": \"50 requests per second\",\n  \"reason\": \"The SendGrid integration is described as having a current rate limit threshold of 50 requests per second.\"\n}",
+        "match": "incorrect",
+        "reason": "expected '500 req/min' not found"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "250 req/min",
+        "predicted": "{\"answer\":\"100 requests per second\",\"reason\":\"The Notification Microservice threshold was raised to 200 requests/second after the 150-emails/second batch exceeded the previous 100 requests/second limit.\"}",
+        "match": "incorrect",
+        "reason": "expected '250 req/min' not found"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user recalled the old value, then stated the change",
+        "predicted": "{\n  \"source_description\": \"The user directly communicated the change.\",\n  \"source_class\": \"user\",\n  \"action\": \"stated that they decided to increase the API gateway rate limit\",\n  \"accepted\": true,\n  \"current_value\": \"500 requests per minute\",\n  \"reason\": \"The user said legitimate traffic spikes were causing HTTP 429 errors, so they increased the threshold to 500 requests per minute.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"250 req/min\" to \"500 req/min\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"500 requests/minute\",\"previous_value\":\"not specified\",\"reason\":\"The user decided to increase the new reporting API gateway threshold to 500 requests/minute after legitimate traffic spikes caused HTTP 429 errors.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      }
+    ],
+    "G40-REC-04": [
+      {
+        "probe_type": "current_value",
+        "gold": "third-party API migration",
+        "predicted": "{\"answer\":\"Third-party API migration\",\"reason\":\"The conversation states that the user's current sprint focus is the third-party API migration.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "internal admin tools cleanup",
+        "predicted": "{\"answer\":\"database migrations\",\"reason\":\"The user's current sprint focus changed to the third-party API migration; before that, they were working on database migrations.\"}",
+        "match": "incorrect",
+        "reason": "expected 'internal admin tools cleanup' not found"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user directly stated the new value without recalling the old",
+        "predicted": "{\"source_description\":\"The user introduced the update about their own sprint priorities\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"The user's current sprint focus is the third-party API migration\",\"reason\":\"The conversation records that the user shifted from previously working on database migrations to focusing on the third-party API migration.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"internal admin tools cleanup\" to \"third-party API migration\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"Third-party API migration\",\"previous_value\":\"Database migrations\",\"reason\":\"The user previously worked on database migrations, but their current sprint focus is now the third-party API migration.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      }
+    ],
+    "G40-REC-05": [
+      {
+        "probe_type": "current_value",
+        "gold": "Apple Music",
+        "predicted": "{\"answer\":\"Apple Music\",\"reason\":\"The user switched their primary music streaming service to Apple Music and migrated their old playlists there.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "Spotify Premium",
+        "predicted": "{\n  \"answer\": \"Spotify\",\n  \"reason\": \"The user switched their primary service to Apple Music and previously used Spotify Premium, migrating their old playlists.\"\n}",
+        "match": "incorrect",
+        "reason": "expected 'Spotify Premium' not found"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user directly stated the new value without recalling the old",
+        "predicted": "{\"source_description\":\"The user directly communicated the change\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"The user's primary music streaming service is Apple Music\",\"reason\":\"The user said they had switched to Apple Music, praised its crisp lossless audio, noted they were adjusting to the interface, and mentioned migrating their playlists with a third-party app.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"Spotify Premium\" to \"Apple Music\"",
+        "predicted": "{\n  \"changed\": true,\n  \"current_value\": \"Apple Music\",\n  \"previous_value\": \"Spotify\",\n  \"reason\": \"The user switched their primary streaming service to Apple Music and migrated their old playlists using a third-party app.\"\n}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      }
+    ],
+    "G40-REC-06": [
+      {
+        "probe_type": "current_value",
+        "gold": "New Relic",
+        "predicted": "{\"answer\":\"Sumo Logic\",\"reason\":\"The conversation states that the user's organization uses Sumo Logic as its standard log shipping destination, and the planned production auth-service cluster is mandated to use it.\"}",
+        "match": "incorrect",
+        "reason": "expected 'New Relic' not found"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "Sumo Logic",
+        "predicted": "{\"answer\":\"the legacy ELK stack\",\"reason\":\"The billing-worker service in staging was originally configured to ship logs to the legacy ELK stack before its Fluent Bit configuration was changed to Splunk.\"}",
+        "match": "incorrect",
+        "reason": "expected 'Sumo Logic' not found"
+      },
+      {
+        "probe_type": "source",
+        "gold": "The user directly stated the new value without recalling the old",
+        "predicted": "{\"source_description\":\"The user communicated the organization\u2019s updated logging standard.\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"Sumo Logic is the organization\u2019s standard log shipping destination, and production logs for the new auth-service cluster must be sent there.\",\"reason\":\"The conversation records that the user\u2019s organization uses Sumo Logic as its standard destination and that compliance mandated it for the production auth-service rollout.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=user gold=user"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"Sumo Logic\" to \"New Relic\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"Sumo Logic\",\"previous_value\":\"New Relic\",\"reason\":\"Earlier, the organization shipped application logs to New Relic; later, Sumo Logic was identified as the standard destination and mandated for the production auth-service cluster.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      }
+    ],
+    "G40-INT-01": [
+      {
+        "probe_type": "current_value",
+        "gold": "HBO Max",
+        "predicted": "{\"answer\":\"HBO Max\",\"reason\":\"The user said HBO Max is their primary streaming platform and that they canceled Netflix.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "Netflix",
+        "predicted": "{\"answer\":\"Netflix\",\"reason\":\"The user\u2019s current primary platform is HBO Max, and they said they canceled Netflix, indicating Netflix was the previous service.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"Netflix\" to \"HBO Max\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"HBO Max\",\"previous_value\":\"Netflix\",\"reason\":\"The user said HBO Max is now their primary streaming platform and that they canceled Netflix.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"The user canceled Netflix.\",\"old_value\":\"Netflix\",\"new_value\":\"HBO Max\",\"timing\":\"No specific date was given; HBO Max became primary after Netflix was canceled.\",\"reason\":\"The conversation states that HBO Max is the user's primary streaming platform and that they canceled Netflix.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-INT-02": [
+      {
+        "probe_type": "current_value",
+        "gold": "prod-east-1",
+        "predicted": "{\"answer\":\"prod-east-1\",\"reason\":\"The conversation states that the user's current active Kubernetes context is `prod-east-1` and they intend to use it exclusively for the remainder of the afternoon.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "staging-a",
+        "predicted": "{\"answer\":\"prod-east-1\",\"reason\":\"The conversation explicitly identified `prod-east-1` as the user's active Kubernetes context before the later request to update the context to `ci-integration-v2`.\"}",
+        "match": "incorrect",
+        "reason": "expected 'staging-a' not found"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"staging-a\" to \"prod-east-1\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"ci-integration-v2\",\"previous_value\":\"prod-east-1\",\"reason\":\"The user initially identified prod-east-1 as the active context, then later requested updating the Kubernetes context to ci-integration-v2 and verifying API server connectivity.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"A deployment failure exposed that the CI/CD configuration was still using the outdated sandbox context after the legacy sandbox cluster was decommissioned.\",\"old_value\":\"sandbox\",\"new_value\":\"ci-integration-v2\",\"timing\":\"While troubleshooting the inventory-service Jenkins deployment and verifying the replacement integration cluster's API connectivity.\",\"reason\":\"The old sandbox context pointed to a decommissioned cluster, so the user requested switching to the new integration context and verifying connectivity.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-INT-03": [
+      {
+        "probe_type": "current_value",
+        "gold": "search latency optimization",
+        "predicted": "{\"answer\":\"search latency optimization\",\"reason\":\"The user made search latency optimization the top priority due to performance complaints from enterprise clients and paused payment retries reliability work.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "payment retries reliability",
+        "predicted": "{\"answer\":\"payment retries reliability\",\"reason\":\"The user paused work on 'payment retries reliability' when the current sprint focus changed to 'search latency optimization' due to enterprise client performance complaints.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"payment retries reliability\" to \"search latency optimization\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"search latency optimization\",\"previous_value\":\"payment retries reliability\",\"reason\":\"The user paused work on payment retries reliability and made search latency optimization the top priority due to performance complaints from enterprise clients.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"Performance complaints from enterprise clients made search latency a top priority.\",\"old_value\":\"payment retries reliability\",\"new_value\":\"search latency optimization\",\"timing\":\"During the current sprint; payment retries reliability was paused.\",\"reason\":\"The user shifted focus to search latency optimization in response to enterprise client performance complaints.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-INT-04": [
+      {
+        "probe_type": "current_value",
+        "gold": "Uber Eats",
+        "predicted": "{\"answer\":\"Uber Eats\",\"reason\":\"The user said Uber Eats is their new preferred food delivery app and has a membership through a six-month promotional offer.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "DoorDash",
+        "predicted": "{\n  \"answer\": \"Grubhub\",\n  \"reason\": \"Uber Eats was described as the user's new preferred delivery app, indicating their previous go-to app was Grubhub.\"\n}",
+        "match": "incorrect",
+        "reason": "expected 'DoorDash' not found"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"DoorDash\" to \"Uber Eats\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"Uber Eats\",\"previous_value\":\"Grubhub\",\"reason\":\"The user said Uber Eats is their new preferred food delivery app after receiving a six-month promotional membership, indicating they previously used or preferred Grubhub.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"A six-month promotional membership offer\",\n  \"old_value\": \"Grubhub\",\n  \"new_value\": \"Uber Eats\",\n  \"timing\": \"After receiving the six-month Uber Eats membership promotion\",\n  \"reason\": \"The user said Uber Eats became their new preferred delivery app because the promotion gave them a membership.\"\n}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-INT-05": [
+      {
+        "probe_type": "current_value",
+        "gold": "250 req/min",
+        "predicted": "{\"answer\":\"100 req/min\",\"reason\":\"The user prefers the analytics-service rate limit in the Kong API gateway to be 100 requests per minute.\"}",
+        "match": "incorrect",
+        "reason": "expected '250 req/min' not found"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "100 req/min",
+        "predicted": "{\"answer\":\"100 req/min\",\"reason\":\"The staging user service's API gateway rate limit was increased from 100 req/min to 250 req/min; therefore, the previous threshold was 100 req/min.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"100 req/min\" to \"250 req/min\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"100 req/min\",\"previous_value\":\"90 req/min\",\"reason\":\"The user initially preferred a 90 req/min task-level limit for the analytics pipeline, then specified 100 req/min for the analytics-service Kong gateway.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"New frontend polling behavior caused the previous API gateway threshold to be too aggressive.\",\"old_value\":\"100 req/min\",\"new_value\":\"250 req/min\",\"timing\":\"During an update to the user service in the staging environment.\",\"reason\":\"The user increased the staging user service rate limit to accommodate increased request frequency from frontend polling.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-INT-06": [
+      {
+        "probe_type": "current_value",
+        "gold": "feature/search-latency",
+        "predicted": "{\"answer\":\"feature/search-latency\",\"reason\":\"The user shifted from feature/payment-retries to feature/search-latency due to a major indexing-service bottleneck.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "feature/payment-retries",
+        "predicted": "{\"answer\":\"feature/payment-retries\",\"reason\":\"The user was previously working on `feature/payment-retries` before shifting priorities to the current `feature/search-latency` branch.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"feature/payment-retries\" to \"feature/search-latency\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"feature/search-latency\",\"previous_value\":\"feature/payment-retries\",\"reason\":\"The user shifted from feature/payment-retries to feature/search-latency due to a major bottleneck in the indexing service.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"A major bottleneck was identified in the indexing service, causing priorities to shift.\",\n  \"old_value\": \"feature/payment-retries\",\n  \"new_value\": \"feature/search-latency\",\n  \"timing\": \"When the indexing-service bottleneck became a priority.\",\n  \"reason\": \"The user shifted from feature/payment-retries to feature/search-latency to address the major indexing-service bottleneck.\"\n}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-INT-10": [
+      {
+        "probe_type": "current_value",
+        "gold": "staging-b",
+        "predicted": "{\"answer\":\"staging-b\",\"reason\":\"The conversation explicitly states that the user's current Kubernetes context is `staging-b`.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"prod-west-2\" was mentioned, but conflicting information mentioned. The user's active kubernetes context remains \"staging-b\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"prod-west-2\",\"source\":\"The user's colleague Mark, who was debugging a routing issue there\",\"source_class\":\"third_party\",\"status\":\"It referred to Mark's environment, not the user's active context\",\"status_class\":\"other_entity\",\"applies_to_target\":false,\"current_value\":\"staging-b\",\"reason\":\"The user's current Kubernetes context was stated as staging-b; prod-west-2 was mentioned only in connection with Mark's routing issue.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"staging-b\"",
+        "predicted": "{\n  \"changed\": false,\n  \"current_value\": \"staging-b\",\n  \"previous_value\": null,\n  \"reason\": \"The user's current Kubernetes context is stated as staging-b; qa-east-1 and data-qa-east1 are required deployment contexts, but no completed active-context change is recorded.\"\n}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"prod-west-2\" was mentioned, but conflicting information mentioned. The user's active kubernetes context remains \"staging-b\".",
+        "predicted": "{\"source_description\":\"The user\",\"source_class\":\"user\",\"action\":\"stated\",\"accepted\":true,\"current_value\":\"qa-east-1\",\"reason\":\"The user specified qa-east-1 as the correct active Kubernetes context for Jenkins deployments and requested updating both deploy.sh and the Jenkins service account kubeconfig accordingly.\"}",
+        "match": "incorrect",
+        "reason": "source_class mismatch: pred=user vs gold=third_party"
+      }
+    ],
+    "G40-CON-01": [
+      {
+        "probe_type": "current_value",
+        "gold": "Lex Fridman Podcast",
+        "predicted": "{\"answer\":\"Lex Fridman Podcast\",\"reason\":\"The conversation states that the user's favorite podcast is now the 'Lex Fridman Podcast' because they enjoy its long-form, relaxed discussions on tech, science, and philosophy.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "Hard Fork",
+        "predicted": "{\"answer\":\"Huberman Lab\",\"reason\":\"The user\u2019s favorite podcast is now the Lex Fridman Podcast, while Huberman Lab is identified as the earlier podcast they enjoyed for science and health deep-dives.\"}",
+        "match": "incorrect",
+        "reason": "expected 'Hard Fork' not found"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"Hard Fork\" to \"Lex Fridman Podcast\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"Lex Fridman Podcast\",\"previous_value\":\"Huberman Lab\",\"reason\":\"The user said their favorite podcast is now the Lex Fridman Podcast, while Huberman Lab was their earlier favorite.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"The specific event that caused the change was not stated.\",\"old_value\":\"Not specified\",\"new_value\":\"Lex Fridman Podcast\",\"timing\":\"By the latest podcast discussion, in the context of choosing shows for their commute\",\"reason\":\"They enjoy its long-form, relaxed conversations about technology, science, and philosophy.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-CON-02": [
+      {
+        "probe_type": "current_value",
+        "gold": "cart-abandonment email campaign",
+        "predicted": "{\"answer\":\"The cart-abandonment email campaign.\",\"reason\":\"The conversation states that the user's current sprint focus is the cart-abandonment email campaign, while the checkout flow refactor is paused.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "checkout flow refactor",
+        "predicted": "{\"answer\":\"the checkout flow refactor\",\"reason\":\"The team paused the checkout flow refactor and changed its current sprint focus to the cart-abandonment email campaign.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"checkout flow refactor\" to \"cart-abandonment email campaign\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"Cart-abandonment email campaign\",\"previous_value\":\"Checkout flow refactor\",\"reason\":\"The checkout flow refactor was paused, and the user's team shifted its current sprint focus to the cart-abandonment email campaign.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"The Mobile team said it needed the new user preferences endpoint by Thursday to integrate push notifications before its Friday code freeze.\",\"old_value\":\"Cart-abandonment email campaign\",\"new_value\":\"Prioritizing the user preferences endpoint to unblock the Mobile team\",\"timing\":\"During the current sprint, after coordinating with the Mobile team about its push-notification overhaul and code-freeze deadline\",\"reason\":\"The endpoint became an urgent cross-team dependency; the checkout flow refactor was already paused.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-CON-03": [
+      {
+        "probe_type": "current_value",
+        "gold": "Grafana Loki",
+        "predicted": "{\"answer\":\"Grafana Loki\",\"reason\":\"The fluent-bit service in the monitoring namespace was migrated from Splunk to Grafana Loki, and its configuration was updated and restarted to apply the new routing.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "Splunk",
+        "predicted": "[ERROR: AuthenticationError]",
+        "match": "execution_error",
+        "reason": "execution error: [ERROR: AuthenticationError]"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"Splunk\" to \"Grafana Loki\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"Grafana Loki\",\"previous_value\":\"Splunk\",\"reason\":\"The fluent-bit service in the monitoring namespace was migrated from Splunk to Grafana Loki by updating its ConfigMap and restarting the DaemonSet.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\n  \"changed\": true,\n  \"trigger\": \"A migration of the monitoring log pipeline prompted the routing change.\",\n  \"old_value\": \"Splunk\",\n  \"new_value\": \"Grafana Loki\",\n  \"timing\": \"During the fluent-bit migration in the monitoring namespace, when the fluent-bit-config ConfigMap was updated and the DaemonSet restarted.\",\n  \"reason\": \"The conversation states that fluent-bit in the monitoring namespace migrated its log shipping destination from Splunk to Grafana Loki.\"\n}",
+        "match": "partial",
+        "reason": "temporal legacy partial: {'source_agent': False, 'change_direction': True}"
+      }
+    ],
+    "G40-CON-04": [
+      {
+        "probe_type": "current_value",
+        "gold": "Uber Eats",
+        "predicted": "{\"answer\":\"Uber Eats\",\"reason\":\"The user switched to Uber Eats after receiving a good promo code for the next few months and canceled their previous food delivery subscription.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "Grubhub",
+        "predicted": "{\"answer\":\"DoorDash\",\"reason\":\"The user switched to Uber Eats because of a promotional code and canceled their previous DoorDash subscription.\"}",
+        "match": "incorrect",
+        "reason": "expected 'Grubhub' not found"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"Grubhub\" to \"Uber Eats\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"Uber Eats\",\"previous_value\":\"DoorDash\",\"reason\":\"The user switched to Uber Eats because of a promotional code for the next few months and canceled their previous DoorDash subscription.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"A good promotional code offering savings for the next few months\",\"old_value\":\"Their previous food delivery service/subscription (not specified)\",\"new_value\":\"Uber Eats\",\"timing\":\"When they received the Uber Eats promo code; they then canceled their previous delivery subscription\",\"reason\":\"The user switched to Uber Eats because of a good promo code valid for the next few months.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-CON-05": [
+      {
+        "probe_type": "current_value",
+        "gold": "primary on-call",
+        "predicted": "{\"answer\":\"Primary on-call for the upcoming sprint\",\"reason\":\"The conversation states that the user is the primary on-call for the upcoming sprint.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "secondary on-call",
+        "predicted": "{\"answer\":\"Secondary on-call\",\"reason\":\"The user is now listed as the primary on-call for the upcoming sprint, implying their prior rotation role was secondary on-call.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"secondary on-call\" to \"primary on-call\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Primary on-call for the upcoming sprint\",\"previous_value\":null,\"reason\":\"The conversation only states that the user is the primary on-call for the upcoming sprint; no earlier different role is mentioned.\"}",
+        "match": "incorrect",
+        "reason": "structured: gold=changed, pred=unchanged"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":false,\"trigger\":\"No change event or reason was mentioned.\",\"old_value\":\"Unknown\",\"new_value\":\"Primary on-call\",\"timing\":\"For the upcoming sprint\",\"reason\":\"The conversation only states that the user is the primary on-call for the upcoming sprint; it does not describe a prior role or any change to the rotation.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-CON-06": [
+      {
+        "probe_type": "current_value",
+        "gold": "Papertrail",
+        "predicted": "{\"answer\":\"Papertrail\",\"reason\":\"The user is migrating the production logging destination to Papertrail, and the Fluentd configuration was updated and restarted to ship production logs there.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "previous_value",
+        "gold": "Elastic Cloud",
+        "predicted": "{\n  \"answer\": \"A legacy Splunk instance\",\n  \"reason\": \"Before the requested migration to AWS CloudWatch, the Delta project's staging cluster was shipping logs to a legacy Splunk instance.\"\n}",
+        "match": "incorrect",
+        "reason": "expected 'Elastic Cloud' not found"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "Yes \u2014 changed from \"Elastic Cloud\" to \"Papertrail\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"AWS CloudWatch\",\"previous_value\":\"legacy Splunk instance\",\"reason\":\"The Delta staging cluster was previously shipping logs to a legacy Splunk instance, and the user requested migration to AWS CloudWatch, matching the other Delta environments.\"}",
+        "match": "correct",
+        "reason": "structured: both say changed"
+      },
+      {
+        "probe_type": "temporal",
+        "gold": "user explicitly stated the change",
+        "predicted": "{\"changed\":true,\"trigger\":\"The user planned to decommission the legacy Splunk instance and align staging with the other Delta environments.\",\"old_value\":\"Legacy Splunk\",\"new_value\":\"AWS CloudWatch\",\"timing\":\"While updating log shipping for the Delta project's staging cluster, after the other Delta environments had already migrated to CloudWatch.\",\"reason\":\"Delta staging was still shipping logs to legacy Splunk, so the user requested migration to AWS CloudWatch before decommissioning Splunk.\"}",
+        "match": "correct",
+        "reason": "temporal legacy checks passed: {'source_agent': True, 'change_direction': True}"
+      }
+    ],
+    "G40-REC-10": [
+      {
+        "probe_type": "current_value",
+        "gold": "minikube-local",
+        "predicted": "{\"answer\":\"Unknown\",\"reason\":\"No active Kubernetes context is provided in the conversation, and the agent cannot directly access the user's kubeconfig or external systems to check it.\"}",
+        "match": "incorrect",
+        "reason": "expected 'minikube-local' not found"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"sandbox\" was mentioned, but conflicting information mentioned. The user's active kubernetes context remains \"minikube-local\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": false,\n  \"conflict_value\": null,\n  \"source\": \"No alternative Kubernetes context was identified\",\n  \"source_class\": \"unknown\",\n  \"status\": \"No conflicting context value was mentioned\",\n  \"status_class\": \"unknown\",\n  \"applies_to_target\": false,\n  \"current_value\": \"unknown\",\n  \"reason\": \"The history mentions requests to check Kubernetes contexts and the assistant's lack of direct access, but provides no active or alternative context name.\"\n}",
+        "match": "incorrect",
+        "reason": "value=incorrect, source=incorrect, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"minikube-local\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"unknown\",\"previous_value\":null,\"reason\":\"No Kubernetes context value or context change was established; the agent cannot directly inspect the user's external Kubernetes configuration.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"sandbox\" was mentioned, but conflicting information mentioned. The user's active kubernetes context remains \"minikube-local\".",
+        "predicted": "{\"source_description\":\"The assistant introduced the alternative active Kubernetes context.\",\"source_class\":\"assistant\",\"action\":\"hallucinated\",\"accepted\":false,\"current_value\":\"Not applicable; no alternative active Kubernetes context was verified.\",\"reason\":\"The conversation record says the assistant implied it could inspect Kubernetes contexts despite having no direct system access; no verified alternative context was provided or accepted by the user.\"}",
+        "match": "partial",
+        "reason": "source_class mismatch (pred=assistant vs gold=third_party) but accepted correct"
+      }
+    ],
+    "G40-INT-07": [
+      {
+        "probe_type": "current_value",
+        "gold": "The Daily",
+        "predicted": "{\"answer\":\"The Daily\",\"reason\":\"The user says they absolutely need their morning fix of The Daily and also listen to it during brisk walks.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"Freakonomics Radio\" was mentioned, but conflicting information mentioned. The user's favorite podcast remains \"The Daily\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Silicon Valley Chronicles\",\n  \"source\": \"the user's coworker Dave\",\n  \"source_class\": \"third_party\",\n  \"status\": \"It was Dave's favorite podcast, not the user's.\",\n  \"status_class\": \"other_entity\",\n  \"applies_to_target\": false,\n  \"current_value\": \"The Daily\",\n  \"reason\": \"Dave constantly talks about and quotes Silicon Valley Chronicles, while the user says they need their morning fix of The Daily.\"\n}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"The Daily\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"The Daily\",\"previous_value\":null,\"reason\":\"The user consistently says they need their morning fix of The Daily and also listen to it during brisk walks; no later preference change is mentioned.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"Freakonomics Radio\" was mentioned, but conflicting information mentioned. The user's favorite podcast remains \"The Daily\".",
+        "predicted": "{\"source_description\":\"The user, describing her coworker Dave\",\"source_class\":\"user\",\"action\":\"mentioned\",\"accepted\":false,\"current_value\":\"\u201cSilicon Valley Chronicles\u201d is Dave\u2019s favorite podcast, not the user\u2019s.\",\"reason\":\"The user said Dave constantly talks about and quotes \u201cSilicon Valley Chronicles\u201d; no evidence indicates it is the user\u2019s favorite.\"}",
+        "match": "partial",
+        "reason": "source_class mismatch (pred=user vs gold=third_party) but accepted correct"
+      }
+    ],
+    "G40-INT-08": [
+      {
+        "probe_type": "current_value",
+        "gold": "Datadog",
+        "predicted": "{\"answer\":\"Graylog\",\"reason\":\"The invoice-processor service is currently shipping logs to Graylog and is being migrated to AWS CloudWatch.\"}",
+        "match": "incorrect",
+        "reason": "expected 'Datadog' not found"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"Splunk\" was mentioned, but conflicting information mentioned. The user's log shipping destination remains \"Datadog\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Splunk\",\n  \"source\": \"the data engineering team\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"Splunk was used by another team and was not adopted for auth-service\",\n  \"status_class\": \"other_entity\",\n  \"applies_to_target\": false,\n  \"current_value\": \"Datadog\",\n  \"reason\": \"The auth-service logs were confirmed to route to Datadog; Splunk was mentioned only as the destination used by the data engineering team, and the platform team had not imposed it globally.\"\n}",
+        "match": "correct",
+        "reason": "value=correct, source=incorrect, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"Datadog\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Datadog\",\"previous_value\":null,\"reason\":\"The auth-service logs are confirmed to still route to Datadog; no global change to Splunk was enforced.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"Splunk\" was mentioned, but conflicting information mentioned. The user's log shipping destination remains \"Datadog\".",
+        "predicted": "{\"source_description\":\"the data engineering team\",\"source_class\":\"third_party\",\"action\":\"mentioned Splunk as an alternative log shipping destination used for analytics pipelines\",\"accepted\":false,\"current_value\":\"The auth-service staging logs still route to Datadog; Splunk does not apply.\",\"reason\":\"The platform team did not enforce a global switch to Splunk, and the auth-service destination was confirmed as Datadog.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      }
+    ],
+    "G40-INT-09": [
+      {
+        "probe_type": "current_value",
+        "gold": "primary on-call",
+        "predicted": "{\"answer\":\"Primary on-call for their team next week\",\"reason\":\"The conversation states that the user will be the primary on-call for their team next week.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"secondary on-call\" was mentioned, but conflicting information mentioned. The user's oncall rotation role remains \"primary on-call\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"secondary on-call\",\n  \"source\": \"David from the platform team\",\n  \"source_class\": \"third_party\",\n  \"status\": \"The role applied to David for his group, not to the user.\",\n  \"status_class\": \"other_entity\",\n  \"applies_to_target\": false,\n  \"current_value\": \"primary on-call\",\n  \"reason\": \"The user will be the primary on-call for their team next week, while David will be the secondary on-call for the platform team.\"\n}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"primary on-call\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Primary on-call for their team next week\",\"previous_value\":null,\"reason\":\"The conversation states the user will be the primary on-call next week; no later role change is mentioned.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"secondary on-call\" was mentioned, but conflicting information mentioned. The user's oncall rotation role remains \"primary on-call\".",
+        "predicted": "{\"source_description\":\"The assistant introduced the alternative role terminology\",\"source_class\":\"assistant\",\"action\":\"mentioned\",\"accepted\":false,\"current_value\":\"The applicable roles are the incident commander and escalation point; the alternative 'triage lead' role was not established as applying to this rotation.\",\"reason\":\"The user requested the incident commander and escalation point for the on-call schedule. 'Triage lead' appeared only as assistant-provided terminology, with no user confirmation that it applied.\"}",
+        "match": "partial",
+        "reason": "source_class mismatch (pred=assistant vs gold=third_party) but accepted correct"
+      }
+    ],
+    "G40-MIS-04": [
+      {
+        "probe_type": "current_value",
+        "gold": "onboarding funnel A/B test",
+        "predicted": "{\"answer\":\"The onboarding funnel A/B test.\",\"reason\":\"The conversation states that the user's current sprint focus is the onboarding funnel A/B test, with analytics tracking events in review and a targeted Thursday launch.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"sign-up form redesign\" was mentioned, but the assistant incorrectly stated. The user's current sprint focus remains \"onboarding funnel A/B test\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"PostgreSQL database migration\",\n  \"source\": \"the backend team\",\n  \"source_class\": \"other_entity\",\n  \"status\": \"It was the backend team's primary sprint focus, not a replacement for the user's focus.\",\n  \"status_class\": \"other_entity\",\n  \"applies_to_target\": false,\n  \"current_value\": \"onboarding funnel A/B test\",\n  \"reason\": \"The user's current sprint focus was the onboarding funnel A/B test, while the PostgreSQL migration was separately identified as the backend team's primary focus.\"\n}",
+        "match": "partial",
+        "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"sign-up form redesign\" was mentioned, but the assistant incorrectly stated. The user's current sprint focus remains \"onboarding funnel A/B test\".",
+        "predicted": "{\n  \"source_description\": \"The user\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": false,\n  \"current_value\": \"The user's current sprint focus is the onboarding funnel A/B test; the PostgreSQL migration is the backend team's separate sprint focus.\",\n  \"reason\": \"The user identified the PostgreSQL database migration as the backend team's priority, so it does not replace the user's stated focus on the onboarding funnel A/B test.\"\n}",
+        "match": "partial",
+        "reason": "source_class mismatch (pred=user vs gold=assistant) but accepted correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"onboarding funnel A/B test\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Onboarding funnel A/B test\",\"previous_value\":null,\"reason\":\"The conversation identifies the onboarding funnel A/B test as the user's current sprint focus; no later change is mentioned.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      }
+    ],
+    "G40-MIS-05": [
+      {
+        "probe_type": "current_value",
+        "gold": "Elastic Cloud",
+        "predicted": "{\"answer\":\"Elastic Cloud\",\"reason\":\"The user identified Elastic Cloud as the definitive standard log shipping destination and monitors Fluent Bit for successful delivery to it.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"Datadog\" was mentioned, but the assistant incorrectly stated. The user's log shipping destination remains \"Elastic Cloud\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Datadog\",\n  \"source\": \"The assistant introduced Datadog based on an incorrect default template or assumption.\",\n  \"source_class\": \"assistant\",\n  \"status\": \"The user corrected it, and Datadog was superseded by Elastic Cloud as the definitive destination.\",\n  \"status_class\": \"superseded\",\n  \"applies_to_target\": true,\n  \"current_value\": \"Elastic Cloud\",\n  \"reason\": \"The assistant incorrectly suggested Datadog, but the user clarified that Elastic Cloud is the standard and definitive log shipping destination.\"\n}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"Datadog\" was mentioned, but the assistant incorrectly stated. The user's log shipping destination remains \"Elastic Cloud\".",
+        "predicted": "{\n  \"source_description\": \"The assistant introduced Datadog as an alternative log shipping destination.\",\n  \"source_class\": \"assistant\",\n  \"action\": \"incorrectly suggested\",\n  \"accepted\": false,\n  \"current_value\": \"Elastic Cloud is the definitive standard log shipping destination; Datadog does not apply.\",\n  \"reason\": \"The user corrected the assistant's Datadog suggestion and confirmed that Elastic Cloud must be prioritized over default assumptions.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=assistant gold=assistant"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"Elastic Cloud\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Elastic Cloud\",\"previous_value\":null,\"reason\":\"Elastic Cloud is the definitive standard log shipping destination; Datadog was only an incorrect earlier suggestion, not a prior configured destination. Some named services remain exceptions on Splunk or CloudWatch.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      }
+    ],
+    "G40-MIS-06": [
+      {
+        "probe_type": "current_value",
+        "gold": "Serial",
+        "predicted": "{\"answer\":\"Serial\",\"reason\":\"The conversation explicitly states that the user's favorite podcast is \\\"Serial\\\".\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"Reply All\" was mentioned, but the assistant incorrectly stated. The user's favorite podcast remains \"Serial\".",
+        "predicted": "{\"conflict_value_mentioned\":false,\"conflict_value\":null,\"source\":\"unknown\",\"source_class\":\"unknown\",\"status\":\"not_accepted\",\"status_class\":\"not_accepted\",\"applies_to_target\":false,\"current_value\":\"Serial\",\"reason\":\"The user's favorite podcast is stated as \\\"Serial.\\\" \\\"SmartLess\\\" was also mentioned as a podcast the user enjoys, but it was not identified as an alternative favorite.\"}",
+        "match": "incorrect",
+        "reason": "value=incorrect, source=incorrect, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"Reply All\" was mentioned, but the assistant incorrectly stated. The user's favorite podcast remains \"Serial\".",
+        "predicted": "{\n  \"source_description\": \"The user\",\n  \"source_class\": \"user\",\n  \"action\": \"mentioned SmartLess as a podcast they enjoy, not as their favorite\",\n  \"accepted\": false,\n  \"current_value\": \"Serial\",\n  \"reason\": \"The user\u2019s stated favorite podcast is Serial; SmartLess was only mentioned as a comedy podcast they enjoy.\"\n}",
+        "match": "partial",
+        "reason": "source_class mismatch (pred=user vs gold=assistant) but accepted correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"Serial\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Serial\",\"previous_value\":null,\"reason\":\"The conversation identifies \\\"Serial\\\" as the user's favorite podcast and provides no evidence that this preference changed.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      }
+    ],
+    "G40-MIS-07": [
+      {
+        "probe_type": "current_value",
+        "gold": "Disney+",
+        "predicted": "{\n  \"answer\": \"Disney+\",\n  \"reason\": \"The user cancelled multiple streaming subscriptions to save money and now only uses Disney+.\"\n}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"Max\" was mentioned, but a third party mentioned. The user's primary streaming service remains \"Disney+\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"Max\",\n  \"source\": \"assistant\",\n  \"source_class\": \"assistant\",\n  \"status\": \"The suggestion that Max was the user's primary streaming service was not accepted; the user indicated they do not have an active Max subscription.\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": true,\n  \"current_value\": \"Disney+\",\n  \"reason\": \"The user identified Disney+ as their primary and only current streaming service; Max was mentioned as an alternative but is not active.\"\n}",
+        "match": "partial",
+        "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"Max\" was mentioned, but a third party mentioned. The user's primary streaming service remains \"Disney+\".",
+        "predicted": "{\n  \"source_description\": \"The user\",\n  \"source_class\": \"user\",\n  \"action\": \"stated\",\n  \"accepted\": true,\n  \"current_value\": \"Disney+ is the user's primary and only active streaming service; Max is not active.\",\n  \"reason\": \"The user said they cancelled multiple streaming subscriptions to save money and now only use Disney+.\"\n}",
+        "match": "incorrect",
+        "reason": "source_class mismatch: pred=user vs gold=third_party"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"Disney+\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Disney+\",\"previous_value\":null,\"reason\":\"Disney+ is identified as the user's primary and only current streaming service after canceling other subscriptions.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      }
+    ],
+    "G40-MIS-08": [
+      {
+        "probe_type": "current_value",
+        "gold": "dev-shared",
+        "predicted": "[ERROR: AuthenticationError]",
+        "match": "execution_error",
+        "reason": "execution error: [ERROR: AuthenticationError]"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"staging-a\" was mentioned, but a third party mentioned. The user's active kubernetes context remains \"dev-shared\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"staging-a\",\"source\":\"Alex's comment\",\"source_class\":\"third_party\",\"status\":\"The alternative was rejected as incorrect.\",\"status_class\":\"not_accepted\",\"applies_to_target\":true,\"current_value\":\"dev-shared\",\"reason\":\"The user confirmed dev-shared is the active Kubernetes context and said Alex's comment about staging-a was incorrect.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"staging-a\" was mentioned, but a third party mentioned. The user's active kubernetes context remains \"dev-shared\".",
+        "predicted": "{\n  \"source_description\": \"Alex\",\n  \"source_class\": \"third_party\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"dev-shared\",\n  \"reason\": \"Alex mentioned staging-a as the active Kubernetes context, but the user corrected this and confirmed that dev-shared is the active context.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"dev-shared\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"dev-shared\",\"previous_value\":null,\"reason\":\"The user confirmed that dev-shared is the correct active Kubernetes context and stated that Alex's staging-a comment was incorrect.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      }
+    ],
+    "G40-MIS-09": [
+      {
+        "probe_type": "current_value",
+        "gold": "hotfix/deploy-timeout",
+        "predicted": "{\"answer\":\"hotfix/deploy-timeout\",\"reason\":\"The conversation explicitly states that the user's active development branch is `hotfix/deploy-timeout`; `feature/checkout-refactor` was reassigned.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"feature/checkout-refactor\" was mentioned, but a third party mentioned. The user's active feature branch remains \"hotfix/deploy-timeout\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"feature/checkout-refactor\",\"source\":\"Sarah mistakenly identified it as the user's active branch\",\"source_class\":\"third_party\",\"status\":\"It was not accepted because the branch had been reassigned and was not the user's active branch.\",\"status_class\":\"not_accepted\",\"applies_to_target\":false,\"current_value\":\"hotfix/deploy-timeout\",\"reason\":\"The user's active development branch is `hotfix/deploy-timeout`; Sarah mistakenly thought they were working on `feature/checkout-refactor`, which had been reassigned.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"feature/checkout-refactor\" was mentioned, but a third party mentioned. The user's active feature branch remains \"hotfix/deploy-timeout\".",
+        "predicted": "{\n  \"source_description\": \"Sarah\",\n  \"source_class\": \"third_party\",\n  \"action\": \"mistakenly mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"hotfix/deploy-timeout\",\n  \"reason\": \"Sarah thought the user was working on feature/checkout-refactor, but that branch was reassigned; the user's active branch is hotfix/deploy-timeout.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"hotfix/deploy-timeout\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"hotfix/deploy-timeout\",\"previous_value\":\"feature/checkout-refactor\",\"reason\":\"The user's active development branch is now `hotfix/deploy-timeout`; `feature/checkout-refactor` was reassigned from the user.\"}",
+        "match": "incorrect",
+        "reason": "structured: gold=unchanged, pred=changed"
+      }
+    ],
+    "G40-MIS-10": [
+      {
+        "probe_type": "current_value",
+        "gold": "500 req/min",
+        "predicted": "[ERROR: AuthenticationError]",
+        "match": "execution_error",
+        "reason": "execution error: [ERROR: AuthenticationError]"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"1000 req/min\" was mentioned, but conflicting information mentioned. The user's rate limit threshold remains \"500 req/min\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"5000 RPS\",\n  \"source\": \"SendGrid's Pro-tier upstream allowance\",\n  \"source_class\": \"third_party\",\n  \"status\": \"Not adopted as the internal staging threshold; the internal limit was set to 3000 RPS.\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": false,\n  \"current_value\": \"3000 RPS\",\n  \"reason\": \"SendGrid Pro permits up to 5000 RPS, but that is an external plan limit. The staging cluster's internal SendGrid integration threshold was updated to 3000 RPS.\"\n}",
+        "match": "partial",
+        "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"1000 req/min\" was mentioned, but conflicting information mentioned. The user's rate limit threshold remains \"500 req/min\".",
+        "predicted": "{\n  \"source_description\": \"the deprecated v1 API gateway ConfigMap\",\n  \"source_class\": \"stale_tool\",\n  \"action\": \"stated an alternative threshold\",\n  \"accepted\": false,\n  \"current_value\": \"500 requests per minute\",\n  \"reason\": \"The alternative came from the deprecated v1 configuration and does not apply; the current api-gateway-config-v2 for staging sets the threshold to 500 req/min.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=stale_tool gold=stale_tool"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"500 req/min\"",
+        "predicted": "{\"changed\":true,\"current_value\":\"3000 RPS\",\"previous_value\":\"not specified\",\"reason\":\"The internal SendGrid rate limit threshold in the staging cluster was increased to 3000 RPS; the prior threshold was not recorded.\"}",
+        "match": "incorrect",
+        "reason": "structured: gold=unchanged, pred=changed"
+      }
+    ],
+    "G40-CON-07": [
+      {
+        "probe_type": "current_value",
+        "gold": "Golden Gate Bridge",
+        "predicted": "{\"answer\":\"The Golden Gate Bridge\",\"reason\":\"The user prefers to continue commuting via the Golden Gate Bridge and crosses it daily using FasTrak.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"San Mateo Bridge\" was mentioned, but conflicting information mentioned. The user's primary commute route remains \"Golden Gate Bridge\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"Commute via the San Mateo Bridge\",\"source\":\"The user's coworker Dave\",\"source_class\":\"third_party\",\"status\":\"The user dismissed it because it would add miles and chose to keep using the Golden Gate Bridge\",\"status_class\":\"not_accepted\",\"applies_to_target\":true,\"current_value\":\"Commute via the Golden Gate Bridge\",\"reason\":\"Dave suggested the San Mateo Bridge as an alternative, but the user rejected it and prefers the Golden Gate Bridge.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"Golden Gate Bridge\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Golden Gate Bridge\",\"previous_value\":null,\"reason\":\"The user dismissed Dave's suggestion to use the San Mateo Bridge and prefers to continue commuting via the Golden Gate Bridge.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"San Mateo Bridge\" was mentioned, but conflicting information mentioned. The user's primary commute route remains \"Golden Gate Bridge\".",
+        "predicted": "{\n  \"source_description\": \"The user's coworker Dave\",\n  \"source_class\": \"third_party\",\n  \"action\": \"suggested\",\n  \"accepted\": false,\n  \"current_value\": \"The San Mateo Bridge was suggested as an alternative commute route, but the user prefers to continue using the Golden Gate Bridge.\",\n  \"reason\": \"Dave suggested commuting via the San Mateo Bridge, but the user dismissed it because it would add miles to the drive.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      }
+    ],
+    "G40-CON-08": [
+      {
+        "probe_type": "current_value",
+        "gold": "prod-east-1",
+        "predicted": "{\"answer\":\"prod-east-1\",\"reason\":\"The user prefers to use the prod-east-1 context for general infrastructure checks and to ignore the draft migration document mentioning prod-west-2.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"prod-west-2\" was mentioned, but conflicting information mentioned. The user's active kubernetes context remains \"prod-east-1\".",
+        "predicted": "{\n  \"conflict_value_mentioned\": true,\n  \"conflict_value\": \"prod-west-2\",\n  \"source\": \"a draft migration document for the new billing service rollout\",\n  \"source_class\": \"third_party\",\n  \"status\": \"The alternative was ignored; the user preferred to remain on prod-east-1.\",\n  \"status_class\": \"not_accepted\",\n  \"applies_to_target\": true,\n  \"current_value\": \"prod-east-1\",\n  \"reason\": \"The draft migration document mentioned prod-west-2, but the user explicitly preferred to stick with prod-east-1 for general infrastructure checks.\"\n}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"prod-east-1\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"prod-east-1\",\"previous_value\":null,\"reason\":\"The user prefers to remain on prod-east-1 and ignore the draft migration document mentioning prod-west-2.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"prod-west-2\" was mentioned, but conflicting information mentioned. The user's active kubernetes context remains \"prod-east-1\".",
+        "predicted": "{\n  \"source_description\": \"A draft migration document for the new billing service rollout\",\n  \"source_class\": \"third_party\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"prod-east-1\",\n  \"reason\": \"The draft document mentioned prod-west-2, but Calvin prefers to ignore it and continue using prod-east-1 for general infrastructure.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      }
+    ],
+    "G40-CON-09": [
+      {
+        "probe_type": "current_value",
+        "gold": "v2.4.3 patch",
+        "predicted": "{\"answer\":\"v2.4.3 patch\",\"reason\":\"The conversation states that the current engineering release train target is the v2.4.3 patch; Dave's v2.5.0 slide was incorrect.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"v2.5.0 minor\" was mentioned, but conflicting information mentioned. The user's release train target remains \"v2.4.3 patch\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"v2.5.0 minor\",\"source\":\"Dave from marketing, in a slide deck\",\"source_class\":\"third_party\",\"status\":\"Incorrect and not accepted; the user will correct Dave's slide\",\"status_class\":\"not_accepted\",\"applies_to_target\":true,\"current_value\":\"v2.4.3 patch\",\"reason\":\"The engineering release train target is v2.4.3 patch; Dave incorrectly listed v2.5.0 minor in a marketing slide deck.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"v2.4.3 patch\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"v2.4.3 patch\",\"previous_value\":null,\"reason\":\"The release train remains targeted at v2.4.3; Dave's v2.5.0 listing was an incorrect marketing slide and will be corrected.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"v2.5.0 minor\" was mentioned, but conflicting information mentioned. The user's release train target remains \"v2.4.3 patch\".",
+        "predicted": "{\n  \"source_description\": \"Dave from marketing\",\n  \"source_class\": \"third_party\",\n  \"action\": \"incorrectly listed\",\n  \"accepted\": false,\n  \"current_value\": \"v2.4.3 patch\",\n  \"reason\": \"Dave listed v2.5.0 minor in a slide deck, but the actual engineering release train target is v2.4.3 patch, and the slide will be corrected.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      }
+    ],
+    "G40-CON-10": [
+      {
+        "probe_type": "current_value",
+        "gold": "YouTube Premium",
+        "predicted": "{\"answer\":\"YouTube Premium\",\"reason\":\"The user prefers YouTube Premium for its ad-free videos and music and uses it to download content; they do not pay for Netflix or Hulu.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"Spotify Premium\" was mentioned, but conflicting information mentioned. The user's primary streaming service remains \"YouTube Premium\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"Spotify Premium\",\"source\":\"tech blog recommendations\",\"source_class\":\"third_party\",\"status\":\"The user rejected switching because YouTube Premium includes ad-free videos and music, and moving saved songs would be a hassle.\",\"status_class\":\"not_accepted\",\"applies_to_target\":true,\"current_value\":\"YouTube Premium\",\"reason\":\"Spotify Premium was recommended by tech blogs as an alternative, but the user prefers and continues to use YouTube Premium.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"YouTube Premium\"",
+        "predicted": "[ERROR: AuthenticationError]",
+        "match": "execution_error",
+        "reason": "execution error: [ERROR: AuthenticationError]"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"Spotify Premium\" was mentioned, but conflicting information mentioned. The user's primary streaming service remains \"YouTube Premium\".",
+        "predicted": "{\"source_description\":\"Tech blogs\",\"source_class\":\"third_party\",\"action\":\"suggested\",\"accepted\":false,\"current_value\":\"Spotify Premium as an alternative primary streaming service\",\"reason\":\"Tech blogs recommended Spotify Premium, but Kylie prefers YouTube Premium for ad-free videos and music and does not want to move her saved songs.\"}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      }
+    ],
+    "G40-REC-07": [
+      {
+        "probe_type": "current_value",
+        "gold": "Planet Money",
+        "predicted": "[ERROR: AuthenticationError]",
+        "match": "execution_error",
+        "reason": "execution error: [ERROR: AuthenticationError]"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"Radiolab\" was mentioned, but weak/unconfirmed evidence suggested. The user's favorite podcast remains \"Planet Money\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"Radiolab\",\"source\":\"The assistant introduced it as an alternative favorite based on a previously mentioned interesting episode.\",\"source_class\":\"assistant\",\"status\":\"It was not accepted as the user's favorite podcast.\",\"status_class\":\"not_accepted\",\"applies_to_target\":true,\"current_value\":\"Planet Money\",\"reason\":\"The user may have mentioned an interesting Radiolab episode, but their actual favorite podcast is Planet Money.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=incorrect, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"Planet Money\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Planet Money\",\"previous_value\":null,\"reason\":\"The user identifies Planet Money as their favorite podcast; Radiolab was only mentioned as having an interesting episode, not as a new favorite.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"Radiolab\" was mentioned, but weak/unconfirmed evidence suggested. The user's favorite podcast remains \"Planet Money\".",
+        "predicted": "{\"source_description\":\"The assistant introduced Radiolab as an alternative favorite podcast.\",\"source_class\":\"assistant\",\"action\":\"mentioned\",\"accepted\":false,\"current_value\":\"Planet Money is the user's favorite podcast; Radiolab may have been mentioned only for an interesting episode and is not their favorite.\",\"reason\":\"The conversation memory explicitly identifies Planet Money as the user's favorite and says Radiolab is not their top choice.\"}",
+        "match": "partial",
+        "reason": "source_class mismatch (pred=assistant vs gold=third_party) but accepted correct"
+      }
+    ],
+    "G40-REC-08": [
+      {
+        "probe_type": "current_value",
+        "gold": "sandbox",
+        "predicted": "[ERROR: AuthenticationError]",
+        "match": "execution_error",
+        "reason": "execution error: [ERROR: AuthenticationError]"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"dev-shared\" was mentioned, but weak/unconfirmed evidence suggested. The user's active kubernetes context remains \"sandbox\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"dev-shared\",\"source\":\"an unconfirmed rumor\",\"source_class\":\"third_party\",\"status\":\"Sam dismissed it because it was unconfirmed\",\"status_class\":\"not_accepted\",\"applies_to_target\":true,\"current_value\":\"sandbox\",\"reason\":\"An unconfirmed rumor suggested the active Kubernetes context was dev-shared, but Sam rejected it and prefers sandbox.\"}",
+        "match": "correct",
+        "reason": "value=correct, source=correct, status=correct, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"sandbox\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"sandbox\",\"previous_value\":null,\"reason\":\"Sam prefers the sandbox Kubernetes context and dismissed the unconfirmed rumor about switching to dev-shared; later context updates applied to CI pipelines, not Sam's active context.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"dev-shared\" was mentioned, but weak/unconfirmed evidence suggested. The user's active kubernetes context remains \"sandbox\".",
+        "predicted": "{\n  \"source_description\": \"An unconfirmed third party or rumor\",\n  \"source_class\": \"third_party\",\n  \"action\": \"mentioned\",\n  \"accepted\": false,\n  \"current_value\": \"The active Kubernetes context remains `sandbox`; the suggested `dev-shared` context does not apply.\",\n  \"reason\": \"Sam dismissed the unconfirmed claim about switching to `dev-shared` and prefers deployments to use the confirmed `sandbox` context.\"\n}",
+        "match": "correct",
+        "reason": "source_class match: pred=third_party gold=third_party"
+      }
+    ],
+    "G40-REC-09": [
+      {
+        "probe_type": "current_value",
+        "gold": "off-call",
+        "predicted": "{\"answer\":\"Off-call\",\"reason\":\"The user is off-call for the upcoming sprint rotation and prefers not to receive work-related alerts while off-call.\"}",
+        "match": "correct",
+        "reason": "value present in answer"
+      },
+      {
+        "probe_type": "conflict_value",
+        "gold": "Yes \u2014 \"escalation manager\" was mentioned, but conflicting information mentioned. The user's oncall rotation role remains \"off-call\".",
+        "predicted": "{\"conflict_value_mentioned\":true,\"conflict_value\":\"secondary on-call\",\"source\":\"the outdated team wiki schedule\",\"source_class\":\"stale_tool\",\"status\":\"stale\",\"status_class\":\"stale\",\"applies_to_target\":false,\"current_value\":\"off-call for the upcoming sprint rotation\",\"reason\":\"The user confirmed they are off-call; the team wiki was noted as potentially containing outdated schedule information that listed an alternative rotation role.\"}",
+        "match": "partial",
+        "reason": "value=correct, source=incorrect, status=incorrect, applicability=correct"
+      },
+      {
+        "probe_type": "change_detection",
+        "gold": "No \u2014 it remains \"off-call\"",
+        "predicted": "{\"changed\":false,\"current_value\":\"Off-call for the upcoming sprint rotation\",\"previous_value\":null,\"reason\":\"The conversation states that the user is off-call for the upcoming sprint rotation, with no earlier role specified.\"}",
+        "match": "correct",
+        "reason": "structured: both say unchanged"
+      },
+      {
+        "probe_type": "source",
+        "gold": "Yes \u2014 \"escalation manager\" was mentioned, but conflicting information mentioned. The user's oncall rotation role remains \"off-call\".",
+        "predicted": "{\"source_description\":\"The assistant introduced the alternative secondary-oncall role.\",\"source_class\":\"assistant\",\"action\":\"suggested\",\"accepted\":false,\"current_value\":\"Nate is off-call for the upcoming sprint rotation, so the alternative oncall role does not apply.\",\"reason\":\"The user explicitly said they are off-call, and the team wiki may contain outdated schedule information.\"}",
+        "match": "partial",
+        "reason": "source_class mismatch (pred=assistant vs gold=third_party) but accepted correct"
+      }
+    ]
+  }
+}

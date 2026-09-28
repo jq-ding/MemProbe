@@ -1,0 +1,49 @@
+CASE 3: PILOT-02C probe2 match=partial
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: April 15 was mentioned as a colleague's deadline for a different project; the user did not confirm it applied to their own paper.
+
+PREDICTED: {
+  "source_description": "User and a stale tracker",
+  "source_class": "stale_tool",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "March 28",
+  "reason": "The user identified April 15 as a stale date on a tracker and confirmed the actual deadline is March 28."
+}
+
+REASON: source_class mismatch (pred=stale_tool vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (1611 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- User has a paper submission deadline of March 28.
+- The vendor compliance packet is owned jointly by Procurement.
+- User states that the abstract deadline for the Applied Systems Workshop is April 15.
+- The internal review milestone is on April 15.
+- The vendor compliance packet is owned jointly by Legal.
+- User noticed a stale tracker still lists April 15 for the paper submission deadline.
+- The vendor compliance packet has a due date of April 10 on the tracker.
+- QA asked to receive final screenshots by April 10.
+- Assistant will treat the paper submission deadline as March 28.
+- The vendor security questionnaire is on track for April 10, pending legal review.
+- Assistant suggests formatting references during the final stretch before March 28.
+- User is putting together the draft for the workshop paper.
+- Assistant suggests tightening the abstract during the final stretch before March 28.
+- Assistant suggests polishing figures/tables during the final stretch before March 28.
+- User is cleaning up the references section.
+
+Question: Who mentioned April 15 and did the user confirm it applied to their own paper?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

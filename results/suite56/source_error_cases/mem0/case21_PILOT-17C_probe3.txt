@@ -1,0 +1,54 @@
+CASE 21: PILOT-17C probe3 match=incorrect
+paradigm: consolidation  fact_type: submission_deadline_v2
+
+GOLD: Monday noon was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "Monday, May 18, 2026, at noon",
+  "reason": "The user noticed and stated that the workshop proposal deadline for a conference is Monday, May 18, 2026, at noon."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (4103 chars) =====
+Memory facts extracted from conversation history:
+
+- User needs to block off Friday afternoon, July 12, 2026, in their calendar to focus on wrapping up the quarterly report.
+- The submission deadline for the user's quarterly report is Friday, July 12, 2026, at 5 PM.
+- User is sending their draft quarterly report to Priya for a quick review and would like her comments before the submission deadline of Friday, July 12, 2026, at 5 PM.
+- User's priorities for the week include finishing dashboard bug fixes, completing two code reviews, and blocking time for the weekly metrics write-up, which has a submission deadline of Friday, July 12, 2026, at 5 PM.
+- User was recommended a weekly plan to prioritize tasks: wrap highest-impact dashboard bug fixes by Tuesday, complete two code reviews by Wednesday, draft the metrics write-up on Wednesday afternoon, revise and finalize it on Thursday, and keep Friday morning for final checks and submission buffer.
+- User is blocking time on their calendar for the quarterly report and wants a reminder set for Thursday afternoon, July 11, 2026, to do the final edits before the report submission deadline of Friday, July 12, 2026, at 5 PM.
+- User noted that the conference workshop proposal deadline is Monday, July 15, 2026, at noon.
+- User was informed that conference workshop proposals usually require an abstract, a short speaker bio, a draft title, intended audience, AV/scheduling requirements, and sometimes 2-3 learning outcomes and a rough outline.
+- User was provided a checklist for the conference submission including a draft title, 200–500 word abstract, speaker bio, target audience, learning outcomes, outline or agenda, AV/setup needs, contact info, and a final proofread before the Monday noon cutoff.
+- The analytics team's draft quarterly summary is due by Thursday, July 11, 2026, at 3 PM, according to their circulated schedule.
+- A Thursday, July 11, 2026, 3 PM draft handoff for the analytics team's quarterly summary should allow sufficient time for leadership feedback before finalization.
+- User suggested that the analytics team keep their supporting charts ready when they send over their quarterly summary draft.
+- The assistant advised that including charts and a short summary upfront in the analytics team's quarterly summary draft can lead to faster reviewer responses and smoother turnaround.
+- The compliance appendix entry is due by Thursday, July 11, 2026, at 3 PM, and is a separate supporting document from the client summary.
+- Legal requested to receive the compliance appendix by Thursday, July 11, 2026, at 3 PM, to review it and return comments before the broader packet is finalized.
+- User was provided a draft status update for their report, stating: “Current progress is on track, with key milestones completed and final review scheduled ahead of submission. Remaining work is limited to incorporating feedback and finalizing the summary.”
+- User is coordinating with Priya on an analytics package, and Priya's report for this package is due by Monday, July 15, 2026, at noon.
+- User plans to send their section of the analytics package to Priya early for her review, aiming to provide a buffer before Priya's Monday noon deadline.
+- User was provided a checklist for sending their section to Priya, which includes attaching the latest draft and chart files, summarizing key updates, listing open questions or assumptions, flagging anything Priya should verify, and noting where supporting data is stored.
+- User will send their section of the analytics package to Priya on the afternoon of July 12, 2026.
+
+Question: Who or what mentioned Monday noon, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

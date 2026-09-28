@@ -1,0 +1,54 @@
+CASE 1: PILOT-01B probe3 match=partial
+paradigm: interference  fact_type: current_gym
+
+GOLD: CrossFit Central was mentioned by a third party (Jamie) as their gym; the user never confirmed switching to it and remains at FitLife.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": false,
+  "current_value": "The user tried a guest pass at CrossFit Central but decided to continue with FitLife.",
+  "reason": "The user mentioned trying a guest pass at CrossFit Central on May 13, 2026, but explicitly decided to stay with FitLife instead of switching."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3537 chars) =====
+Memory facts extracted from conversation history:
+
+- User attends a class at FitLife after work on Tuesdays and is looking for fast, filling post-workout meal ideas to avoid eating chips when they get home
+- User was recommended several fast and filling post-workout meal ideas: rotisserie chicken with microwave rice and frozen veggies, Greek yogurt with fruit and granola, eggs on toast with avocado, a turkey wrap, or a smoothie with protein powder, banana, peanut butter, and milk
+- User usually goes to FitLife for workouts in the morning before running errands like going to the grocery store and pharmacy.
+- User plans to go to the grocery store which opens at 8 AM and the pharmacy which opens at 9 AM on the morning of July 13, 2026.
+- User was recommended an efficient morning plan for July 13, 2026: FitLife workout first, then the grocery store at 8 AM, and finally the pharmacy after 9 AM.
+- User just completed a group class at FitLife and is experiencing tight legs, seeking a quick post-workout stretching routine to prevent soreness.
+- User was recommended an 8-10 minute post-workout cooldown routine including hamstring stretch, quad stretch, figure-four glute stretch, hip flexor lunge stretch, calf stretch against a wall, child's pose, cat-cow, and deep squat hold.
+- User tried a guest pass at CrossFit Central on July 11, 2026, but decided to stick with FitLife for their workouts.
+- User requested a reminder to pack their water bottle before their workout on July 13, 2026.
+- User's cousin recently moved downtown and is looking for a non-intimidating gym that is affordable and offers a few classes for motivation.
+- User's cousin was recommended Planet Fitness as a beginner-friendly, affordable gym with many cardio machines, and YMCA Downtown for more variety, classes, and a community vibe.
+- User's cousin was advised to consider YMCA Downtown if the budget allows, as classes can help with motivation, noting that Planet Fitness is often cheaper but has more limited class options.
+- User's cousin was advised to ask for a tour before signing up for a gym if they are nervous about starting out.
+- User's cousin was advised to check for crowding during peak times, cleanliness and maintenance of equipment, approachability of staff, cancellation terms, guest passes, and class inclusion/cost during a gym tour.
+- User read a review of Iron Works Gym on the morning of July 12, 2026, which indicated split opinions on the gym.
+- Reviews for Iron Works Gym state that the equipment is awesome, but it gets too crowded after work.
+- Reviews for Iron Works Gym mention friendly staff, but the locker rooms are inconsistent in cleanliness.
+- Iron Works Gym is considered motivating for people who are serious about lifting.
+- User concluded that Iron Works Gym is great for dedicated lifters but not ideal for someone seeking a quick, low-stress workout.
+- User's friend recently joined CrossFit Central and finds the workouts intense, often experiencing soreness, particularly after leg day.
+
+Question: Who mentioned CrossFit Central, and did the user confirm switching to it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

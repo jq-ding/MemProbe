@@ -1,0 +1,36 @@
+# MemProbe release — pinned to the environment the paper's numbers were produced in
+# (conda env "agent_mem", Python 3.10.19, Ubuntu 22.04, glibc 2.35). Full `pip freeze`
+# of that environment: env/pip_freeze_full.txt. See IMPLEMENTATION_DETAILS.md §0.
+#
+# NOTE: graphiti-core was 0.29.0 during the runs reported in the paper; the environment
+# was later upgraded to 0.29.2 (see env/pip_freeze_full.txt). The two Kuzu patches in
+# IMPLEMENTATION_DETAILS.md §2.3 were written against 0.29.0.
+
+# --- reader / generation / shared ---
+openai==2.37.0
+google-genai==2.2.0
+protobuf==6.33.6          
+pydantic==2.12.5
+litellm==1.85.0
+numpy==2.2.6
+scipy==1.15.3
+rank-bm25==0.2.2
+nltk==3.9.1
+
+# --- memory systems ---
+mem0ai==2.0.2
+chromadb==1.5.9
+langmem==0.0.30
+langchain-google-genai==4.2.2
+langgraph==1.2.0
+graphiti-core[google-genai,kuzu]==0.29.0
+kuzu==0.11.3
+cognee==1.1.0
+sentence-transformers==5.3.0
+faiss-cpu==1.13.2
+transformers==5.2.0
+torch==2.5.1               
+
+# --- not on PyPI (git clone; see IMPLEMENTATION_DETAILS.md §2.5 / §2.6) ---
+# A-MEM:    git clone https://github.com/WujiangXu/A-mem      -> add to sys.path (run_amem_gemini_baseline.py)
+# MemoryOS: git clone https://github.com/BAI-LAB/MemoryOS      -> add MemoryOS/memoryos-pypi to sys.path

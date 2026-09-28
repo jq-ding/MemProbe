@@ -1,0 +1,176 @@
+CASE 3: PILOT-02C probe2 match=partial
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: April 15 was mentioned as a colleague's deadline for a different project; the user did not confirm it applied to their own paper.
+
+PREDICTED: {
+  "source_description": "The user mentioned a rumor and a colleague's project deadline of April 15.",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "March 28",
+  "reason": "The user explicitly clarified that April 15 applied to a colleague's project and confirmed their own paper's deadline remains March 28."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (12389 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: I heard a rumor the paper... [paper, submission, deadline]
+__node_content_start__
+User: I heard a rumor the paper submission deadline might move to April 15. I’m sticking with March 28. Also, can you help me outline the review milestones for next week?
+Assistant: Got it — I’ll treat the paper submission deadline as March 28. For next week, I’d suggest milestones for draft review, author feedback consolidation, final edits, and submission-readiness check.
+__node_content_end__
+
+Node: april 15
+__node_content_start__
+The paper submission deadline for a colleague's project.
+__node_content_end__
+
+Node: User: Hey, quick clarification: a colleague on... [paper, deadline, submission]
+__node_content_start__
+User: Hey, quick clarification: a colleague on a different project said their paper deadline got pushed to April 15, and for a second I wondered if ours had changed too. But I checked our submission notes, and our paper submission deadline is still March 28.
+Assistant: Got it — thanks for confirming. April 15 applies to their project, not ours. For our work, the paper submission deadline remains March 28.
+User: Right, exactly. Please keep March 28 as the deadline for our paper.
+Assistant: Will do. I’ll treat March 28 as the correct submission deadline for our paper.
+__node_content_end__
+
+Node: User: I’m comparing venues for our paper.... [i, user, assistant]
+__node_content_start__
+User: I’m comparing venues for our paper. I just saw a call-for-papers for the Applied Systems Workshop.
+Assistant: Got it. If you want, I can help you compare scope, formatting requirements, and timelines across venues.
+User: The workshop’s CFP says abstracts are due April 15, which is later than I expected. Can you pull out the key submission requirements?
+Assistant: Sure — for the Applied Systems Workshop, I’d extract the abstract deadline of April 15, page limits, template style, anonymization rules, and whether they require supplementary material. If you paste the CFP text, I can turn it into a concise checklist.
+User: Please do. I mainly want a quick checklist I can share with the team.
+Assistant: Send it over and I’ll format it into a short team-ready summary with deadlines, required sections, and any submission constraints.
+__node_content_end__
+
+Node: User: I’m mapping out the research timeline.... [internal, review, april]
+__node_content_start__
+User: I’m mapping out the research timeline. Can you help me slot in the internal review milestone for April 15 and work backward for prep tasks?
+Assistant: Absolutely. I’d treat April 15 as the internal review checkpoint, then add draft consolidation, figure cleanup, and reviewer comments in the two weeks leading up to it. I can sketch a week-by-week plan if you want.
+User: Yes, keep it simple — just the main steps my team should hit before that review.
+Assistant: Sure — I’d suggest: first complete analysis and results polishing, then assemble the full draft, then leave a few days for internal comments and revisions before the April 15 review. That should give the team a clear sequence without overcomplicating it.
+User: Great, put that into a short checklist I can paste into our project tracker.
+Assistant: Here’s a simple version:
+- Finalize analysis and figures
+- Assemble complete draft for team circulation
+- Collect internal reviewer feedback
+- Revise based on comments
+- Internal review milestone: April 15
+__node_content_end__
+
+Node: User: I’m helping Priya map out her... [draft, april, week]
+__node_content_start__
+User: I’m helping Priya map out her conference plan. Can you draft a quick timeline for the Data Systems Summit? Their submission deadline is April 15.
+Assistant: Sure — here’s a simple draft timeline for Priya:
+- This week: finalize abstract and coauthor list
+- Next week: complete first full draft
+- Week after: circulate for internal feedback
+- 3–4 days before April 15: revise and format submission materials
+- April 15: submit to the Data Systems Summit portal
+User: Good. Can you also add a reminder for me to check in with her a week before that deadline?
+Assistant: Absolutely — I’d set a reminder for April 8 to check in with Priya on draft status, reviewer feedback, and any submission issues.
+__node_content_end__
+
+Node: paper submission deadline
+__node_content_start__
+The final date for submitting papers.
+__node_content_end__
+
+Node: april 8
+__node_content_start__
+The date set for a reminder to check on Priya's submission progress.
+__node_content_end__
+
+Node: march 28
+__node_content_start__
+The confirmed paper submission deadline for 'our project'.
+__node_content_end__
+
+Node: User: I’m looking at the release tracker... [compliance, packet, user]
+__node_content_start__
+User: I’m looking at the release tracker and there are two submission-related rows next to each other. Can you tell me which one is for the vendor compliance packet? I want to make sure I’m reading the right deadline.
+Assistant: Yes — the vendor compliance packet is the row labeled “Security + procurement docs.” That one is separate from the research deliverable. Its due date on the tracker is April 10, and it’s currently marked as waiting on legal’s final sign-off.
+User: Got it. So the April 10 item is the compliance packet, not the internal write-up?
+Assistant: Correct. The internal write-up is a different entry. The April 10 deadline belongs to the vendor compliance packet, and the blocker listed there is still legal review.
+User: Perfect, that clears it up. Please remind me what team owns that item.
+Assistant: It’s owned jointly by Procurement and Legal, with Ops listed as a supporting team for document collection.
+__node_content_end__
+
+Node: april 10
+__node_content_start__
+The requested deadline for the final screenshots.
+__node_content_end__
+
+Node: User: I'm trying to line up the... [dashboard, questionnaire, legal]
+__node_content_start__
+User: I'm trying to line up the schedule for two internal projects. The analytics dashboard refresh is aiming for a handoff on March 25, while the vendor security questionnaire is due back by April 10. Which one should we treat as the tighter deadline?
+Assistant: March 25 is the tighter deadline, since it comes first. If both need support from the same people, I'd prioritize the analytics dashboard handoff and keep the vendor questionnaire work staged behind it where possible.
+User: That makes sense. The dashboard work still needs design sign-off, but the questionnaire is mostly waiting on legal. Would you sequence them differently based on that?
+Assistant: Yes — I'd still anchor the plan around the dashboard date, but for different reasons. Since design sign-off can introduce last-minute changes, it has more schedule risk. For the questionnaire, legal is the gating factor, so the main action is to confirm their review window early and make sure nothing sits idle. In practice: push the dashboard toward sign-off now, and send legal a reminder so the April 10 item stays on track.
+User: Got it. Can you give me a one-line summary I can drop into the project channel?
+Assistant: We should prioritize the analytics dashboard handoff first because its March 25 milestone arrives sooner and carries more execution risk, while the vendor questionnaire remains on track for April 10 pending legal review.
+__node_content_end__
+
+Node: internal review
+__node_content_start__
+A key checkpoint in the project timeline where the team conducts an official internal review of the project's progress or deliverable.
+__node_content_end__
+
+Node: User: I'm lining up the last pass... [march, 25, pass]
+__node_content_start__
+User: I'm lining up the last pass on our draft and want to message my coauthor today. If I ask whether they can review by March 25, does that sound reasonable? I want a little cushion since the paper submission deadline is March 28.
+Assistant: Yes, that sounds reasonable and well-paced. Asking for a review by March 25 gives you a sensible buffer before March 28 in case they have comments, turnaround is slower than expected, or you need a final formatting pass. You could phrase it like: “Could you take a look at the draft and send any feedback by March 25? I’d like to leave a couple of days to incorporate revisions before submission.”
+__node_content_end__
+
+Node: march 25
+__node_content_start__
+The scheduled date for the API migration checklist.
+__node_content_end__
+
+Node: submission-readiness check
+__node_content_start__
+A suggested milestone for checking submission readiness.
+__node_content_end__
+
+Node: User: I noticed a stale tracker still... [march, 28, paper]
+__node_content_start__
+User: I noticed a stale tracker still lists April 15 for the paper submission deadline. I'm sticking with March 28, and can you also help me draft a quick reminder for the team?
+Assistant: Got it — March 28 stands. Here’s a draft: “Reminder: the paper submission deadline is March 28. Please make sure final revisions and approvals are completed before then.”
+__node_content_end__
+
+
+Connections:
+User: I heard a rumor the paper... [paper, submission, deadline] --[relationship_name: contains; entity_name: april 15; entity_description: The specific date April 15, mentioned as a rumored deadline.]--> april 15
+User: Hey, quick clarification: a colleague on... [paper, deadline, submission] --[relationship_name: contains; entity_name: april 15; entity_description: The paper submission deadline for a colleague's project.]--> april 15
+User: I’m comparing venues for our paper.... [i, user, assistant] --[relationship_name: contains; entity_name: april 15; entity_description: A specific date, without a year provided.]--> april 15
+User: I’m mapping out the research timeline.... [internal, review, april] --[relationship_name: contains; entity_name: april 15; entity_description: The specified date for the internal review milestone. The year is not explicitly mentioned in the provided text.]--> april 15
+User: I’m helping Priya map out her... [draft, april, week] --[relationship_name: contains; entity_name: april 15; entity_description: The submission deadline date for the Data Systems Summit.]--> april 15
+paper submission deadline --[rumored_date_as]--> april 15
+User: I heard a rumor the paper... [paper, submission, deadline] --[relationship_name: contains; entity_name: paper submission deadline; entity_description: The confirmed deadline for submitting a paper.]--> paper submission deadline
+april 8 --[is_one_week_before]--> april 15
+User: Hey, quick clarification: a colleague on... [paper, deadline, submission] --[relationship_name: contains; entity_name: march 28; entity_description: The confirmed paper submission deadline for 'our project'.]--> march 28
+User: I’m looking at the release tracker... [compliance, packet, user] --[relationship_name: contains; entity_name: april 10; entity_description: The due date for the Vendor Compliance Packet.]--> april 10
+User: I'm trying to line up the... [dashboard, questionnaire, legal] --[relationship_name: contains; entity_name: april 10; entity_description: The date of April 10, specified as a deadline for the vendor security questionnaire.]--> april 10
+internal review --[occurs_on]--> april 15
+User: I'm lining up the last pass... [march, 25, pass] --[relationship_name: contains; entity_name: march 25; entity_description: Proposed deadline for coauthor to review the draft.]--> march 25
+User: I heard a rumor the paper... [paper, submission, deadline] --[relationship_name: contains; entity_name: submission-readiness check; entity_description: A suggested milestone for checking submission readiness.]--> submission-readiness check
+User: I noticed a stale tracker still... [march, 28, paper] --[relationship_name: contains; entity_name: paper submission deadline; entity_description: The final date for submitting papers.]--> paper submission deadline
+
+Question: Who mentioned April 15 and did the user confirm it applied to their own paper?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,143 @@
+CASE 2: PILOT-02A probe2 match=partial
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: user explicitly stated the extension from conference organizers
+
+PREDICTED: {
+  "source_description": "Leadership",
+  "source_class": "third_party",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "April 15",
+  "reason": "The user mentioned that 'Leadership said the deadline extended to April 15 after the design team asked for more time' regarding the internal review milestone."
+}
+
+REASON: source_class mismatch (pred=third_party vs gold=user) but accepted correct
+
+===== RETRIEVED MEMORY (9334 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: The conference organizers extended the paper... [submission, deadline, —]
+__node_content_start__
+User: The conference organizers extended the paper submission deadline — it’s now April 15 instead of March 28. Can you adjust the writing schedule to match?
+Assistant: Got it — I’ll update the submission deadline to April 15 and rework the writing plan around that. I’d suggest using the extra time to spread out revisions a bit: keep the full draft target for next week, reserve the following week for co-author feedback, and use the final stretch for polishing figures, references, and the submission checklist. If you want, I can lay out a revised week-by-week schedule.
+__node_content_end__
+
+Node: april 15
+__node_content_start__
+The new paper submission deadline.
+__node_content_end__
+
+Node: paper submission deadline
+__node_content_start__
+The deadline for submitting a paper to a conference.
+__node_content_end__
+
+Node: final stretch
+__node_content_start__
+A temporal reference indicating the period leading up to the submission deadline.
+__node_content_end__
+
+Node: internal review milestone
+__node_content_start__
+A key checkpoint in a project's workflow for internal review.
+__node_content_end__
+
+Node: User: I heard a rumor the deadline... [i, deadline, submission]
+__node_content_start__
+User: I heard a rumor the deadline extended to April 15, but I'm sticking with paper submission deadline is March 28. Can you help me outline the last review steps?
+Assistant: Absolutely — I’d suggest a final pass on figures and citations, a formatting check against the submission guidelines, and one last proofread for clarity and typos. If you want, I can turn that into a quick checklist.
+__node_content_end__
+
+Node: User: I’m updating the project tracker. Can... [internal, review, user]
+__node_content_start__
+User: I’m updating the project tracker. Can you help me word the note about the internal review milestone? Leadership said the deadline extended to April 15 after the design team asked for more time.
+Assistant: Sure — you could write: “The internal review milestone deadline extended to April 15 to accommodate additional design feedback and cross-team revisions.”
+User: Good. Also add a short line saying that doesn’t affect the rest of the publication workflow, just the internal review checkpoint.
+Assistant: You can add: “This change applies only to the internal review checkpoint and does not alter other publication workflow dates.”
+User: Great, that works.
+Assistant: Glad to help.
+__node_content_end__
+
+Node: User: I noticed a stale tracker saying... [march, 28, review]
+__node_content_start__
+User: I noticed a stale tracker saying the deadline extended to April 15. I’m sticking with March 28. Can you help me outline the last review steps for the paper?
+Assistant: Got it — March 28 it is. For the final review, I’d suggest: confirm the abstract and conclusion align, do a citation pass, verify figures and captions, run a formatting check, and do one last proofread for clarity and typos.
+User: Great, also give me a quick checklist I can share with the team.
+Assistant: Sure — team checklist: finalize content edits, verify references, confirm author details, check formatting against submission guidelines, review figures/tables, and submit before March 28.
+__node_content_end__
+
+Node: april 15
+__node_content_start__
+An extended deadline for paper submission that was mentioned but not chosen.
+__node_content_end__
+
+Node: march 28
+__node_content_start__
+The old paper submission deadline.
+__node_content_end__
+
+Node: User: I'm trying to block out focused... [week, writing, block]
+__node_content_start__
+User: I'm trying to block out focused writing time for the methods and results sections next week, but my calendar is already packed with sprint planning and two code reviews. Can you help me sketch a schedule that still gets the draft done before the paper submission deadline is March 28?
+Assistant: Absolutely. Since the paper submission deadline is March 28, I'd suggest protecting 3–4 writing blocks next week and treating them like fixed meetings. For example: two 90-minute sessions early in the week for methods, one 2-hour block midweek for results, and a final 60-minute pass later in the week to clean up figures and transitions. If your sprint planning is immovable, we can bias the writing sessions toward mornings or quieter afternoons. If you want, I can turn that into a day-by-day plan around your existing meetings.
+__node_content_end__
+
+Node: User: I was skimming another call-for-papers this... [i, i’ll, user]
+__node_content_start__
+User: I was skimming another call-for-papers this morning, and that venue says the deadline extended to April 15. Can you help me compare it with the one we’re already targeting?
+Assistant: Sure — I can help compare scope, formatting requirements, review timeline, and likely fit for our current draft. If you send the link or paste the CFP, I’ll summarize the main differences.
+User: Mostly I want to know whether it’s worth keeping as a backup option in case this draft doesn’t fit the original venue.
+Assistant: That makes sense. As a backup, I’d look at topic alignment, page limits, required sections, and whether their audience overlaps with the work you already have. Send me the CFP and I’ll turn it into a quick side-by-side decision note.
+User: Great, I’ll forward it along with the abstract later today.
+Assistant: Perfect — once I have it, I’ll pull out the key dates and submission constraints so you can decide quickly.
+__node_content_end__
+
+Node: key dates
+__node_content_start__
+Important chronological details, such as submission deadlines, notification dates, etc.
+__node_content_end__
+
+Node: call for papers (backup option)
+__node_content_start__
+A document outlining the requirements and topics for a backup venue, with an extended submission deadline.
+__node_content_end__
+
+Node: design team
+__node_content_start__
+The team responsible for design work that requested more time.
+__node_content_end__
+
+
+Connections:
+User: The conference organizers extended the paper... [submission, deadline, —] --[relationship_name: contains; entity_name: april 15; entity_description: The new paper submission deadline.]--> april 15
+User: The conference organizers extended the paper... [submission, deadline, —] --[relationship_name: contains; entity_name: paper submission deadline; entity_description: The deadline for submitting a paper to a conference.]--> paper submission deadline
+User: The conference organizers extended the paper... [submission, deadline, —] --[relationship_name: contains; entity_name: final stretch; entity_description: A temporal reference indicating the period leading up to the submission deadline.]--> final stretch
+internal review milestone --[deadline_extended_to]--> april 15
+User: I heard a rumor the deadline... [i, deadline, submission] --[relationship_name: contains; entity_name: paper submission deadline; entity_description: The cutoff date for submitting a paper.]--> paper submission deadline
+User: I’m updating the project tracker. Can... [internal, review, user] --[relationship_name: contains; entity_name: april 15; entity_description: The extended deadline for the internal review milestone.]--> april 15
+User: I noticed a stale tracker saying... [march, 28, review] --[relationship_name: contains; entity_name: april 15; entity_description: An extended deadline for paper submission that was mentioned but not chosen.]--> april 15
+User: I heard a rumor the deadline... [i, deadline, submission] --[relationship_name: contains; entity_name: april 15; entity_description: A rumored extended deadline for submission.]--> april 15
+User: The conference organizers extended the paper... [submission, deadline, —] --[relationship_name: contains; entity_name: march 28; entity_description: The old paper submission deadline.]--> march 28
+User: I'm trying to block out focused... [week, writing, block] --[relationship_name: contains; entity_name: paper submission deadline; entity_description: The final date by which the paper must be submitted.]--> paper submission deadline
+User: I was skimming another call-for-papers this... [i, i’ll, user] --[relationship_name: contains; entity_name: key dates; entity_description: Important chronological details, such as submission deadlines, notification dates, etc.]--> key dates
+call for papers (backup option) --[has_extended_deadline]--> april 15
+paper submission deadline --[has_rumored_extension_to]--> april 15
+paper submission deadline --[changed_to]--> april 15
+User: I’m updating the project tracker. Can... [internal, review, user] --[relationship_name: contains; entity_name: design team; entity_description: The team responsible for design work that requested more time.]--> design team
+
+Question: Who communicated the deadline change and how?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

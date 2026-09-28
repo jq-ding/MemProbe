@@ -1,0 +1,49 @@
+CASE 2: PILOT-02A probe2 match=incorrect
+paradigm: misinformation  fact_type: submission_deadline
+
+GOLD: user explicitly stated the extension from conference organizers
+
+PREDICTED: {
+  "source_description": "stale tracker",
+  "source_class": "stale_tool",
+  "action": "indicated",
+  "accepted": false,
+  "current_value": "March 28",
+  "reason": "The stale tracker indicated an April 15 deadline, but the user is sticking with March 28 as the actual deadline for the paper, treating the April 15 date as only affecting an internal review checkpoint."
+}
+
+REASON: source_class mismatch: pred=stale_tool vs gold=user
+
+===== RETRIEVED MEMORY (2025 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+- stale tracker indicated the deadline extended to April 15.
+- User is sticking with March 28 as the deadline for the paper.
+- User wants to adjust the writing schedule to match the new deadline.
+- Another call-for-papers has a deadline of April 15, which is known by the User.
+- The conference organizers extended the paper submission deadline.
+- User asked Assistant to add a short line saying that the deadline extension only affects the internal review checkpoint and not the rest of the publication workflow.
+- User is aware of the paper submission deadline.
+- Assistant acknowledges the paper submission deadline of March 28 for the workshop paper
+- Assistant provided wording for a note about the internal review milestone deadline extending to April 15 to accommodate additional design feedback and cross-team revisions.
+- The Slack message contains information about the Data Systems Symposium, including its extended deadline of April 15.
+- team checklist includes submitting before March 28.
+- [Your Name] wants to leave a buffer for revisions, formatting, and final checks before the paper submission deadline.
+- User wants help sketching a schedule that still gets the draft done before the paper submission deadline.
+- The API migration notes entry shows a submission date of April 10 on the release tracker.
+- Assistant provided an additional line stating that the change applies only to the internal review checkpoint and does not alter other publication workflow dates.
+
+Question: Who communicated the deadline change and how?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

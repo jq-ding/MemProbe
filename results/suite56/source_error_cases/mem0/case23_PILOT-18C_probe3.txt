@@ -1,0 +1,54 @@
+CASE 23: PILOT-18C probe3 match=partial
+paradigm: consolidation  fact_type: sleep_schedule
+
+GOLD: 10 PM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user mentioned a sleep study they read, and the assistant provided context on it.",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "11 PM",
+  "reason": "The user read a study suggesting a 10 PM bedtime and tried it for a few days, but ultimately decided to stick with their regular 11 PM bedtime."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (3472 chars) =====
+Memory facts extracted from conversation history:
+
+- User's regular bedtime is 11 PM and they usually wake up around 6:30 AM.
+- User wants to make their mornings feel less rushed and be able to get out the door without scrambling.
+- User was recommended to lay out clothes the night before, pack their bag and keys in one spot, and decide breakfast ahead of time to reduce morning stress.
+- User was recommended to start their morning with a tiny first step like drinking water and opening the blinds to begin moving without overthinking.
+- Assistant offered to help User sketch a realistic 20-minute morning routine.
+- User wants to set a nightly reminder alarm for 11 PM to help them start winding down and avoid scrolling before their regular bedtime.
+- User was recommended to label their 11 PM alarm as "Wind down now" and treat it as a cue to put their phone away, dim lights, and start their routine.
+- Assistant offered to help User create a short wind-down checklist.
+- User is considering passing on a comedy show with coworkers because it starts at 10:30 PM, which is too late given their regular 11 PM bedtime.
+- User was provided with a polite text message to decline a late-night comedy show invitation: "Thanks for inviting me — the show sounds fun, but that start time is a little too late for me, so I’m going to sit this one out. I’m definitely up for joining next time if there’s an earlier plan!"
+- User wants their nights to feel less chaotic and struggles to wind down effectively before their usual 11 PM bedtime, despite aiming to be asleep by then.
+- User was recommended several sleep hygiene tips for a predictable wind-down routine before their 11 PM bedtime, including setting a 'screens down' time around 10-10:15 PM, dimming lights, avoiding late caffeine, doing 2-3 consistent wind-down steps, keeping the bedroom cool and quiet, and doing a brain dump if their mind races.
+- Assistant offered to help User build a realistic 10 PM to 11 PM wind-down plan.
+- User read a sleep study suggesting 10 PM as an ideal time to fall asleep, which made them rethink their evenings and question the recommendation's basis.
+- User learned that the recommendation for a 10 PM ideal bedtime is based on research regarding light exposure, melatonin timing, and consistency, but it is a general guideline rather than a universal rule or mandate.
+- User tried going to bed at 10 PM for a few days but decided to stick with their regular 11 PM bedtime.
+- User has been experiencing an afternoon slump, feeling sluggish and unfocused around mid-day lately.
+- User was informed that common causes for afternoon crashes include heavy lunches, insufficient protein or fiber earlier in the day, dehydration, or excessive morning caffeine leading to a later dip.
+- User was recommended to combat afternoon sluggishness by taking a quick walk, drinking water, and eating a lighter lunch with protein.
+- User typically eats carb-heavy lunches because they are easy.
+
+Question: Who or what mentioned 10 PM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

@@ -1,0 +1,209 @@
+CASE 6: PILOT-13B probe3 match=partial
+paradigm: interference  fact_type: log_level
+
+GOLD: DEBUG was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user and assistant discussed enabling DEBUG for production and staging, and a teammate was mentioned as using it in staging.",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": false,
+  "current_value": "INFO",
+  "reason": "The user and assistant discussed flipping the production and staging log levels to DEBUG, but the user ultimately decided to keep them at INFO."
+}
+
+REASON: source_class mismatch (pred=user vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (13868 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: I was reading a blog post... [debug, user, i]
+__node_content_start__
+User: I was reading a blog post about when to use DEBUG vs INFO/WARN in services. Can you check whether our Docker Compose setup has any debug-related flags enabled for local tooling?
+Assistant: Sure — I’ll look for `DEBUG` env vars and common debug flags in the compose files.
+User: Got it. Is that `DEBUG` env var tied to the app service or just the frontend watcher?
+Assistant: I checked the service block names around that entry.
+__node_content_end__
+
+Node: debug env var
+__node_content_start__
+An environment variable related to debugging.
+__node_content_end__
+
+Node: User: Can you check the prod config... [user, prod, config]
+__node_content_start__
+User: Can you check the prod config and confirm whether we should flip the app log level to DEBUG while we trace the payment retry issue?
+Assistant: I checked the current deployment config.
+User: We considered it, but application log level is set to INFO in production, so leave it there and just pull the last failed job IDs.
+Assistant: Understood — keeping prod at `INFO`.
+__node_content_end__
+
+Node: debug
+__node_content_start__
+The DEBUG log level setting.
+__node_content_end__
+
+Node: User: I'm updating the incident runbook for... [i, user, runbook]
+__node_content_start__
+User: I'm updating the incident runbook for the payments service. Can you check whether it tells on-call to use DEBUG during live debugging, and paste the relevant section?
+Assistant: Sure — I pulled the runbook from the repo and searched the incident-response section.
+User: Got it. Is that the app itself or just supporting infrastructure? I don't want the note to be ambiguous.
+Assistant: It reads as supporting infrastructure, not the app. The wording specifically says "sidecar collector," which is separate from the service process. I also checked the deployment manifests to confirm what's named there.
+User: Perfect, that's enough for the runbook PR.
+Assistant: Sounds good. If you want, I can also suggest a clearer phrasing like: "Temporarily enable DEBUG on the telemetry sidecar only during incident investigation."
+__node_content_end__
+
+Node: debug
+__node_content_start__
+A logging level used for detailed diagnostic information.
+__node_content_end__
+
+Node: User: Can you check the current app... [user, current, config]
+__node_content_start__
+User: Can you check the current app logging config in the staging branch before I kick off the deploy?
+Assistant: Sure — pulling the branch config now.
+User: We discussed enabling DEBUG temporarily, but application log level is set to INFO is what we're keeping; also confirm the image tag on the current staging deployment.
+Assistant: Got it — keeping INFO. Checking the deployed image tag now.
+__node_content_end__
+
+Node: debug log level
+__node_content_start__
+A log level indicating detailed information useful for debugging.
+__node_content_end__
+
+Node: User: I’m checking the production service before... [production, staging, config]
+__node_content_start__
+User: I’m checking the production service before tonight’s deploy. Our app log level is still set to INFO, right? A teammate mentioned they run DEBUG on their staging server, but that’s their setup, not ours.
+Assistant: Yes — for your production service, the application log level is still INFO. Your teammate’s staging DEBUG setting is a separate environment and doesn’t affect your production config.
+
+If you want, I can verify the current deployed config and env vars.
+User: Yeah, verify it from the cluster and the config repo just to be safe.
+Assistant: I’ll check both the live deployment and the config source.
+User: Perfect, leave production as-is. I just wanted to make sure nobody confused staging with prod.
+Assistant: Confirmed — no change needed. Production stays at INFO, and the DEBUG setting is only present in staging.
+__node_content_end__
+
+Node: live debugging
+__node_content_start__
+The process of debugging a system in a production or live environment.
+__node_content_end__
+
+Node: info log level
+__node_content_start__
+A log level indicating informational messages highlighting the progress of the application at coarse-grained level.
+__node_content_end__
+
+Node: application logging configuration
+__node_content_start__
+The configuration settings for application logging.
+__node_content_end__
+
+Node: application log level
+__node_content_start__
+Configuration that controls the verbosity of application logs.
+__node_content_end__
+
+Node: User: I'm looking at the ops tracker... [user, what's, billing-worker]
+__node_content_start__
+User: I'm looking at the ops tracker and there are two rows under runtime settings. I know one is for the main app, but what's the current log verbosity on the billing-worker entry?
+Assistant: I’ll check the billing-worker config rather than the main application entry.
+User: Can you verify that's actually what's running in the cluster, not just what's in git?
+Assistant: Sure — I’ll check the live ConfigMap and the pod env for the billing-worker deployment.
+User: Got it. Was that changed recently, or has it been stable for a while?
+Assistant: I checked the recent history for that specific service config.
+__node_content_end__
+
+Node: log verbosity
+__node_content_start__
+A specific configuration setting that controls the level of detail in application logs.
+__node_content_end__
+
+Node: User: We’re trying to trim our logging... [logs, i, user]
+__node_content_start__
+User: We’re trying to trim our logging bill before the next deployment. The app is pretty chatty in normal operation, and with the current setup I’m worried INFO logs are what’s driving the storage curve more than errors or warnings. Can you sanity-check where that’s configured and suggest a safer way to cut volume without losing useful signals?
+Assistant: I’d start by confirming the runtime config and then estimate what we can drop safely. Let me check the repo and the deployment config for the logging settings.
+User: Yes, check the likely top contributors. Access logs might be the real culprit, but I want something concrete before I touch the Helm values.
+Assistant: I can approximate that by looking at field frequencies from recent centralized logs and comparing app vs access log volume.
+__node_content_end__
+
+Node: info logs
+__node_content_start__
+Informational log messages generated by the application, suspected to be a major contributor to storage.
+__node_content_end__
+
+Node: User: I’m triaging a customer report that... [info, around, logs]
+__node_content_start__
+User: I’m triaging a customer report that says “notifications randomly disappear.” Can you help me narrow it down from the app logs in prod? I already checked the service config earlier, and the application log level is set to INFO, so let’s start by filtering for INFO around the last hour on the notifications worker.
+Assistant: Yep — since prod is only emitting INFO and above, I’d start by pulling the notifications-worker logs for the last hour and filtering to INFO entries, then look for delivery, retry, and queue-consumer messages around the affected customer IDs.
+User: The ticket mentions customer_id 77214 and says it happened around 14:04 UTC. Can you trace that one through logs and the DB?
+Assistant: Absolutely — I’ll correlate the INFO log lines around 14:04 UTC for customer_id 77214, then check the notification record and delivery status in the database.
+__node_content_end__
+
+Node: User: My teammate says their staging box... [staging, user, than]
+__node_content_start__
+User: My teammate says their staging box is way noisier than mine. Can you help me check why their logs are so verbose?
+Assistant: Sure — sounds like their staging environment may be running with a different logger setting. If you want, I can compare the staging config they sent over against a typical deploy.
+User: Ah, that makes sense. I just wanted to be sure it was their staging setup and not something odd in the shared pipeline.
+Assistant: Yep, this points to their staging host specifically rather than the pipeline.
+__node_content_end__
+
+Node: logger setting
+__node_content_start__
+A configuration parameter that controls the verbosity of logs.
+__node_content_end__
+
+Node: application log level
+__node_content_start__
+The setting that determines the verbosity of application logs.
+__node_content_end__
+
+Node: User: I was reading an internal postmortem... [billing-worker, assistant, deployment]
+__node_content_start__
+User: I was reading an internal postmortem about the **billing-worker** service. The write-up said they reduced noise during a retry storm by tightening the logger threshold. Can you check what that service is using now?
+Assistant: Sure — I’ll inspect the repo config and the live deployment for **billing-worker**.
+Assistant: In the code and Helm values, **billing-worker** is set to **WARN**. I can also verify what’s currently running in the cluster if you want.
+User: Yeah, check the cluster too. The postmortem implied they changed it after the last deployment, and I’m curious whether the runtime matches the repo.
+Assistant: Verifying the deployment env for the live pod now.
+Assistant: Runtime matches the repo: the live **billing-worker** deployment is also using **WARN**. The recent logs line up with that threshold — warnings and errors are present, but lower-verbosity chatter isn’t appearing.
+User: That matches the postmortem pretty well. Did they note any downside?
+Assistant: The main tradeoff in that write-up is usually reduced forensic detail during incidents: with **billing-worker** at **WARN**, you cut log volume and cost during storms, but you may lose step-by-step context for retry behavior unless metrics or traces fill the gap. A common follow-up is to keep production at **WARN** and rely on targeted tracing or temporary overrides when investigating a specific queue issue.
+__node_content_end__
+
+Node: warn
+__node_content_start__
+A logging threshold level indicating warning messages.
+__node_content_end__
+
+
+Connections:
+User: I was reading a blog post... [debug, user, i] --[relationship_name: contains; entity_name: debug env var; entity_description: An environment variable related to debugging.]--> debug env var
+User: Can you check the prod config... [user, prod, config] --[relationship_name: contains; entity_name: debug; entity_description: A highly verbose log level used for detailed tracing.]--> debug
+User: I'm updating the incident runbook for... [i, user, runbook] --[relationship_name: contains; entity_name: debug; entity_description: A logging level used for detailed diagnostic information.]--> debug
+User: Can you check the current app... [user, current, config] --[relationship_name: contains; entity_name: debug log level; entity_description: A log level indicating detailed information useful for debugging.]--> debug log level
+User: I’m checking the production service before... [production, staging, config] --[relationship_name: contains; entity_name: debug; entity_description: The DEBUG log level setting.]--> debug
+User: I'm updating the incident runbook for... [i, user, runbook] --[relationship_name: contains; entity_name: live debugging; entity_description: The process of debugging a system in a production or live environment.]--> live debugging
+User: Can you check the current app... [user, current, config] --[relationship_name: contains; entity_name: info log level; entity_description: A log level indicating informational messages highlighting the progress of the application at coarse-grained level.]--> info log level
+application logging configuration --[discussed_level]--> debug log level
+User: Can you check the prod config... [user, prod, config] --[relationship_name: contains; entity_name: application log level; entity_description: Configuration that controls the verbosity of application logs.]--> application log level
+User: I'm looking at the ops tracker... [user, what's, billing-worker] --[relationship_name: contains; entity_name: log verbosity; entity_description: A specific configuration setting that controls the level of detail in application logs.]--> log verbosity
+User: We’re trying to trim our logging... [logs, i, user] --[relationship_name: contains; entity_name: info logs; entity_description: Informational log messages generated by the application, suspected to be a major contributor to storage.]--> info logs
+User: I’m triaging a customer report that... [info, around, logs] --[relationship_name: contains; entity_name: info; entity_description: An informational log level, indicating significant but not necessarily error-prone events.]--> info log level
+User: My teammate says their staging box... [staging, user, than] --[relationship_name: contains; entity_name: logger setting; entity_description: A configuration parameter that controls the verbosity of logs.]--> logger setting
+User: I’m triaging a customer report that... [info, around, logs] --[relationship_name: contains; entity_name: application log level; entity_description: The setting that determines the verbosity of application logs.]--> application log level
+User: I was reading an internal postmortem... [billing-worker, assistant, deployment] --[relationship_name: contains; entity_name: warn; entity_description: A logging threshold level indicating warning messages.]--> warn
+
+Question: Who or what mentioned DEBUG, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

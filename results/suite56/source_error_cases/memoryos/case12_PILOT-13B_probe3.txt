@@ -1,0 +1,74 @@
+CASE 12: PILOT-13B probe3 match=incorrect
+paradigm: interference  fact_type: log_level
+
+GOLD: DEBUG was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "Assistant",
+  "source_class": "assistant",
+  "action": "confirmed",
+  "accepted": true,
+  "current_value": "The runbook's DEBUG note refers to the sidecar collector.",
+  "reason": "The assistant confirmed that the DEBUG note in the runbook refers to the sidecar collector at 2026-05-20 02:06:57, and the user had previously been investigating DEBUG vs INFO/WARN settings."
+}
+
+REASON: source_class mismatch: pred=assistant vs gold=third_party
+
+===== RETRIEVED MEMORY (4499 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User is reading a blog post about when to use DEBUG vs INFO/WARN in services at 2026-07-12 05:37:33
+- [user-knowledge] - User wanted to confirm the issue was with teammate's staging setup (2026-07-12 05:38:44)
+- [user-knowledge] - User is trying to improve distributed tracing across a few services at 2026-07-12 05:37:42
+- [user-knowledge] - User is on `release/prod-logging` branch for service deployment at 2026-07-12 05:37:28
+- [user-knowledge] - User concerned about log verbosity on teammate's staging box (2026-07-12 05:38:33)
+- [user-knowledge] - User triaging customer report "notifications randomly disappear" on 2026-07-12 05:37:28
+- [user-knowledge] - User knows about an internal postmortem about the billing-worker service on 2026-07-12 05:37:28
+- [user-knowledge] - User's app is chatty in normal operation at 2026-07-12 05:37:28
+- [user-knowledge] - User checked service config and application log level is INFO on 2026-07-12 05:37:28
+- [user-knowledge] - User has a teammate (2026-07-12 05:38:33)
+- [user-knowledge] - User is tracing a payment retry issue
+- [user-knowledge] - User uses structured logging
+- [user-knowledge] - User ships logs to Loki
+- [user-knowledge] - User is on `feature/log-retention-review` branch at 2026-07-12 05:37:28
+- [user-knowledge] - User is worried INFO logs are driving storage curve at 2026-07-12 05:37:28
+- [user-knowledge] - User interested in log verbosity of billing-worker
+- [user-knowledge] - User is trying to trim logging bill before next deployment at 2026-07-12 05:37:28
+- [user-knowledge] - User interested in recent changes to billing-worker log verbosity
+- [user-knowledge] - User is concerned about log noise versus catching early signs of trouble for billing-worker
+- [user-knowledge] - User needs a runbook PR
+- [assistant-knowledge] - Assistant listed debug-related settings found in frontend/dev tooling at 2026-07-12 05:37:33
+- [assistant-knowledge] - Assistant identified `DEBUG` variable as for frontend/dev watcher path at 2026-07-12 05:37:35
+- [assistant-knowledge] - Assistant explained log verbosity issue at 2026-07-12 05:38:33
+- [assistant-knowledge] - Assistant confirmed issue isolation at 2026-07-12 05:38:44
+- [assistant-knowledge] - Assistant demonstrated `rg` for conflicting log-level sources at 2026-07-12 05:37:28
+- [assistant-knowledge] - Assistant demonstrated how to verify a config at 2026-07-12 05:38:12
+- [assistant-knowledge] - Assistant explained WARN vs ERROR log thresholds for production at 2026-07-12 05:38:14
+- [assistant-knowledge] - Assistant confirmed log level finding at 2026-07-12 05:38:33
+- [assistant-knowledge] - Assistant used `grep` to find debug-related flags in Docker Compose setup at 2026-07-12 05:37:33
+- [assistant-knowledge] - Assistant demonstrated `rg` for logging settings at 2026-07-12 05:37:28
+- [assistant-knowledge] - Assistant showed a `git diff` example at 2026-07-12 05:37:28
+- [assistant-knowledge] - Assistant demonstrated checking rollout status and a PrometheusRule yaml at 2026-07-12 05:39:01
+- [assistant-knowledge] - Assistant checked out git branch 'incident-review/billing-worker' on 2026-07-12 05:37:28
+- [assistant-knowledge] - Assistant demonstrated checking prometheusrules and a specific rule's yaml at 2026-07-12 05:38:50
+- [assistant-knowledge] - Assistant provided two common approaches to avoid false positives at 2026-07-12 05:39:01
+- [assistant-knowledge] - Assistant demonstrated `git status --short` at 2026-07-12 05:37:28
+- [assistant-knowledge] - Assistant provided relevant snippet from runbook at 2026-07-12 05:39:07
+- [assistant-knowledge] - Assistant demonstrated `git diff` for staged changes at 2026-07-12 05:37:28
+- [assistant-knowledge] - Assistant checked current app logging config in staging branch at 2026-07-12 05:39:34
+- [assistant-knowledge] - Assistant retrieved logs for notifications-worker and filtered for INFO on 2026-07-12 05:37:28
+
+Question: Who or what mentioned DEBUG, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

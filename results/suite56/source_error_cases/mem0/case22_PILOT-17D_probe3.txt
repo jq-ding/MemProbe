@@ -1,0 +1,54 @@
+CASE 22: PILOT-17D probe3 match=incorrect
+paradigm: consolidation  fact_type: submission_deadline_v2
+
+GOLD: Monday noon was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "stated",
+  "accepted": true,
+  "current_value": "Monday, May 19, 2026, at noon",
+  "reason": "The user stated they need to send a reminder to Jordan that the quarterly summary is due by Monday, May 19, 2026, at noon, and the assistant provided a draft for this reminder."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (4113 chars) =====
+Memory facts extracted from conversation history:
+
+- User's plan for the week includes sprint planning on Tuesday, July 13, 2026, two code reviews on Thursday, July 15, 2026, and a report submission deadline of Friday, July 16, 2026, at 5 PM.
+- The assistant suggested a plan for the user's report: on Tuesday, July 13, 2026, spend 30 minutes outlining; on Thursday morning, July 15, 2026, reserve 60-90 minutes for the first draft; on Thursday afternoon, July 15, 2026, do a quick gap check; on Friday morning, July 16, 2026, set aside 60 minutes for revisions; and by Friday, July 16, 2026, at 3 PM, complete final review and submission prep.
+- User believes the finance team's quarterly summary draft is due Wednesday, July 17, 2026, at the end of the day, but wants to confirm this deadline.
+- The assistant helped the user draft a message to the finance team to confirm their quarterly summary draft deadline of Wednesday EOD and to ask if they prefer comments in the document or by email.
+- User is planning a review session with co-authors for a draft and is seeking advice on how to structure it to ensure progress.
+- User was advised to structure a draft review session with co-authors by aligning on the main objective, walking through sections needing the most feedback, and assigning follow-up edits and owners. It was also suggested to circulate the latest version in advance and ask for comments directly in the document before the meeting.
+- User was advised that if a draft is still evolving, it is better to separate review sessions into one for higher-level issues like argument flow, missing evidence, or section ownership, and a later pass for wording and consistency.
+- User is putting together presentation slides for report findings and was recommended a 5-7 slide structure for a short team update: Title/objective, Key findings summary, Supporting data/charts, Risks/issues/constraints, Recommendations, Next steps, and an optional appendix for detailed backup.
+- User was advised that for an audience of engineering leads, the presentation should emphasize main findings, technical implications, tradeoffs, required decisions/actions, and implementation impact (effort, dependencies, potential blockers).
+- User's manager confirmed that the report submission deadline remains Friday, July 16, 2026, at 5 PM, despite a suggestion to extend it to Monday, July 19, 2026, at noon.
+- User asked the assistant to update the sprint notes to reflect the confirmed Friday 5 PM deadline and to provide the open review items.
+- Jordan's quarterly summary is due on Monday, July 15, 2026, at noon.
+- User asked the assistant to draft a reminder message for Jordan about their quarterly summary deadline.
+- User requested the reminder message for Jordan be more polished and include a friendly offer to review the quarterly summary.
+- The assistant drafted a reminder message for Jordan: "Hi Jordan, just a quick reminder that your quarterly summary is due Monday noon. If it would be helpful, I’d be happy to review it before you send it over."
+- User is reviewing a delivery tracker that lists two write-ups: a vendor risk summary and an audit brief.
+- The vendor risk summary is due on Thursday, July 15, 2026, at 3 PM.
+- The audit brief has its own separate schedule, distinct from the vendor risk summary.
+- The vendor risk summary due on Thursday, July 15, 2026, at 3 PM is the version Legal needs before their review pass.
+- User was advised to rename the delivery tracker row for the vendor risk summary to 'Vendor Risk Summary for Legal' and keep the due time listed as Thursday 3 PM.
+
+Question: Who or what mentioned Monday noon, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

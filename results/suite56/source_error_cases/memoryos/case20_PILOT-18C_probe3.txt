@@ -1,0 +1,74 @@
+CASE 20: PILOT-18C probe3 match=partial
+paradigm: consolidation  fact_type: sleep_schedule
+
+GOLD: 10 PM was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The assistant suggested a 10 PM bedtime as an alternative to the user's 11 PM routine.",
+  "source_class": "assistant",
+  "action": "suggested",
+  "accepted": false,
+  "current_value": "11 PM",
+  "reason": "The assistant mentioned 10 PM as an appealing theory, but the user explicitly stated that 11 PM still works better with their schedule for now."
+}
+
+REASON: source_class mismatch (pred=assistant vs gold=third_party) but accepted correct
+
+===== RETRIEVED MEMORY (4062 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User's current bedtime is 11 PM
+- [user-knowledge] - User's regular bedtime is 11 PM
+- [user-knowledge] - user's regular bedtime is 11 PM
+- [user-knowledge] - User tried going to bed at 10 PM for a few days
+- [user-knowledge] - User is considering trying a 10 PM bedtime
+- [user-knowledge] - User is sticking with regular 11 PM bedtime
+- [user-knowledge] - user wakes up around 6:30
+- [user-knowledge] - user aims to be asleep around 11 PM
+- [user-knowledge] - User's roommate gets up around 6:30 for work
+- [user-knowledge] - User has been trying to make mornings feel less chaotic.
+- [user-knowledge] - User has a niece with a later bedtime set as midnight on a sleep app's family dashboard
+- [user-knowledge] - User was listening to a wellness podcast earlier
+- [user-knowledge] - User's roommate gets stuck scrolling and loses track of time before bed
+- [user-knowledge] - User has a roommate who complains about being exhausted in the mornings
+- [user-knowledge] - User feels rushed on workdays and skips breakfast.
+- [user-knowledge] - User's eyes feel tired by end of day: due to a lot of screen time
+- [user-knowledge] - User's sleep schedule is weird on weekends compared to weekdays.
+- [user-knowledge] - User wants a light snack before bed
+- [user-knowledge] - User usually wakes up feeling overheated
+- [user-knowledge] - User has been thinking about trying melatonin
+- [assistant-knowledge] - Assistant suggested a bedtime of 10:30 PM or midnight at 2026-07-12 06:17:58
+- [assistant-knowledge] - Assistant confirmed 11 PM stays the usual bedtime at 2026-07-12 06:17:21
+- [assistant-knowledge] - Assistant acknowledged user's current bedtime at 2026-07-12 06:19:09
+- [assistant-knowledge] - Assistant confirmed user's niece has the later bedtime (midnight) on the family dashboard at 2026-07-12 06:18:08
+- [assistant-knowledge] - Assistant offered to help user ease into an earlier bedtime at 2026-07-12 06:19:09
+- [assistant-knowledge] - Assistant provided advice about bedtimes at 2026-07-12 06:18:28
+- [assistant-knowledge] - Assistant provided a simple evening routine at 2026-07-12 06:18:01
+- [assistant-knowledge] - Assistant provided advice about adjusting bedtime at 2026-07-12 06:18:38
+- [assistant-knowledge] - Assistant provided ideas for afternoon sluggishness at 2026-07-12 06:17:23
+- [assistant-knowledge] - Assistant offered to help make a simple evening routine at 2026-07-12 06:18:00
+- [assistant-knowledge] - Assistant asked if user wanted help with anything else at 2026-07-12 06:17:21
+- [assistant-knowledge] - Assistant suggested lunch options at 2026-07-12 06:17:25
+- [assistant-knowledge] - Assistant offered to help troubleshoot routine at 2026-07-12 06:17:23
+- [assistant-knowledge] - Assistant offered to help build a routine that fits workdays specifically at 2026-07-12 06:17:38
+- [assistant-knowledge] - Assistant explained how shifting weekend sleep affects energy at 2026-07-12 06:17:34
+- [assistant-knowledge] - Assistant suggested a wind-down routine starting 30-45 minutes before bed at 2026-07-12 06:18:00
+- [assistant-knowledge] - Assistant provided tips for making workday mornings low-friction at 2026-07-12 06:17:43
+- [assistant-knowledge] - Assistant provided tips for optimizing a morning routine at 2026-07-12 06:17:38
+- [assistant-knowledge] - Assistant provided information on melatonin and natural sleep aids at 2026-07-12 06:17:27
+- [assistant-knowledge] - Assistant provided snack ideas at 2026-07-12 06:18:22
+
+Question: Who or what mentioned 10 PM, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

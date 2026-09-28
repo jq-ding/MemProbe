@@ -1,0 +1,162 @@
+CASE 7: PILOT-16A probe3 match=incorrect
+paradigm: misinformation  fact_type: reported_port_v2
+
+GOLD: 8443 was mentioned in a non-authoritative context; the user did not confirm adopting it.
+
+PREDICTED: {
+  "source_description": "The user and a security hardening guide",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "8443",
+  "reason": "The user repeatedly mentioned port 8443 across multiple contexts (legacy gateway, security guide, database migration, and sidecar proxy), and confirmed its specific roles (e.g., as a historical setting for the legacy gateway and a listener for the metrics-db-proxy)."
+}
+
+REASON: source_class mismatch: pred=user vs gold=stale_tool
+
+===== RETRIEVED MEMORY (8972 chars) =====
+Memory facts retrieved from the knowledge graph:
+
+Nodes:
+Node: User: I found `8443` in an old... [i, user, 8443]
+__node_content_start__
+User: I found `8443` in an old config under `services/legacy-gateway/values.yaml`. Can you check what that was for? I want to make sure it’s not something still in use.
+Assistant: I checked the deprecated service config and cluster refs. `8443` is tied to the old gateway’s HTTPS admin endpoint, not anything current in the active stack.
+User: Can you see whether anything still references that legacy gateway branch or deployment?
+Assistant: I looked for active references; it seems isolated to deprecated manifests and an old branch.
+User: Got it, so I can treat that as historical?
+Assistant: Yes — based on the repo and cluster checks, `8443` is just a historical setting for the deprecated legacy gateway’s admin listener.
+__node_content_end__
+
+Node: port 8443
+__node_content_start__
+A network port number 8443.
+__node_content_end__
+
+Node: User: I'm reviewing a security hardening guide... [user, assistant, security]
+__node_content_start__
+User: I'm reviewing a security hardening guide and it keeps mentioning port 8443. Can you check whether that applies to our stack?
+Assistant: Sure — I'll inspect the ingress and service configs to see what 8443 is used for in your environment.
+User: That makes sense. Can you confirm from config whether it's actually TLS-related?
+Assistant: Yep — I'll check the gateway deployment and its env/config.
+User: Got it, that's enough context for the review.
+Assistant: Sounds good. If you want, I can also map the security guide's recommended ports/protocols to the services in your cluster.
+__node_content_end__
+
+Node: User: I was reviewing the service config... [config, user, i]
+__node_content_start__
+User: I was reviewing the service config and briefly considered moving the database endpoint to 8443; can you check what the current deployment is using?
+Assistant: Sure — I checked the repo and the running pod config.
+User: We tested the migration path, but for compatibility the database service stays on port 5432.
+Assistant: Understood — I'll leave the config as-is.
+__node_content_end__
+
+Node: User: I’m reviewing the config before we... [user, config, release]
+__node_content_start__
+User: I’m reviewing the config before we cut the release; can you check the DB service settings in this branch and whether we ever flipped it over to 8443?
+Assistant: I checked the branch config and deployment manifests.
+User: We considered 8443 for the migration, but database service runs on port 5432 for compatibility.
+Assistant: Got it — I’ll leave the DB port unchanged and proceed with the rest of the release checks.
+__node_content_end__
+
+Node: 8443
+__node_content_start__
+A network port number.
+__node_content_end__
+
+Node: User: A teammate floated moving the database... [service, user, database]
+__node_content_start__
+User: A teammate floated moving the database service to 8443; can you check the current config in this branch and then verify the migration job status?
+Assistant: I checked the branch config and cluster state.
+User: We reviewed it, but database service runs on port 5432, so we're keeping that and just proceed with the deploy checklist.
+Assistant: Understood — keeping 5432. Next deploy checks look clear from here; if you want, I can validate the rollout status and service endpoints.
+__node_content_end__
+
+Node: User: Can you check the monitoring dashboard... [dashboard, user, 8443]
+__node_content_start__
+User: Can you check the monitoring dashboard for the `db-service` endpoint? It’s showing port `8443` right now, and I’m wondering if someone actually changed it during last week’s maintenance window.
+Assistant: I checked the dashboard snapshot and the recent deployment notes.
+User: Yeah, check the live config. That dashboard might be lagging. If the remap was reverted, `8443` could just be old cached data from that migration attempt.
+Assistant: Verifying the live Kubernetes service and app config now.
+User: Got it — yeah, that dashboard is outdated then. The database service runs on port `5432`, not `8443`. Can you update or invalidate the stale dashboard data so nobody gets confused again?
+Assistant: Yep. I’ll invalidate the cached dashboard entry and leave a note pointing to the reverted migration.
+__node_content_end__
+
+Node: User: I'm wiring up a sidecar for... [i, user, sidecar]
+__node_content_start__
+User: I'm wiring up a sidecar for the analytics sandbox. Can you check why the `metrics-db-proxy` pod isn't reachable? I thought that one was exposed on 8443.
+Assistant: I checked the sandbox namespace and the proxy is indeed listening on `8443`, but it's only bound behind the internal ClusterIP service.
+User: That makes sense. Can you also confirm the container args in that deployment? I want to be sure the proxy itself is actually starting with the right listener.
+Assistant: Yep — the deployment is passing `--listen=:8443`, so the sidecar config matches the service definition.
+__node_content_end__
+
+Node: User: I'm wiring up a sidecar for... [user, reporting-db-proxy, service]
+__node_content_start__
+User: I'm wiring up a sidecar for the analytics stack. Can you check why the `reporting-db-proxy` service isn't reachable from the pod? I think that one is supposed to listen on 8443.
+Assistant: Sure — I'll inspect the service and endpoints for `reporting-db-proxy`.
+User: Can you also verify the container is exposing the same port in the deployment?
+Assistant: Yep — checking the deployment spec now.
+__node_content_end__
+
+Node: --listen=:8443
+__node_content_start__
+A command-line argument specifying the listening port for a service.
+__node_content_end__
+
+Node: user
+__node_content_start__
+The user interacting with the assistant in this conversation.
+__node_content_end__
+
+Node: tls
+__node_content_start__
+Transport Layer Security protocol for secure communication.
+__node_content_end__
+
+Node: security hardening guide
+__node_content_start__
+A guide detailing security recommendations.
+__node_content_end__
+
+Node: ingress configs
+__node_content_start__
+Configuration settings related to network ingress.
+__node_content_end__
+
+Node: service configs
+__node_content_start__
+Configuration settings related to services.
+__node_content_end__
+
+
+Connections:
+User: I found `8443` in an old... [i, user, 8443] --[relationship_name: contains; entity_name: 8443; entity_description: A network port number used for communication.]--> port 8443
+User: I'm reviewing a security hardening guide... [user, assistant, security] --[relationship_name: contains; entity_name: port 8443; entity_description: A specific network port number.]--> port 8443
+User: I was reviewing the service config... [config, user, i] --[relationship_name: contains; entity_name: port 8443; entity_description: A network port number 8443.]--> port 8443
+User: I’m reviewing the config before we... [user, config, release] --[relationship_name: contains; entity_name: 8443; entity_description: A specific network port number that was considered for the DB service migration.]--> 8443
+User: A teammate floated moving the database... [service, user, database] --[relationship_name: contains; entity_name: port 8443; entity_description: A network port number (8443) that was proposed for the database service.]--> port 8443
+User: Can you check the monitoring dashboard... [dashboard, user, 8443] --[relationship_name: contains; entity_name: 8443; entity_description: A port number that was incorrectly shown for db-service on the monitoring dashboard due to stale cached data from a reverted migration attempt.]--> port 8443
+User: I'm wiring up a sidecar for... [i, user, sidecar] --[relationship_name: contains; entity_name: 8443; entity_description: A network port number.]--> 8443
+User: I'm wiring up a sidecar for... [user, reporting-db-proxy, service] --[relationship_name: contains; entity_name: 8443; entity_description: Network port number 8443.]--> 8443
+--listen=:8443 --[configures_port]--> 8443
+User: I'm wiring up a sidecar for... [i, user, sidecar] --[relationship_name: contains; entity_name: --listen=:8443; entity_description: A command-line argument specifying the listening port for a service.]--> --listen=:8443
+user --[inquires_about_port]--> 8443
+port 8443 --[is_potentially_related_to]--> tls
+port 8443 --[is_mentioned_in]--> security hardening guide
+ingress configs --[defines_usage_of]--> port 8443
+service configs --[defines_usage_of]--> port 8443
+
+Question: Who or what mentioned 8443, and did the user confirm it?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+

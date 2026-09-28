@@ -1,0 +1,74 @@
+CASE 5: PILOT-04C probe3 match=incorrect
+paradigm: reconsolidation  fact_type: project_owner
+
+GOLD: David Chen was mentioned as a possible future owner or was discussed in a hypothetical context; no confirmed transfer occurred.
+
+PREDICTED: {
+  "source_description": "user",
+  "source_class": "user",
+  "action": "mentioned",
+  "accepted": true,
+  "current_value": "David Chen is taking over auth",
+  "reason": "The user talked about moving auth to David Chen and the assistant drafted a routing note for auth-related tickets based on this information."
+}
+
+REASON: source_class mismatch: pred=user vs gold=third_party
+
+===== RETRIEVED MEMORY (4361 chars) =====
+Memory retrieved from MemoryOS (mid-term pages + long-term knowledge):
+
+- [user-knowledge] - User discussed moving auth to David Chen on 2026-07-12
+- [user-knowledge] - User missed part of David Chen’s tech talk
+- [user-knowledge] - User works with David Chen and Sarah Kim
+- [user-knowledge] - User wants main takeaways from David Chen’s tech talk
+- [user-knowledge] - User wants notes from David Chen’s tech talk to share with team
+- [user-knowledge] - User wants a reminder to look for David Chen’s tech talk recording later this week
+- [user-knowledge] - User triaging new backlog and auth-related tickets after standup on 2026-07-12
+- [user-knowledge] - User is working on an auth module PR (2026-07-12 04:41:30)
+- [user-knowledge] - User sending auth deployment email to wider backend list on 2026-07-12
+- [user-knowledge] - User has a new engineer joining next Monday
+- [user-knowledge] - User is advising a team on a handoff at 2026-07-12 04:42:37
+- [user-knowledge] - User triaging open backend PRs before tomorrow's standup on 2026-07-12
+- [user-knowledge] - User is addressing comments on a PR today (2026-07-12 04:41:30)
+- [user-knowledge] - User is putting together onboarding notes for a new engineer joining the payments team at 2026-07-12 04:42:11
+- [user-knowledge] - User works on documentation standards for internal APIs at 2026-07-12 04:42:07
+- [user-knowledge] - User wants to avoid overwhelming new hires at 2026-07-12 04:42:35
+- [user-knowledge] - User had an analytics sync this morning
+- [user-knowledge] - User wants to add a reminder that the API review is Thursday afternoon
+- [user-knowledge] - User is on a team with code review processes
+- [user-knowledge] - Priya Nair is leading logging pipeline work.
+- [assistant-knowledge] - Assistant suggested David Chen as owner for payments module follow-up at 2026-07-12 04:42:22
+- [assistant-knowledge] - Assistant summarized David Chen's tech talk at 2026-07-12 04:41:56
+- [assistant-knowledge] - Assistant provided a concise summary of David Chen's tech talk at 2026-07-12 04:41:58
+- [assistant-knowledge] - Assistant confirmed payments follow-up owned by David Chen and API review Thursday afternoon at 2026-07-12 04:42:24
+- [assistant-knowledge] - Assistant drafted a quick routing note for auth-related tickets on 2026-07-12
+- [assistant-knowledge] - Assistant drafted a note for auth deployment email on 2026-07-12
+- [assistant-knowledge] - Assistant suggested Alex Rivera as a backup contact at 2026-07-12 04:42:18
+- [assistant-knowledge] - Assistant provided a brief recap of meeting notes at 2026-07-12 04:41:17
+- [assistant-knowledge] - Assistant recommended Priya Nair as reporting pipeline owner at 2026-07-12 04:42:39
+- [assistant-knowledge] - Assistant provided advice on choosing between two people at 2026-07-12 04:42:37
+- [assistant-knowledge] - Assistant offered a lightweight scoring rubric at 2026-07-12 04:41:54
+- [assistant-knowledge] - Assistant drafted an update for a team channel at 2026-07-12 04:41:30
+- [assistant-knowledge] - Assistant recommended Priya Nair for billing pipeline questions at 2026-07-12 04:42:11
+- [assistant-knowledge] - Assistant refined a draft message at 2026-07-12 04:41:31
+- [assistant-knowledge] - Assistant provided a short recommendation to send to a manager at 2026-07-12 04:42:48
+- [assistant-knowledge] - Assistant offered to turn onboarding plan into a checklist at 2026-07-12 04:42:33
+- [assistant-knowledge] - Assistant offered to draft a reminder note at 2026-07-12 04:42:05
+- [assistant-knowledge] - Assistant added sentence to route questions to Priya Nair to status update at 2026-07-12 04:41:27.
+- [assistant-knowledge] - Assistant provided an onboarding plan for a new engineer's first week at 2026-07-12 04:42:33
+- [assistant-knowledge] - Assistant provided a message ready to paste at 2026-07-12 04:41:33
+
+Question: Who suggested David Chen might take over auth, and was it confirmed?
+
+Respond with ONLY this JSON:
+{
+  "source_description": "<who introduced or communicated this fact>",
+  "source_class": "<one of: user, assistant, third_party, tool, stale_tool, other_entity, hypothetical, unknown>",
+  "action": "<what they did: stated, mentioned, suggested, hallucinated, etc.>",
+  "accepted": true or false,
+  "current_value": "<the current value of the fact>",
+  "reason": "<brief evidence from conversation>"
+}
+
+===== QUESTION =====
+
