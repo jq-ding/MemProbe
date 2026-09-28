@@ -20,8 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
----------------------------------------------------------------------------
-Scope note: this MIT license covers the source code and the LLM-generated
-56-episode suite. Files under data/suite40/ and results/suite40/ and the filler pool contain
-content derived from LoCoMo (CC BY-NC 4.0) and are distributed under
-CC BY-NC 4.0 instead; see DATA_LICENSE and the License section of README.md.
